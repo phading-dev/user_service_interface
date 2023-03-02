@@ -1,0 +1,177 @@
+[{
+  "name": "SignUpRequestBody",
+  "message": {
+    "fields": [{
+      "name": "username",
+      "type": "string"
+    }, {
+      "name": "naturalName",
+      "type": "string"
+    }, {
+      "name": "password",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "SignUpResponse",
+  "message": {
+    "fields": [{
+      "name": "signedSession",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "SignUp",
+  "service": {
+    "path": "/SignUp",
+    "body": "SignUpRequestBody",
+    "response": "SignUpResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "SignInRequestBody",
+  "message": {
+    "fields": [{
+      "name": "username",
+      "type": "string"
+    }, {
+      "name": "password",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "SignInResponse",
+  "message": {
+    "fields": [{
+      "name": "signedSession",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "SignIn",
+  "service": {
+    "path": "/SignIn",
+    "body": "SignInRequestBody",
+    "response": "SignInResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "GetUserInfoRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "GetUserInfoResponse",
+  "message": {
+    "fields": [{
+      "name": "username",
+      "type": "string"
+    }, {
+      "name": "naturalName",
+      "type": "string"
+    }, {
+      "name": "email",
+      "type": "string"
+    }, {
+      "name": "avatarLargePath",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetUserInfo",
+  "service": {
+    "path": "/GetUserInfo",
+    "body": "GetUserInfoRequestBody",
+    "signedUserSession": {
+      "key": "u",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "GetUserInfoResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "UploadAvatarResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UploadAvatar",
+  "service": {
+    "path": "/UploadAvatar",
+    "body": "bytes",
+    "signedUserSession": {
+      "key": "u",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UploadAvatarResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "GetUserInfoCardRequestBody",
+  "message": {
+    "fields": [{
+      "name": "userId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetUserInfoCardResponse",
+  "message": {
+    "fields": [{
+      "name": "card",
+      "type": "UserInfoCard",
+      "import": "./user_info_card"
+    }]
+  }
+}, {
+  "name": "GetUserInfoCard",
+  "service": {
+    "path": "/GetUserInfoCard",
+    "body": "GetUserInfoCardRequestBody",
+    "signedUserSession": {
+      "key": "u",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "GetUserInfoCardResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "SetUserRelationshipRequestBody",
+  "message": {
+    "fields": [{
+      "name": "userId",
+      "type": "string"
+    }, {
+      "name": "relationship",
+      "type": "UserRelationship",
+      "import": "./user_relationship"
+    }]
+  }
+}, {
+  "name": "SetUserRelationshipResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "SetUserRelationship",
+  "service": {
+    "path": "/SetUserRelationship",
+    "body": "SetUserRelationshipRequestBody",
+    "signedUserSession": {
+      "key": "u",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "SetUserRelationshipResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}]
