@@ -1,5 +1,6 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
+import { USER_SESSION } from './user_session';
 import { UserInfoCard, USER_INFO_CARD } from './user_info_card';
 import { UserRelationship, USER_RELATIONSHIP } from './user_relationship';
 
@@ -140,6 +141,10 @@ export let GET_USER_INFO: ServiceDescriptor = {
   body: {
     messageType: GET_USER_INFO_REQUEST_BODY,
   },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
   response: {
     messageType: GET_USER_INFO_RESPONSE,
   },
@@ -159,6 +164,10 @@ export let UPLOAD_AVATAR: ServiceDescriptor = {
   path: "/UploadAvatar",
   body: {
     primitiveType: PrimitveTypeForBody.BYTES,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
   },
   response: {
     messageType: UPLOAD_AVATAR_RESPONSE,
@@ -199,6 +208,10 @@ export let GET_USER_INFO_CARD: ServiceDescriptor = {
   body: {
     messageType: GET_USER_INFO_CARD_REQUEST_BODY,
   },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
   response: {
     messageType: GET_USER_INFO_CARD_RESPONSE,
   },
@@ -237,6 +250,10 @@ export let SET_USER_RELATIONSHIP: ServiceDescriptor = {
   path: "/SetUserRelationship",
   body: {
     messageType: SET_USER_RELATIONSHIP_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
   },
   response: {
     messageType: SET_USER_RELATIONSHIP_RESPONSE,

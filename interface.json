@@ -84,8 +84,8 @@
   "service": {
     "path": "/GetUserInfo",
     "body": "GetUserInfoRequestBody",
-    "signedUserSession": {
-      "key": "u",
+    "auth": {
+      "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
@@ -103,8 +103,8 @@
   "service": {
     "path": "/UploadAvatar",
     "body": "bytes",
-    "signedUserSession": {
-      "key": "u",
+    "auth": {
+      "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
@@ -134,8 +134,8 @@
   "service": {
     "path": "/GetUserInfoCard",
     "body": "GetUserInfoCardRequestBody",
-    "signedUserSession": {
-      "key": "u",
+    "auth": {
+      "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
@@ -165,8 +165,8 @@
   "service": {
     "path": "/SetUserRelationship",
     "body": "SetUserRelationshipRequestBody",
-    "signedUserSession": {
-      "key": "u",
+    "auth": {
+      "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },

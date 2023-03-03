@@ -1,5 +1,6 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
 import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, GET_USER_INFO, GetUserInfoRequestBody, GetUserInfoResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_USER_INFO_CARD, GetUserInfoCardRequestBody, GetUserInfoCardResponse, SET_USER_RELATIONSHIP, SetUserRelationshipRequestBody, SetUserRelationshipResponse } from './interface';
+import { UserSession } from './user_session';
 import { Readable } from 'stream';
 
 export abstract class SignUpHandlerInterface implements ServiceHandlerInterface {
@@ -23,6 +24,7 @@ export abstract class GetUserInfoHandlerInterface implements ServiceHandlerInter
   public abstract handle(
     requestId: string,
     body: GetUserInfoRequestBody,
+    auth: UserSession,
   ): Promise<GetUserInfoResponse>;
 }
 
@@ -31,6 +33,7 @@ export abstract class UploadAvatarHandlerInterface implements ServiceHandlerInte
   public abstract handle(
     requestId: string,
     body: Readable,
+    auth: UserSession,
   ): Promise<UploadAvatarResponse>;
 }
 
@@ -39,6 +42,7 @@ export abstract class GetUserInfoCardHandlerInterface implements ServiceHandlerI
   public abstract handle(
     requestId: string,
     body: GetUserInfoCardRequestBody,
+    auth: UserSession,
   ): Promise<GetUserInfoCardResponse>;
 }
 
@@ -47,5 +51,6 @@ export abstract class SetUserRelationshipHandlerInterface implements ServiceHand
   public abstract handle(
     requestId: string,
     body: SetUserRelationshipRequestBody,
+    auth: UserSession,
   ): Promise<SetUserRelationshipResponse>;
 }
