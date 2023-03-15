@@ -3,7 +3,7 @@ import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 export interface PersonaCard {
   id?: string,
   name?: string,
-  imageUrl?: string,
+  imagePath?: string,
 }
 
 export let PERSONA_CARD: MessageDescriptor<PersonaCard> = {
@@ -18,7 +18,7 @@ export let PERSONA_CARD: MessageDescriptor<PersonaCard> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'imageUrl',
+      name: 'imagePath',
       primitiveType: PrimitiveType.STRING,
     },
   ]
