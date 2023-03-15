@@ -174,4 +174,84 @@
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
+}, {
+  "name": "ListPersonasRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "ListPersonasResponse",
+  "message": {
+    "fields": [{
+      "name": "cards",
+      "type": "PersonaCard",
+      "import": "./persona_card"
+    }]
+  }
+}, {
+  "name": "ListPersonas",
+  "service": {
+    "path": "/ListPersonas",
+    "body": "ListPersonasRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "ListPersonasResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "UploadPersonaImageResponse",
+  "message": {
+    "fields": [{
+      "name": "imagePath",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UploadPersonaImage",
+  "service": {
+    "path": "/UploadPersonaImage",
+    "body": "bytes",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UploadPersonaImageResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "CreatePersonaRequestBody",
+  "message": {
+    "fields": [{
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "imagePath",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreatePersonaResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "CreatePersona",
+  "service": {
+    "path": "/CreatePersona",
+    "body": "CreatePersonaRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "CreatePersonaResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
 }]

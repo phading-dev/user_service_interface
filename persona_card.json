@@ -1,0 +1,15 @@
+[{
+  "name": "PersonaCard",
+  "message": {
+    "fields": [{
+      "name": "id",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "imagePath",
+      "type": "string"
+    }]
+  }
+}]

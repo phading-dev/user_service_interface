@@ -3,6 +3,7 @@ import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descrip
 import { USER_SESSION } from './user_session';
 import { UserInfoCard, USER_INFO_CARD } from './user_info_card';
 import { UserRelationship, USER_RELATIONSHIP } from './user_relationship';
+import { PersonaCard, PERSONA_CARD } from './persona_card';
 
 export interface SignUpRequestBody {
   username?: string,
@@ -257,5 +258,115 @@ export let SET_USER_RELATIONSHIP: ServiceDescriptor = {
   },
   response: {
     messageType: SET_USER_RELATIONSHIP_RESPONSE,
+  },
+}
+
+export interface ListPersonasRequestBody {
+}
+
+export let LIST_PERSONAS_REQUEST_BODY: MessageDescriptor<ListPersonasRequestBody> = {
+  name: 'ListPersonasRequestBody',
+  fields: [
+  ]
+};
+
+export interface ListPersonasResponse {
+  cards?: PersonaCard,
+}
+
+export let LIST_PERSONAS_RESPONSE: MessageDescriptor<ListPersonasResponse> = {
+  name: 'ListPersonasResponse',
+  fields: [
+    {
+      name: 'cards',
+      messageType: PERSONA_CARD,
+    },
+  ]
+};
+
+export let LIST_PERSONAS: ServiceDescriptor = {
+  name: "ListPersonas",
+  path: "/ListPersonas",
+  body: {
+    messageType: LIST_PERSONAS_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: LIST_PERSONAS_RESPONSE,
+  },
+}
+
+export interface UploadPersonaImageResponse {
+  imagePath?: string,
+}
+
+export let UPLOAD_PERSONA_IMAGE_RESPONSE: MessageDescriptor<UploadPersonaImageResponse> = {
+  name: 'UploadPersonaImageResponse',
+  fields: [
+    {
+      name: 'imagePath',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export let UPLOAD_PERSONA_IMAGE: ServiceDescriptor = {
+  name: "UploadPersonaImage",
+  path: "/UploadPersonaImage",
+  body: {
+    primitiveType: PrimitveTypeForBody.BYTES,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: UPLOAD_PERSONA_IMAGE_RESPONSE,
+  },
+}
+
+export interface CreatePersonaRequestBody {
+  name?: string,
+  imagePath?: string,
+}
+
+export let CREATE_PERSONA_REQUEST_BODY: MessageDescriptor<CreatePersonaRequestBody> = {
+  name: 'CreatePersonaRequestBody',
+  fields: [
+    {
+      name: 'name',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'imagePath',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface CreatePersonaResponse {
+}
+
+export let CREATE_PERSONA_RESPONSE: MessageDescriptor<CreatePersonaResponse> = {
+  name: 'CreatePersonaResponse',
+  fields: [
+  ]
+};
+
+export let CREATE_PERSONA: ServiceDescriptor = {
+  name: "CreatePersona",
+  path: "/CreatePersona",
+  body: {
+    messageType: CREATE_PERSONA_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: CREATE_PERSONA_RESPONSE,
   },
 }
