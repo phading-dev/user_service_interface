@@ -299,6 +299,49 @@ export let LIST_PERSONAS: ServiceDescriptor = {
   },
 }
 
+export interface GetPersonaRequestBody {
+  personaId?: string,
+}
+
+export let GET_PERSONA_REQUEST_BODY: MessageDescriptor<GetPersonaRequestBody> = {
+  name: 'GetPersonaRequestBody',
+  fields: [
+    {
+      name: 'personaId',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface GetPersonaResponse {
+  card?: PersonaCard,
+}
+
+export let GET_PERSONA_RESPONSE: MessageDescriptor<GetPersonaResponse> = {
+  name: 'GetPersonaResponse',
+  fields: [
+    {
+      name: 'card',
+      messageType: PERSONA_CARD,
+    },
+  ]
+};
+
+export let GET_PERSONA: ServiceDescriptor = {
+  name: "GetPersona",
+  path: "/GetPersona",
+  body: {
+    messageType: GET_PERSONA_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: GET_PERSONA_RESPONSE,
+  },
+}
+
 export interface UploadPersonaImageResponse {
   imagePath?: string,
 }

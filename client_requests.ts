@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, GetUserInfoRequestBody, GetUserInfoResponse, GET_USER_INFO, UploadAvatarResponse, UPLOAD_AVATAR, GetUserInfoCardRequestBody, GetUserInfoCardResponse, GET_USER_INFO_CARD, SetUserRelationshipRequestBody, SetUserRelationshipResponse, SET_USER_RELATIONSHIP, ListPersonasRequestBody, ListPersonasResponse, LIST_PERSONAS, UploadPersonaImageResponse, UPLOAD_PERSONA_IMAGE, CreatePersonaRequestBody, CreatePersonaResponse, CREATE_PERSONA } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, GetUserInfoRequestBody, GetUserInfoResponse, GET_USER_INFO, UploadAvatarResponse, UPLOAD_AVATAR, GetUserInfoCardRequestBody, GetUserInfoCardResponse, GET_USER_INFO_CARD, SetUserRelationshipRequestBody, SetUserRelationshipResponse, SET_USER_RELATIONSHIP, ListPersonasRequestBody, ListPersonasResponse, LIST_PERSONAS, GetPersonaRequestBody, GetPersonaResponse, GET_PERSONA, UploadPersonaImageResponse, UPLOAD_PERSONA_IMAGE, CreatePersonaRequestBody, CreatePersonaResponse, CREATE_PERSONA } from './interface';
 
 export function signUp(
   client: WebServiceClientInterface,
@@ -67,6 +67,16 @@ export function listPersonas(
 ): Promise<ListPersonasResponse> {
   return client.send({
     descriptor: LIST_PERSONAS,
+    body,
+  });
+}
+
+export function getPersona(
+  client: WebServiceClientInterface,
+  body: GetPersonaRequestBody,
+): Promise<GetPersonaResponse> {
+  return client.send({
+    descriptor: GET_PERSONA,
     body,
   });
 }

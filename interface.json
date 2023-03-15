@@ -203,6 +203,37 @@
     "outputHandler": "./server_handlers"
   }
 }, {
+  "name": "GetPersonaRequestBody",
+  "message": {
+    "fields": [{
+      "name": "personaId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetPersonaResponse",
+  "message": {
+    "fields": [{
+      "name": "card",
+      "type" : "PersonaCard",
+      "import": "./persona_card"
+    }]
+  }
+}, {
+  "name": "GetPersona",
+  "service": {
+    "path": "/GetPersona",
+    "body": "GetPersonaRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "GetPersonaResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
   "name": "UploadPersonaImageResponse",
   "message": {
     "fields": [{
