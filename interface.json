@@ -58,12 +58,85 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetUserInfoRequestBody",
+  "name": "UploadAvatarResponse",
   "message": {
     "fields": []
   }
 }, {
-  "name": "GetUserInfoResponse",
+  "name": "UploadAvatar",
+  "service": {
+    "path": "/UploadAvatar",
+    "body": "bytes",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UploadAvatarResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "UpdatePasswordRequestBody",
+  "message": {
+    "fields": [{
+      "name": "oldPassword",
+      "type": "string"
+    }, {
+      "name": "newPassword",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UpdatePasswordResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UpdatePassword",
+  "service": {
+    "path": "/UpdatePassword",
+    "body": "UpdatePasswordRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UpdatePasswordResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "DeleteUserRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "DeleteUserResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "DeleteUser",
+  "service": {
+    "path": "/DeleteUser",
+    "body": "DeleteUserRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "DeleteUserResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "GetUserProfileRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "GetUserProfileResponse",
   "message": {
     "fields": [{
       "name": "username",
@@ -80,35 +153,16 @@
     }]
   }
 }, {
-  "name": "GetUserInfo",
+  "name": "GetUserProfile",
   "service": {
-    "path": "/GetUserInfo",
-    "body": "GetUserInfoRequestBody",
+    "path": "/GetUserProfile",
+    "body": "GetUserProfileRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "GetUserInfoResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "UploadAvatarResponse",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "UploadAvatar",
-  "service": {
-    "path": "/UploadAvatar",
-    "body": "bytes",
-    "auth": {
-      "key": "auth",
-      "type": "UserSession",
-      "import": "./user_session"
-    },
-    "response": "UploadAvatarResponse",
+    "response": "GetUserProfileResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
@@ -175,6 +229,121 @@
     "outputHandler": "./server_handlers"
   }
 }, {
+  "name": "UploadPersonaImageResponse",
+  "message": {
+    "fields": [{
+      "name": "imagePath",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UploadPersonaImage",
+  "service": {
+    "path": "/UploadPersonaImage",
+    "body": "bytes",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UploadPersonaImageResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "CreatePersonaRequestBody",
+  "message": {
+    "fields": [{
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "imagePath",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreatePersonaResponse",
+  "message": {
+    "fields": [{
+      "name": "id",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreatePersona",
+  "service": {
+    "path": "/CreatePersona",
+    "body": "CreatePersonaRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "CreatePersonaResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "UpdatePersonaRequestBody",
+  "message": {
+    "fields": [{
+      "name": "personaId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "imagePath",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UpdatePersonaResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UpdatePersona",
+  "service": {
+    "path": "/UpdatePersona",
+    "body": "UpdatePersonaRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UpdatePersonaResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "DeletePersonaRequestBody",
+  "message": {
+    "fields": [{
+      "name": "personaId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "DeletePersonaResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "DeletePersona",
+  "service": {
+    "path": "/DeletePersona",
+    "body": "DeletePersonaRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "DeletePersonaResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
   "name": "ListPersonasRequestBody",
   "message": {
     "fields": []
@@ -234,54 +403,35 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "UploadPersonaImageResponse",
+  "name": "RefreshUserSessionRequestBody",
   "message": {
     "fields": [{
-      "name": "imagePath",
+      "name": "personaId",
       "type": "string"
     }]
   }
 }, {
-  "name": "UploadPersonaImage",
-  "service": {
-    "path": "/UploadPersonaImage",
-    "body": "bytes",
-    "auth": {
-      "key": "auth",
-      "type": "UserSession",
-      "import": "./user_session"
-    },
-    "response": "UploadPersonaImageResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "CreatePersonaRequestBody",
+  "name": "RefreshUserSessionResponse",
   "message": {
     "fields": [{
-      "name": "name",
+      "name": "signedSession",
       "type": "string"
     }, {
-      "name": "imagePath",
-      "type": "string"
+      "name": "selectPersona",
+      "type": "boolean"
     }]
   }
 }, {
-  "name": "CreatePersonaResponse",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "CreatePersona",
+  "name": "RefreshUserSession",
   "service": {
-    "path": "/CreatePersona",
-    "body": "CreatePersonaRequestBody",
+    "path": "/RrefreshUserSession",
+    "body": "RefreshUserSessionRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "CreatePersonaResponse",
+    "response": "RefreshUserSessionResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

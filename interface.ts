@@ -98,59 +98,6 @@ export let SIGN_IN: ServiceDescriptor = {
   },
 }
 
-export interface GetUserInfoRequestBody {
-}
-
-export let GET_USER_INFO_REQUEST_BODY: MessageDescriptor<GetUserInfoRequestBody> = {
-  name: 'GetUserInfoRequestBody',
-  fields: [
-  ]
-};
-
-export interface GetUserInfoResponse {
-  username?: string,
-  naturalName?: string,
-  email?: string,
-  avatarLargePath?: string,
-}
-
-export let GET_USER_INFO_RESPONSE: MessageDescriptor<GetUserInfoResponse> = {
-  name: 'GetUserInfoResponse',
-  fields: [
-    {
-      name: 'username',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'naturalName',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'email',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'avatarLargePath',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export let GET_USER_INFO: ServiceDescriptor = {
-  name: "GetUserInfo",
-  path: "/GetUserInfo",
-  body: {
-    messageType: GET_USER_INFO_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: USER_SESSION
-  },
-  response: {
-    messageType: GET_USER_INFO_RESPONSE,
-  },
-}
-
 export interface UploadAvatarResponse {
 }
 
@@ -172,6 +119,135 @@ export let UPLOAD_AVATAR: ServiceDescriptor = {
   },
   response: {
     messageType: UPLOAD_AVATAR_RESPONSE,
+  },
+}
+
+export interface UpdatePasswordRequestBody {
+  oldPassword?: string,
+  newPassword?: string,
+}
+
+export let UPDATE_PASSWORD_REQUEST_BODY: MessageDescriptor<UpdatePasswordRequestBody> = {
+  name: 'UpdatePasswordRequestBody',
+  fields: [
+    {
+      name: 'oldPassword',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'newPassword',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface UpdatePasswordResponse {
+}
+
+export let UPDATE_PASSWORD_RESPONSE: MessageDescriptor<UpdatePasswordResponse> = {
+  name: 'UpdatePasswordResponse',
+  fields: [
+  ]
+};
+
+export let UPDATE_PASSWORD: ServiceDescriptor = {
+  name: "UpdatePassword",
+  path: "/UpdatePassword",
+  body: {
+    messageType: UPDATE_PASSWORD_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: UPDATE_PASSWORD_RESPONSE,
+  },
+}
+
+export interface DeleteUserRequestBody {
+}
+
+export let DELETE_USER_REQUEST_BODY: MessageDescriptor<DeleteUserRequestBody> = {
+  name: 'DeleteUserRequestBody',
+  fields: [
+  ]
+};
+
+export interface DeleteUserResponse {
+}
+
+export let DELETE_USER_RESPONSE: MessageDescriptor<DeleteUserResponse> = {
+  name: 'DeleteUserResponse',
+  fields: [
+  ]
+};
+
+export let DELETE_USER: ServiceDescriptor = {
+  name: "DeleteUser",
+  path: "/DeleteUser",
+  body: {
+    messageType: DELETE_USER_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: DELETE_USER_RESPONSE,
+  },
+}
+
+export interface GetUserProfileRequestBody {
+}
+
+export let GET_USER_PROFILE_REQUEST_BODY: MessageDescriptor<GetUserProfileRequestBody> = {
+  name: 'GetUserProfileRequestBody',
+  fields: [
+  ]
+};
+
+export interface GetUserProfileResponse {
+  username?: string,
+  naturalName?: string,
+  email?: string,
+  avatarLargePath?: string,
+}
+
+export let GET_USER_PROFILE_RESPONSE: MessageDescriptor<GetUserProfileResponse> = {
+  name: 'GetUserProfileResponse',
+  fields: [
+    {
+      name: 'username',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'naturalName',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'email',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'avatarLargePath',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export let GET_USER_PROFILE: ServiceDescriptor = {
+  name: "GetUserProfile",
+  path: "/GetUserProfile",
+  body: {
+    messageType: GET_USER_PROFILE_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: GET_USER_PROFILE_RESPONSE,
   },
 }
 
@@ -261,6 +337,169 @@ export let SET_USER_RELATIONSHIP: ServiceDescriptor = {
   },
 }
 
+export interface UploadPersonaImageResponse {
+  imagePath?: string,
+}
+
+export let UPLOAD_PERSONA_IMAGE_RESPONSE: MessageDescriptor<UploadPersonaImageResponse> = {
+  name: 'UploadPersonaImageResponse',
+  fields: [
+    {
+      name: 'imagePath',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export let UPLOAD_PERSONA_IMAGE: ServiceDescriptor = {
+  name: "UploadPersonaImage",
+  path: "/UploadPersonaImage",
+  body: {
+    primitiveType: PrimitveTypeForBody.BYTES,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: UPLOAD_PERSONA_IMAGE_RESPONSE,
+  },
+}
+
+export interface CreatePersonaRequestBody {
+  name?: string,
+  imagePath?: string,
+}
+
+export let CREATE_PERSONA_REQUEST_BODY: MessageDescriptor<CreatePersonaRequestBody> = {
+  name: 'CreatePersonaRequestBody',
+  fields: [
+    {
+      name: 'name',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'imagePath',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface CreatePersonaResponse {
+  id?: string,
+}
+
+export let CREATE_PERSONA_RESPONSE: MessageDescriptor<CreatePersonaResponse> = {
+  name: 'CreatePersonaResponse',
+  fields: [
+    {
+      name: 'id',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export let CREATE_PERSONA: ServiceDescriptor = {
+  name: "CreatePersona",
+  path: "/CreatePersona",
+  body: {
+    messageType: CREATE_PERSONA_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: CREATE_PERSONA_RESPONSE,
+  },
+}
+
+export interface UpdatePersonaRequestBody {
+  personaId?: string,
+  name?: string,
+  imagePath?: string,
+}
+
+export let UPDATE_PERSONA_REQUEST_BODY: MessageDescriptor<UpdatePersonaRequestBody> = {
+  name: 'UpdatePersonaRequestBody',
+  fields: [
+    {
+      name: 'personaId',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'name',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'imagePath',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface UpdatePersonaResponse {
+}
+
+export let UPDATE_PERSONA_RESPONSE: MessageDescriptor<UpdatePersonaResponse> = {
+  name: 'UpdatePersonaResponse',
+  fields: [
+  ]
+};
+
+export let UPDATE_PERSONA: ServiceDescriptor = {
+  name: "UpdatePersona",
+  path: "/UpdatePersona",
+  body: {
+    messageType: UPDATE_PERSONA_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: UPDATE_PERSONA_RESPONSE,
+  },
+}
+
+export interface DeletePersonaRequestBody {
+  personaId?: string,
+}
+
+export let DELETE_PERSONA_REQUEST_BODY: MessageDescriptor<DeletePersonaRequestBody> = {
+  name: 'DeletePersonaRequestBody',
+  fields: [
+    {
+      name: 'personaId',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface DeletePersonaResponse {
+}
+
+export let DELETE_PERSONA_RESPONSE: MessageDescriptor<DeletePersonaResponse> = {
+  name: 'DeletePersonaResponse',
+  fields: [
+  ]
+};
+
+export let DELETE_PERSONA: ServiceDescriptor = {
+  name: "DeletePersona",
+  path: "/DeletePersona",
+  body: {
+    messageType: DELETE_PERSONA_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: DELETE_PERSONA_RESPONSE,
+  },
+}
+
 export interface ListPersonasRequestBody {
 }
 
@@ -342,74 +581,50 @@ export let GET_PERSONA: ServiceDescriptor = {
   },
 }
 
-export interface UploadPersonaImageResponse {
-  imagePath?: string,
+export interface RefreshUserSessionRequestBody {
+  personaId?: string,
 }
 
-export let UPLOAD_PERSONA_IMAGE_RESPONSE: MessageDescriptor<UploadPersonaImageResponse> = {
-  name: 'UploadPersonaImageResponse',
+export let REFRESH_USER_SESSION_REQUEST_BODY: MessageDescriptor<RefreshUserSessionRequestBody> = {
+  name: 'RefreshUserSessionRequestBody',
   fields: [
     {
-      name: 'imagePath',
+      name: 'personaId',
       primitiveType: PrimitiveType.STRING,
     },
   ]
 };
 
-export let UPLOAD_PERSONA_IMAGE: ServiceDescriptor = {
-  name: "UploadPersonaImage",
-  path: "/UploadPersonaImage",
+export interface RefreshUserSessionResponse {
+  signedSession?: string,
+  selectPersona?: boolean,
+}
+
+export let REFRESH_USER_SESSION_RESPONSE: MessageDescriptor<RefreshUserSessionResponse> = {
+  name: 'RefreshUserSessionResponse',
+  fields: [
+    {
+      name: 'signedSession',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'selectPersona',
+      primitiveType: PrimitiveType.BOOLEAN,
+    },
+  ]
+};
+
+export let REFRESH_USER_SESSION: ServiceDescriptor = {
+  name: "RefreshUserSession",
+  path: "/RrefreshUserSession",
   body: {
-    primitiveType: PrimitveTypeForBody.BYTES,
+    messageType: REFRESH_USER_SESSION_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: USER_SESSION
   },
   response: {
-    messageType: UPLOAD_PERSONA_IMAGE_RESPONSE,
-  },
-}
-
-export interface CreatePersonaRequestBody {
-  name?: string,
-  imagePath?: string,
-}
-
-export let CREATE_PERSONA_REQUEST_BODY: MessageDescriptor<CreatePersonaRequestBody> = {
-  name: 'CreatePersonaRequestBody',
-  fields: [
-    {
-      name: 'name',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'imagePath',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface CreatePersonaResponse {
-}
-
-export let CREATE_PERSONA_RESPONSE: MessageDescriptor<CreatePersonaResponse> = {
-  name: 'CreatePersonaResponse',
-  fields: [
-  ]
-};
-
-export let CREATE_PERSONA: ServiceDescriptor = {
-  name: "CreatePersona",
-  path: "/CreatePersona",
-  body: {
-    messageType: CREATE_PERSONA_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: USER_SESSION
-  },
-  response: {
-    messageType: CREATE_PERSONA_RESPONSE,
+    messageType: REFRESH_USER_SESSION_RESPONSE,
   },
 }
