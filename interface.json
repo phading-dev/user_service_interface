@@ -354,7 +354,8 @@
     "fields": [{
       "name": "cards",
       "type": "PersonaCard",
-      "import": "./persona_card"
+      "import": "./persona_card",
+      "isArray": "true"
     }]
   }
 }, {

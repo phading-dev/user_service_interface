@@ -510,7 +510,7 @@ export let LIST_PERSONAS_REQUEST_BODY: MessageDescriptor<ListPersonasRequestBody
 };
 
 export interface ListPersonasResponse {
-  cards?: PersonaCard,
+  cards?: Array<PersonaCard>,
 }
 
 export let LIST_PERSONAS_RESPONSE: MessageDescriptor<ListPersonasResponse> = {
@@ -519,6 +519,7 @@ export let LIST_PERSONAS_RESPONSE: MessageDescriptor<ListPersonasResponse> = {
     {
       name: 'cards',
       messageType: PERSONA_CARD,
+      isArray: true,
     },
   ]
 };
