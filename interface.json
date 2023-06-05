@@ -80,7 +80,7 @@
   "name": "UpdatePasswordRequestBody",
   "message": {
     "fields": [{
-      "name": "oldPassword",
+      "name": "currentPassword",
       "type": "string"
     }, {
       "name": "newPassword",

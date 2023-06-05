@@ -123,7 +123,7 @@ export let UPLOAD_AVATAR: ServiceDescriptor = {
 }
 
 export interface UpdatePasswordRequestBody {
-  oldPassword?: string,
+  currentPassword?: string,
   newPassword?: string,
 }
 
@@ -131,7 +131,7 @@ export let UPDATE_PASSWORD_REQUEST_BODY: MessageDescriptor<UpdatePasswordRequest
   name: 'UpdatePasswordRequestBody',
   fields: [
     {
-      name: 'oldPassword',
+      name: 'currentPassword',
       primitiveType: PrimitiveType.STRING,
     },
     {
