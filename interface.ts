@@ -5,45 +5,6 @@ import { UserInfoCard, USER_INFO_CARD } from './user_info_card';
 import { UserRelationship, USER_RELATIONSHIP } from './user_relationship';
 import { PersonaCard, PERSONA_CARD } from './persona_card';
 
-export interface CheckUsernameIsUniqueRequestBody {
-  username?: string,
-}
-
-export let CHECK_USERNAME_IS_UNIQUE_REQUEST_BODY: MessageDescriptor<CheckUsernameIsUniqueRequestBody> = {
-  name: 'CheckUsernameIsUniqueRequestBody',
-  fields: [
-    {
-      name: 'username',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface CheckUsernameIsUniqueResponse {
-  isUnique?: string,
-}
-
-export let CHECK_USERNAME_IS_UNIQUE_RESPONSE: MessageDescriptor<CheckUsernameIsUniqueResponse> = {
-  name: 'CheckUsernameIsUniqueResponse',
-  fields: [
-    {
-      name: 'isUnique',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export let CHECK_USERNAME_IS_UNIQUE: ServiceDescriptor = {
-  name: "CheckUsernameIsUnique",
-  path: "/CheckUsernameIsUnique",
-  body: {
-    messageType: CHECK_USERNAME_IS_UNIQUE_REQUEST_BODY,
-  },
-  response: {
-    messageType: CHECK_USERNAME_IS_UNIQUE_RESPONSE,
-  },
-}
-
 export interface SignUpRequestBody {
   username?: string,
   naturalName?: string,
@@ -69,12 +30,17 @@ export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
 };
 
 export interface SignUpResponse {
+  usernameIsUsed?: boolean,
   signedSession?: string,
 }
 
 export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
   name: 'SignUpResponse',
   fields: [
+    {
+      name: 'usernameIsUsed',
+      primitiveType: PrimitiveType.BOOLEAN,
+    },
     {
       name: 'signedSession',
       primitiveType: PrimitiveType.STRING,

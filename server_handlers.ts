@@ -1,15 +1,7 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { CHECK_USERNAME_IS_UNIQUE, CheckUsernameIsUniqueRequestBody, CheckUsernameIsUniqueResponse, SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPLOAD_AVATAR, UploadAvatarResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, DELETE_USER, DeleteUserRequestBody, DeleteUserResponse, GET_USER_PROFILE, GetUserProfileRequestBody, GetUserProfileResponse, GET_USER_INFO_CARD, GetUserInfoCardRequestBody, GetUserInfoCardResponse, SET_USER_RELATIONSHIP, SetUserRelationshipRequestBody, SetUserRelationshipResponse, UPLOAD_PERSONA_IMAGE, UploadPersonaImageResponse, CREATE_PERSONA, CreatePersonaRequestBody, CreatePersonaResponse, UPDATE_PERSONA, UpdatePersonaRequestBody, UpdatePersonaResponse, DELETE_PERSONA, DeletePersonaRequestBody, DeletePersonaResponse, LIST_PERSONAS, ListPersonasRequestBody, ListPersonasResponse, GET_PERSONA, GetPersonaRequestBody, GetPersonaResponse, REFRESH_USER_SESSION, RefreshUserSessionRequestBody, RefreshUserSessionResponse } from './interface';
+import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPLOAD_AVATAR, UploadAvatarResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, DELETE_USER, DeleteUserRequestBody, DeleteUserResponse, GET_USER_PROFILE, GetUserProfileRequestBody, GetUserProfileResponse, GET_USER_INFO_CARD, GetUserInfoCardRequestBody, GetUserInfoCardResponse, SET_USER_RELATIONSHIP, SetUserRelationshipRequestBody, SetUserRelationshipResponse, UPLOAD_PERSONA_IMAGE, UploadPersonaImageResponse, CREATE_PERSONA, CreatePersonaRequestBody, CreatePersonaResponse, UPDATE_PERSONA, UpdatePersonaRequestBody, UpdatePersonaResponse, DELETE_PERSONA, DeletePersonaRequestBody, DeletePersonaResponse, LIST_PERSONAS, ListPersonasRequestBody, ListPersonasResponse, GET_PERSONA, GetPersonaRequestBody, GetPersonaResponse, REFRESH_USER_SESSION, RefreshUserSessionRequestBody, RefreshUserSessionResponse } from './interface';
 import { Readable } from 'stream';
 import { UserSession } from './user_session';
-
-export abstract class CheckUsernameIsUniqueHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = CHECK_USERNAME_IS_UNIQUE;
-  public abstract handle(
-    requestId: string,
-    body: CheckUsernameIsUniqueRequestBody,
-  ): Promise<CheckUsernameIsUniqueResponse>;
-}
 
 export abstract class SignUpHandlerInterface implements ServiceHandlerInterface {
   public descriptor = SIGN_UP;
