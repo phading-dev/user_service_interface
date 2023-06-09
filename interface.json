@@ -1,4 +1,29 @@
 [{
+  "name": "CheckUsernameIsUniqueRequestBody",
+  "message": {
+    "fields": [{
+      "name": "username",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CheckUsernameIsUniqueResponse",
+  "message": {
+    "fields": [{
+      "name": "isUnique",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CheckUsernameIsUnique",
+  "service": {
+    "path": "/CheckUsernameIsUnique",
+    "body": "CheckUsernameIsUniqueRequestBody",
+    "response": "CheckUsernameIsUniqueResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
   "name": "SignUpRequestBody",
   "message": {
     "fields": [{

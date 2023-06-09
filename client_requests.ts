@@ -1,5 +1,15 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UploadAvatarResponse, UPLOAD_AVATAR, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, DeleteUserRequestBody, DeleteUserResponse, DELETE_USER, GetUserProfileRequestBody, GetUserProfileResponse, GET_USER_PROFILE, GetUserInfoCardRequestBody, GetUserInfoCardResponse, GET_USER_INFO_CARD, SetUserRelationshipRequestBody, SetUserRelationshipResponse, SET_USER_RELATIONSHIP, UploadPersonaImageResponse, UPLOAD_PERSONA_IMAGE, CreatePersonaRequestBody, CreatePersonaResponse, CREATE_PERSONA, UpdatePersonaRequestBody, UpdatePersonaResponse, UPDATE_PERSONA, DeletePersonaRequestBody, DeletePersonaResponse, DELETE_PERSONA, ListPersonasRequestBody, ListPersonasResponse, LIST_PERSONAS, GetPersonaRequestBody, GetPersonaResponse, GET_PERSONA, RefreshUserSessionRequestBody, RefreshUserSessionResponse, REFRESH_USER_SESSION } from './interface';
+import { CheckUsernameIsUniqueRequestBody, CheckUsernameIsUniqueResponse, CHECK_USERNAME_IS_UNIQUE, SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UploadAvatarResponse, UPLOAD_AVATAR, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, DeleteUserRequestBody, DeleteUserResponse, DELETE_USER, GetUserProfileRequestBody, GetUserProfileResponse, GET_USER_PROFILE, GetUserInfoCardRequestBody, GetUserInfoCardResponse, GET_USER_INFO_CARD, SetUserRelationshipRequestBody, SetUserRelationshipResponse, SET_USER_RELATIONSHIP, UploadPersonaImageResponse, UPLOAD_PERSONA_IMAGE, CreatePersonaRequestBody, CreatePersonaResponse, CREATE_PERSONA, UpdatePersonaRequestBody, UpdatePersonaResponse, UPDATE_PERSONA, DeletePersonaRequestBody, DeletePersonaResponse, DELETE_PERSONA, ListPersonasRequestBody, ListPersonasResponse, LIST_PERSONAS, GetPersonaRequestBody, GetPersonaResponse, GET_PERSONA, RefreshUserSessionRequestBody, RefreshUserSessionResponse, REFRESH_USER_SESSION } from './interface';
+
+export function checkUsernameIsUnique(
+  client: WebServiceClientInterface,
+  body: CheckUsernameIsUniqueRequestBody,
+): Promise<CheckUsernameIsUniqueResponse> {
+  return client.send({
+    descriptor: CHECK_USERNAME_IS_UNIQUE,
+    body,
+  });
+}
 
 export function signUp(
   client: WebServiceClientInterface,
