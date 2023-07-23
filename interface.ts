@@ -3,7 +3,6 @@ import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descrip
 import { USER_SESSION } from './user_session';
 import { UserInfoCard, USER_INFO_CARD } from './user_info_card';
 import { UserRelationship, USER_RELATIONSHIP } from './user_relationship';
-import { PersonaCard, PERSONA_CARD } from './persona_card';
 
 export interface SignUpRequestBody {
   username?: string,
@@ -342,268 +341,17 @@ export let SET_USER_RELATIONSHIP: ServiceDescriptor = {
   },
 }
 
-export interface UploadPersonaImageResponse {
-  imagePath?: string,
-}
-
-export let UPLOAD_PERSONA_IMAGE_RESPONSE: MessageDescriptor<UploadPersonaImageResponse> = {
-  name: 'UploadPersonaImageResponse',
-  fields: [
-    {
-      name: 'imagePath',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export let UPLOAD_PERSONA_IMAGE: ServiceDescriptor = {
-  name: "UploadPersonaImage",
-  path: "/UploadPersonaImage",
-  body: {
-    primitiveType: PrimitveTypeForBody.BYTES,
-  },
-  auth: {
-    key: "auth",
-    type: USER_SESSION
-  },
-  response: {
-    messageType: UPLOAD_PERSONA_IMAGE_RESPONSE,
-  },
-}
-
-export interface CreatePersonaRequestBody {
-  name?: string,
-  imagePath?: string,
-}
-
-export let CREATE_PERSONA_REQUEST_BODY: MessageDescriptor<CreatePersonaRequestBody> = {
-  name: 'CreatePersonaRequestBody',
-  fields: [
-    {
-      name: 'name',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'imagePath',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface CreatePersonaResponse {
-  id?: string,
-}
-
-export let CREATE_PERSONA_RESPONSE: MessageDescriptor<CreatePersonaResponse> = {
-  name: 'CreatePersonaResponse',
-  fields: [
-    {
-      name: 'id',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export let CREATE_PERSONA: ServiceDescriptor = {
-  name: "CreatePersona",
-  path: "/CreatePersona",
-  body: {
-    messageType: CREATE_PERSONA_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: USER_SESSION
-  },
-  response: {
-    messageType: CREATE_PERSONA_RESPONSE,
-  },
-}
-
-export interface UpdatePersonaRequestBody {
-  personaId?: string,
-  name?: string,
-  imagePath?: string,
-}
-
-export let UPDATE_PERSONA_REQUEST_BODY: MessageDescriptor<UpdatePersonaRequestBody> = {
-  name: 'UpdatePersonaRequestBody',
-  fields: [
-    {
-      name: 'personaId',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'name',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'imagePath',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface UpdatePersonaResponse {
-}
-
-export let UPDATE_PERSONA_RESPONSE: MessageDescriptor<UpdatePersonaResponse> = {
-  name: 'UpdatePersonaResponse',
-  fields: [
-  ]
-};
-
-export let UPDATE_PERSONA: ServiceDescriptor = {
-  name: "UpdatePersona",
-  path: "/UpdatePersona",
-  body: {
-    messageType: UPDATE_PERSONA_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: USER_SESSION
-  },
-  response: {
-    messageType: UPDATE_PERSONA_RESPONSE,
-  },
-}
-
-export interface DeletePersonaRequestBody {
-  personaId?: string,
-}
-
-export let DELETE_PERSONA_REQUEST_BODY: MessageDescriptor<DeletePersonaRequestBody> = {
-  name: 'DeletePersonaRequestBody',
-  fields: [
-    {
-      name: 'personaId',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface DeletePersonaResponse {
-}
-
-export let DELETE_PERSONA_RESPONSE: MessageDescriptor<DeletePersonaResponse> = {
-  name: 'DeletePersonaResponse',
-  fields: [
-  ]
-};
-
-export let DELETE_PERSONA: ServiceDescriptor = {
-  name: "DeletePersona",
-  path: "/DeletePersona",
-  body: {
-    messageType: DELETE_PERSONA_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: USER_SESSION
-  },
-  response: {
-    messageType: DELETE_PERSONA_RESPONSE,
-  },
-}
-
-export interface ListPersonasRequestBody {
-}
-
-export let LIST_PERSONAS_REQUEST_BODY: MessageDescriptor<ListPersonasRequestBody> = {
-  name: 'ListPersonasRequestBody',
-  fields: [
-  ]
-};
-
-export interface ListPersonasResponse {
-  cards?: Array<PersonaCard>,
-}
-
-export let LIST_PERSONAS_RESPONSE: MessageDescriptor<ListPersonasResponse> = {
-  name: 'ListPersonasResponse',
-  fields: [
-    {
-      name: 'cards',
-      messageType: PERSONA_CARD,
-      isArray: true,
-    },
-  ]
-};
-
-export let LIST_PERSONAS: ServiceDescriptor = {
-  name: "ListPersonas",
-  path: "/ListPersonas",
-  body: {
-    messageType: LIST_PERSONAS_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: USER_SESSION
-  },
-  response: {
-    messageType: LIST_PERSONAS_RESPONSE,
-  },
-}
-
-export interface GetPersonaRequestBody {
-  personaId?: string,
-}
-
-export let GET_PERSONA_REQUEST_BODY: MessageDescriptor<GetPersonaRequestBody> = {
-  name: 'GetPersonaRequestBody',
-  fields: [
-    {
-      name: 'personaId',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface GetPersonaResponse {
-  card?: PersonaCard,
-}
-
-export let GET_PERSONA_RESPONSE: MessageDescriptor<GetPersonaResponse> = {
-  name: 'GetPersonaResponse',
-  fields: [
-    {
-      name: 'card',
-      messageType: PERSONA_CARD,
-    },
-  ]
-};
-
-export let GET_PERSONA: ServiceDescriptor = {
-  name: "GetPersona",
-  path: "/GetPersona",
-  body: {
-    messageType: GET_PERSONA_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: USER_SESSION
-  },
-  response: {
-    messageType: GET_PERSONA_RESPONSE,
-  },
-}
-
 export interface RefreshUserSessionRequestBody {
-  personaId?: string,
 }
 
 export let REFRESH_USER_SESSION_REQUEST_BODY: MessageDescriptor<RefreshUserSessionRequestBody> = {
   name: 'RefreshUserSessionRequestBody',
   fields: [
-    {
-      name: 'personaId',
-      primitiveType: PrimitiveType.STRING,
-    },
   ]
 };
 
 export interface RefreshUserSessionResponse {
   signedSession?: string,
-  selectPersona?: boolean,
 }
 
 export let REFRESH_USER_SESSION_RESPONSE: MessageDescriptor<RefreshUserSessionResponse> = {
@@ -612,10 +360,6 @@ export let REFRESH_USER_SESSION_RESPONSE: MessageDescriptor<RefreshUserSessionRe
     {
       name: 'signedSession',
       primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'selectPersona',
-      primitiveType: PrimitiveType.BOOLEAN,
     },
   ]
 };
