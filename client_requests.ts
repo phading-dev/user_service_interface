@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UploadAvatarResponse, UPLOAD_AVATAR, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, DeleteUserRequestBody, DeleteUserResponse, DELETE_USER, GetUserProfileRequestBody, GetUserProfileResponse, GET_USER_PROFILE, GetUserInfoCardRequestBody, GetUserInfoCardResponse, GET_USER_INFO_CARD, SetUserRelationshipRequestBody, SetUserRelationshipResponse, SET_USER_RELATIONSHIP, RefreshUserSessionRequestBody, RefreshUserSessionResponse, REFRESH_USER_SESSION } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, CreateUserRequestBody, CreateUserResponse, CREATE_USER, SwitchUserRequestBody, SwitchUserResponse, SWITCH_USER, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, ListUsersRequestBody, ListUsersResponse, LIST_USERS, UploadAvatarResponse, UPLOAD_AVATAR, GetUserRequestBody, GetUserResponse, GET_USER, GetUserCardRequestBody, GetUserCardResponse, GET_USER_CARD, SetUserRelationshipRequestBody, SetUserRelationshipResponse, SET_USER_RELATIONSHIP } from './interface';
 
 export function signUp(
   client: WebServiceClientInterface,
@@ -21,16 +21,6 @@ export function signIn(
   });
 }
 
-export function uploadAvatar(
-  client: WebServiceClientInterface,
-  body: Blob,
-): Promise<UploadAvatarResponse> {
-  return client.send({
-    descriptor: UPLOAD_AVATAR,
-    body,
-  });
-}
-
 export function updatePassword(
   client: WebServiceClientInterface,
   body: UpdatePasswordRequestBody,
@@ -41,32 +31,72 @@ export function updatePassword(
   });
 }
 
-export function deleteUser(
+export function createUser(
   client: WebServiceClientInterface,
-  body: DeleteUserRequestBody,
-): Promise<DeleteUserResponse> {
+  body: CreateUserRequestBody,
+): Promise<CreateUserResponse> {
   return client.send({
-    descriptor: DELETE_USER,
+    descriptor: CREATE_USER,
     body,
   });
 }
 
-export function getUserProfile(
+export function switchUser(
   client: WebServiceClientInterface,
-  body: GetUserProfileRequestBody,
-): Promise<GetUserProfileResponse> {
+  body: SwitchUserRequestBody,
+): Promise<SwitchUserResponse> {
   return client.send({
-    descriptor: GET_USER_PROFILE,
+    descriptor: SWITCH_USER,
     body,
   });
 }
 
-export function getUserInfoCard(
+export function renewSession(
   client: WebServiceClientInterface,
-  body: GetUserInfoCardRequestBody,
-): Promise<GetUserInfoCardResponse> {
+  body: RenewSessionRequestBody,
+): Promise<RenewSessionResponse> {
   return client.send({
-    descriptor: GET_USER_INFO_CARD,
+    descriptor: RENEW_SESSION,
+    body,
+  });
+}
+
+export function listUsers(
+  client: WebServiceClientInterface,
+  body: ListUsersRequestBody,
+): Promise<ListUsersResponse> {
+  return client.send({
+    descriptor: LIST_USERS,
+    body,
+  });
+}
+
+export function uploadAvatar(
+  client: WebServiceClientInterface,
+  body: Blob,
+): Promise<UploadAvatarResponse> {
+  return client.send({
+    descriptor: UPLOAD_AVATAR,
+    body,
+  });
+}
+
+export function getUser(
+  client: WebServiceClientInterface,
+  body: GetUserRequestBody,
+): Promise<GetUserResponse> {
+  return client.send({
+    descriptor: GET_USER,
+    body,
+  });
+}
+
+export function getUserCard(
+  client: WebServiceClientInterface,
+  body: GetUserCardRequestBody,
+): Promise<GetUserCardResponse> {
+  return client.send({
+    descriptor: GET_USER_CARD,
     body,
   });
 }
@@ -77,16 +107,6 @@ export function setUserRelationship(
 ): Promise<SetUserRelationshipResponse> {
   return client.send({
     descriptor: SET_USER_RELATIONSHIP,
-    body,
-  });
-}
-
-export function refreshUserSession(
-  client: WebServiceClientInterface,
-  body: RefreshUserSessionRequestBody,
-): Promise<RefreshUserSessionResponse> {
-  return client.send({
-    descriptor: REFRESH_USER_SESSION,
     body,
   });
 }

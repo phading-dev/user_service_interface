@@ -1,0 +1,15 @@
+[{
+  "name": "UserType",
+  "enum": {
+    "values": [{
+      "name": "UNKNOWN",
+      "value": 0
+    }, {
+      "name": "CONSUMER",
+      "value": 1
+    }, {
+      "name": "PUBLISHER",
+      "value": 2
+    }]
+  }
+}]

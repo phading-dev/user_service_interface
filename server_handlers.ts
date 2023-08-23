@@ -1,7 +1,7 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPLOAD_AVATAR, UploadAvatarResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, DELETE_USER, DeleteUserRequestBody, DeleteUserResponse, GET_USER_PROFILE, GetUserProfileRequestBody, GetUserProfileResponse, GET_USER_INFO_CARD, GetUserInfoCardRequestBody, GetUserInfoCardResponse, SET_USER_RELATIONSHIP, SetUserRelationshipRequestBody, SetUserRelationshipResponse, REFRESH_USER_SESSION, RefreshUserSessionRequestBody, RefreshUserSessionResponse } from './interface';
-import { Readable } from 'stream';
+import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, CREATE_USER, CreateUserRequestBody, CreateUserResponse, SWITCH_USER, SwitchUserRequestBody, SwitchUserResponse, RENEW_SESSION, RenewSessionRequestBody, RenewSessionResponse, LIST_USERS, ListUsersRequestBody, ListUsersResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_USER, GetUserRequestBody, GetUserResponse, GET_USER_CARD, GetUserCardRequestBody, GetUserCardResponse, SET_USER_RELATIONSHIP, SetUserRelationshipRequestBody, SetUserRelationshipResponse } from './interface';
 import { UserSession } from './user_session';
+import { Readable } from 'stream';
 
 export abstract class SignUpHandlerInterface implements ServiceHandlerInterface {
   public descriptor = SIGN_UP;
@@ -19,15 +19,6 @@ export abstract class SignInHandlerInterface implements ServiceHandlerInterface 
   ): Promise<SignInResponse>;
 }
 
-export abstract class UploadAvatarHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = UPLOAD_AVATAR;
-  public abstract handle(
-    requestId: string,
-    body: Readable,
-    auth: UserSession,
-  ): Promise<UploadAvatarResponse>;
-}
-
 export abstract class UpdatePasswordHandlerInterface implements ServiceHandlerInterface {
   public descriptor = UPDATE_PASSWORD;
   public abstract handle(
@@ -37,31 +28,67 @@ export abstract class UpdatePasswordHandlerInterface implements ServiceHandlerIn
   ): Promise<UpdatePasswordResponse>;
 }
 
-export abstract class DeleteUserHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = DELETE_USER;
+export abstract class CreateUserHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = CREATE_USER;
   public abstract handle(
     requestId: string,
-    body: DeleteUserRequestBody,
+    body: CreateUserRequestBody,
     auth: UserSession,
-  ): Promise<DeleteUserResponse>;
+  ): Promise<CreateUserResponse>;
 }
 
-export abstract class GetUserProfileHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_USER_PROFILE;
+export abstract class SwitchUserHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = SWITCH_USER;
   public abstract handle(
     requestId: string,
-    body: GetUserProfileRequestBody,
+    body: SwitchUserRequestBody,
     auth: UserSession,
-  ): Promise<GetUserProfileResponse>;
+  ): Promise<SwitchUserResponse>;
 }
 
-export abstract class GetUserInfoCardHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_USER_INFO_CARD;
+export abstract class RenewSessionHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = RENEW_SESSION;
   public abstract handle(
     requestId: string,
-    body: GetUserInfoCardRequestBody,
+    body: RenewSessionRequestBody,
     auth: UserSession,
-  ): Promise<GetUserInfoCardResponse>;
+  ): Promise<RenewSessionResponse>;
+}
+
+export abstract class ListUsersHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = LIST_USERS;
+  public abstract handle(
+    requestId: string,
+    body: ListUsersRequestBody,
+    auth: UserSession,
+  ): Promise<ListUsersResponse>;
+}
+
+export abstract class UploadAvatarHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = UPLOAD_AVATAR;
+  public abstract handle(
+    requestId: string,
+    body: Readable,
+    auth: UserSession,
+  ): Promise<UploadAvatarResponse>;
+}
+
+export abstract class GetUserHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_USER;
+  public abstract handle(
+    requestId: string,
+    body: GetUserRequestBody,
+    auth: UserSession,
+  ): Promise<GetUserResponse>;
+}
+
+export abstract class GetUserCardHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_USER_CARD;
+  public abstract handle(
+    requestId: string,
+    body: GetUserCardRequestBody,
+    auth: UserSession,
+  ): Promise<GetUserCardResponse>;
 }
 
 export abstract class SetUserRelationshipHandlerInterface implements ServiceHandlerInterface {
@@ -71,13 +98,4 @@ export abstract class SetUserRelationshipHandlerInterface implements ServiceHand
     body: SetUserRelationshipRequestBody,
     auth: UserSession,
   ): Promise<SetUserRelationshipResponse>;
-}
-
-export abstract class RefreshUserSessionHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = REFRESH_USER_SESSION;
-  public abstract handle(
-    requestId: string,
-    body: RefreshUserSessionRequestBody,
-    auth: UserSession,
-  ): Promise<RefreshUserSessionResponse>;
 }

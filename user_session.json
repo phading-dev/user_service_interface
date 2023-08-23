@@ -2,6 +2,13 @@
   "name": "UserSession",
   "message": {
     "fields": [{
+      "name": "authId",
+      "type": "string"
+    }, {
+      "name": "userType",
+      "type": "UserType",
+      "import": "./user_type"
+    }, {
       "name": "userId",
       "type": "string"
     }]

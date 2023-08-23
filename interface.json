@@ -10,14 +10,22 @@
     }, {
       "name": "password",
       "type": "string"
+    }, {
+      "name": "userType",
+      "type": "UserType",
+      "import": "./user_type"
     }]
   }
 }, {
   "name": "SignUpResponse",
   "message": {
     "fields": [{
-      "name": "usernameIsUsed",
+      "name": "usernameIsNotAvailable",
       "type": "boolean"
+    }, {
+      "name": "userSession",
+      "type": "UserSession",
+      "import": "./user_session"
     }, {
       "name": "signedSession",
       "type": "string"
@@ -47,6 +55,10 @@
   "name": "SignInResponse",
   "message": {
     "fields": [{
+      "name": "userSession",
+      "type": "UserSession",
+      "import": "./user_session"
+    }, {
       "name": "signedSession",
       "type": "string"
     }]
@@ -57,25 +69,6 @@
     "path": "/SignIn",
     "body": "SignInRequestBody",
     "response": "SignInResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "UploadAvatarResponse",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "UploadAvatar",
-  "service": {
-    "path": "/UploadAvatar",
-    "body": "bytes",
-    "auth": {
-      "key": "auth",
-      "type": "UserSession",
-      "import": "./user_session"
-    },
-    "response": "UploadAvatarResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
@@ -110,67 +103,45 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "DeleteUserRequestBody",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "DeleteUserResponse",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "DeleteUser",
-  "service": {
-    "path": "/DeleteUser",
-    "body": "DeleteUserRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "UserSession",
-      "import": "./user_session"
-    },
-    "response": "DeleteUserResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "GetUserProfileRequestBody",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "GetUserProfileResponse",
+  "name": "CreateUserRequestBody",
   "message": {
     "fields": [{
-      "name": "username",
-      "type": "string"
-    }, {
       "name": "naturalName",
       "type": "string"
     }, {
-      "name": "email",
-      "type": "string"
+      "name": "userType",
+      "type": "UserType",
+      "import": "./user_type"
+    }]
+  }
+}, {
+  "name": "CreateUserResponse",
+  "message": {
+    "fields": [{
+      "name": "userSession",
+      "type": "UserSession",
+      "import": "./user_session"
     }, {
-      "name": "avatarLargePath",
+      "name": "signedSession",
       "type": "string"
     }]
   }
 }, {
-  "name": "GetUserProfile",
+  "name": "CreateUser",
   "service": {
-    "path": "/GetUserProfile",
-    "body": "GetUserProfileRequestBody",
+    "path": "/CreateUser",
+    "body": "CreateUserRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "GetUserProfileResponse",
+    "response": "CreateUserResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetUserInfoCardRequestBody",
+  "name": "SwitchUserRequestBody",
   "message": {
     "fields": [{
       "name": "userId",
@@ -178,25 +149,170 @@
     }]
   }
 }, {
-  "name": "GetUserInfoCardResponse",
+  "name": "SwitchUserResponse",
   "message": {
     "fields": [{
-      "name": "card",
-      "type": "UserInfoCard",
-      "import": "./user_info_card"
+      "name": "userSession",
+      "type": "UserSession",
+      "import": "./user_session"
+    }, {
+      "name": "signedSession",
+      "type": "string"
     }]
   }
 }, {
-  "name": "GetUserInfoCard",
+  "name": "SwitchUser",
   "service": {
-    "path": "/GetUserInfoCard",
-    "body": "GetUserInfoCardRequestBody",
+    "path": "/SwitchUser",
+    "body": "SwitchUserRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "GetUserInfoCardResponse",
+    "response": "SwitchUserResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "RenewSessionRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "RenewSessionResponse",
+  "message": {
+    "fields": [{
+      "name": "userSession",
+      "type": "UserSession",
+      "import": "./user_session"
+    }, {
+      "name": "signedSession",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "RenewSession",
+  "service": {
+    "path": "/RenewSession",
+    "body": "RenewSessionRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "RenewSessionResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "ListUsersRequestBody",
+  "message": {
+    "fields": [{
+      "name": "userType",
+      "type": "UserType",
+      "import": "./user_type"
+    }]
+  }
+}, {
+  "name": "ListUsersResponse",
+  "message": {
+    "fields": [{
+      "name": "users",
+      "type": "User",
+      "import": "./user",
+      "isArray": true
+    }]
+  }
+}, {
+  "name": "ListUsers",
+  "service": {
+    "path": "/ListUsers",
+    "body": "ListUsersRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "ListUsersResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "UploadAvatarResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UploadAvatar",
+  "service": {
+    "path": "/UploadAvatar",
+    "body": "bytes",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UploadAvatarResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "GetUserRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "GetUserResponse",
+  "message": {
+    "fields": [{
+      "name": "user",
+      "type": "User",
+      "import": "./user"
+    }]
+  }
+}, {
+  "name": "GetUser",
+  "service": {
+    "path": "/GetUser",
+    "body": "GetUserRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "GetUserResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "GetUserCardRequestBody",
+  "message": {
+    "fields": [{
+      "name": "userId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetUserCardResponse",
+  "message": {
+    "fields": [{
+      "name": "userCard",
+      "type": "UserCard",
+      "import": "./user_card"
+    }]
+  }
+}, {
+  "name": "GetUserCard",
+  "service": {
+    "path": "/GetUserCard",
+    "body": "GetUserCardRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "GetUserCardResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
@@ -228,33 +344,6 @@
       "import": "./user_session"
     },
     "response": "SetUserRelationshipResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "RefreshUserSessionRequestBody",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "RefreshUserSessionResponse",
-  "message": {
-    "fields": [{
-      "name": "signedSession",
-      "type": "string"
-    }]
-  }
-}, {
-  "name": "RefreshUserSession",
-  "service": {
-    "path": "/RrefreshUserSession",
-    "body": "RefreshUserSessionRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "UserSession",
-      "import": "./user_session"
-    },
-    "response": "RefreshUserSessionResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

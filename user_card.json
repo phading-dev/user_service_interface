@@ -1,0 +1,14 @@
+[{
+  "name": "UserCard",
+  "message": {
+    "fields": [{
+      "name": "user",
+      "type": "User",
+      "import": "./user"
+    }, {
+      "name": "relationship",
+      "type": "UserRelationship",
+      "import": "./user_relationship"
+    }]
+  }
+}]

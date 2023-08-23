@@ -1,24 +1,29 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { UserRelationship, USER_RELATIONSHIP } from './user_relationship';
+import { UserType, USER_TYPE } from './user_type';
 
-export interface UserInfoCard {
+export interface User {
+  authId?: string,
+  userType?: UserType,
   userId?: string,
-  username?: string,
   naturalName?: string,
   description?: string,
   avatarLargePath?: string,
-  relationship?: UserRelationship,
+  avatarSmallPath?: string,
 }
 
-export let USER_INFO_CARD: MessageDescriptor<UserInfoCard> = {
-  name: 'UserInfoCard',
+export let USER: MessageDescriptor<User> = {
+  name: 'User',
   fields: [
     {
-      name: 'userId',
+      name: 'authId',
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'username',
+      name: 'userType',
+      enumType: USER_TYPE,
+    },
+    {
+      name: 'userId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -34,8 +39,8 @@ export let USER_INFO_CARD: MessageDescriptor<UserInfoCard> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'relationship',
-      enumType: USER_RELATIONSHIP,
+      name: 'avatarSmallPath',
+      primitiveType: PrimitiveType.STRING,
     },
   ]
 };
