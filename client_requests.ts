@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, CreateUserRequestBody, CreateUserResponse, CREATE_USER, SwitchUserRequestBody, SwitchUserResponse, SWITCH_USER, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, ListUsersRequestBody, ListUsersResponse, LIST_USERS, UploadAvatarResponse, UPLOAD_AVATAR, GetUserRequestBody, GetUserResponse, GET_USER, GetUserCardRequestBody, GetUserCardResponse, GET_USER_CARD, SetUserRelationshipRequestBody, SetUserRelationshipResponse, SET_USER_RELATIONSHIP } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, CreateUserRequestBody, CreateUserResponse, CREATE_USER, SwitchUserRequestBody, SwitchUserResponse, SWITCH_USER, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, ListOwnedUsersRequestBody, ListOwnedUsersResponse, LIST_OWNED_USERS, UploadAvatarResponse, UPLOAD_AVATAR, GetSubjectUserRequestBody, GetSubjectUserResponse, GET_SUBJECT_USER, GetObjectUserRequestBody, GetObjectUserResponse, GET_OBJECT_USER, SetObjectUserRelationshipRequestBody, SetObjectUserRelationshipResponse, SET_OBJECT_USER_RELATIONSHIP } from './interface';
 
 export function signUp(
   client: WebServiceClientInterface,
@@ -61,12 +61,12 @@ export function renewSession(
   });
 }
 
-export function listUsers(
+export function listOwnedUsers(
   client: WebServiceClientInterface,
-  body: ListUsersRequestBody,
-): Promise<ListUsersResponse> {
+  body: ListOwnedUsersRequestBody,
+): Promise<ListOwnedUsersResponse> {
   return client.send({
-    descriptor: LIST_USERS,
+    descriptor: LIST_OWNED_USERS,
     body,
   });
 }
@@ -81,32 +81,32 @@ export function uploadAvatar(
   });
 }
 
-export function getUser(
+export function getSubjectUser(
   client: WebServiceClientInterface,
-  body: GetUserRequestBody,
-): Promise<GetUserResponse> {
+  body: GetSubjectUserRequestBody,
+): Promise<GetSubjectUserResponse> {
   return client.send({
-    descriptor: GET_USER,
+    descriptor: GET_SUBJECT_USER,
     body,
   });
 }
 
-export function getUserCard(
+export function getObjectUser(
   client: WebServiceClientInterface,
-  body: GetUserCardRequestBody,
-): Promise<GetUserCardResponse> {
+  body: GetObjectUserRequestBody,
+): Promise<GetObjectUserResponse> {
   return client.send({
-    descriptor: GET_USER_CARD,
+    descriptor: GET_OBJECT_USER,
     body,
   });
 }
 
-export function setUserRelationship(
+export function setObjectUserRelationship(
   client: WebServiceClientInterface,
-  body: SetUserRelationshipRequestBody,
-): Promise<SetUserRelationshipResponse> {
+  body: SetObjectUserRelationshipRequestBody,
+): Promise<SetObjectUserRelationshipResponse> {
   return client.send({
-    descriptor: SET_USER_RELATIONSHIP,
+    descriptor: SET_OBJECT_USER_RELATIONSHIP,
     body,
   });
 }

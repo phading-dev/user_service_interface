@@ -2,9 +2,6 @@
   "name": "User",
   "message": {
     "fields": [{
-      "name": "authId",
-      "type": "string"
-    }, {
       "name": "userType",
       "type": "UserType",
       "import": "./user_type"
@@ -13,9 +10,6 @@
       "type": "string"
     }, {
       "name": "naturalName",
-      "type": "string"
-    }, {
-      "name": "description",
       "type": "string"
     }, {
       "name": "avatarLargePath",

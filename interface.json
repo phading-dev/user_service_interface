@@ -21,11 +21,16 @@
   "message": {
     "fields": [{
       "name": "usernameIsNotAvailable",
-      "type": "boolean"
+      "type": "boolean",
+      "comment": "If set, no other fields will be populated."
     }, {
-      "name": "userSession",
-      "type": "UserSession",
-      "import": "./user_session"
+      "name": "productType",
+      "type": "ProductType",
+      "import": "./product_type"
+    }, {
+      "name": "userType",
+      "type": "UserType",
+      "import": "./user_type"
     }, {
       "name": "signedSession",
       "type": "string"
@@ -55,9 +60,13 @@
   "name": "SignInResponse",
   "message": {
     "fields": [{
-      "name": "userSession",
-      "type": "UserSession",
-      "import": "./user_session"
+      "name": "productType",
+      "type": "ProductType",
+      "import": "./product_type"
+    }, {
+      "name": "userType",
+      "type": "UserType",
+      "import": "./user_type"
     }, {
       "name": "signedSession",
       "type": "string"
@@ -118,10 +127,6 @@
   "name": "CreateUserResponse",
   "message": {
     "fields": [{
-      "name": "userSession",
-      "type": "UserSession",
-      "import": "./user_session"
-    }, {
       "name": "signedSession",
       "type": "string"
     }]
@@ -152,10 +157,6 @@
   "name": "SwitchUserResponse",
   "message": {
     "fields": [{
-      "name": "userSession",
-      "type": "UserSession",
-      "import": "./user_session"
-    }, {
       "name": "signedSession",
       "type": "string"
     }]
@@ -183,9 +184,13 @@
   "name": "RenewSessionResponse",
   "message": {
     "fields": [{
-      "name": "userSession",
-      "type": "UserSession",
-      "import": "./user_session"
+      "name": "productType",
+      "type": "ProductType",
+      "import": "./product_type"
+    }, {
+      "name": "userType",
+      "type": "UserType",
+      "import": "./user_type"
     }, {
       "name": "signedSession",
       "type": "string"
@@ -206,7 +211,7 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "ListUsersRequestBody",
+  "name": "ListOwnedUsersRequestBody",
   "message": {
     "fields": [{
       "name": "userType",
@@ -215,7 +220,7 @@
     }]
   }
 }, {
-  "name": "ListUsersResponse",
+  "name": "ListOwnedUsersResponse",
   "message": {
     "fields": [{
       "name": "users",
@@ -225,16 +230,16 @@
     }]
   }
 }, {
-  "name": "ListUsers",
+  "name": "ListOwnedUsers",
   "service": {
-    "path": "/ListUsers",
-    "body": "ListUsersRequestBody",
+    "path": "/ListOwnedUsers",
+    "body": "ListOwnedUsersRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "ListUsersResponse",
+    "response": "ListOwnedUsersResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
@@ -258,12 +263,12 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetUserRequestBody",
+  "name": "GetSubjectUserRequestBody",
   "message": {
     "fields": []
   }
 }, {
-  "name": "GetUserResponse",
+  "name": "GetSubjectUserResponse",
   "message": {
     "fields": [{
       "name": "user",
@@ -272,21 +277,21 @@
     }]
   }
 }, {
-  "name": "GetUser",
+  "name": "GetSubjectUser",
   "service": {
-    "path": "/GetUser",
-    "body": "GetUserRequestBody",
+    "path": "/GetSubjectUser",
+    "body": "GetSubjectUserRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "GetUserResponse",
+    "response": "GetSubjectUserResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetUserCardRequestBody",
+  "name": "GetObjectUserRequestBody",
   "message": {
     "fields": [{
       "name": "userId",
@@ -294,56 +299,56 @@
     }]
   }
 }, {
-  "name": "GetUserCardResponse",
+  "name": "GetObjectUserResponse",
   "message": {
     "fields": [{
-      "name": "userCard",
-      "type": "UserCard",
-      "import": "./user_card"
+      "name": "objectUser",
+      "type": "ObjectUser",
+      "import": "./object_user"
     }]
   }
 }, {
-  "name": "GetUserCard",
+  "name": "GetObjectUser",
   "service": {
-    "path": "/GetUserCard",
-    "body": "GetUserCardRequestBody",
+    "path": "/GetObjectUser",
+    "body": "GetObjectUserRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "GetUserCardResponse",
+    "response": "GetObjectUserResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "SetUserRelationshipRequestBody",
+  "name": "SetObjectUserRelationshipRequestBody",
   "message": {
     "fields": [{
       "name": "userId",
       "type": "string"
     }, {
       "name": "relationship",
-      "type": "UserRelationship",
-      "import": "./user_relationship"
+      "type": "ObjectUserRelationship",
+      "import": "./object_user_relationship"
     }]
   }
 }, {
-  "name": "SetUserRelationshipResponse",
+  "name": "SetObjectUserRelationshipResponse",
   "message": {
     "fields": []
   }
 }, {
-  "name": "SetUserRelationship",
+  "name": "SetObjectUserRelationship",
   "service": {
-    "path": "/SetUserRelationship",
-    "body": "SetUserRelationshipRequestBody",
+    "path": "/SetObjectUserRelationship",
+    "body": "SetObjectUserRelationshipRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "SetUserRelationshipResponse",
+    "response": "SetObjectUserRelationshipResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

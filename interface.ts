@@ -1,10 +1,11 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { UserType, USER_TYPE } from './user_type';
-import { UserSession, USER_SESSION } from './user_session';
+import { ProductType, PRODUCT_TYPE } from './product_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
+import { USER_SESSION } from './user_session';
 import { User, USER } from './user';
-import { UserCard, USER_CARD } from './user_card';
-import { UserRelationship, USER_RELATIONSHIP } from './user_relationship';
+import { ObjectUser, OBJECT_USER } from './object_user';
+import { ObjectUserRelationship, OBJECT_USER_RELATIONSHIP } from './object_user_relationship';
 
 export interface SignUpRequestBody {
   username?: string,
@@ -36,8 +37,10 @@ export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
 };
 
 export interface SignUpResponse {
+/* If set, no other fields will be populated. */
   usernameIsNotAvailable?: boolean,
-  userSession?: UserSession,
+  productType?: ProductType,
+  userType?: UserType,
   signedSession?: string,
 }
 
@@ -49,8 +52,12 @@ export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
       primitiveType: PrimitiveType.BOOLEAN,
     },
     {
-      name: 'userSession',
-      messageType: USER_SESSION,
+      name: 'productType',
+      enumType: PRODUCT_TYPE,
+    },
+    {
+      name: 'userType',
+      enumType: USER_TYPE,
     },
     {
       name: 'signedSession',
@@ -90,7 +97,8 @@ export let SIGN_IN_REQUEST_BODY: MessageDescriptor<SignInRequestBody> = {
 };
 
 export interface SignInResponse {
-  userSession?: UserSession,
+  productType?: ProductType,
+  userType?: UserType,
   signedSession?: string,
 }
 
@@ -98,8 +106,12 @@ export let SIGN_IN_RESPONSE: MessageDescriptor<SignInResponse> = {
   name: 'SignInResponse',
   fields: [
     {
-      name: 'userSession',
-      messageType: USER_SESSION,
+      name: 'productType',
+      enumType: PRODUCT_TYPE,
+    },
+    {
+      name: 'userType',
+      enumType: USER_TYPE,
     },
     {
       name: 'signedSession',
@@ -182,17 +194,12 @@ export let CREATE_USER_REQUEST_BODY: MessageDescriptor<CreateUserRequestBody> = 
 };
 
 export interface CreateUserResponse {
-  userSession?: UserSession,
   signedSession?: string,
 }
 
 export let CREATE_USER_RESPONSE: MessageDescriptor<CreateUserResponse> = {
   name: 'CreateUserResponse',
   fields: [
-    {
-      name: 'userSession',
-      messageType: USER_SESSION,
-    },
     {
       name: 'signedSession',
       primitiveType: PrimitiveType.STRING,
@@ -230,17 +237,12 @@ export let SWITCH_USER_REQUEST_BODY: MessageDescriptor<SwitchUserRequestBody> = 
 };
 
 export interface SwitchUserResponse {
-  userSession?: UserSession,
   signedSession?: string,
 }
 
 export let SWITCH_USER_RESPONSE: MessageDescriptor<SwitchUserResponse> = {
   name: 'SwitchUserResponse',
   fields: [
-    {
-      name: 'userSession',
-      messageType: USER_SESSION,
-    },
     {
       name: 'signedSession',
       primitiveType: PrimitiveType.STRING,
@@ -273,7 +275,8 @@ export let RENEW_SESSION_REQUEST_BODY: MessageDescriptor<RenewSessionRequestBody
 };
 
 export interface RenewSessionResponse {
-  userSession?: UserSession,
+  productType?: ProductType,
+  userType?: UserType,
   signedSession?: string,
 }
 
@@ -281,8 +284,12 @@ export let RENEW_SESSION_RESPONSE: MessageDescriptor<RenewSessionResponse> = {
   name: 'RenewSessionResponse',
   fields: [
     {
-      name: 'userSession',
-      messageType: USER_SESSION,
+      name: 'productType',
+      enumType: PRODUCT_TYPE,
+    },
+    {
+      name: 'userType',
+      enumType: USER_TYPE,
     },
     {
       name: 'signedSession',
@@ -306,12 +313,12 @@ export let RENEW_SESSION: ServiceDescriptor = {
   },
 }
 
-export interface ListUsersRequestBody {
+export interface ListOwnedUsersRequestBody {
   userType?: UserType,
 }
 
-export let LIST_USERS_REQUEST_BODY: MessageDescriptor<ListUsersRequestBody> = {
-  name: 'ListUsersRequestBody',
+export let LIST_OWNED_USERS_REQUEST_BODY: MessageDescriptor<ListOwnedUsersRequestBody> = {
+  name: 'ListOwnedUsersRequestBody',
   fields: [
     {
       name: 'userType',
@@ -320,12 +327,12 @@ export let LIST_USERS_REQUEST_BODY: MessageDescriptor<ListUsersRequestBody> = {
   ]
 };
 
-export interface ListUsersResponse {
+export interface ListOwnedUsersResponse {
   users?: Array<User>,
 }
 
-export let LIST_USERS_RESPONSE: MessageDescriptor<ListUsersResponse> = {
-  name: 'ListUsersResponse',
+export let LIST_OWNED_USERS_RESPONSE: MessageDescriptor<ListOwnedUsersResponse> = {
+  name: 'ListOwnedUsersResponse',
   fields: [
     {
       name: 'users',
@@ -335,18 +342,18 @@ export let LIST_USERS_RESPONSE: MessageDescriptor<ListUsersResponse> = {
   ]
 };
 
-export let LIST_USERS: ServiceDescriptor = {
-  name: "ListUsers",
-  path: "/ListUsers",
+export let LIST_OWNED_USERS: ServiceDescriptor = {
+  name: "ListOwnedUsers",
+  path: "/ListOwnedUsers",
   body: {
-    messageType: LIST_USERS_REQUEST_BODY,
+    messageType: LIST_OWNED_USERS_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: USER_SESSION
   },
   response: {
-    messageType: LIST_USERS_RESPONSE,
+    messageType: LIST_OWNED_USERS_RESPONSE,
   },
 }
 
@@ -374,21 +381,21 @@ export let UPLOAD_AVATAR: ServiceDescriptor = {
   },
 }
 
-export interface GetUserRequestBody {
+export interface GetSubjectUserRequestBody {
 }
 
-export let GET_USER_REQUEST_BODY: MessageDescriptor<GetUserRequestBody> = {
-  name: 'GetUserRequestBody',
+export let GET_SUBJECT_USER_REQUEST_BODY: MessageDescriptor<GetSubjectUserRequestBody> = {
+  name: 'GetSubjectUserRequestBody',
   fields: [
   ]
 };
 
-export interface GetUserResponse {
+export interface GetSubjectUserResponse {
   user?: User,
 }
 
-export let GET_USER_RESPONSE: MessageDescriptor<GetUserResponse> = {
-  name: 'GetUserResponse',
+export let GET_SUBJECT_USER_RESPONSE: MessageDescriptor<GetSubjectUserResponse> = {
+  name: 'GetSubjectUserResponse',
   fields: [
     {
       name: 'user',
@@ -397,27 +404,27 @@ export let GET_USER_RESPONSE: MessageDescriptor<GetUserResponse> = {
   ]
 };
 
-export let GET_USER: ServiceDescriptor = {
-  name: "GetUser",
-  path: "/GetUser",
+export let GET_SUBJECT_USER: ServiceDescriptor = {
+  name: "GetSubjectUser",
+  path: "/GetSubjectUser",
   body: {
-    messageType: GET_USER_REQUEST_BODY,
+    messageType: GET_SUBJECT_USER_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: USER_SESSION
   },
   response: {
-    messageType: GET_USER_RESPONSE,
+    messageType: GET_SUBJECT_USER_RESPONSE,
   },
 }
 
-export interface GetUserCardRequestBody {
+export interface GetObjectUserRequestBody {
   userId?: string,
 }
 
-export let GET_USER_CARD_REQUEST_BODY: MessageDescriptor<GetUserCardRequestBody> = {
-  name: 'GetUserCardRequestBody',
+export let GET_OBJECT_USER_REQUEST_BODY: MessageDescriptor<GetObjectUserRequestBody> = {
+  name: 'GetObjectUserRequestBody',
   fields: [
     {
       name: 'userId',
@@ -426,42 +433,42 @@ export let GET_USER_CARD_REQUEST_BODY: MessageDescriptor<GetUserCardRequestBody>
   ]
 };
 
-export interface GetUserCardResponse {
-  userCard?: UserCard,
+export interface GetObjectUserResponse {
+  objectUser?: ObjectUser,
 }
 
-export let GET_USER_CARD_RESPONSE: MessageDescriptor<GetUserCardResponse> = {
-  name: 'GetUserCardResponse',
+export let GET_OBJECT_USER_RESPONSE: MessageDescriptor<GetObjectUserResponse> = {
+  name: 'GetObjectUserResponse',
   fields: [
     {
-      name: 'userCard',
-      messageType: USER_CARD,
+      name: 'objectUser',
+      messageType: OBJECT_USER,
     },
   ]
 };
 
-export let GET_USER_CARD: ServiceDescriptor = {
-  name: "GetUserCard",
-  path: "/GetUserCard",
+export let GET_OBJECT_USER: ServiceDescriptor = {
+  name: "GetObjectUser",
+  path: "/GetObjectUser",
   body: {
-    messageType: GET_USER_CARD_REQUEST_BODY,
+    messageType: GET_OBJECT_USER_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: USER_SESSION
   },
   response: {
-    messageType: GET_USER_CARD_RESPONSE,
+    messageType: GET_OBJECT_USER_RESPONSE,
   },
 }
 
-export interface SetUserRelationshipRequestBody {
+export interface SetObjectUserRelationshipRequestBody {
   userId?: string,
-  relationship?: UserRelationship,
+  relationship?: ObjectUserRelationship,
 }
 
-export let SET_USER_RELATIONSHIP_REQUEST_BODY: MessageDescriptor<SetUserRelationshipRequestBody> = {
-  name: 'SetUserRelationshipRequestBody',
+export let SET_OBJECT_USER_RELATIONSHIP_REQUEST_BODY: MessageDescriptor<SetObjectUserRelationshipRequestBody> = {
+  name: 'SetObjectUserRelationshipRequestBody',
   fields: [
     {
       name: 'userId',
@@ -469,31 +476,31 @@ export let SET_USER_RELATIONSHIP_REQUEST_BODY: MessageDescriptor<SetUserRelation
     },
     {
       name: 'relationship',
-      enumType: USER_RELATIONSHIP,
+      enumType: OBJECT_USER_RELATIONSHIP,
     },
   ]
 };
 
-export interface SetUserRelationshipResponse {
+export interface SetObjectUserRelationshipResponse {
 }
 
-export let SET_USER_RELATIONSHIP_RESPONSE: MessageDescriptor<SetUserRelationshipResponse> = {
-  name: 'SetUserRelationshipResponse',
+export let SET_OBJECT_USER_RELATIONSHIP_RESPONSE: MessageDescriptor<SetObjectUserRelationshipResponse> = {
+  name: 'SetObjectUserRelationshipResponse',
   fields: [
   ]
 };
 
-export let SET_USER_RELATIONSHIP: ServiceDescriptor = {
-  name: "SetUserRelationship",
-  path: "/SetUserRelationship",
+export let SET_OBJECT_USER_RELATIONSHIP: ServiceDescriptor = {
+  name: "SetObjectUserRelationship",
+  path: "/SetObjectUserRelationship",
   body: {
-    messageType: SET_USER_RELATIONSHIP_REQUEST_BODY,
+    messageType: SET_OBJECT_USER_RELATIONSHIP_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: USER_SESSION
   },
   response: {
-    messageType: SET_USER_RELATIONSHIP_RESPONSE,
+    messageType: SET_OBJECT_USER_RELATIONSHIP_RESPONSE,
   },
 }

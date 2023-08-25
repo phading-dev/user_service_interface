@@ -1,13 +1,13 @@
 import { EnumDescriptor } from '@selfage/message/descriptor';
 
-export enum UserRelationship {
+export enum ObjectUserRelationship {
   UNKNOWN = 0,
   LIKE = 1,
   DISLIKE = 2,
 }
 
-export let USER_RELATIONSHIP: EnumDescriptor<UserRelationship> = {
-  name: 'UserRelationship',
+export let OBJECT_USER_RELATIONSHIP: EnumDescriptor<ObjectUserRelationship> = {
+  name: 'ObjectUserRelationship',
   values: [
     {
       name: 'UNKNOWN',

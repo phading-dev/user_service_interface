@@ -1,5 +1,5 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, CREATE_USER, CreateUserRequestBody, CreateUserResponse, SWITCH_USER, SwitchUserRequestBody, SwitchUserResponse, RENEW_SESSION, RenewSessionRequestBody, RenewSessionResponse, LIST_USERS, ListUsersRequestBody, ListUsersResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_USER, GetUserRequestBody, GetUserResponse, GET_USER_CARD, GetUserCardRequestBody, GetUserCardResponse, SET_USER_RELATIONSHIP, SetUserRelationshipRequestBody, SetUserRelationshipResponse } from './interface';
+import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, CREATE_USER, CreateUserRequestBody, CreateUserResponse, SWITCH_USER, SwitchUserRequestBody, SwitchUserResponse, RENEW_SESSION, RenewSessionRequestBody, RenewSessionResponse, LIST_OWNED_USERS, ListOwnedUsersRequestBody, ListOwnedUsersResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_SUBJECT_USER, GetSubjectUserRequestBody, GetSubjectUserResponse, GET_OBJECT_USER, GetObjectUserRequestBody, GetObjectUserResponse, SET_OBJECT_USER_RELATIONSHIP, SetObjectUserRelationshipRequestBody, SetObjectUserRelationshipResponse } from './interface';
 import { UserSession } from './user_session';
 import { Readable } from 'stream';
 
@@ -55,13 +55,13 @@ export abstract class RenewSessionHandlerInterface implements ServiceHandlerInte
   ): Promise<RenewSessionResponse>;
 }
 
-export abstract class ListUsersHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = LIST_USERS;
+export abstract class ListOwnedUsersHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = LIST_OWNED_USERS;
   public abstract handle(
     requestId: string,
-    body: ListUsersRequestBody,
+    body: ListOwnedUsersRequestBody,
     auth: UserSession,
-  ): Promise<ListUsersResponse>;
+  ): Promise<ListOwnedUsersResponse>;
 }
 
 export abstract class UploadAvatarHandlerInterface implements ServiceHandlerInterface {
@@ -73,29 +73,29 @@ export abstract class UploadAvatarHandlerInterface implements ServiceHandlerInte
   ): Promise<UploadAvatarResponse>;
 }
 
-export abstract class GetUserHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_USER;
+export abstract class GetSubjectUserHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_SUBJECT_USER;
   public abstract handle(
     requestId: string,
-    body: GetUserRequestBody,
+    body: GetSubjectUserRequestBody,
     auth: UserSession,
-  ): Promise<GetUserResponse>;
+  ): Promise<GetSubjectUserResponse>;
 }
 
-export abstract class GetUserCardHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_USER_CARD;
+export abstract class GetObjectUserHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_OBJECT_USER;
   public abstract handle(
     requestId: string,
-    body: GetUserCardRequestBody,
+    body: GetObjectUserRequestBody,
     auth: UserSession,
-  ): Promise<GetUserCardResponse>;
+  ): Promise<GetObjectUserResponse>;
 }
 
-export abstract class SetUserRelationshipHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = SET_USER_RELATIONSHIP;
+export abstract class SetObjectUserRelationshipHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = SET_OBJECT_USER_RELATIONSHIP;
   public abstract handle(
     requestId: string,
-    body: SetUserRelationshipRequestBody,
+    body: SetObjectUserRelationshipRequestBody,
     auth: UserSession,
-  ): Promise<SetUserRelationshipResponse>;
+  ): Promise<SetObjectUserRelationshipResponse>;
 }

@@ -1,5 +1,5 @@
 [{
-  "name": "UserRelationship",
+  "name": "ObjectUserRelationship",
   "enum": {
     "values": [{
       "name": "UNKNOWN",
