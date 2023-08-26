@@ -24,9 +24,9 @@
       "type": "boolean",
       "comment": "If set, no other fields will be populated."
     }, {
-      "name": "productType",
-      "type": "ProductType",
-      "import": "./product_type"
+      "name": "appType",
+      "type": "AppType",
+      "import": "./app_type"
     }, {
       "name": "signedSession",
       "type": "string"
@@ -56,9 +56,9 @@
   "name": "SignInResponse",
   "message": {
     "fields": [{
-      "name": "productType",
-      "type": "ProductType",
-      "import": "./product_type"
+      "name": "appType",
+      "type": "AppType",
+      "import": "./app_type"
     }, {
       "name": "signedSession",
       "type": "string"
@@ -176,9 +176,9 @@
   "name": "RenewSessionResponse",
   "message": {
     "fields": [{
-      "name": "productType",
-      "type": "ProductType",
-      "import": "./product_type"
+      "name": "appType",
+      "type": "AppType",
+      "import": "./app_type"
     }, {
       "name": "signedSession",
       "type": "string"
@@ -199,13 +199,37 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "ListOwnedUsersRequestBody",
+  "name": "GetAppVariantRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "GetAppVariantResponse",
   "message": {
     "fields": [{
-      "name": "userType",
-      "type": "UserType",
-      "import": "./user_type"
+      "name": "appVariant",
+      "type": "AppVariant",
+      "import": "./app_variant"
     }]
+  }
+}, {
+  "name": "GetAppVariant",
+  "service": {
+    "path": "/GetAppVariant",
+    "body": "GetAppVariantRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "GetAppVariantResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "ListOwnedUsersRequestBody",
+  "message": {
+    "fields": []
   }
 }, {
   "name": "ListOwnedUsersResponse",

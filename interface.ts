@@ -1,8 +1,9 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { UserType, USER_TYPE } from './user_type';
-import { ProductType, PRODUCT_TYPE } from './product_type';
+import { AppType, APP_TYPE } from './app_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 import { USER_SESSION } from './user_session';
+import { AppVariant, APP_VARIANT } from './app_variant';
 import { User, USER } from './user';
 import { ObjectUser, OBJECT_USER } from './object_user';
 import { ObjectUserRelationship, OBJECT_USER_RELATIONSHIP } from './object_user_relationship';
@@ -39,7 +40,7 @@ export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
 export interface SignUpResponse {
 /* If set, no other fields will be populated. */
   usernameIsNotAvailable?: boolean,
-  productType?: ProductType,
+  appType?: AppType,
   signedSession?: string,
 }
 
@@ -51,8 +52,8 @@ export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
       primitiveType: PrimitiveType.BOOLEAN,
     },
     {
-      name: 'productType',
-      enumType: PRODUCT_TYPE,
+      name: 'appType',
+      enumType: APP_TYPE,
     },
     {
       name: 'signedSession',
@@ -92,7 +93,7 @@ export let SIGN_IN_REQUEST_BODY: MessageDescriptor<SignInRequestBody> = {
 };
 
 export interface SignInResponse {
-  productType?: ProductType,
+  appType?: AppType,
   signedSession?: string,
 }
 
@@ -100,8 +101,8 @@ export let SIGN_IN_RESPONSE: MessageDescriptor<SignInResponse> = {
   name: 'SignInResponse',
   fields: [
     {
-      name: 'productType',
-      enumType: PRODUCT_TYPE,
+      name: 'appType',
+      enumType: APP_TYPE,
     },
     {
       name: 'signedSession',
@@ -265,7 +266,7 @@ export let RENEW_SESSION_REQUEST_BODY: MessageDescriptor<RenewSessionRequestBody
 };
 
 export interface RenewSessionResponse {
-  productType?: ProductType,
+  appType?: AppType,
   signedSession?: string,
 }
 
@@ -273,8 +274,8 @@ export let RENEW_SESSION_RESPONSE: MessageDescriptor<RenewSessionResponse> = {
   name: 'RenewSessionResponse',
   fields: [
     {
-      name: 'productType',
-      enumType: PRODUCT_TYPE,
+      name: 'appType',
+      enumType: APP_TYPE,
     },
     {
       name: 'signedSession',
@@ -298,17 +299,50 @@ export let RENEW_SESSION: ServiceDescriptor = {
   },
 }
 
+export interface GetAppVariantRequestBody {
+}
+
+export let GET_APP_VARIANT_REQUEST_BODY: MessageDescriptor<GetAppVariantRequestBody> = {
+  name: 'GetAppVariantRequestBody',
+  fields: [
+  ]
+};
+
+export interface GetAppVariantResponse {
+  appVariant?: AppVariant,
+}
+
+export let GET_APP_VARIANT_RESPONSE: MessageDescriptor<GetAppVariantResponse> = {
+  name: 'GetAppVariantResponse',
+  fields: [
+    {
+      name: 'appVariant',
+      enumType: APP_VARIANT,
+    },
+  ]
+};
+
+export let GET_APP_VARIANT: ServiceDescriptor = {
+  name: "GetAppVariant",
+  path: "/GetAppVariant",
+  body: {
+    messageType: GET_APP_VARIANT_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: GET_APP_VARIANT_RESPONSE,
+  },
+}
+
 export interface ListOwnedUsersRequestBody {
-  userType?: UserType,
 }
 
 export let LIST_OWNED_USERS_REQUEST_BODY: MessageDescriptor<ListOwnedUsersRequestBody> = {
   name: 'ListOwnedUsersRequestBody',
   fields: [
-    {
-      name: 'userType',
-      enumType: USER_TYPE,
-    },
   ]
 };
 

@@ -1,0 +1,15 @@
+[{
+  "name": "AppVariant",
+  "enum": {
+    "values": [{
+      "name": "Unknown",
+      "value": 0
+    }, {
+      "name": "Consumer",
+      "value": 1
+    }, {
+      "name": "Publisher",
+      "value": 2
+    }]
+  }
+}]

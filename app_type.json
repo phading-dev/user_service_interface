@@ -1,17 +1,18 @@
 [{
-  "name": "ProductType",
+  "name": "AppType",
   "enum": {
     "values": [{
       "name": "Unknown",
       "value": 0
     }, {
-      "name": "Video",
+      "name": "VideoSharing",
       "value": 1
     }, {
       "name": "Music",
       "value": 2
     }, {
-      "name": "Podcast"
+      "name": "Podcast",
+      "value": 3
     }]
   }
 }]

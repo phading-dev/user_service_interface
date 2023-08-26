@@ -1,21 +1,21 @@
 import { EnumDescriptor } from '@selfage/message/descriptor';
 
-export enum ProductType {
+export enum AppType {
   Unknown = 0,
-  Video = 1,
+  VideoSharing = 1,
   Music = 2,
-  Podcast = undefined,
+  Podcast = 3,
 }
 
-export let PRODUCT_TYPE: EnumDescriptor<ProductType> = {
-  name: 'ProductType',
+export let APP_TYPE: EnumDescriptor<AppType> = {
+  name: 'AppType',
   values: [
     {
       name: 'Unknown',
       value: 0,
     },
     {
-      name: 'Video',
+      name: 'VideoSharing',
       value: 1,
     },
     {
@@ -24,7 +24,7 @@ export let PRODUCT_TYPE: EnumDescriptor<ProductType> = {
     },
     {
       name: 'Podcast',
-      value: undefined,
+      value: 3,
     },
   ]
 }
