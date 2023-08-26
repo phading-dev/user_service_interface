@@ -40,7 +40,6 @@ export interface SignUpResponse {
 /* If set, no other fields will be populated. */
   usernameIsNotAvailable?: boolean,
   productType?: ProductType,
-  userType?: UserType,
   signedSession?: string,
 }
 
@@ -54,10 +53,6 @@ export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
     {
       name: 'productType',
       enumType: PRODUCT_TYPE,
-    },
-    {
-      name: 'userType',
-      enumType: USER_TYPE,
     },
     {
       name: 'signedSession',
@@ -98,7 +93,6 @@ export let SIGN_IN_REQUEST_BODY: MessageDescriptor<SignInRequestBody> = {
 
 export interface SignInResponse {
   productType?: ProductType,
-  userType?: UserType,
   signedSession?: string,
 }
 
@@ -108,10 +102,6 @@ export let SIGN_IN_RESPONSE: MessageDescriptor<SignInResponse> = {
     {
       name: 'productType',
       enumType: PRODUCT_TYPE,
-    },
-    {
-      name: 'userType',
-      enumType: USER_TYPE,
     },
     {
       name: 'signedSession',
@@ -276,7 +266,6 @@ export let RENEW_SESSION_REQUEST_BODY: MessageDescriptor<RenewSessionRequestBody
 
 export interface RenewSessionResponse {
   productType?: ProductType,
-  userType?: UserType,
   signedSession?: string,
 }
 
@@ -286,10 +275,6 @@ export let RENEW_SESSION_RESPONSE: MessageDescriptor<RenewSessionResponse> = {
     {
       name: 'productType',
       enumType: PRODUCT_TYPE,
-    },
-    {
-      name: 'userType',
-      enumType: USER_TYPE,
     },
     {
       name: 'signedSession',

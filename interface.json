@@ -28,10 +28,6 @@
       "type": "ProductType",
       "import": "./product_type"
     }, {
-      "name": "userType",
-      "type": "UserType",
-      "import": "./user_type"
-    }, {
       "name": "signedSession",
       "type": "string"
     }]
@@ -63,10 +59,6 @@
       "name": "productType",
       "type": "ProductType",
       "import": "./product_type"
-    }, {
-      "name": "userType",
-      "type": "UserType",
-      "import": "./user_type"
     }, {
       "name": "signedSession",
       "type": "string"
@@ -187,10 +179,6 @@
       "name": "productType",
       "type": "ProductType",
       "import": "./product_type"
-    }, {
-      "name": "userType",
-      "type": "UserType",
-      "import": "./user_type"
     }, {
       "name": "signedSession",
       "type": "string"
