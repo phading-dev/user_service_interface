@@ -1,6 +1,5 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { UserType, USER_TYPE } from './user_type';
-import { AppType, APP_TYPE } from './app_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 import { USER_SESSION } from './user_session';
 import { AppVariant, APP_VARIANT } from './app_variant';
@@ -40,7 +39,6 @@ export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
 export interface SignUpResponse {
 /* If set, no other fields will be populated. */
   usernameIsNotAvailable?: boolean,
-  appType?: AppType,
   signedSession?: string,
 }
 
@@ -50,10 +48,6 @@ export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
     {
       name: 'usernameIsNotAvailable',
       primitiveType: PrimitiveType.BOOLEAN,
-    },
-    {
-      name: 'appType',
-      enumType: APP_TYPE,
     },
     {
       name: 'signedSession',
@@ -93,17 +87,12 @@ export let SIGN_IN_REQUEST_BODY: MessageDescriptor<SignInRequestBody> = {
 };
 
 export interface SignInResponse {
-  appType?: AppType,
   signedSession?: string,
 }
 
 export let SIGN_IN_RESPONSE: MessageDescriptor<SignInResponse> = {
   name: 'SignInResponse',
   fields: [
-    {
-      name: 'appType',
-      enumType: APP_TYPE,
-    },
     {
       name: 'signedSession',
       primitiveType: PrimitiveType.STRING,
@@ -266,17 +255,12 @@ export let RENEW_SESSION_REQUEST_BODY: MessageDescriptor<RenewSessionRequestBody
 };
 
 export interface RenewSessionResponse {
-  appType?: AppType,
   signedSession?: string,
 }
 
 export let RENEW_SESSION_RESPONSE: MessageDescriptor<RenewSessionResponse> = {
   name: 'RenewSessionResponse',
   fields: [
-    {
-      name: 'appType',
-      enumType: APP_TYPE,
-    },
     {
       name: 'signedSession',
       primitiveType: PrimitiveType.STRING,

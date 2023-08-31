@@ -24,10 +24,6 @@
       "type": "boolean",
       "comment": "If set, no other fields will be populated."
     }, {
-      "name": "appType",
-      "type": "AppType",
-      "import": "./app_type"
-    }, {
       "name": "signedSession",
       "type": "string"
     }]
@@ -56,10 +52,6 @@
   "name": "SignInResponse",
   "message": {
     "fields": [{
-      "name": "appType",
-      "type": "AppType",
-      "import": "./app_type"
-    }, {
       "name": "signedSession",
       "type": "string"
     }]
@@ -176,10 +168,6 @@
   "name": "RenewSessionResponse",
   "message": {
     "fields": [{
-      "name": "appType",
-      "type": "AppType",
-      "import": "./app_type"
-    }, {
       "name": "signedSession",
       "type": "string"
     }]
