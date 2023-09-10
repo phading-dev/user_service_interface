@@ -1,5 +1,5 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, CREATE_USER, CreateUserRequestBody, CreateUserResponse, SWITCH_USER, SwitchUserRequestBody, SwitchUserResponse, RENEW_SESSION, RenewSessionRequestBody, RenewSessionResponse, GET_APP_VARIANT, GetAppVariantRequestBody, GetAppVariantResponse, LIST_OWNED_USERS, ListOwnedUsersRequestBody, ListOwnedUsersResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_SUBJECT_USER, GetSubjectUserRequestBody, GetSubjectUserResponse, GET_OBJECT_USER, GetObjectUserRequestBody, GetObjectUserResponse, SET_OBJECT_USER_RELATIONSHIP, SetObjectUserRelationshipRequestBody, SetObjectUserRelationshipResponse } from './interface';
+import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, CREATE_USER, CreateUserRequestBody, CreateUserResponse, SWITCH_USER, SwitchUserRequestBody, SwitchUserResponse, RENEW_SESSION, RenewSessionRequestBody, RenewSessionResponse, GET_USER_TYPE, GetUserTypeRequestBody, GetUserTypeResponse, LIST_OWNED_USERS, ListOwnedUsersRequestBody, ListOwnedUsersResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_SUBJECT_USER, GetSubjectUserRequestBody, GetSubjectUserResponse, GET_OBJECT_USER, GetObjectUserRequestBody, GetObjectUserResponse, SET_OBJECT_USER_RELATIONSHIP, SetObjectUserRelationshipRequestBody, SetObjectUserRelationshipResponse } from './interface';
 import { UserSession } from './user_session';
 import { Readable } from 'stream';
 
@@ -55,13 +55,13 @@ export abstract class RenewSessionHandlerInterface implements ServiceHandlerInte
   ): Promise<RenewSessionResponse>;
 }
 
-export abstract class GetAppVariantHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_APP_VARIANT;
+export abstract class GetUserTypeHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_USER_TYPE;
   public abstract handle(
     requestId: string,
-    body: GetAppVariantRequestBody,
+    body: GetUserTypeRequestBody,
     auth: UserSession,
-  ): Promise<GetAppVariantResponse>;
+  ): Promise<GetUserTypeResponse>;
 }
 
 export abstract class ListOwnedUsersHandlerInterface implements ServiceHandlerInterface {

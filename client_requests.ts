@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, CreateUserRequestBody, CreateUserResponse, CREATE_USER, SwitchUserRequestBody, SwitchUserResponse, SWITCH_USER, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, GetAppVariantRequestBody, GetAppVariantResponse, GET_APP_VARIANT, ListOwnedUsersRequestBody, ListOwnedUsersResponse, LIST_OWNED_USERS, UploadAvatarResponse, UPLOAD_AVATAR, GetSubjectUserRequestBody, GetSubjectUserResponse, GET_SUBJECT_USER, GetObjectUserRequestBody, GetObjectUserResponse, GET_OBJECT_USER, SetObjectUserRelationshipRequestBody, SetObjectUserRelationshipResponse, SET_OBJECT_USER_RELATIONSHIP } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, CreateUserRequestBody, CreateUserResponse, CREATE_USER, SwitchUserRequestBody, SwitchUserResponse, SWITCH_USER, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, GetUserTypeRequestBody, GetUserTypeResponse, GET_USER_TYPE, ListOwnedUsersRequestBody, ListOwnedUsersResponse, LIST_OWNED_USERS, UploadAvatarResponse, UPLOAD_AVATAR, GetSubjectUserRequestBody, GetSubjectUserResponse, GET_SUBJECT_USER, GetObjectUserRequestBody, GetObjectUserResponse, GET_OBJECT_USER, SetObjectUserRelationshipRequestBody, SetObjectUserRelationshipResponse, SET_OBJECT_USER_RELATIONSHIP } from './interface';
 
 export function signUp(
   client: WebServiceClientInterface,
@@ -61,12 +61,12 @@ export function renewSession(
   });
 }
 
-export function getAppVariant(
+export function getUserType(
   client: WebServiceClientInterface,
-  body: GetAppVariantRequestBody,
-): Promise<GetAppVariantResponse> {
+  body: GetUserTypeRequestBody,
+): Promise<GetUserTypeResponse> {
   return client.send({
-    descriptor: GET_APP_VARIANT,
+    descriptor: GET_USER_TYPE,
     body,
   });
 }

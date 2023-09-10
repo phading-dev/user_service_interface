@@ -187,37 +187,41 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetAppVariantRequestBody",
+  "name": "GetUserTypeRequestBody",
   "message": {
     "fields": []
   }
 }, {
-  "name": "GetAppVariantResponse",
+  "name": "GetUserTypeResponse",
   "message": {
     "fields": [{
-      "name": "appVariant",
-      "type": "AppVariant",
-      "import": "./app_variant"
+      "name": "userType",
+      "type": "UserType",
+      "import": "./user_type"
     }]
   }
 }, {
-  "name": "GetAppVariant",
+  "name": "GetUserType",
   "service": {
-    "path": "/GetAppVariant",
-    "body": "GetAppVariantRequestBody",
+    "path": "/GetUserType",
+    "body": "GetUserTypeRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "GetAppVariantResponse",
+    "response": "GetUserTypeResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
   "name": "ListOwnedUsersRequestBody",
   "message": {
-    "fields": []
+    "fields": [{
+      "name": "userType",
+      "type": "UserType",
+      "import": "./user_type"
+    }]
   }
 }, {
   "name": "ListOwnedUsersResponse",

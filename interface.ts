@@ -2,7 +2,6 @@ import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { UserType, USER_TYPE } from './user_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 import { USER_SESSION } from './user_session';
-import { AppVariant, APP_VARIANT } from './app_variant';
 import { User, USER } from './user';
 import { ObjectUser, OBJECT_USER } from './object_user';
 import { ObjectUserRelationship, OBJECT_USER_RELATIONSHIP } from './object_user_relationship';
@@ -283,50 +282,55 @@ export let RENEW_SESSION: ServiceDescriptor = {
   },
 }
 
-export interface GetAppVariantRequestBody {
+export interface GetUserTypeRequestBody {
 }
 
-export let GET_APP_VARIANT_REQUEST_BODY: MessageDescriptor<GetAppVariantRequestBody> = {
-  name: 'GetAppVariantRequestBody',
+export let GET_USER_TYPE_REQUEST_BODY: MessageDescriptor<GetUserTypeRequestBody> = {
+  name: 'GetUserTypeRequestBody',
   fields: [
   ]
 };
 
-export interface GetAppVariantResponse {
-  appVariant?: AppVariant,
+export interface GetUserTypeResponse {
+  userType?: UserType,
 }
 
-export let GET_APP_VARIANT_RESPONSE: MessageDescriptor<GetAppVariantResponse> = {
-  name: 'GetAppVariantResponse',
+export let GET_USER_TYPE_RESPONSE: MessageDescriptor<GetUserTypeResponse> = {
+  name: 'GetUserTypeResponse',
   fields: [
     {
-      name: 'appVariant',
-      enumType: APP_VARIANT,
+      name: 'userType',
+      enumType: USER_TYPE,
     },
   ]
 };
 
-export let GET_APP_VARIANT: ServiceDescriptor = {
-  name: "GetAppVariant",
-  path: "/GetAppVariant",
+export let GET_USER_TYPE: ServiceDescriptor = {
+  name: "GetUserType",
+  path: "/GetUserType",
   body: {
-    messageType: GET_APP_VARIANT_REQUEST_BODY,
+    messageType: GET_USER_TYPE_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: USER_SESSION
   },
   response: {
-    messageType: GET_APP_VARIANT_RESPONSE,
+    messageType: GET_USER_TYPE_RESPONSE,
   },
 }
 
 export interface ListOwnedUsersRequestBody {
+  userType?: UserType,
 }
 
 export let LIST_OWNED_USERS_REQUEST_BODY: MessageDescriptor<ListOwnedUsersRequestBody> = {
   name: 'ListOwnedUsersRequestBody',
   fields: [
+    {
+      name: 'userType',
+      enumType: USER_TYPE,
+    },
   ]
 };
 
