@@ -1,13 +1,13 @@
 import { EnumDescriptor } from '@selfage/message/descriptor';
 
-export enum UserType {
+export enum AccountType {
   UNKNOWN = 0,
   CONSUMER = 1,
   PUBLISHER = 2,
 }
 
-export let USER_TYPE: EnumDescriptor<UserType> = {
-  name: 'UserType',
+export let ACCOUNT_TYPE: EnumDescriptor<AccountType> = {
+  name: 'AccountType',
   values: [
     {
       name: 'UNKNOWN',

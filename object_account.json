@@ -1,0 +1,14 @@
+[{
+  "name": "ObjectAccount",
+  "message": {
+    "fields": [{
+      "name": "account",
+      "type": "Account",
+      "import": "./account"
+    }, {
+      "name": "relationship",
+      "type": "ObjectAccountRelationship",
+      "import": "./object_account_relationship"
+    }]
+  }
+}]

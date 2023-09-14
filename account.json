@@ -1,12 +1,12 @@
 [{
-  "name": "User",
+  "name": "Account",
   "message": {
     "fields": [{
-      "name": "userType",
-      "type": "UserType",
-      "import": "./user_type"
+      "name": "accountType",
+      "type": "AccountType",
+      "import": "./account_type"
     }, {
-      "name": "userId",
+      "name": "accountId",
       "type": "string"
     }, {
       "name": "naturalName",

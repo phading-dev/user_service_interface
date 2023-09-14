@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, CreateUserRequestBody, CreateUserResponse, CREATE_USER, SwitchUserRequestBody, SwitchUserResponse, SWITCH_USER, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, GetUserTypeRequestBody, GetUserTypeResponse, GET_USER_TYPE, ListOwnedUsersRequestBody, ListOwnedUsersResponse, LIST_OWNED_USERS, UploadAvatarResponse, UPLOAD_AVATAR, GetSubjectUserRequestBody, GetSubjectUserResponse, GET_SUBJECT_USER, GetObjectUserRequestBody, GetObjectUserResponse, GET_OBJECT_USER, SetObjectUserRelationshipRequestBody, SetObjectUserRelationshipResponse, SET_OBJECT_USER_RELATIONSHIP } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, GetAccountTypeRequestBody, GetAccountTypeResponse, GET_ACCOUNT_TYPE, ListOwnedAccountsRequestBody, ListOwnedAccountsResponse, LIST_OWNED_ACCOUNTS, UploadAvatarResponse, UPLOAD_AVATAR, GetSubjectAccountRequestBody, GetSubjectAccountResponse, GET_SUBJECT_ACCOUNT, GetObjectAccountRequestBody, GetObjectAccountResponse, GET_OBJECT_ACCOUNT, SetObjectAccountRelationshipRequestBody, SetObjectAccountRelationshipResponse, SET_OBJECT_ACCOUNT_RELATIONSHIP } from './interface';
 
 export function signUp(
   client: WebServiceClientInterface,
@@ -31,22 +31,22 @@ export function updatePassword(
   });
 }
 
-export function createUser(
+export function createAccount(
   client: WebServiceClientInterface,
-  body: CreateUserRequestBody,
-): Promise<CreateUserResponse> {
+  body: CreateAccountRequestBody,
+): Promise<CreateAccountResponse> {
   return client.send({
-    descriptor: CREATE_USER,
+    descriptor: CREATE_ACCOUNT,
     body,
   });
 }
 
-export function switchUser(
+export function switchAccount(
   client: WebServiceClientInterface,
-  body: SwitchUserRequestBody,
-): Promise<SwitchUserResponse> {
+  body: SwitchAccountRequestBody,
+): Promise<SwitchAccountResponse> {
   return client.send({
-    descriptor: SWITCH_USER,
+    descriptor: SWITCH_ACCOUNT,
     body,
   });
 }
@@ -61,22 +61,22 @@ export function renewSession(
   });
 }
 
-export function getUserType(
+export function getAccountType(
   client: WebServiceClientInterface,
-  body: GetUserTypeRequestBody,
-): Promise<GetUserTypeResponse> {
+  body: GetAccountTypeRequestBody,
+): Promise<GetAccountTypeResponse> {
   return client.send({
-    descriptor: GET_USER_TYPE,
+    descriptor: GET_ACCOUNT_TYPE,
     body,
   });
 }
 
-export function listOwnedUsers(
+export function listOwnedAccounts(
   client: WebServiceClientInterface,
-  body: ListOwnedUsersRequestBody,
-): Promise<ListOwnedUsersResponse> {
+  body: ListOwnedAccountsRequestBody,
+): Promise<ListOwnedAccountsResponse> {
   return client.send({
-    descriptor: LIST_OWNED_USERS,
+    descriptor: LIST_OWNED_ACCOUNTS,
     body,
   });
 }
@@ -91,32 +91,32 @@ export function uploadAvatar(
   });
 }
 
-export function getSubjectUser(
+export function getSubjectAccount(
   client: WebServiceClientInterface,
-  body: GetSubjectUserRequestBody,
-): Promise<GetSubjectUserResponse> {
+  body: GetSubjectAccountRequestBody,
+): Promise<GetSubjectAccountResponse> {
   return client.send({
-    descriptor: GET_SUBJECT_USER,
+    descriptor: GET_SUBJECT_ACCOUNT,
     body,
   });
 }
 
-export function getObjectUser(
+export function getObjectAccount(
   client: WebServiceClientInterface,
-  body: GetObjectUserRequestBody,
-): Promise<GetObjectUserResponse> {
+  body: GetObjectAccountRequestBody,
+): Promise<GetObjectAccountResponse> {
   return client.send({
-    descriptor: GET_OBJECT_USER,
+    descriptor: GET_OBJECT_ACCOUNT,
     body,
   });
 }
 
-export function setObjectUserRelationship(
+export function setObjectAccountRelationship(
   client: WebServiceClientInterface,
-  body: SetObjectUserRelationshipRequestBody,
-): Promise<SetObjectUserRelationshipResponse> {
+  body: SetObjectAccountRelationshipRequestBody,
+): Promise<SetObjectAccountRelationshipResponse> {
   return client.send({
-    descriptor: SET_OBJECT_USER_RELATIONSHIP,
+    descriptor: SET_OBJECT_ACCOUNT_RELATIONSHIP,
     body,
   });
 }

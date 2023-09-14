@@ -1,5 +1,5 @@
 [{
-  "name": "UserType",
+  "name": "AccountType",
   "enum": {
     "values": [{
       "name": "UNKNOWN",

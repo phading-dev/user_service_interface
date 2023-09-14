@@ -1,23 +1,23 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { UserType, USER_TYPE } from './user_type';
+import { AccountType, ACCOUNT_TYPE } from './account_type';
 
-export interface User {
-  userType?: UserType,
-  userId?: string,
+export interface Account {
+  accountType?: AccountType,
+  accountId?: string,
   naturalName?: string,
   avatarLargePath?: string,
   avatarSmallPath?: string,
 }
 
-export let USER: MessageDescriptor<User> = {
-  name: 'User',
+export let ACCOUNT: MessageDescriptor<Account> = {
+  name: 'Account',
   fields: [
     {
-      name: 'userType',
-      enumType: USER_TYPE,
+      name: 'accountType',
+      enumType: ACCOUNT_TYPE,
     },
     {
-      name: 'userId',
+      name: 'accountId',
       primitiveType: PrimitiveType.STRING,
     },
     {

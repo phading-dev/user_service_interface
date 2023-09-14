@@ -11,9 +11,9 @@
       "name": "password",
       "type": "string"
     }, {
-      "name": "userType",
-      "type": "UserType",
-      "import": "./user_type"
+      "name": "accountType",
+      "type": "AccountType",
+      "import": "./account_type"
     }]
   }
 }, {
@@ -96,19 +96,19 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "CreateUserRequestBody",
+  "name": "CreateAccountRequestBody",
   "message": {
     "fields": [{
       "name": "naturalName",
       "type": "string"
     }, {
-      "name": "userType",
-      "type": "UserType",
-      "import": "./user_type"
+      "name": "accountType",
+      "type": "AccountType",
+      "import": "./account_type"
     }]
   }
 }, {
-  "name": "CreateUserResponse",
+  "name": "CreateAccountResponse",
   "message": {
     "fields": [{
       "name": "signedSession",
@@ -116,29 +116,29 @@
     }]
   }
 }, {
-  "name": "CreateUser",
+  "name": "CreateAccount",
   "service": {
-    "path": "/CreateUser",
-    "body": "CreateUserRequestBody",
+    "path": "/CreateAccount",
+    "body": "CreateAccountRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "CreateUserResponse",
+    "response": "CreateAccountResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "SwitchUserRequestBody",
+  "name": "SwitchAccountRequestBody",
   "message": {
     "fields": [{
-      "name": "userId",
+      "name": "accountId",
       "type": "string"
     }]
   }
 }, {
-  "name": "SwitchUserResponse",
+  "name": "SwitchAccountResponse",
   "message": {
     "fields": [{
       "name": "signedSession",
@@ -146,16 +146,16 @@
     }]
   }
 }, {
-  "name": "SwitchUser",
+  "name": "SwitchAccount",
   "service": {
-    "path": "/SwitchUser",
-    "body": "SwitchUserRequestBody",
+    "path": "/SwitchAccount",
+    "body": "SwitchAccountRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "SwitchUserResponse",
+    "response": "SwitchAccountResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
@@ -187,63 +187,63 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetUserTypeRequestBody",
+  "name": "GetAccountTypeRequestBody",
   "message": {
     "fields": []
   }
 }, {
-  "name": "GetUserTypeResponse",
+  "name": "GetAccountTypeResponse",
   "message": {
     "fields": [{
-      "name": "userType",
-      "type": "UserType",
-      "import": "./user_type"
+      "name": "accountType",
+      "type": "AccountType",
+      "import": "./account_type"
     }]
   }
 }, {
-  "name": "GetUserType",
+  "name": "GetAccountType",
   "service": {
-    "path": "/GetUserType",
-    "body": "GetUserTypeRequestBody",
+    "path": "/GetAccountType",
+    "body": "GetAccountTypeRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "GetUserTypeResponse",
+    "response": "GetAccountTypeResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "ListOwnedUsersRequestBody",
+  "name": "ListOwnedAccountsRequestBody",
   "message": {
     "fields": [{
-      "name": "userType",
-      "type": "UserType",
-      "import": "./user_type"
+      "name": "accountType",
+      "type": "AccountType",
+      "import": "./account_type"
     }]
   }
 }, {
-  "name": "ListOwnedUsersResponse",
+  "name": "ListOwnedAccountsResponse",
   "message": {
     "fields": [{
-      "name": "users",
-      "type": "User",
-      "import": "./user",
+      "name": "accounts",
+      "type": "Account",
+      "import": "./account",
       "isArray": true
     }]
   }
 }, {
-  "name": "ListOwnedUsers",
+  "name": "ListOwnedAccounts",
   "service": {
-    "path": "/ListOwnedUsers",
-    "body": "ListOwnedUsersRequestBody",
+    "path": "/ListOwnedAccounts",
+    "body": "ListOwnedAccountsRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "ListOwnedUsersResponse",
+    "response": "ListOwnedAccountsResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
@@ -267,92 +267,92 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetSubjectUserRequestBody",
+  "name": "GetSubjectAccountRequestBody",
   "message": {
     "fields": []
   }
 }, {
-  "name": "GetSubjectUserResponse",
+  "name": "GetSubjectAccountResponse",
   "message": {
     "fields": [{
-      "name": "user",
-      "type": "User",
-      "import": "./user"
+      "name": "account",
+      "type": "Account",
+      "import": "./account"
     }]
   }
 }, {
-  "name": "GetSubjectUser",
+  "name": "GetSubjectAccount",
   "service": {
-    "path": "/GetSubjectUser",
-    "body": "GetSubjectUserRequestBody",
+    "path": "/GetSubjectAccount",
+    "body": "GetSubjectAccountRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "GetSubjectUserResponse",
+    "response": "GetSubjectAccountResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetObjectUserRequestBody",
+  "name": "GetObjectAccountRequestBody",
   "message": {
     "fields": [{
-      "name": "userId",
+      "name": "accountId",
       "type": "string"
     }]
   }
 }, {
-  "name": "GetObjectUserResponse",
+  "name": "GetObjectAccountResponse",
   "message": {
     "fields": [{
-      "name": "objectUser",
-      "type": "ObjectUser",
-      "import": "./object_user"
+      "name": "objectAccount",
+      "type": "ObjectAccount",
+      "import": "./object_account"
     }]
   }
 }, {
-  "name": "GetObjectUser",
+  "name": "GetObjectAccount",
   "service": {
-    "path": "/GetObjectUser",
-    "body": "GetObjectUserRequestBody",
+    "path": "/GetObjectAccount",
+    "body": "GetObjectAccountRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "GetObjectUserResponse",
+    "response": "GetObjectAccountResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "SetObjectUserRelationshipRequestBody",
+  "name": "SetObjectAccountRelationshipRequestBody",
   "message": {
     "fields": [{
-      "name": "userId",
+      "name": "accountId",
       "type": "string"
     }, {
       "name": "relationship",
-      "type": "ObjectUserRelationship",
-      "import": "./object_user_relationship"
+      "type": "ObjectAccountRelationship",
+      "import": "./object_account_relationship"
     }]
   }
 }, {
-  "name": "SetObjectUserRelationshipResponse",
+  "name": "SetObjectAccountRelationshipResponse",
   "message": {
     "fields": []
   }
 }, {
-  "name": "SetObjectUserRelationship",
+  "name": "SetObjectAccountRelationship",
   "service": {
-    "path": "/SetObjectUserRelationship",
-    "body": "SetObjectUserRelationshipRequestBody",
+    "path": "/SetObjectAccountRelationship",
+    "body": "SetObjectAccountRelationshipRequestBody",
     "auth": {
       "key": "auth",
       "type": "UserSession",
       "import": "./user_session"
     },
-    "response": "SetObjectUserRelationshipResponse",
+    "response": "SetObjectAccountRelationshipResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
