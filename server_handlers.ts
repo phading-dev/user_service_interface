@@ -1,5 +1,5 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, RENEW_SESSION, RenewSessionRequestBody, RenewSessionResponse, GET_ACCOUNT_TYPE, GetAccountTypeRequestBody, GetAccountTypeResponse, LIST_OWNED_ACCOUNTS, ListOwnedAccountsRequestBody, ListOwnedAccountsResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_SUBJECT_ACCOUNT, GetSubjectAccountRequestBody, GetSubjectAccountResponse, GET_OBJECT_ACCOUNT, GetObjectAccountRequestBody, GetObjectAccountResponse, SET_OBJECT_ACCOUNT_RELATIONSHIP, SetObjectAccountRelationshipRequestBody, SetObjectAccountRelationshipResponse } from './interface';
+import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, GET_AUTH_SETTINGS, GetAuthSettingsRequestBody, GetAuthSettingsResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, RENEW_SESSION, RenewSessionRequestBody, RenewSessionResponse, GET_ACCOUNT_TYPE, GetAccountTypeRequestBody, GetAccountTypeResponse, LIST_OWNED_ACCOUNTS, ListOwnedAccountsRequestBody, ListOwnedAccountsResponse, UPDATE_NATURAL_NAME, UpdateNaturalNameRequestBody, UpdateNaturalNameResponse, UPDATE_DESCRIPTION, UpdateDescriptionRequestBody, UpdateDescriptionResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_SUBJECT_ACCOUNT, GetSubjectAccountRequestBody, GetSubjectAccountResponse, GET_OBJECT_ACCOUNT, GetObjectAccountRequestBody, GetObjectAccountResponse, SET_OBJECT_ACCOUNT_RELATIONSHIP, SetObjectAccountRelationshipRequestBody, SetObjectAccountRelationshipResponse } from './interface';
 import { UserSession } from './user_session';
 import { Readable } from 'stream';
 
@@ -17,6 +17,15 @@ export abstract class SignInHandlerInterface implements ServiceHandlerInterface 
     requestId: string,
     body: SignInRequestBody,
   ): Promise<SignInResponse>;
+}
+
+export abstract class GetAuthSettingsHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_AUTH_SETTINGS;
+  public abstract handle(
+    requestId: string,
+    body: GetAuthSettingsRequestBody,
+    auth: UserSession,
+  ): Promise<GetAuthSettingsResponse>;
 }
 
 export abstract class UpdatePasswordHandlerInterface implements ServiceHandlerInterface {
@@ -71,6 +80,24 @@ export abstract class ListOwnedAccountsHandlerInterface implements ServiceHandle
     body: ListOwnedAccountsRequestBody,
     auth: UserSession,
   ): Promise<ListOwnedAccountsResponse>;
+}
+
+export abstract class UpdateNaturalNameHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = UPDATE_NATURAL_NAME;
+  public abstract handle(
+    requestId: string,
+    body: UpdateNaturalNameRequestBody,
+    auth: UserSession,
+  ): Promise<UpdateNaturalNameResponse>;
+}
+
+export abstract class UpdateDescriptionHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = UPDATE_DESCRIPTION;
+  public abstract handle(
+    requestId: string,
+    body: UpdateDescriptionRequestBody,
+    auth: UserSession,
+  ): Promise<UpdateDescriptionResponse>;
 }
 
 export abstract class UploadAvatarHandlerInterface implements ServiceHandlerInterface {

@@ -1,10 +1,10 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from './account_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
+import { AuthSettings, AUTH_SETTINGS } from './auth_settings';
 import { USER_SESSION } from './user_session';
-import { Account, ACCOUNT } from './account';
-import { ObjectAccount, OBJECT_ACCOUNT } from './object_account';
-import { ObjectAccountRelationship, OBJECT_ACCOUNT_RELATIONSHIP } from './object_account_relationship';
+import { AccountShort, ACCOUNT_SHORT, AccountFull, ACCOUNT_FULL } from './account';
+import { ObjectAccountFull, OBJECT_ACCOUNT_FULL, ObjectAccountRelationship, OBJECT_ACCOUNT_RELATIONSHIP } from './object_account';
 
 export interface SignUpRequestBody {
   username?: string,
@@ -107,6 +107,44 @@ export let SIGN_IN: ServiceDescriptor = {
   },
   response: {
     messageType: SIGN_IN_RESPONSE,
+  },
+}
+
+export interface GetAuthSettingsRequestBody {
+}
+
+export let GET_AUTH_SETTINGS_REQUEST_BODY: MessageDescriptor<GetAuthSettingsRequestBody> = {
+  name: 'GetAuthSettingsRequestBody',
+  fields: [
+  ]
+};
+
+export interface GetAuthSettingsResponse {
+  authSettings?: AuthSettings,
+}
+
+export let GET_AUTH_SETTINGS_RESPONSE: MessageDescriptor<GetAuthSettingsResponse> = {
+  name: 'GetAuthSettingsResponse',
+  fields: [
+    {
+      name: 'authSettings',
+      messageType: AUTH_SETTINGS,
+    },
+  ]
+};
+
+export let GET_AUTH_SETTINGS: ServiceDescriptor = {
+  name: "GetAuthSettings",
+  path: "/GetAuthSettings",
+  body: {
+    messageType: GET_AUTH_SETTINGS_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: GET_AUTH_SETTINGS_RESPONSE,
   },
 }
 
@@ -335,7 +373,7 @@ export let LIST_OWNED_ACCOUNTS_REQUEST_BODY: MessageDescriptor<ListOwnedAccounts
 };
 
 export interface ListOwnedAccountsResponse {
-  accounts?: Array<Account>,
+  accounts?: Array<AccountShort>,
 }
 
 export let LIST_OWNED_ACCOUNTS_RESPONSE: MessageDescriptor<ListOwnedAccountsResponse> = {
@@ -343,7 +381,7 @@ export let LIST_OWNED_ACCOUNTS_RESPONSE: MessageDescriptor<ListOwnedAccountsResp
   fields: [
     {
       name: 'accounts',
-      messageType: ACCOUNT,
+      messageType: ACCOUNT_SHORT,
       isArray: true,
     },
   ]
@@ -361,6 +399,82 @@ export let LIST_OWNED_ACCOUNTS: ServiceDescriptor = {
   },
   response: {
     messageType: LIST_OWNED_ACCOUNTS_RESPONSE,
+  },
+}
+
+export interface UpdateNaturalNameRequestBody {
+  naturalName?: string,
+}
+
+export let UPDATE_NATURAL_NAME_REQUEST_BODY: MessageDescriptor<UpdateNaturalNameRequestBody> = {
+  name: 'UpdateNaturalNameRequestBody',
+  fields: [
+    {
+      name: 'naturalName',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface UpdateNaturalNameResponse {
+}
+
+export let UPDATE_NATURAL_NAME_RESPONSE: MessageDescriptor<UpdateNaturalNameResponse> = {
+  name: 'UpdateNaturalNameResponse',
+  fields: [
+  ]
+};
+
+export let UPDATE_NATURAL_NAME: ServiceDescriptor = {
+  name: "UpdateNaturalName",
+  path: "/UpdateNaturalName",
+  body: {
+    messageType: UPDATE_NATURAL_NAME_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: UPDATE_NATURAL_NAME_RESPONSE,
+  },
+}
+
+export interface UpdateDescriptionRequestBody {
+  description?: string,
+}
+
+export let UPDATE_DESCRIPTION_REQUEST_BODY: MessageDescriptor<UpdateDescriptionRequestBody> = {
+  name: 'UpdateDescriptionRequestBody',
+  fields: [
+    {
+      name: 'description',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface UpdateDescriptionResponse {
+}
+
+export let UPDATE_DESCRIPTION_RESPONSE: MessageDescriptor<UpdateDescriptionResponse> = {
+  name: 'UpdateDescriptionResponse',
+  fields: [
+  ]
+};
+
+export let UPDATE_DESCRIPTION: ServiceDescriptor = {
+  name: "UpdateDescription",
+  path: "/UpdateDescription",
+  body: {
+    messageType: UPDATE_DESCRIPTION_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: UPDATE_DESCRIPTION_RESPONSE,
   },
 }
 
@@ -398,7 +512,7 @@ export let GET_SUBJECT_ACCOUNT_REQUEST_BODY: MessageDescriptor<GetSubjectAccount
 };
 
 export interface GetSubjectAccountResponse {
-  account?: Account,
+  account?: AccountFull,
 }
 
 export let GET_SUBJECT_ACCOUNT_RESPONSE: MessageDescriptor<GetSubjectAccountResponse> = {
@@ -406,7 +520,7 @@ export let GET_SUBJECT_ACCOUNT_RESPONSE: MessageDescriptor<GetSubjectAccountResp
   fields: [
     {
       name: 'account',
-      messageType: ACCOUNT,
+      messageType: ACCOUNT_FULL,
     },
   ]
 };
@@ -441,7 +555,7 @@ export let GET_OBJECT_ACCOUNT_REQUEST_BODY: MessageDescriptor<GetObjectAccountRe
 };
 
 export interface GetObjectAccountResponse {
-  objectAccount?: ObjectAccount,
+  objectAccount?: ObjectAccountFull,
 }
 
 export let GET_OBJECT_ACCOUNT_RESPONSE: MessageDescriptor<GetObjectAccountResponse> = {
@@ -449,7 +563,7 @@ export let GET_OBJECT_ACCOUNT_RESPONSE: MessageDescriptor<GetObjectAccountRespon
   fields: [
     {
       name: 'objectAccount',
-      messageType: OBJECT_ACCOUNT,
+      messageType: OBJECT_ACCOUNT_FULL,
     },
   ]
 };

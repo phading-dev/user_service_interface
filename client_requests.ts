@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, GetAccountTypeRequestBody, GetAccountTypeResponse, GET_ACCOUNT_TYPE, ListOwnedAccountsRequestBody, ListOwnedAccountsResponse, LIST_OWNED_ACCOUNTS, UploadAvatarResponse, UPLOAD_AVATAR, GetSubjectAccountRequestBody, GetSubjectAccountResponse, GET_SUBJECT_ACCOUNT, GetObjectAccountRequestBody, GetObjectAccountResponse, GET_OBJECT_ACCOUNT, SetObjectAccountRelationshipRequestBody, SetObjectAccountRelationshipResponse, SET_OBJECT_ACCOUNT_RELATIONSHIP } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, GetAuthSettingsRequestBody, GetAuthSettingsResponse, GET_AUTH_SETTINGS, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, GetAccountTypeRequestBody, GetAccountTypeResponse, GET_ACCOUNT_TYPE, ListOwnedAccountsRequestBody, ListOwnedAccountsResponse, LIST_OWNED_ACCOUNTS, UpdateNaturalNameRequestBody, UpdateNaturalNameResponse, UPDATE_NATURAL_NAME, UpdateDescriptionRequestBody, UpdateDescriptionResponse, UPDATE_DESCRIPTION, UploadAvatarResponse, UPLOAD_AVATAR, GetSubjectAccountRequestBody, GetSubjectAccountResponse, GET_SUBJECT_ACCOUNT, GetObjectAccountRequestBody, GetObjectAccountResponse, GET_OBJECT_ACCOUNT, SetObjectAccountRelationshipRequestBody, SetObjectAccountRelationshipResponse, SET_OBJECT_ACCOUNT_RELATIONSHIP } from './interface';
 
 export function signUp(
   client: WebServiceClientInterface,
@@ -17,6 +17,16 @@ export function signIn(
 ): Promise<SignInResponse> {
   return client.send({
     descriptor: SIGN_IN,
+    body,
+  });
+}
+
+export function getAuthSettings(
+  client: WebServiceClientInterface,
+  body: GetAuthSettingsRequestBody,
+): Promise<GetAuthSettingsResponse> {
+  return client.send({
+    descriptor: GET_AUTH_SETTINGS,
     body,
   });
 }
@@ -77,6 +87,26 @@ export function listOwnedAccounts(
 ): Promise<ListOwnedAccountsResponse> {
   return client.send({
     descriptor: LIST_OWNED_ACCOUNTS,
+    body,
+  });
+}
+
+export function updateNaturalName(
+  client: WebServiceClientInterface,
+  body: UpdateNaturalNameRequestBody,
+): Promise<UpdateNaturalNameResponse> {
+  return client.send({
+    descriptor: UPDATE_NATURAL_NAME,
+    body,
+  });
+}
+
+export function updateDescription(
+  client: WebServiceClientInterface,
+  body: UpdateDescriptionRequestBody,
+): Promise<UpdateDescriptionResponse> {
+  return client.send({
+    descriptor: UPDATE_DESCRIPTION,
     body,
   });
 }

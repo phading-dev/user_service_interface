@@ -1,18 +1,60 @@
-import { MessageDescriptor } from '@selfage/message/descriptor';
-import { Account, ACCOUNT } from './account';
-import { ObjectAccountRelationship, OBJECT_ACCOUNT_RELATIONSHIP } from './object_account_relationship';
+import { EnumDescriptor, MessageDescriptor } from '@selfage/message/descriptor';
+import { AccountFull, ACCOUNT_FULL, AccountShort, ACCOUNT_SHORT } from './account';
 
-export interface ObjectAccount {
-  account?: Account,
+export enum ObjectAccountRelationship {
+  UNKNOWN = 0,
+  LIKE = 1,
+  DISLIKE = 2,
+}
+
+export let OBJECT_ACCOUNT_RELATIONSHIP: EnumDescriptor<ObjectAccountRelationship> = {
+  name: 'ObjectAccountRelationship',
+  values: [
+    {
+      name: 'UNKNOWN',
+      value: 0,
+    },
+    {
+      name: 'LIKE',
+      value: 1,
+    },
+    {
+      name: 'DISLIKE',
+      value: 2,
+    },
+  ]
+}
+
+export interface ObjectAccountFull {
+  accountFull?: AccountFull,
   relationship?: ObjectAccountRelationship,
 }
 
-export let OBJECT_ACCOUNT: MessageDescriptor<ObjectAccount> = {
-  name: 'ObjectAccount',
+export let OBJECT_ACCOUNT_FULL: MessageDescriptor<ObjectAccountFull> = {
+  name: 'ObjectAccountFull',
   fields: [
     {
-      name: 'account',
-      messageType: ACCOUNT,
+      name: 'accountFull',
+      messageType: ACCOUNT_FULL,
+    },
+    {
+      name: 'relationship',
+      enumType: OBJECT_ACCOUNT_RELATIONSHIP,
+    },
+  ]
+};
+
+export interface ObjectAccountShort {
+  accountShort?: AccountShort,
+  relationship?: ObjectAccountRelationship,
+}
+
+export let OBJECT_ACCOUNT_SHORT: MessageDescriptor<ObjectAccountShort> = {
+  name: 'ObjectAccountShort',
+  fields: [
+    {
+      name: 'accountShort',
+      messageType: ACCOUNT_SHORT,
     },
     {
       name: 'relationship',

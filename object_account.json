@@ -1,14 +1,39 @@
 [{
-  "name": "ObjectAccount",
+  "name": "ObjectAccountRelationship",
+  "enum": {
+    "values": [{
+      "name": "UNKNOWN",
+      "value": 0
+    }, {
+      "name": "LIKE",
+      "value": 1
+    }, {
+      "name": "DISLIKE",
+      "value": 2
+    }]
+  }
+}, {
+  "name": "ObjectAccountFull",
   "message": {
     "fields": [{
-      "name": "account",
-      "type": "Account",
+      "name": "accountFull",
+      "type": "AccountFull",
       "import": "./account"
     }, {
       "name": "relationship",
-      "type": "ObjectAccountRelationship",
-      "import": "./object_account_relationship"
+      "type": "ObjectAccountRelationship"
+    }]
+  }
+}, {
+  "name": "ObjectAccountShort",
+  "message": {
+    "fields": [{
+      "name": "accountShort",
+      "type": "AccountShort",
+      "import": "./account"
+    }, {
+      "name": "relationship",
+      "type": "ObjectAccountRelationship"
     }]
   }
 }]

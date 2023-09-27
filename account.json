@@ -1,5 +1,5 @@
 [{
-  "name": "Account",
+  "name": "AccountShort",
   "message": {
     "fields": [{
       "name": "accountType",
@@ -12,10 +12,28 @@
       "name": "naturalName",
       "type": "string"
     }, {
-      "name": "avatarLargePath",
+      "name": "avatarSmallPath",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "AccountFull",
+  "message": {
+    "fields": [{
+      "name": "accountType",
+      "type": "AccountType",
+      "import": "./account_type"
+    }, {
+      "name": "accountId",
       "type": "string"
     }, {
-      "name": "avatarSmallPath",
+      "name": "naturalName",
+      "type": "string"
+    }, {
+      "name": "description",
+      "type": "string"
+    }, {
+      "name": "avatarLargePath",
       "type": "string"
     }]
   }
