@@ -191,6 +191,49 @@ export let UPDATE_PASSWORD: ServiceDescriptor = {
   },
 }
 
+export interface UpdateRecoveryEmailRequestBody {
+  currentPassword?: string,
+  newEmail?: string,
+}
+
+export let UPDATE_RECOVERY_EMAIL_REQUEST_BODY: MessageDescriptor<UpdateRecoveryEmailRequestBody> = {
+  name: 'UpdateRecoveryEmailRequestBody',
+  fields: [
+    {
+      name: 'currentPassword',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'newEmail',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface UpdateRecoveryEmailResponse {
+}
+
+export let UPDATE_RECOVERY_EMAIL_RESPONSE: MessageDescriptor<UpdateRecoveryEmailResponse> = {
+  name: 'UpdateRecoveryEmailResponse',
+  fields: [
+  ]
+};
+
+export let UPDATE_RECOVERY_EMAIL: ServiceDescriptor = {
+  name: "UpdateRecoveryEmail",
+  path: "/UpdateRecoveryEmail",
+  body: {
+    messageType: UPDATE_RECOVERY_EMAIL_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: UPDATE_RECOVERY_EMAIL_RESPONSE,
+  },
+}
+
 export interface CreateAccountRequestBody {
   naturalName?: string,
   accountType?: AccountType,
@@ -437,6 +480,44 @@ export let UPDATE_NATURAL_NAME: ServiceDescriptor = {
   },
   response: {
     messageType: UPDATE_NATURAL_NAME_RESPONSE,
+  },
+}
+
+export interface UpdateContactEmailRequestBody {
+  contactEmail?: string,
+}
+
+export let UPDATE_CONTACT_EMAIL_REQUEST_BODY: MessageDescriptor<UpdateContactEmailRequestBody> = {
+  name: 'UpdateContactEmailRequestBody',
+  fields: [
+    {
+      name: 'contactEmail',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface UpdateContactEmailResponse {
+}
+
+export let UPDATE_CONTACT_EMAIL_RESPONSE: MessageDescriptor<UpdateContactEmailResponse> = {
+  name: 'UpdateContactEmailResponse',
+  fields: [
+  ]
+};
+
+export let UPDATE_CONTACT_EMAIL: ServiceDescriptor = {
+  name: "UpdateContactEmail",
+  path: "/UpdateContactEmail",
+  body: {
+    messageType: UPDATE_CONTACT_EMAIL_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: UPDATE_CONTACT_EMAIL_RESPONSE,
   },
 }
 

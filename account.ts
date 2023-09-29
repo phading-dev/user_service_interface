@@ -34,6 +34,7 @@ export interface AccountFull {
   accountType?: AccountType,
   accountId?: string,
   naturalName?: string,
+  contactEmail?: string,
   description?: string,
   avatarLargePath?: string,
 }
@@ -51,6 +52,10 @@ export let ACCOUNT_FULL: MessageDescriptor<AccountFull> = {
     },
     {
       name: 'naturalName',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'contactEmail',
       primitiveType: PrimitiveType.STRING,
     },
     {

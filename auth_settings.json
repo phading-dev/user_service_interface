@@ -4,6 +4,9 @@
     "fields": [{
       "name": "username",
       "type": "string"
+    }, {
+      "name": "recoveryEmail",
+      "type": "string"
     }]
   }
 }]

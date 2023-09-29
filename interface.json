@@ -124,6 +124,36 @@
     "outputHandler": "./server_handlers"
   }
 }, {
+  "name": "UpdateRecoveryEmailRequestBody",
+  "message": {
+    "fields": [{
+      "name": "currentPassword",
+      "type": "string"
+    }, {
+      "name": "newEmail",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UpdateRecoveryEmailResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UpdateRecoveryEmail",
+  "service": {
+    "path": "/UpdateRecoveryEmail",
+    "body": "UpdateRecoveryEmailRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UpdateRecoveryEmailResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
   "name": "CreateAccountRequestBody",
   "message": {
     "fields": [{
@@ -299,6 +329,33 @@
       "import": "./user_session"
     },
     "response": "UpdateNaturalNameResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "UpdateContactEmailRequestBody",
+  "message": {
+    "fields": [{
+      "name": "contactEmail",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UpdateContactEmailResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UpdateContactEmail",
+  "service": {
+    "path": "/UpdateContactEmail",
+    "body": "UpdateContactEmailRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UpdateContactEmailResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

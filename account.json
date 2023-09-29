@@ -30,6 +30,9 @@
       "name": "naturalName",
       "type": "string"
     }, {
+      "name": "contactEmail",
+      "type": "string"
+    }, {
       "name": "description",
       "type": "string"
     }, {
