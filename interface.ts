@@ -191,6 +191,49 @@ export let UPDATE_PASSWORD: ServiceDescriptor = {
   },
 }
 
+export interface UpdateUsernameRequestBody {
+  currentPassword?: string,
+  newUsername?: string,
+}
+
+export let UPDATE_USERNAME_REQUEST_BODY: MessageDescriptor<UpdateUsernameRequestBody> = {
+  name: 'UpdateUsernameRequestBody',
+  fields: [
+    {
+      name: 'currentPassword',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'newUsername',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface UpdateUsernameResponse {
+}
+
+export let UPDATE_USERNAME_RESPONSE: MessageDescriptor<UpdateUsernameResponse> = {
+  name: 'UpdateUsernameResponse',
+  fields: [
+  ]
+};
+
+export let UPDATE_USERNAME: ServiceDescriptor = {
+  name: "UpdateUsername",
+  path: "/UpdateUsername",
+  body: {
+    messageType: UPDATE_USERNAME_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: USER_SESSION
+  },
+  response: {
+    messageType: UPDATE_USERNAME_RESPONSE,
+  },
+}
+
 export interface UpdateRecoveryEmailRequestBody {
   currentPassword?: string,
   newEmail?: string,

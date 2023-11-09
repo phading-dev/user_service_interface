@@ -124,6 +124,36 @@
     "outputHandler": "./server_handlers"
   }
 }, {
+  "name": "UpdateUsernameRequestBody",
+  "message": {
+    "fields": [{
+      "name": "currentPassword",
+      "type": "string"
+    }, {
+      "name": "newUsername",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UpdateUsernameResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UpdateUsername",
+  "service": {
+    "path": "/UpdateUsername",
+    "body": "UpdateUsernameRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "UserSession",
+      "import": "./user_session"
+    },
+    "response": "UpdateUsernameResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
   "name": "UpdateRecoveryEmailRequestBody",
   "message": {
     "fields": [{
