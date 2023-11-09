@@ -137,7 +137,10 @@
 }, {
   "name": "UpdateUsernameResponse",
   "message": {
-    "fields": []
+    "fields": [{
+      "name": "usernameIsNotAvailable",
+      "type": "boolean"
+    }]
   }
 }, {
   "name": "UpdateUsername",

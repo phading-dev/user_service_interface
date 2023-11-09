@@ -211,11 +211,16 @@ export let UPDATE_USERNAME_REQUEST_BODY: MessageDescriptor<UpdateUsernameRequest
 };
 
 export interface UpdateUsernameResponse {
+  usernameIsNotAvailable?: boolean,
 }
 
 export let UPDATE_USERNAME_RESPONSE: MessageDescriptor<UpdateUsernameResponse> = {
   name: 'UpdateUsernameResponse',
   fields: [
+    {
+      name: 'usernameIsNotAvailable',
+      primitiveType: PrimitiveType.BOOLEAN,
+    },
   ]
 };
 
