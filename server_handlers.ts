@@ -1,6 +1,6 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, GET_AUTH_SETTINGS, GetAuthSettingsRequestBody, GetAuthSettingsResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_USERNAME, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, RENEW_SESSION, RenewSessionRequestBody, RenewSessionResponse, GET_ACCOUNT_TYPE, GetAccountTypeRequestBody, GetAccountTypeResponse, LIST_OWNED_ACCOUNTS, ListOwnedAccountsRequestBody, ListOwnedAccountsResponse, UPDATE_NATURAL_NAME, UpdateNaturalNameRequestBody, UpdateNaturalNameResponse, UPDATE_CONTACT_EMAIL, UpdateContactEmailRequestBody, UpdateContactEmailResponse, UPDATE_DESCRIPTION, UpdateDescriptionRequestBody, UpdateDescriptionResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_SUBJECT_ACCOUNT, GetSubjectAccountRequestBody, GetSubjectAccountResponse, GET_OBJECT_ACCOUNT, GetObjectAccountRequestBody, GetObjectAccountResponse, SET_OBJECT_ACCOUNT_RELATIONSHIP, SetObjectAccountRelationshipRequestBody, SetObjectAccountRelationshipResponse } from './interface';
-import { UserSession } from './user_session';
+import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, GET_AUTH_SETTINGS, GetAuthSettingsRequestBody, GetAuthSettingsResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_USERNAME, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, RENEW_SESSION, RenewSessionRequestBody, RenewSessionResponse, GET_ACCOUNT_TYPE, GetAccountTypeRequestBody, GetAccountTypeResponse, LIST_OWNED_ACCOUNTS, ListOwnedAccountsRequestBody, ListOwnedAccountsResponse, UPDATE_NATURAL_NAME, UpdateNaturalNameRequestBody, UpdateNaturalNameResponse, UPDATE_CONTACT_EMAIL, UpdateContactEmailRequestBody, UpdateContactEmailResponse, UPDATE_DESCRIPTION, UpdateDescriptionRequestBody, UpdateDescriptionResponse, UPLOAD_AVATAR, UploadAvatarResponse, GET_SUBJECT_ACCOUNT, GetSubjectAccountRequestBody, GetSubjectAccountResponse, GET_OBJECT_ACCOUNT, GetObjectAccountRequestBody, GetObjectAccountResponse, SET_OBJECT_ACCOUNT_RELATIONSHIP, SetObjectAccountRelationshipRequestBody, SetObjectAccountRelationshipResponse, LIST_PAYMENT_METHODS, ListPaymentMethodsRequestBody, ListPaymentMethodsResponse, CREATE_STRIPE_SESSION_TO_ADD_PAYMENT_METHOD, CreateStripeSessionToAddPaymentMethodRequestBody, CreateStripeSessionToAddPaymentMethodResponse } from './interface';
+import { ClientSideSession } from './client_side_session';
 import { Readable } from 'stream';
 
 export abstract class SignUpHandlerInterface implements ServiceHandlerInterface {
@@ -24,7 +24,7 @@ export abstract class GetAuthSettingsHandlerInterface implements ServiceHandlerI
   public abstract handle(
     requestId: string,
     body: GetAuthSettingsRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<GetAuthSettingsResponse>;
 }
 
@@ -33,7 +33,7 @@ export abstract class UpdatePasswordHandlerInterface implements ServiceHandlerIn
   public abstract handle(
     requestId: string,
     body: UpdatePasswordRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<UpdatePasswordResponse>;
 }
 
@@ -42,7 +42,7 @@ export abstract class UpdateUsernameHandlerInterface implements ServiceHandlerIn
   public abstract handle(
     requestId: string,
     body: UpdateUsernameRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<UpdateUsernameResponse>;
 }
 
@@ -51,7 +51,7 @@ export abstract class UpdateRecoveryEmailHandlerInterface implements ServiceHand
   public abstract handle(
     requestId: string,
     body: UpdateRecoveryEmailRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<UpdateRecoveryEmailResponse>;
 }
 
@@ -60,7 +60,7 @@ export abstract class CreateAccountHandlerInterface implements ServiceHandlerInt
   public abstract handle(
     requestId: string,
     body: CreateAccountRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<CreateAccountResponse>;
 }
 
@@ -69,7 +69,7 @@ export abstract class SwitchAccountHandlerInterface implements ServiceHandlerInt
   public abstract handle(
     requestId: string,
     body: SwitchAccountRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<SwitchAccountResponse>;
 }
 
@@ -78,7 +78,7 @@ export abstract class RenewSessionHandlerInterface implements ServiceHandlerInte
   public abstract handle(
     requestId: string,
     body: RenewSessionRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<RenewSessionResponse>;
 }
 
@@ -87,7 +87,7 @@ export abstract class GetAccountTypeHandlerInterface implements ServiceHandlerIn
   public abstract handle(
     requestId: string,
     body: GetAccountTypeRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<GetAccountTypeResponse>;
 }
 
@@ -96,7 +96,7 @@ export abstract class ListOwnedAccountsHandlerInterface implements ServiceHandle
   public abstract handle(
     requestId: string,
     body: ListOwnedAccountsRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<ListOwnedAccountsResponse>;
 }
 
@@ -105,7 +105,7 @@ export abstract class UpdateNaturalNameHandlerInterface implements ServiceHandle
   public abstract handle(
     requestId: string,
     body: UpdateNaturalNameRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<UpdateNaturalNameResponse>;
 }
 
@@ -114,7 +114,7 @@ export abstract class UpdateContactEmailHandlerInterface implements ServiceHandl
   public abstract handle(
     requestId: string,
     body: UpdateContactEmailRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<UpdateContactEmailResponse>;
 }
 
@@ -123,7 +123,7 @@ export abstract class UpdateDescriptionHandlerInterface implements ServiceHandle
   public abstract handle(
     requestId: string,
     body: UpdateDescriptionRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<UpdateDescriptionResponse>;
 }
 
@@ -132,7 +132,7 @@ export abstract class UploadAvatarHandlerInterface implements ServiceHandlerInte
   public abstract handle(
     requestId: string,
     body: Readable,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<UploadAvatarResponse>;
 }
 
@@ -141,7 +141,7 @@ export abstract class GetSubjectAccountHandlerInterface implements ServiceHandle
   public abstract handle(
     requestId: string,
     body: GetSubjectAccountRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<GetSubjectAccountResponse>;
 }
 
@@ -150,7 +150,7 @@ export abstract class GetObjectAccountHandlerInterface implements ServiceHandler
   public abstract handle(
     requestId: string,
     body: GetObjectAccountRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<GetObjectAccountResponse>;
 }
 
@@ -159,6 +159,24 @@ export abstract class SetObjectAccountRelationshipHandlerInterface implements Se
   public abstract handle(
     requestId: string,
     body: SetObjectAccountRelationshipRequestBody,
-    auth: UserSession,
+    auth: ClientSideSession,
   ): Promise<SetObjectAccountRelationshipResponse>;
+}
+
+export abstract class ListPaymentMethodsHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = LIST_PAYMENT_METHODS;
+  public abstract handle(
+    requestId: string,
+    body: ListPaymentMethodsRequestBody,
+    auth: ClientSideSession,
+  ): Promise<ListPaymentMethodsResponse>;
+}
+
+export abstract class CreateStripeSessionToAddPaymentMethodHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = CREATE_STRIPE_SESSION_TO_ADD_PAYMENT_METHOD;
+  public abstract handle(
+    requestId: string,
+    body: CreateStripeSessionToAddPaymentMethodRequestBody,
+    auth: ClientSideSession,
+  ): Promise<CreateStripeSessionToAddPaymentMethodResponse>;
 }

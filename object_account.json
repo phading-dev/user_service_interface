@@ -25,11 +25,11 @@
     }]
   }
 }, {
-  "name": "ObjectAccountShort",
+  "name": "ObjectAccountSnapshot",
   "message": {
     "fields": [{
-      "name": "accountShort",
-      "type": "AccountShort",
+      "name": "accountSnapshot",
+      "type": "AccountSnapshot",
       "import": "./account"
     }, {
       "name": "relationship",

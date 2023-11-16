@@ -1,5 +1,5 @@
 import { EnumDescriptor, MessageDescriptor } from '@selfage/message/descriptor';
-import { AccountFull, ACCOUNT_FULL, AccountShort, ACCOUNT_SHORT } from './account';
+import { AccountFull, ACCOUNT_FULL, AccountSnapshot, ACCOUNT_SNAPSHOT } from './account';
 
 export enum ObjectAccountRelationship {
   UNKNOWN = 0,
@@ -44,17 +44,17 @@ export let OBJECT_ACCOUNT_FULL: MessageDescriptor<ObjectAccountFull> = {
   ]
 };
 
-export interface ObjectAccountShort {
-  accountShort?: AccountShort,
+export interface ObjectAccountSnapshot {
+  accountSnapshot?: AccountSnapshot,
   relationship?: ObjectAccountRelationship,
 }
 
-export let OBJECT_ACCOUNT_SHORT: MessageDescriptor<ObjectAccountShort> = {
-  name: 'ObjectAccountShort',
+export let OBJECT_ACCOUNT_SNAPSHOT: MessageDescriptor<ObjectAccountSnapshot> = {
+  name: 'ObjectAccountSnapshot',
   fields: [
     {
-      name: 'accountShort',
-      messageType: ACCOUNT_SHORT,
+      name: 'accountSnapshot',
+      messageType: ACCOUNT_SNAPSHOT,
     },
     {
       name: 'relationship',

@@ -1,5 +1,5 @@
 [{
-  "name": "AccountShort",
+  "name": "AccountSnapshot",
   "message": {
     "fields": [{
       "name": "accountType",

@@ -1,0 +1,29 @@
+[{
+  "name": "PaymentCardMystified",
+  "message": {
+    "fields": [{
+      "name": "brand",
+      "type": "string"
+    }, {
+      "name": "lastFourDigits",
+      "type": "string"
+    }, {
+      "name": "expMonth",
+      "type": "number"
+    }, {
+      "name": "expYear",
+      "type": "number"
+    }]
+  }
+}, {
+  "name": "PaymentMethodMystified",
+  "message": {
+    "fields": [{
+      "name": "id",
+      "type": "string"
+    }, {
+      "name": "card",
+      "type": "PaymentCardMystified"
+    }]
+  }
+}]
