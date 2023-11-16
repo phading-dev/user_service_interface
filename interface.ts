@@ -766,7 +766,7 @@ export let LIST_PAYMENT_METHODS_REQUEST_BODY: MessageDescriptor<ListPaymentMetho
 };
 
 export interface ListPaymentMethodsResponse {
-  paymentMethods?: PaymentMethodMystified,
+  paymentMethods?: Array<PaymentMethodMystified>,
 }
 
 export let LIST_PAYMENT_METHODS_RESPONSE: MessageDescriptor<ListPaymentMethodsResponse> = {
@@ -775,6 +775,7 @@ export let LIST_PAYMENT_METHODS_RESPONSE: MessageDescriptor<ListPaymentMethodsRe
     {
       name: 'paymentMethods',
       messageType: PAYMENT_METHOD_MYSTIFIED,
+      isArray: true,
     },
   ]
 };

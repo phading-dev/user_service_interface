@@ -539,7 +539,8 @@
     "fields": [{
       "name": "paymentMethods",
       "type": "PaymentMethodMystified",
-      "import": "./payment_method_mystified"
+      "import": "./payment_method_mystified",
+      "isArray": true
     }]
   }
 }, {
