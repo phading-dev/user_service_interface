@@ -2,10 +2,9 @@ import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from './account_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 import { AuthSettings, AUTH_SETTINGS } from './auth_settings';
-import { CLIENT_SIDE_SESSION } from './client_side_session';
+import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
 import { AccountSnapshot, ACCOUNT_SNAPSHOT, AccountFull, ACCOUNT_FULL } from './account';
 import { ObjectAccountFull, OBJECT_ACCOUNT_FULL, ObjectAccountRelationship, OBJECT_ACCOUNT_RELATIONSHIP } from './object_account';
-import { PaymentMethodMystified, PAYMENT_METHOD_MYSTIFIED } from './payment_method_mystified';
 
 export interface SignUpRequestBody {
   username?: string,
@@ -142,7 +141,7 @@ export let GET_AUTH_SETTINGS: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: GET_AUTH_SETTINGS_RESPONSE,
@@ -185,7 +184,7 @@ export let UPDATE_PASSWORD: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_PASSWORD_RESPONSE,
@@ -233,7 +232,7 @@ export let UPDATE_USERNAME: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_USERNAME_RESPONSE,
@@ -276,7 +275,7 @@ export let UPDATE_RECOVERY_EMAIL: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_RECOVERY_EMAIL_RESPONSE,
@@ -324,7 +323,7 @@ export let CREATE_ACCOUNT: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: CREATE_ACCOUNT_RESPONSE,
@@ -367,48 +366,10 @@ export let SWITCH_ACCOUNT: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: SWITCH_ACCOUNT_RESPONSE,
-  },
-}
-
-export interface RenewSessionRequestBody {
-}
-
-export let RENEW_SESSION_REQUEST_BODY: MessageDescriptor<RenewSessionRequestBody> = {
-  name: 'RenewSessionRequestBody',
-  fields: [
-  ]
-};
-
-export interface RenewSessionResponse {
-  signedSession?: string,
-}
-
-export let RENEW_SESSION_RESPONSE: MessageDescriptor<RenewSessionResponse> = {
-  name: 'RenewSessionResponse',
-  fields: [
-    {
-      name: 'signedSession',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export let RENEW_SESSION: ServiceDescriptor = {
-  name: "RenewSession",
-  path: "/RenewSession",
-  body: {
-    messageType: RENEW_SESSION_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: CLIENT_SIDE_SESSION
-  },
-  response: {
-    messageType: RENEW_SESSION_RESPONSE,
   },
 }
 
@@ -443,7 +404,7 @@ export let GET_ACCOUNT_TYPE: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: GET_ACCOUNT_TYPE_RESPONSE,
@@ -487,7 +448,7 @@ export let LIST_OWNED_ACCOUNTS: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: LIST_OWNED_ACCOUNTS_RESPONSE,
@@ -525,7 +486,7 @@ export let UPDATE_NATURAL_NAME: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_NATURAL_NAME_RESPONSE,
@@ -563,7 +524,7 @@ export let UPDATE_CONTACT_EMAIL: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_CONTACT_EMAIL_RESPONSE,
@@ -601,7 +562,7 @@ export let UPDATE_DESCRIPTION: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_DESCRIPTION_RESPONSE,
@@ -625,7 +586,7 @@ export let UPLOAD_AVATAR: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: UPLOAD_AVATAR_RESPONSE,
@@ -663,7 +624,7 @@ export let GET_SUBJECT_ACCOUNT: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: GET_SUBJECT_ACCOUNT_RESPONSE,
@@ -706,7 +667,7 @@ export let GET_OBJECT_ACCOUNT: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: GET_OBJECT_ACCOUNT_RESPONSE,
@@ -749,86 +710,9 @@ export let SET_OBJECT_ACCOUNT_RELATIONSHIP: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: CLIENT_SIDE_SESSION
+    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: SET_OBJECT_ACCOUNT_RELATIONSHIP_RESPONSE,
-  },
-}
-
-export interface ListPaymentMethodsRequestBody {
-}
-
-export let LIST_PAYMENT_METHODS_REQUEST_BODY: MessageDescriptor<ListPaymentMethodsRequestBody> = {
-  name: 'ListPaymentMethodsRequestBody',
-  fields: [
-  ]
-};
-
-export interface ListPaymentMethodsResponse {
-  paymentMethods?: Array<PaymentMethodMystified>,
-}
-
-export let LIST_PAYMENT_METHODS_RESPONSE: MessageDescriptor<ListPaymentMethodsResponse> = {
-  name: 'ListPaymentMethodsResponse',
-  fields: [
-    {
-      name: 'paymentMethods',
-      messageType: PAYMENT_METHOD_MYSTIFIED,
-      isArray: true,
-    },
-  ]
-};
-
-export let LIST_PAYMENT_METHODS: ServiceDescriptor = {
-  name: "ListPaymentMethods",
-  path: "/ListPaymentMethods",
-  body: {
-    messageType: LIST_PAYMENT_METHODS_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: CLIENT_SIDE_SESSION
-  },
-  response: {
-    messageType: LIST_PAYMENT_METHODS_RESPONSE,
-  },
-}
-
-export interface CreateStripeSessionToAddPaymentMethodRequestBody {
-}
-
-export let CREATE_STRIPE_SESSION_TO_ADD_PAYMENT_METHOD_REQUEST_BODY: MessageDescriptor<CreateStripeSessionToAddPaymentMethodRequestBody> = {
-  name: 'CreateStripeSessionToAddPaymentMethodRequestBody',
-  fields: [
-  ]
-};
-
-export interface CreateStripeSessionToAddPaymentMethodResponse {
-  redirectUrl?: string,
-}
-
-export let CREATE_STRIPE_SESSION_TO_ADD_PAYMENT_METHOD_RESPONSE: MessageDescriptor<CreateStripeSessionToAddPaymentMethodResponse> = {
-  name: 'CreateStripeSessionToAddPaymentMethodResponse',
-  fields: [
-    {
-      name: 'redirectUrl',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export let CREATE_STRIPE_SESSION_TO_ADD_PAYMENT_METHOD: ServiceDescriptor = {
-  name: "CreateStripeSessionToAddPaymentMethod",
-  path: "/CreateStripeSessionToAddPaymentMethod",
-  body: {
-    messageType: CREATE_STRIPE_SESSION_TO_ADD_PAYMENT_METHOD_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: CLIENT_SIDE_SESSION
-  },
-  response: {
-    messageType: CREATE_STRIPE_SESSION_TO_ADD_PAYMENT_METHOD_RESPONSE,
   },
 }

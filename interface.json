@@ -86,8 +86,8 @@
     "body": "GetAuthSettingsRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "GetAuthSettingsResponse",
     "outputWebClient": "./client_requests",
@@ -116,8 +116,8 @@
     "body": "UpdatePasswordRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "UpdatePasswordResponse",
     "outputWebClient": "./client_requests",
@@ -149,8 +149,8 @@
     "body": "UpdateUsernameRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "UpdateUsernameResponse",
     "outputWebClient": "./client_requests",
@@ -179,8 +179,8 @@
     "body": "UpdateRecoveryEmailRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "UpdateRecoveryEmailResponse",
     "outputWebClient": "./client_requests",
@@ -213,8 +213,8 @@
     "body": "CreateAccountRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "CreateAccountResponse",
     "outputWebClient": "./client_requests",
@@ -243,37 +243,10 @@
     "body": "SwitchAccountRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "SwitchAccountResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "RenewSessionRequestBody",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "RenewSessionResponse",
-  "message": {
-    "fields": [{
-      "name": "signedSession",
-      "type": "string"
-    }]
-  }
-}, {
-  "name": "RenewSession",
-  "service": {
-    "path": "/RenewSession",
-    "body": "RenewSessionRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
-    },
-    "response": "RenewSessionResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
@@ -298,8 +271,8 @@
     "body": "GetAccountTypeRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "GetAccountTypeResponse",
     "outputWebClient": "./client_requests",
@@ -331,8 +304,8 @@
     "body": "ListOwnedAccountsRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "ListOwnedAccountsResponse",
     "outputWebClient": "./client_requests",
@@ -358,8 +331,8 @@
     "body": "UpdateNaturalNameRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "UpdateNaturalNameResponse",
     "outputWebClient": "./client_requests",
@@ -385,8 +358,8 @@
     "body": "UpdateContactEmailRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "UpdateContactEmailResponse",
     "outputWebClient": "./client_requests",
@@ -412,8 +385,8 @@
     "body": "UpdateDescriptionRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "UpdateDescriptionResponse",
     "outputWebClient": "./client_requests",
@@ -431,8 +404,8 @@
     "body": "bytes",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "UploadAvatarResponse",
     "outputWebClient": "./client_requests",
@@ -459,8 +432,8 @@
     "body": "GetSubjectAccountRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "GetSubjectAccountResponse",
     "outputWebClient": "./client_requests",
@@ -490,8 +463,8 @@
     "body": "GetObjectAccountRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "GetObjectAccountResponse",
     "outputWebClient": "./client_requests",
@@ -521,66 +494,10 @@
     "body": "SetObjectAccountRelationshipRequestBody",
     "auth": {
       "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "SetObjectAccountRelationshipResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "ListPaymentMethodsRequestBody",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "ListPaymentMethodsResponse",
-  "message": {
-    "fields": [{
-      "name": "paymentMethods",
-      "type": "PaymentMethodMystified",
-      "import": "./payment_method_mystified",
-      "isArray": true
-    }]
-  }
-}, {
-  "name": "ListPaymentMethods",
-  "service": {
-    "path": "/ListPaymentMethods",
-    "body": "ListPaymentMethodsRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
-    },
-    "response": "ListPaymentMethodsResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "CreateStripeSessionToAddPaymentMethodRequestBody",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "CreateStripeSessionToAddPaymentMethodResponse",
-  "message": {
-    "fields": [{
-      "name": "redirectUrl",
-      "type": "string"
-    }]
-  }
-}, {
-  "name": "CreateStripeSessionToAddPaymentMethod",
-  "service": {
-    "path": "/CreateStripeSessionToAddPaymentMethod",
-    "body": "CreateStripeSessionToAddPaymentMethodRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSideSession",
-      "import": "./client_side_session"
-    },
-    "response": "CreateStripeSessionToAddPaymentMethodResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

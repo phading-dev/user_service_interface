@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, GetAuthSettingsRequestBody, GetAuthSettingsResponse, GET_AUTH_SETTINGS, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_USERNAME, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, UPDATE_RECOVERY_EMAIL, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION, GetAccountTypeRequestBody, GetAccountTypeResponse, GET_ACCOUNT_TYPE, ListOwnedAccountsRequestBody, ListOwnedAccountsResponse, LIST_OWNED_ACCOUNTS, UpdateNaturalNameRequestBody, UpdateNaturalNameResponse, UPDATE_NATURAL_NAME, UpdateContactEmailRequestBody, UpdateContactEmailResponse, UPDATE_CONTACT_EMAIL, UpdateDescriptionRequestBody, UpdateDescriptionResponse, UPDATE_DESCRIPTION, UploadAvatarResponse, UPLOAD_AVATAR, GetSubjectAccountRequestBody, GetSubjectAccountResponse, GET_SUBJECT_ACCOUNT, GetObjectAccountRequestBody, GetObjectAccountResponse, GET_OBJECT_ACCOUNT, SetObjectAccountRelationshipRequestBody, SetObjectAccountRelationshipResponse, SET_OBJECT_ACCOUNT_RELATIONSHIP, ListPaymentMethodsRequestBody, ListPaymentMethodsResponse, LIST_PAYMENT_METHODS, CreateStripeSessionToAddPaymentMethodRequestBody, CreateStripeSessionToAddPaymentMethodResponse, CREATE_STRIPE_SESSION_TO_ADD_PAYMENT_METHOD } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, GetAuthSettingsRequestBody, GetAuthSettingsResponse, GET_AUTH_SETTINGS, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_USERNAME, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, UPDATE_RECOVERY_EMAIL, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, GetAccountTypeRequestBody, GetAccountTypeResponse, GET_ACCOUNT_TYPE, ListOwnedAccountsRequestBody, ListOwnedAccountsResponse, LIST_OWNED_ACCOUNTS, UpdateNaturalNameRequestBody, UpdateNaturalNameResponse, UPDATE_NATURAL_NAME, UpdateContactEmailRequestBody, UpdateContactEmailResponse, UPDATE_CONTACT_EMAIL, UpdateDescriptionRequestBody, UpdateDescriptionResponse, UPDATE_DESCRIPTION, UploadAvatarResponse, UPLOAD_AVATAR, GetSubjectAccountRequestBody, GetSubjectAccountResponse, GET_SUBJECT_ACCOUNT, GetObjectAccountRequestBody, GetObjectAccountResponse, GET_OBJECT_ACCOUNT, SetObjectAccountRelationshipRequestBody, SetObjectAccountRelationshipResponse, SET_OBJECT_ACCOUNT_RELATIONSHIP } from './interface';
 
 export function signUp(
   client: WebServiceClientInterface,
@@ -77,16 +77,6 @@ export function switchAccount(
 ): Promise<SwitchAccountResponse> {
   return client.send({
     descriptor: SWITCH_ACCOUNT,
-    body,
-  });
-}
-
-export function renewSession(
-  client: WebServiceClientInterface,
-  body: RenewSessionRequestBody,
-): Promise<RenewSessionResponse> {
-  return client.send({
-    descriptor: RENEW_SESSION,
     body,
   });
 }
@@ -177,26 +167,6 @@ export function setObjectAccountRelationship(
 ): Promise<SetObjectAccountRelationshipResponse> {
   return client.send({
     descriptor: SET_OBJECT_ACCOUNT_RELATIONSHIP,
-    body,
-  });
-}
-
-export function listPaymentMethods(
-  client: WebServiceClientInterface,
-  body: ListPaymentMethodsRequestBody,
-): Promise<ListPaymentMethodsResponse> {
-  return client.send({
-    descriptor: LIST_PAYMENT_METHODS,
-    body,
-  });
-}
-
-export function createStripeSessionToAddPaymentMethod(
-  client: WebServiceClientInterface,
-  body: CreateStripeSessionToAddPaymentMethodRequestBody,
-): Promise<CreateStripeSessionToAddPaymentMethodResponse> {
-  return client.send({
-    descriptor: CREATE_STRIPE_SESSION_TO_ADD_PAYMENT_METHOD,
     body,
   });
 }
