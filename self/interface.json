@@ -13,7 +13,7 @@
     }, {
       "name": "accountType",
       "type": "AccountType",
-      "import": "./account_type"
+      "import": "../account_type"
     }]
   }
 }, {
@@ -195,7 +195,7 @@
     }, {
       "name": "accountType",
       "type": "AccountType",
-      "import": "./account_type"
+      "import": "../account_type"
     }]
   }
 }, {
@@ -261,7 +261,7 @@
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "./account_type"
+      "import": "../account_type"
     }]
   }
 }, {
@@ -279,16 +279,16 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "ListOwnedAccountsRequestBody",
+  "name": "ListAccountsRequestBody",
   "message": {
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "./account_type"
+      "import": "../account_type"
     }]
   }
 }, {
-  "name": "ListOwnedAccountsResponse",
+  "name": "ListAccountsResponse",
   "message": {
     "fields": [{
       "name": "accounts",
@@ -298,206 +298,96 @@
     }]
   }
 }, {
-  "name": "ListOwnedAccounts",
+  "name": "ListAccounts",
   "service": {
-    "path": "/ListOwnedAccounts",
-    "body": "ListOwnedAccountsRequestBody",
+    "path": "/ListAccounts",
+    "body": "ListAccountsRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "ListOwnedAccountsResponse",
+    "response": "ListAccountsResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "UpdateNaturalNameRequestBody",
+  "name": "UpdateAccountRequestBody",
   "message": {
     "fields": [{
       "name": "naturalName",
       "type": "string"
-    }]
-  }
-}, {
-  "name": "UpdateNaturalNameResponse",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "UpdateNaturalName",
-  "service": {
-    "path": "/UpdateNaturalName",
-    "body": "UpdateNaturalNameRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
-    },
-    "response": "UpdateNaturalNameResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "UpdateContactEmailRequestBody",
-  "message": {
-    "fields": [{
+    }, {
       "name": "contactEmail",
       "type": "string"
-    }]
-  }
-}, {
-  "name": "UpdateContactEmailResponse",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "UpdateContactEmail",
-  "service": {
-    "path": "/UpdateContactEmail",
-    "body": "UpdateContactEmailRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
-    },
-    "response": "UpdateContactEmailResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "UpdateDescriptionRequestBody",
-  "message": {
-    "fields": [{
+    }, {
       "name": "description",
       "type": "string"
     }]
   }
 }, {
-  "name": "UpdateDescriptionResponse",
+  "name": "UpdateAccountResponse",
   "message": {
     "fields": []
   }
 }, {
-  "name": "UpdateDescription",
+  "name": "UpdateAccount",
   "service": {
-    "path": "/UpdateDescription",
-    "body": "UpdateDescriptionRequestBody",
+    "path": "/UpdateAccount",
+    "body": "UpdateAccountRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "UpdateDescriptionResponse",
+    "response": "UpdateAccountResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "UploadAvatarResponse",
+  "name": "UploadAccountAvatarResponse",
   "message": {
     "fields": []
   }
 }, {
-  "name": "UploadAvatar",
+  "name": "UploadAccountAvatar",
   "service": {
-    "path": "/UploadAvatar",
+    "path": "/UploadAccountAvatar",
     "body": "bytes",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "UploadAvatarResponse",
+    "response": "UploadAccountAvatarResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetSubjectAccountRequestBody",
+  "name": "GetAccountRequestBody",
   "message": {
     "fields": []
   }
 }, {
-  "name": "GetSubjectAccountResponse",
+  "name": "GetAccountResponse",
   "message": {
     "fields": [{
       "name": "account",
-      "type": "AccountFull",
+      "type": "Account",
       "import": "./account"
     }]
   }
 }, {
-  "name": "GetSubjectAccount",
+  "name": "GetAccount",
   "service": {
-    "path": "/GetSubjectAccount",
-    "body": "GetSubjectAccountRequestBody",
+    "path": "/GetAccount",
+    "body": "GetAccountRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "GetSubjectAccountResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "GetObjectAccountRequestBody",
-  "message": {
-    "fields": [{
-      "name": "accountId",
-      "type": "string"
-    }]
-  }
-}, {
-  "name": "GetObjectAccountResponse",
-  "message": {
-    "fields": [{
-      "name": "objectAccount",
-      "type": "ObjectAccountFull",
-      "import": "./object_account"
-    }]
-  }
-}, {
-  "name": "GetObjectAccount",
-  "service": {
-    "path": "/GetObjectAccount",
-    "body": "GetObjectAccountRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
-    },
-    "response": "GetObjectAccountResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "SetObjectAccountRelationshipRequestBody",
-  "message": {
-    "fields": [{
-      "name": "accountId",
-      "type": "string"
-    }, {
-      "name": "relationship",
-      "type": "ObjectAccountRelationship",
-      "import": "./object_account"
-    }]
-  }
-}, {
-  "name": "SetObjectAccountRelationshipResponse",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "SetObjectAccountRelationship",
-  "service": {
-    "path": "/SetObjectAccountRelationship",
-    "body": "SetObjectAccountRelationshipRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
-    },
-    "response": "SetObjectAccountRelationshipResponse",
+    "response": "GetAccountResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

@@ -1,10 +1,9 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { AccountType, ACCOUNT_TYPE } from './account_type';
+import { AccountType, ACCOUNT_TYPE } from '../account_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 import { AuthSettings, AUTH_SETTINGS } from './auth_settings';
 import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
-import { AccountSnapshot, ACCOUNT_SNAPSHOT, AccountFull, ACCOUNT_FULL } from './account';
-import { ObjectAccountFull, OBJECT_ACCOUNT_FULL, ObjectAccountRelationship, OBJECT_ACCOUNT_RELATIONSHIP } from './object_account';
+import { AccountSnapshot, ACCOUNT_SNAPSHOT, Account, ACCOUNT } from './account';
 
 export interface SignUpRequestBody {
   username?: string,
@@ -411,12 +410,12 @@ export let GET_ACCOUNT_TYPE: ServiceDescriptor = {
   },
 }
 
-export interface ListOwnedAccountsRequestBody {
+export interface ListAccountsRequestBody {
   accountType?: AccountType,
 }
 
-export let LIST_OWNED_ACCOUNTS_REQUEST_BODY: MessageDescriptor<ListOwnedAccountsRequestBody> = {
-  name: 'ListOwnedAccountsRequestBody',
+export let LIST_ACCOUNTS_REQUEST_BODY: MessageDescriptor<ListAccountsRequestBody> = {
+  name: 'ListAccountsRequestBody',
   fields: [
     {
       name: 'accountType',
@@ -425,12 +424,12 @@ export let LIST_OWNED_ACCOUNTS_REQUEST_BODY: MessageDescriptor<ListOwnedAccounts
   ]
 };
 
-export interface ListOwnedAccountsResponse {
+export interface ListAccountsResponse {
   accounts?: Array<AccountSnapshot>,
 }
 
-export let LIST_OWNED_ACCOUNTS_RESPONSE: MessageDescriptor<ListOwnedAccountsResponse> = {
-  name: 'ListOwnedAccountsResponse',
+export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
+  name: 'ListAccountsResponse',
   fields: [
     {
       name: 'accounts',
@@ -440,104 +439,38 @@ export let LIST_OWNED_ACCOUNTS_RESPONSE: MessageDescriptor<ListOwnedAccountsResp
   ]
 };
 
-export let LIST_OWNED_ACCOUNTS: ServiceDescriptor = {
-  name: "ListOwnedAccounts",
-  path: "/ListOwnedAccounts",
+export let LIST_ACCOUNTS: ServiceDescriptor = {
+  name: "ListAccounts",
+  path: "/ListAccounts",
   body: {
-    messageType: LIST_OWNED_ACCOUNTS_REQUEST_BODY,
+    messageType: LIST_ACCOUNTS_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: LIST_OWNED_ACCOUNTS_RESPONSE,
+    messageType: LIST_ACCOUNTS_RESPONSE,
   },
 }
 
-export interface UpdateNaturalNameRequestBody {
+export interface UpdateAccountRequestBody {
   naturalName?: string,
+  contactEmail?: string,
+  description?: string,
 }
 
-export let UPDATE_NATURAL_NAME_REQUEST_BODY: MessageDescriptor<UpdateNaturalNameRequestBody> = {
-  name: 'UpdateNaturalNameRequestBody',
+export let UPDATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<UpdateAccountRequestBody> = {
+  name: 'UpdateAccountRequestBody',
   fields: [
     {
       name: 'naturalName',
       primitiveType: PrimitiveType.STRING,
     },
-  ]
-};
-
-export interface UpdateNaturalNameResponse {
-}
-
-export let UPDATE_NATURAL_NAME_RESPONSE: MessageDescriptor<UpdateNaturalNameResponse> = {
-  name: 'UpdateNaturalNameResponse',
-  fields: [
-  ]
-};
-
-export let UPDATE_NATURAL_NAME: ServiceDescriptor = {
-  name: "UpdateNaturalName",
-  path: "/UpdateNaturalName",
-  body: {
-    messageType: UPDATE_NATURAL_NAME_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: WEB_CLIENT_SESSION
-  },
-  response: {
-    messageType: UPDATE_NATURAL_NAME_RESPONSE,
-  },
-}
-
-export interface UpdateContactEmailRequestBody {
-  contactEmail?: string,
-}
-
-export let UPDATE_CONTACT_EMAIL_REQUEST_BODY: MessageDescriptor<UpdateContactEmailRequestBody> = {
-  name: 'UpdateContactEmailRequestBody',
-  fields: [
     {
       name: 'contactEmail',
       primitiveType: PrimitiveType.STRING,
     },
-  ]
-};
-
-export interface UpdateContactEmailResponse {
-}
-
-export let UPDATE_CONTACT_EMAIL_RESPONSE: MessageDescriptor<UpdateContactEmailResponse> = {
-  name: 'UpdateContactEmailResponse',
-  fields: [
-  ]
-};
-
-export let UPDATE_CONTACT_EMAIL: ServiceDescriptor = {
-  name: "UpdateContactEmail",
-  path: "/UpdateContactEmail",
-  body: {
-    messageType: UPDATE_CONTACT_EMAIL_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: WEB_CLIENT_SESSION
-  },
-  response: {
-    messageType: UPDATE_CONTACT_EMAIL_RESPONSE,
-  },
-}
-
-export interface UpdateDescriptionRequestBody {
-  description?: string,
-}
-
-export let UPDATE_DESCRIPTION_REQUEST_BODY: MessageDescriptor<UpdateDescriptionRequestBody> = {
-  name: 'UpdateDescriptionRequestBody',
-  fields: [
     {
       name: 'description',
       primitiveType: PrimitiveType.STRING,
@@ -545,42 +478,42 @@ export let UPDATE_DESCRIPTION_REQUEST_BODY: MessageDescriptor<UpdateDescriptionR
   ]
 };
 
-export interface UpdateDescriptionResponse {
+export interface UpdateAccountResponse {
 }
 
-export let UPDATE_DESCRIPTION_RESPONSE: MessageDescriptor<UpdateDescriptionResponse> = {
-  name: 'UpdateDescriptionResponse',
+export let UPDATE_ACCOUNT_RESPONSE: MessageDescriptor<UpdateAccountResponse> = {
+  name: 'UpdateAccountResponse',
   fields: [
   ]
 };
 
-export let UPDATE_DESCRIPTION: ServiceDescriptor = {
-  name: "UpdateDescription",
-  path: "/UpdateDescription",
+export let UPDATE_ACCOUNT: ServiceDescriptor = {
+  name: "UpdateAccount",
+  path: "/UpdateAccount",
   body: {
-    messageType: UPDATE_DESCRIPTION_REQUEST_BODY,
+    messageType: UPDATE_ACCOUNT_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: UPDATE_DESCRIPTION_RESPONSE,
+    messageType: UPDATE_ACCOUNT_RESPONSE,
   },
 }
 
-export interface UploadAvatarResponse {
+export interface UploadAccountAvatarResponse {
 }
 
-export let UPLOAD_AVATAR_RESPONSE: MessageDescriptor<UploadAvatarResponse> = {
-  name: 'UploadAvatarResponse',
+export let UPLOAD_ACCOUNT_AVATAR_RESPONSE: MessageDescriptor<UploadAccountAvatarResponse> = {
+  name: 'UploadAccountAvatarResponse',
   fields: [
   ]
 };
 
-export let UPLOAD_AVATAR: ServiceDescriptor = {
-  name: "UploadAvatar",
-  path: "/UploadAvatar",
+export let UPLOAD_ACCOUNT_AVATAR: ServiceDescriptor = {
+  name: "UploadAccountAvatar",
+  path: "/UploadAccountAvatar",
   body: {
     primitiveType: PrimitveTypeForBody.BYTES,
   },
@@ -589,130 +522,44 @@ export let UPLOAD_AVATAR: ServiceDescriptor = {
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: UPLOAD_AVATAR_RESPONSE,
+    messageType: UPLOAD_ACCOUNT_AVATAR_RESPONSE,
   },
 }
 
-export interface GetSubjectAccountRequestBody {
+export interface GetAccountRequestBody {
 }
 
-export let GET_SUBJECT_ACCOUNT_REQUEST_BODY: MessageDescriptor<GetSubjectAccountRequestBody> = {
-  name: 'GetSubjectAccountRequestBody',
+export let GET_ACCOUNT_REQUEST_BODY: MessageDescriptor<GetAccountRequestBody> = {
+  name: 'GetAccountRequestBody',
   fields: [
   ]
 };
 
-export interface GetSubjectAccountResponse {
-  account?: AccountFull,
+export interface GetAccountResponse {
+  account?: Account,
 }
 
-export let GET_SUBJECT_ACCOUNT_RESPONSE: MessageDescriptor<GetSubjectAccountResponse> = {
-  name: 'GetSubjectAccountResponse',
+export let GET_ACCOUNT_RESPONSE: MessageDescriptor<GetAccountResponse> = {
+  name: 'GetAccountResponse',
   fields: [
     {
       name: 'account',
-      messageType: ACCOUNT_FULL,
+      messageType: ACCOUNT,
     },
   ]
 };
 
-export let GET_SUBJECT_ACCOUNT: ServiceDescriptor = {
-  name: "GetSubjectAccount",
-  path: "/GetSubjectAccount",
+export let GET_ACCOUNT: ServiceDescriptor = {
+  name: "GetAccount",
+  path: "/GetAccount",
   body: {
-    messageType: GET_SUBJECT_ACCOUNT_REQUEST_BODY,
+    messageType: GET_ACCOUNT_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: GET_SUBJECT_ACCOUNT_RESPONSE,
-  },
-}
-
-export interface GetObjectAccountRequestBody {
-  accountId?: string,
-}
-
-export let GET_OBJECT_ACCOUNT_REQUEST_BODY: MessageDescriptor<GetObjectAccountRequestBody> = {
-  name: 'GetObjectAccountRequestBody',
-  fields: [
-    {
-      name: 'accountId',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface GetObjectAccountResponse {
-  objectAccount?: ObjectAccountFull,
-}
-
-export let GET_OBJECT_ACCOUNT_RESPONSE: MessageDescriptor<GetObjectAccountResponse> = {
-  name: 'GetObjectAccountResponse',
-  fields: [
-    {
-      name: 'objectAccount',
-      messageType: OBJECT_ACCOUNT_FULL,
-    },
-  ]
-};
-
-export let GET_OBJECT_ACCOUNT: ServiceDescriptor = {
-  name: "GetObjectAccount",
-  path: "/GetObjectAccount",
-  body: {
-    messageType: GET_OBJECT_ACCOUNT_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: WEB_CLIENT_SESSION
-  },
-  response: {
-    messageType: GET_OBJECT_ACCOUNT_RESPONSE,
-  },
-}
-
-export interface SetObjectAccountRelationshipRequestBody {
-  accountId?: string,
-  relationship?: ObjectAccountRelationship,
-}
-
-export let SET_OBJECT_ACCOUNT_RELATIONSHIP_REQUEST_BODY: MessageDescriptor<SetObjectAccountRelationshipRequestBody> = {
-  name: 'SetObjectAccountRelationshipRequestBody',
-  fields: [
-    {
-      name: 'accountId',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'relationship',
-      enumType: OBJECT_ACCOUNT_RELATIONSHIP,
-    },
-  ]
-};
-
-export interface SetObjectAccountRelationshipResponse {
-}
-
-export let SET_OBJECT_ACCOUNT_RELATIONSHIP_RESPONSE: MessageDescriptor<SetObjectAccountRelationshipResponse> = {
-  name: 'SetObjectAccountRelationshipResponse',
-  fields: [
-  ]
-};
-
-export let SET_OBJECT_ACCOUNT_RELATIONSHIP: ServiceDescriptor = {
-  name: "SetObjectAccountRelationship",
-  path: "/SetObjectAccountRelationship",
-  body: {
-    messageType: SET_OBJECT_ACCOUNT_RELATIONSHIP_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: WEB_CLIENT_SESSION
-  },
-  response: {
-    messageType: SET_OBJECT_ACCOUNT_RELATIONSHIP_RESPONSE,
+    messageType: GET_ACCOUNT_RESPONSE,
   },
 }

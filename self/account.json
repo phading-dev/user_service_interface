@@ -1,28 +1,10 @@
 [{
-  "name": "AccountSnapshot",
+  "name": "Account",
   "message": {
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "./account_type"
-    }, {
-      "name": "accountId",
-      "type": "string"
-    }, {
-      "name": "naturalName",
-      "type": "string"
-    }, {
-      "name": "avatarSmallPath",
-      "type": "string"
-    }]
-  }
-}, {
-  "name": "AccountFull",
-  "message": {
-    "fields": [{
-      "name": "accountType",
-      "type": "AccountType",
-      "import": "./account_type"
+      "import": "../account_type"
     }, {
       "name": "accountId",
       "type": "string"
@@ -37,6 +19,24 @@
       "type": "string"
     }, {
       "name": "avatarLargePath",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "AccountSnapshot",
+  "message": {
+    "fields": [{
+      "name": "accountType",
+      "type": "AccountType",
+      "import": "../account_type"
+    }, {
+      "name": "accountId",
+      "type": "string"
+    }, {
+      "name": "naturalName",
+      "type": "string"
+    }, {
+      "name": "avatarSmallPath",
       "type": "string"
     }]
   }
