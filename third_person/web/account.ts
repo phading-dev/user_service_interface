@@ -1,5 +1,5 @@
 import { EnumDescriptor, MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { AccountType, ACCOUNT_TYPE } from '../account_type';
+import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 
 export enum AccountRelationship {
   UNKNOWN = 0,

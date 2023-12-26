@@ -18,7 +18,7 @@
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "../account_type"
+      "import": "../../account_type"
     }, {
       "name": "accountId",
       "type": "string"
@@ -45,7 +45,7 @@
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "../account_type"
+      "import": "../../account_type"
     }, {
       "name": "accountId",
       "type": "string"

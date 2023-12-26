@@ -1,5 +1,5 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { AccountType, ACCOUNT_TYPE } from '../account_type';
+import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 
 export interface Account {
   accountType?: AccountType,
