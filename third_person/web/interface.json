@@ -12,7 +12,7 @@
     "fields": [{
       "name": "account",
       "type": "Account",
-      "import": "./account"
+      "import": "../account"
     }]
   }
 }, {
@@ -30,37 +30,6 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetAccountSnapshotRequestBody",
-  "message": {
-    "fields": [{
-      "name": "accountId",
-      "type": "string"
-    }]
-  }
-}, {
-  "name": "GetAccountSnapshotResponse",
-  "message": {
-    "fields": [{
-      "name": "account",
-      "type": "AccountSnapshot",
-      "import": "./account"
-    }]
-  }
-}, {
-  "name": "GetAccountSnapshot",
-  "service": {
-    "path": "/GetAccountSnapshot",
-    "body": "GetAccountSnapshotRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
-    },
-    "response": "GetAccountSnapshotResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
   "name": "SetAccountRelationshipRequestBody",
   "message": {
     "fields": [{
@@ -69,7 +38,7 @@
     }, {
       "name": "relationship",
       "type": "AccountRelationship",
-      "import": "./account"
+      "import": "../account"
     }]
   }
 }, {
