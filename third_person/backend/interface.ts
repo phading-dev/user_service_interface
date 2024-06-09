@@ -1,7 +1,6 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { AccountSnapshot, ACCOUNT_SNAPSHOT } from './account_snapshot';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
-import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
 
 export interface GetAccountSnapshotRequestBody {
   accountId?: string,
@@ -36,10 +35,6 @@ export let GET_ACCOUNT_SNAPSHOT: ServiceDescriptor = {
   path: "/GetAccountSnapshot",
   body: {
     messageType: GET_ACCOUNT_SNAPSHOT_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: WEB_CLIENT_SESSION
   },
   response: {
     messageType: GET_ACCOUNT_SNAPSHOT_RESPONSE,

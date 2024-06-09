@@ -22,8 +22,8 @@
     "body": "GetAccountRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "GetAccountResponse",
     "outputWebClient": "./client_requests",

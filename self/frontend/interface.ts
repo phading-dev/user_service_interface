@@ -1,8 +1,8 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { AccountType, ACCOUNT_TYPE } from '../../account_type';
+import { AccountType, ACCOUNT_TYPE } from '@phading/user_session_service_interface/account_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 import { User, USER } from './user';
-import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
+import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
 import { AccountSnapshot, ACCOUNT_SNAPSHOT, Account, ACCOUNT } from './account';
 
 export interface SignUpRequestBody {
@@ -140,7 +140,7 @@ export let GET_USER: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: GET_USER_RESPONSE,
@@ -183,7 +183,7 @@ export let UPDATE_PASSWORD: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_PASSWORD_RESPONSE,
@@ -231,7 +231,7 @@ export let UPDATE_USERNAME: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_USERNAME_RESPONSE,
@@ -274,7 +274,7 @@ export let UPDATE_RECOVERY_EMAIL: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_RECOVERY_EMAIL_RESPONSE,
@@ -322,7 +322,7 @@ export let CREATE_ACCOUNT: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: CREATE_ACCOUNT_RESPONSE,
@@ -365,7 +365,7 @@ export let SWITCH_ACCOUNT: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: SWITCH_ACCOUNT_RESPONSE,
@@ -403,7 +403,7 @@ export let GET_ACCOUNT_TYPE: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: GET_ACCOUNT_TYPE_RESPONSE,
@@ -447,7 +447,7 @@ export let LIST_ACCOUNTS: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: LIST_ACCOUNTS_RESPONSE,
@@ -495,7 +495,7 @@ export let UPDATE_ACCOUNT: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: UPDATE_ACCOUNT_RESPONSE,
@@ -519,7 +519,7 @@ export let UPLOAD_ACCOUNT_AVATAR: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: UPLOAD_ACCOUNT_AVATAR_RESPONSE,
@@ -557,7 +557,7 @@ export let GET_ACCOUNT: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: GET_ACCOUNT_RESPONSE,

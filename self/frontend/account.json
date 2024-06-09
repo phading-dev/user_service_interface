@@ -4,7 +4,7 @@
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "@phading/user_session_service_interface/account_type"
     }, {
       "name": "accountId",
       "type": "string"
@@ -28,7 +28,7 @@
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "@phading/user_session_service_interface/account_type"
     }, {
       "name": "accountId",
       "type": "string"

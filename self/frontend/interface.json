@@ -13,7 +13,7 @@
     }, {
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "@phading/user_session_service_interface/account_type"
     }]
   }
 }, {
@@ -86,8 +86,8 @@
     "body": "GetUserRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "GetUserResponse",
     "outputWebClient": "./client_requests",
@@ -116,8 +116,8 @@
     "body": "UpdatePasswordRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "UpdatePasswordResponse",
     "outputWebClient": "./client_requests",
@@ -149,8 +149,8 @@
     "body": "UpdateUsernameRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "UpdateUsernameResponse",
     "outputWebClient": "./client_requests",
@@ -179,8 +179,8 @@
     "body": "UpdateRecoveryEmailRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "UpdateRecoveryEmailResponse",
     "outputWebClient": "./client_requests",
@@ -195,7 +195,7 @@
     }, {
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "@phading/user_session_service_interface/account_type"
     }]
   }
 }, {
@@ -213,8 +213,8 @@
     "body": "CreateAccountRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "CreateAccountResponse",
     "outputWebClient": "./client_requests",
@@ -243,8 +243,8 @@
     "body": "SwitchAccountRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "SwitchAccountResponse",
     "outputWebClient": "./client_requests",
@@ -261,7 +261,7 @@
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "@phading/user_session_service_interface/account_type"
     }]
   }
 }, {
@@ -271,8 +271,8 @@
     "body": "GetAccountTypeRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "GetAccountTypeResponse",
     "outputWebClient": "./client_requests",
@@ -284,7 +284,7 @@
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "@phading/user_session_service_interface/account_type"
     }]
   }
 }, {
@@ -304,8 +304,8 @@
     "body": "ListAccountsRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "ListAccountsResponse",
     "outputWebClient": "./client_requests",
@@ -337,8 +337,8 @@
     "body": "UpdateAccountRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "UpdateAccountResponse",
     "outputWebClient": "./client_requests",
@@ -356,8 +356,8 @@
     "body": "bytes",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "UploadAccountAvatarResponse",
     "outputWebClient": "./client_requests",
@@ -384,8 +384,8 @@
     "body": "GetAccountRequestBody",
     "auth": {
       "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
     },
     "response": "GetAccountResponse",
     "outputWebClient": "./client_requests",

@@ -1,7 +1,7 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { Account, ACCOUNT } from './account';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
-import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
+import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
 
 export interface GetAccountRequestBody {
   accountId?: string,
@@ -39,7 +39,7 @@ export let GET_ACCOUNT: ServiceDescriptor = {
   },
   auth: {
     key: "auth",
-    type: WEB_CLIENT_SESSION
+    type: CLIENT_SESSION
   },
   response: {
     messageType: GET_ACCOUNT_RESPONSE,

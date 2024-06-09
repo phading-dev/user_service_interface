@@ -20,11 +20,6 @@
   "service": {
     "path": "/GetAccountSnapshot",
     "body": "GetAccountSnapshotRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
-    },
     "response": "GetAccountSnapshotResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
