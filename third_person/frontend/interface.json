@@ -1,5 +1,5 @@
 [{
-  "name": "GetAccountSnapshotRequestBody",
+  "name": "GetAccountRequestBody",
   "message": {
     "fields": [{
       "name": "accountId",
@@ -7,25 +7,25 @@
     }]
   }
 }, {
-  "name": "GetAccountSnapshotResponse",
+  "name": "GetAccountResponse",
   "message": {
     "fields": [{
       "name": "account",
-      "type": "AccountSnapshot",
-      "import": "./account_snapshot"
+      "type": "Account",
+      "import": "./account"
     }]
   }
 }, {
-  "name": "GetAccountSnapshot",
+  "name": "GetAccount",
   "service": {
-    "path": "/GetAccountSnapshot",
-    "body": "GetAccountSnapshotRequestBody",
+    "path": "/GetAccount",
+    "body": "GetAccountRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "GetAccountSnapshotResponse",
+    "response": "GetAccountResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

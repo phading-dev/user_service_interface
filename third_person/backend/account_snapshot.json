@@ -1,0 +1,19 @@
+[{
+  "name": "AccountSnapshot",
+  "message": {
+    "fields": [{
+      "name": "accountType",
+      "type": "AccountType",
+      "import": "../../account_type"
+    }, {
+      "name": "accountId",
+      "type": "string"
+    }, {
+      "name": "naturalName",
+      "type": "string"
+    }, {
+      "name": "avatarSmallPath",
+      "type": "string"
+    }]
+  }
+}]

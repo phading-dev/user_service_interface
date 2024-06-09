@@ -66,30 +66,30 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetAuthSettingsRequestBody",
+  "name": "GetUserRequestBody",
   "message": {
     "fields": []
   }
 }, {
-  "name": "GetAuthSettingsResponse",
+  "name": "GetUserResponse",
   "message": {
     "fields": [{
-      "name": "authSettings",
-      "type": "AuthSettings",
-      "import": "./auth_settings"
+      "name": "user",
+      "type": "User",
+      "import": "./user"
     }]
   }
 }, {
-  "name": "GetAuthSettings",
+  "name": "GetUser",
   "service": {
-    "path": "/GetAuthSettings",
-    "body": "GetAuthSettingsRequestBody",
+    "path": "/GetUser",
+    "body": "GetUserRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "GetAuthSettingsResponse",
+    "response": "GetUserResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

@@ -1,5 +1,5 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { AccountSnapshot, ACCOUNT_SNAPSHOT } from '../account';
+import { AccountSnapshot, ACCOUNT_SNAPSHOT } from './account_snapshot';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
 import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
 

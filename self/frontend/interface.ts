@@ -1,7 +1,7 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
-import { AuthSettings, AUTH_SETTINGS } from './auth_settings';
+import { User, USER } from './user';
 import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
 import { AccountSnapshot, ACCOUNT_SNAPSHOT, Account, ACCOUNT } from './account';
 
@@ -109,41 +109,41 @@ export let SIGN_IN: ServiceDescriptor = {
   },
 }
 
-export interface GetAuthSettingsRequestBody {
+export interface GetUserRequestBody {
 }
 
-export let GET_AUTH_SETTINGS_REQUEST_BODY: MessageDescriptor<GetAuthSettingsRequestBody> = {
-  name: 'GetAuthSettingsRequestBody',
+export let GET_USER_REQUEST_BODY: MessageDescriptor<GetUserRequestBody> = {
+  name: 'GetUserRequestBody',
   fields: [
   ]
 };
 
-export interface GetAuthSettingsResponse {
-  authSettings?: AuthSettings,
+export interface GetUserResponse {
+  user?: User,
 }
 
-export let GET_AUTH_SETTINGS_RESPONSE: MessageDescriptor<GetAuthSettingsResponse> = {
-  name: 'GetAuthSettingsResponse',
+export let GET_USER_RESPONSE: MessageDescriptor<GetUserResponse> = {
+  name: 'GetUserResponse',
   fields: [
     {
-      name: 'authSettings',
-      messageType: AUTH_SETTINGS,
+      name: 'user',
+      messageType: USER,
     },
   ]
 };
 
-export let GET_AUTH_SETTINGS: ServiceDescriptor = {
-  name: "GetAuthSettings",
-  path: "/GetAuthSettings",
+export let GET_USER: ServiceDescriptor = {
+  name: "GetUser",
+  path: "/GetUser",
   body: {
-    messageType: GET_AUTH_SETTINGS_REQUEST_BODY,
+    messageType: GET_USER_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: GET_AUTH_SETTINGS_RESPONSE,
+    messageType: GET_USER_RESPONSE,
   },
 }
 

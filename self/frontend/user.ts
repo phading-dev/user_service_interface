@@ -1,12 +1,12 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 
-export interface AuthSettings {
+export interface User {
   username?: string,
   recoveryEmail?: string,
 }
 
-export let AUTH_SETTINGS: MessageDescriptor<AuthSettings> = {
-  name: 'AuthSettings',
+export let USER: MessageDescriptor<User> = {
+  name: 'User',
   fields: [
     {
       name: 'username',

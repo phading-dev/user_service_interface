@@ -1,5 +1,5 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, GET_AUTH_SETTINGS, GetAuthSettingsRequestBody, GetAuthSettingsResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_USERNAME, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, GET_ACCOUNT_TYPE, GetAccountTypeRequestBody, GetAccountTypeResponse, LIST_ACCOUNTS, ListAccountsRequestBody, ListAccountsResponse, UPDATE_ACCOUNT, UpdateAccountRequestBody, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GET_ACCOUNT, GetAccountRequestBody, GetAccountResponse } from './interface';
+import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, GET_USER, GetUserRequestBody, GetUserResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_USERNAME, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, GET_ACCOUNT_TYPE, GetAccountTypeRequestBody, GetAccountTypeResponse, LIST_ACCOUNTS, ListAccountsRequestBody, ListAccountsResponse, UPDATE_ACCOUNT, UpdateAccountRequestBody, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GET_ACCOUNT, GetAccountRequestBody, GetAccountResponse } from './interface';
 import { WebClientSession } from '@phading/user_session_service_interface/web_client_session';
 import { Readable } from 'stream';
 
@@ -19,13 +19,13 @@ export abstract class SignInHandlerInterface implements ServiceHandlerInterface 
   ): Promise<SignInResponse>;
 }
 
-export abstract class GetAuthSettingsHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_AUTH_SETTINGS;
+export abstract class GetUserHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_USER;
   public abstract handle(
     requestId: string,
-    body: GetAuthSettingsRequestBody,
+    body: GetUserRequestBody,
     auth: WebClientSession,
-  ): Promise<GetAuthSettingsResponse>;
+  ): Promise<GetUserResponse>;
 }
 
 export abstract class UpdatePasswordHandlerInterface implements ServiceHandlerInterface {
