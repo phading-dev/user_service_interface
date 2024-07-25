@@ -1,5 +1,5 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { AccountType, ACCOUNT_TYPE } from '@phading/user_session_service_interface/account_type';
+import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 
 export interface Account {
   accountType?: AccountType,

@@ -13,7 +13,7 @@
     }, {
       "name": "accountType",
       "type": "AccountType",
-      "import": "@phading/user_session_service_interface/account_type"
+      "import": "../../account_type"
     }]
   }
 }, {
@@ -195,7 +195,7 @@
     }, {
       "name": "accountType",
       "type": "AccountType",
-      "import": "@phading/user_session_service_interface/account_type"
+      "import": "../../account_type"
     }]
   }
 }, {
@@ -261,7 +261,7 @@
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "@phading/user_session_service_interface/account_type"
+      "import": "../../account_type"
     }]
   }
 }, {
@@ -284,7 +284,7 @@
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "@phading/user_session_service_interface/account_type"
+      "import": "../../account_type"
     }]
   }
 }, {
