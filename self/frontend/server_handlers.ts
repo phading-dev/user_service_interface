@@ -1,5 +1,5 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_USERNAME, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, LIST_ACCOUNTS, ListAccountsRequestBody, ListAccountsResponse, UPDATE_ACCOUNT, UpdateAccountRequestBody, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GET_USER_AND_ACCOUNT, GetUserAndAccountRequestBody, GetUserAndAccountResponse } from './interface';
+import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_USERNAME, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, LIST_ACCOUNTS, ListAccountsRequestBody, ListAccountsResponse, UPDATE_ACCOUNT, UpdateAccountRequestBody, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GET_ACCOUNT_AND_USER, GetAccountAndUserRequestBody, GetAccountAndUserResponse } from './interface';
 import { ClientSession } from '@phading/user_session_service_interface/client_session';
 import { Readable } from 'stream';
 
@@ -91,11 +91,11 @@ export abstract class UploadAccountAvatarHandlerInterface implements ServiceHand
   ): Promise<UploadAccountAvatarResponse>;
 }
 
-export abstract class GetUserAndAccountHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_USER_AND_ACCOUNT;
+export abstract class GetAccountAndUserHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_ACCOUNT_AND_USER;
   public abstract handle(
     loggingPrefix: string,
-    body: GetUserAndAccountRequestBody,
+    body: GetAccountAndUserRequestBody,
     auth: ClientSession,
-  ): Promise<GetUserAndAccountResponse>;
+  ): Promise<GetAccountAndUserResponse>;
 }

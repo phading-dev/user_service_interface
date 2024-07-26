@@ -304,12 +304,12 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetUserAndAccountRequestBody",
+  "name": "GetAccountAndUserRequestBody",
   "message": {
     "fields": []
   }
 }, {
-  "name": "GetUserAndAccountResponse",
+  "name": "GetAccountAndUserResponse",
   "message": {
     "fields": [{
       "name": "account",
@@ -318,16 +318,16 @@
     }]
   }
 }, {
-  "name": "GetUserAndAccount",
+  "name": "GetAccountAndUser",
   "service": {
-    "path": "/GetUserAndAccount",
-    "body": "GetUserAndAccountRequestBody",
+    "path": "/GetAccountAndUser",
+    "body": "GetAccountAndUserRequestBody",
     "auth": {
       "key": "auth",
       "type": "ClientSession",
       "import": "@phading/user_session_service_interface/client_session"
     },
-    "response": "GetUserAndAccountResponse",
+    "response": "GetAccountAndUserResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

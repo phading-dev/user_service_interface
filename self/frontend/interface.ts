@@ -444,21 +444,21 @@ export let UPLOAD_ACCOUNT_AVATAR: ServiceDescriptor = {
   },
 }
 
-export interface GetUserAndAccountRequestBody {
+export interface GetAccountAndUserRequestBody {
 }
 
-export let GET_USER_AND_ACCOUNT_REQUEST_BODY: MessageDescriptor<GetUserAndAccountRequestBody> = {
-  name: 'GetUserAndAccountRequestBody',
+export let GET_ACCOUNT_AND_USER_REQUEST_BODY: MessageDescriptor<GetAccountAndUserRequestBody> = {
+  name: 'GetAccountAndUserRequestBody',
   fields: [
   ]
 };
 
-export interface GetUserAndAccountResponse {
+export interface GetAccountAndUserResponse {
   account?: AccountAndUser,
 }
 
-export let GET_USER_AND_ACCOUNT_RESPONSE: MessageDescriptor<GetUserAndAccountResponse> = {
-  name: 'GetUserAndAccountResponse',
+export let GET_ACCOUNT_AND_USER_RESPONSE: MessageDescriptor<GetAccountAndUserResponse> = {
+  name: 'GetAccountAndUserResponse',
   fields: [
     {
       name: 'account',
@@ -467,17 +467,17 @@ export let GET_USER_AND_ACCOUNT_RESPONSE: MessageDescriptor<GetUserAndAccountRes
   ]
 };
 
-export let GET_USER_AND_ACCOUNT: ServiceDescriptor = {
-  name: "GetUserAndAccount",
-  path: "/GetUserAndAccount",
+export let GET_ACCOUNT_AND_USER: ServiceDescriptor = {
+  name: "GetAccountAndUser",
+  path: "/GetAccountAndUser",
   body: {
-    messageType: GET_USER_AND_ACCOUNT_REQUEST_BODY,
+    messageType: GET_ACCOUNT_AND_USER_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: CLIENT_SESSION
   },
   response: {
-    messageType: GET_USER_AND_ACCOUNT_RESPONSE,
+    messageType: GET_ACCOUNT_AND_USER_RESPONSE,
   },
 }
