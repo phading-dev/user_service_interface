@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, GetUserRequestBody, GetUserResponse, GET_USER, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_USERNAME, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, UPDATE_RECOVERY_EMAIL, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, GetAccountTypeRequestBody, GetAccountTypeResponse, GET_ACCOUNT_TYPE, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS, UpdateAccountRequestBody, UpdateAccountResponse, UPDATE_ACCOUNT, UploadAccountAvatarResponse, UPLOAD_ACCOUNT_AVATAR, GetAccountRequestBody, GetAccountResponse, GET_ACCOUNT } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_USERNAME, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, UPDATE_RECOVERY_EMAIL, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS, UpdateAccountRequestBody, UpdateAccountResponse, UPDATE_ACCOUNT, UploadAccountAvatarResponse, UPLOAD_ACCOUNT_AVATAR, GetUserAndAccountRequestBody, GetUserAndAccountResponse, GET_USER_AND_ACCOUNT } from './interface';
 
 export function signUp(
   client: WebServiceClientInterface,
@@ -17,16 +17,6 @@ export function signIn(
 ): Promise<SignInResponse> {
   return client.send({
     descriptor: SIGN_IN,
-    body,
-  });
-}
-
-export function getUser(
-  client: WebServiceClientInterface,
-  body: GetUserRequestBody,
-): Promise<GetUserResponse> {
-  return client.send({
-    descriptor: GET_USER,
     body,
   });
 }
@@ -81,16 +71,6 @@ export function switchAccount(
   });
 }
 
-export function getAccountType(
-  client: WebServiceClientInterface,
-  body: GetAccountTypeRequestBody,
-): Promise<GetAccountTypeResponse> {
-  return client.send({
-    descriptor: GET_ACCOUNT_TYPE,
-    body,
-  });
-}
-
 export function listAccounts(
   client: WebServiceClientInterface,
   body: ListAccountsRequestBody,
@@ -121,12 +101,12 @@ export function uploadAccountAvatar(
   });
 }
 
-export function getAccount(
+export function getUserAndAccount(
   client: WebServiceClientInterface,
-  body: GetAccountRequestBody,
-): Promise<GetAccountResponse> {
+  body: GetUserAndAccountRequestBody,
+): Promise<GetUserAndAccountResponse> {
   return client.send({
-    descriptor: GET_ACCOUNT,
+    descriptor: GET_USER_AND_ACCOUNT,
     body,
   });
 }

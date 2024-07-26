@@ -1,9 +1,8 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
-import { User, USER } from './user';
 import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
-import { AccountSnapshot, ACCOUNT_SNAPSHOT, Account, ACCOUNT } from './account';
+import { AccountOverview, ACCOUNT_OVERVIEW, AccountAndUser, ACCOUNT_AND_USER } from './account';
 
 export interface SignUpRequestBody {
   username?: string,
@@ -106,44 +105,6 @@ export let SIGN_IN: ServiceDescriptor = {
   },
   response: {
     messageType: SIGN_IN_RESPONSE,
-  },
-}
-
-export interface GetUserRequestBody {
-}
-
-export let GET_USER_REQUEST_BODY: MessageDescriptor<GetUserRequestBody> = {
-  name: 'GetUserRequestBody',
-  fields: [
-  ]
-};
-
-export interface GetUserResponse {
-  user?: User,
-}
-
-export let GET_USER_RESPONSE: MessageDescriptor<GetUserResponse> = {
-  name: 'GetUserResponse',
-  fields: [
-    {
-      name: 'user',
-      messageType: USER,
-    },
-  ]
-};
-
-export let GET_USER: ServiceDescriptor = {
-  name: "GetUser",
-  path: "/GetUser",
-  body: {
-    messageType: GET_USER_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
-  response: {
-    messageType: GET_USER_RESPONSE,
   },
 }
 
@@ -372,60 +333,17 @@ export let SWITCH_ACCOUNT: ServiceDescriptor = {
   },
 }
 
-export interface GetAccountTypeRequestBody {
-}
-
-export let GET_ACCOUNT_TYPE_REQUEST_BODY: MessageDescriptor<GetAccountTypeRequestBody> = {
-  name: 'GetAccountTypeRequestBody',
-  fields: [
-  ]
-};
-
-export interface GetAccountTypeResponse {
-  accountType?: AccountType,
-}
-
-export let GET_ACCOUNT_TYPE_RESPONSE: MessageDescriptor<GetAccountTypeResponse> = {
-  name: 'GetAccountTypeResponse',
-  fields: [
-    {
-      name: 'accountType',
-      enumType: ACCOUNT_TYPE,
-    },
-  ]
-};
-
-export let GET_ACCOUNT_TYPE: ServiceDescriptor = {
-  name: "GetAccountType",
-  path: "/GetAccountType",
-  body: {
-    messageType: GET_ACCOUNT_TYPE_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
-  response: {
-    messageType: GET_ACCOUNT_TYPE_RESPONSE,
-  },
-}
-
 export interface ListAccountsRequestBody {
-  accountType?: AccountType,
 }
 
 export let LIST_ACCOUNTS_REQUEST_BODY: MessageDescriptor<ListAccountsRequestBody> = {
   name: 'ListAccountsRequestBody',
   fields: [
-    {
-      name: 'accountType',
-      enumType: ACCOUNT_TYPE,
-    },
   ]
 };
 
 export interface ListAccountsResponse {
-  accounts?: Array<AccountSnapshot>,
+  accounts?: Array<AccountOverview>,
 }
 
 export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
@@ -433,7 +351,7 @@ export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
   fields: [
     {
       name: 'accounts',
-      messageType: ACCOUNT_SNAPSHOT,
+      messageType: ACCOUNT_OVERVIEW,
       isArray: true,
     },
   ]
@@ -526,40 +444,40 @@ export let UPLOAD_ACCOUNT_AVATAR: ServiceDescriptor = {
   },
 }
 
-export interface GetAccountRequestBody {
+export interface GetUserAndAccountRequestBody {
 }
 
-export let GET_ACCOUNT_REQUEST_BODY: MessageDescriptor<GetAccountRequestBody> = {
-  name: 'GetAccountRequestBody',
+export let GET_USER_AND_ACCOUNT_REQUEST_BODY: MessageDescriptor<GetUserAndAccountRequestBody> = {
+  name: 'GetUserAndAccountRequestBody',
   fields: [
   ]
 };
 
-export interface GetAccountResponse {
-  account?: Account,
+export interface GetUserAndAccountResponse {
+  account?: AccountAndUser,
 }
 
-export let GET_ACCOUNT_RESPONSE: MessageDescriptor<GetAccountResponse> = {
-  name: 'GetAccountResponse',
+export let GET_USER_AND_ACCOUNT_RESPONSE: MessageDescriptor<GetUserAndAccountResponse> = {
+  name: 'GetUserAndAccountResponse',
   fields: [
     {
       name: 'account',
-      messageType: ACCOUNT,
+      messageType: ACCOUNT_AND_USER,
     },
   ]
 };
 
-export let GET_ACCOUNT: ServiceDescriptor = {
-  name: "GetAccount",
-  path: "/GetAccount",
+export let GET_USER_AND_ACCOUNT: ServiceDescriptor = {
+  name: "GetUserAndAccount",
+  path: "/GetUserAndAccount",
   body: {
-    messageType: GET_ACCOUNT_REQUEST_BODY,
+    messageType: GET_USER_AND_ACCOUNT_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: CLIENT_SESSION
   },
   response: {
-    messageType: GET_ACCOUNT_RESPONSE,
+    messageType: GET_USER_AND_ACCOUNT_RESPONSE,
   },
 }

@@ -1,5 +1,5 @@
 [{
-  "name": "Account",
+  "name": "AccountAndUser",
   "message": {
     "fields": [{
       "name": "accountType",
@@ -20,10 +20,16 @@
     }, {
       "name": "avatarLargePath",
       "type": "string"
+    }, {
+      "name": "username",
+      "type": "string"
+    }, {
+      "name": "recoveryEmail",
+      "type": "string"
     }]
   }
 }, {
-  "name": "AccountSnapshot",
+  "name": "AccountOverview",
   "message": {
     "fields": [{
       "name": "accountType",

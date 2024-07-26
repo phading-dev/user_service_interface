@@ -66,34 +66,6 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetUserRequestBody",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "GetUserResponse",
-  "message": {
-    "fields": [{
-      "name": "user",
-      "type": "User",
-      "import": "./user"
-    }]
-  }
-}, {
-  "name": "GetUser",
-  "service": {
-    "path": "/GetUser",
-    "body": "GetUserRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "GetUserResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
   "name": "UpdatePasswordRequestBody",
   "message": {
     "fields": [{
@@ -251,48 +223,16 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetAccountTypeRequestBody",
-  "message": {
-    "fields": []
-  }
-}, {
-  "name": "GetAccountTypeResponse",
-  "message": {
-    "fields": [{
-      "name": "accountType",
-      "type": "AccountType",
-      "import": "../../account_type"
-    }]
-  }
-}, {
-  "name": "GetAccountType",
-  "service": {
-    "path": "/GetAccountType",
-    "body": "GetAccountTypeRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "GetAccountTypeResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
   "name": "ListAccountsRequestBody",
   "message": {
-    "fields": [{
-      "name": "accountType",
-      "type": "AccountType",
-      "import": "../../account_type"
-    }]
+    "fields": []
   }
 }, {
   "name": "ListAccountsResponse",
   "message": {
     "fields": [{
       "name": "accounts",
-      "type": "AccountSnapshot",
+      "type": "AccountOverview",
       "import": "./account",
       "isArray": true
     }]
@@ -364,30 +304,30 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetAccountRequestBody",
+  "name": "GetUserAndAccountRequestBody",
   "message": {
     "fields": []
   }
 }, {
-  "name": "GetAccountResponse",
+  "name": "GetUserAndAccountResponse",
   "message": {
     "fields": [{
       "name": "account",
-      "type": "Account",
+      "type": "AccountAndUser",
       "import": "./account"
     }]
   }
 }, {
-  "name": "GetAccount",
+  "name": "GetUserAndAccount",
   "service": {
-    "path": "/GetAccount",
-    "body": "GetAccountRequestBody",
+    "path": "/GetUserAndAccount",
+    "body": "GetUserAndAccountRequestBody",
     "auth": {
       "key": "auth",
       "type": "ClientSession",
       "import": "@phading/user_session_service_interface/client_session"
     },
-    "response": "GetAccountResponse",
+    "response": "GetUserAndAccountResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

@@ -1,5 +1,5 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, GET_USER, GetUserRequestBody, GetUserResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_USERNAME, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, GET_ACCOUNT_TYPE, GetAccountTypeRequestBody, GetAccountTypeResponse, LIST_ACCOUNTS, ListAccountsRequestBody, ListAccountsResponse, UPDATE_ACCOUNT, UpdateAccountRequestBody, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GET_ACCOUNT, GetAccountRequestBody, GetAccountResponse } from './interface';
+import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_USERNAME, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, LIST_ACCOUNTS, ListAccountsRequestBody, ListAccountsResponse, UPDATE_ACCOUNT, UpdateAccountRequestBody, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GET_USER_AND_ACCOUNT, GetUserAndAccountRequestBody, GetUserAndAccountResponse } from './interface';
 import { ClientSession } from '@phading/user_session_service_interface/client_session';
 import { Readable } from 'stream';
 
@@ -17,15 +17,6 @@ export abstract class SignInHandlerInterface implements ServiceHandlerInterface 
     loggingPrefix: string,
     body: SignInRequestBody,
   ): Promise<SignInResponse>;
-}
-
-export abstract class GetUserHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_USER;
-  public abstract handle(
-    loggingPrefix: string,
-    body: GetUserRequestBody,
-    auth: ClientSession,
-  ): Promise<GetUserResponse>;
 }
 
 export abstract class UpdatePasswordHandlerInterface implements ServiceHandlerInterface {
@@ -73,15 +64,6 @@ export abstract class SwitchAccountHandlerInterface implements ServiceHandlerInt
   ): Promise<SwitchAccountResponse>;
 }
 
-export abstract class GetAccountTypeHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_ACCOUNT_TYPE;
-  public abstract handle(
-    loggingPrefix: string,
-    body: GetAccountTypeRequestBody,
-    auth: ClientSession,
-  ): Promise<GetAccountTypeResponse>;
-}
-
 export abstract class ListAccountsHandlerInterface implements ServiceHandlerInterface {
   public descriptor = LIST_ACCOUNTS;
   public abstract handle(
@@ -109,11 +91,11 @@ export abstract class UploadAccountAvatarHandlerInterface implements ServiceHand
   ): Promise<UploadAccountAvatarResponse>;
 }
 
-export abstract class GetAccountHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_ACCOUNT;
+export abstract class GetUserAndAccountHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_USER_AND_ACCOUNT;
   public abstract handle(
     loggingPrefix: string,
-    body: GetAccountRequestBody,
+    body: GetUserAndAccountRequestBody,
     auth: ClientSession,
-  ): Promise<GetAccountResponse>;
+  ): Promise<GetUserAndAccountResponse>;
 }

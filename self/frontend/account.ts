@@ -1,17 +1,19 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 
-export interface Account {
+export interface AccountAndUser {
   accountType?: AccountType,
   accountId?: string,
   naturalName?: string,
   contactEmail?: string,
   description?: string,
   avatarLargePath?: string,
+  username?: string,
+  recoveryEmail?: string,
 }
 
-export let ACCOUNT: MessageDescriptor<Account> = {
-  name: 'Account',
+export let ACCOUNT_AND_USER: MessageDescriptor<AccountAndUser> = {
+  name: 'AccountAndUser',
   fields: [
     {
       name: 'accountType',
@@ -37,18 +39,26 @@ export let ACCOUNT: MessageDescriptor<Account> = {
       name: 'avatarLargePath',
       primitiveType: PrimitiveType.STRING,
     },
+    {
+      name: 'username',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'recoveryEmail',
+      primitiveType: PrimitiveType.STRING,
+    },
   ]
 };
 
-export interface AccountSnapshot {
+export interface AccountOverview {
   accountType?: AccountType,
   accountId?: string,
   naturalName?: string,
   avatarSmallPath?: string,
 }
 
-export let ACCOUNT_SNAPSHOT: MessageDescriptor<AccountSnapshot> = {
-  name: 'AccountSnapshot',
+export let ACCOUNT_OVERVIEW: MessageDescriptor<AccountOverview> = {
+  name: 'AccountOverview',
   fields: [
     {
       name: 'accountType',
