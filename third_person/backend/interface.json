@@ -1,27 +1,32 @@
 [{
-  "name": "GetAccountSnapshotRequestBody",
   "message": {
+    "name": "GetAccountSnapshotRequestBody",
     "fields": [{
       "name": "accountId",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }]
   }
 }, {
-  "name": "GetAccountSnapshotResponse",
   "message": {
+    "name": "GetAccountSnapshotResponse",
     "fields": [{
       "name": "account",
       "type": "AccountSnapshot",
-      "import": "./account_snapshot"
+      "import": "./third_person/backend/account_snapshot",
+      "index": 1
     }]
   }
 }, {
-  "name": "GetAccountSnapshot",
-  "service": {
-    "path": "/GetAccountSnapshot",
-    "body": "GetAccountSnapshotRequestBody",
-    "response": "GetAccountSnapshotResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
+  "nodeService": {
+    "name": "UserThirdPersonBackendService",
+    "remoteCalls": [{
+      "name": "GetAccountSnapshot",
+      "path": "/GetAccountSnapshot",
+      "body": "GetAccountSnapshotRequestBody",
+      "response": "GetAccountSnapshotResponse"
+    }],
+    "outputClient": "./third_person/backend/client",
+    "outputHandler": "./third_person/backend/handler"
   }
 }]

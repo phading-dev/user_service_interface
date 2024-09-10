@@ -1,9 +1,9 @@
-import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { SIGN_UP, SignUpRequestBody, SignUpResponse, SIGN_IN, SignInRequestBody, SignInResponse, UPDATE_PASSWORD, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_USERNAME, UpdateUsernameRequestBody, UpdateUsernameResponse, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, CREATE_ACCOUNT, CreateAccountRequestBody, CreateAccountResponse, SWITCH_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, LIST_ACCOUNTS, ListAccountsRequestBody, ListAccountsResponse, UPDATE_ACCOUNT, UpdateAccountRequestBody, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GET_ACCOUNT_AND_USER, GetAccountAndUserRequestBody, GetAccountAndUserResponse } from './interface';
+import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateUsernameRequestBody, UPDATE_USERNAME, UpdateUsernameResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse } from './interface';
+import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 import { ClientSession } from '@phading/user_session_service_interface/client_session';
 import { Readable } from 'stream';
 
-export abstract class SignUpHandlerInterface implements ServiceHandlerInterface {
+export abstract class SignUpHandlerInterface implements WebHandlerInterface {
   public descriptor = SIGN_UP;
   public abstract handle(
     loggingPrefix: string,
@@ -11,7 +11,7 @@ export abstract class SignUpHandlerInterface implements ServiceHandlerInterface 
   ): Promise<SignUpResponse>;
 }
 
-export abstract class SignInHandlerInterface implements ServiceHandlerInterface {
+export abstract class SignInHandlerInterface implements WebHandlerInterface {
   public descriptor = SIGN_IN;
   public abstract handle(
     loggingPrefix: string,
@@ -19,7 +19,7 @@ export abstract class SignInHandlerInterface implements ServiceHandlerInterface 
   ): Promise<SignInResponse>;
 }
 
-export abstract class UpdatePasswordHandlerInterface implements ServiceHandlerInterface {
+export abstract class UpdatePasswordHandlerInterface implements WebHandlerInterface {
   public descriptor = UPDATE_PASSWORD;
   public abstract handle(
     loggingPrefix: string,
@@ -28,7 +28,7 @@ export abstract class UpdatePasswordHandlerInterface implements ServiceHandlerIn
   ): Promise<UpdatePasswordResponse>;
 }
 
-export abstract class UpdateUsernameHandlerInterface implements ServiceHandlerInterface {
+export abstract class UpdateUsernameHandlerInterface implements WebHandlerInterface {
   public descriptor = UPDATE_USERNAME;
   public abstract handle(
     loggingPrefix: string,
@@ -37,7 +37,7 @@ export abstract class UpdateUsernameHandlerInterface implements ServiceHandlerIn
   ): Promise<UpdateUsernameResponse>;
 }
 
-export abstract class UpdateRecoveryEmailHandlerInterface implements ServiceHandlerInterface {
+export abstract class UpdateRecoveryEmailHandlerInterface implements WebHandlerInterface {
   public descriptor = UPDATE_RECOVERY_EMAIL;
   public abstract handle(
     loggingPrefix: string,
@@ -46,7 +46,7 @@ export abstract class UpdateRecoveryEmailHandlerInterface implements ServiceHand
   ): Promise<UpdateRecoveryEmailResponse>;
 }
 
-export abstract class CreateAccountHandlerInterface implements ServiceHandlerInterface {
+export abstract class CreateAccountHandlerInterface implements WebHandlerInterface {
   public descriptor = CREATE_ACCOUNT;
   public abstract handle(
     loggingPrefix: string,
@@ -55,7 +55,7 @@ export abstract class CreateAccountHandlerInterface implements ServiceHandlerInt
   ): Promise<CreateAccountResponse>;
 }
 
-export abstract class SwitchAccountHandlerInterface implements ServiceHandlerInterface {
+export abstract class SwitchAccountHandlerInterface implements WebHandlerInterface {
   public descriptor = SWITCH_ACCOUNT;
   public abstract handle(
     loggingPrefix: string,
@@ -64,7 +64,7 @@ export abstract class SwitchAccountHandlerInterface implements ServiceHandlerInt
   ): Promise<SwitchAccountResponse>;
 }
 
-export abstract class ListAccountsHandlerInterface implements ServiceHandlerInterface {
+export abstract class ListAccountsHandlerInterface implements WebHandlerInterface {
   public descriptor = LIST_ACCOUNTS;
   public abstract handle(
     loggingPrefix: string,
@@ -73,7 +73,7 @@ export abstract class ListAccountsHandlerInterface implements ServiceHandlerInte
   ): Promise<ListAccountsResponse>;
 }
 
-export abstract class UpdateAccountHandlerInterface implements ServiceHandlerInterface {
+export abstract class UpdateAccountHandlerInterface implements WebHandlerInterface {
   public descriptor = UPDATE_ACCOUNT;
   public abstract handle(
     loggingPrefix: string,
@@ -82,7 +82,7 @@ export abstract class UpdateAccountHandlerInterface implements ServiceHandlerInt
   ): Promise<UpdateAccountResponse>;
 }
 
-export abstract class UploadAccountAvatarHandlerInterface implements ServiceHandlerInterface {
+export abstract class UploadAccountAvatarHandlerInterface implements WebHandlerInterface {
   public descriptor = UPLOAD_ACCOUNT_AVATAR;
   public abstract handle(
     loggingPrefix: string,
@@ -91,7 +91,7 @@ export abstract class UploadAccountAvatarHandlerInterface implements ServiceHand
   ): Promise<UploadAccountAvatarResponse>;
 }
 
-export abstract class GetAccountAndUserHandlerInterface implements ServiceHandlerInterface {
+export abstract class GetAccountAndUserHandlerInterface implements WebHandlerInterface {
   public descriptor = GET_ACCOUNT_AND_USER;
   public abstract handle(
     loggingPrefix: string,

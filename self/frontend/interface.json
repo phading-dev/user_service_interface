@@ -1,334 +1,331 @@
 [{
-  "name": "SignUpRequestBody",
   "message": {
+    "name": "SignUpRequestBody",
     "fields": [{
       "name": "username",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }, {
-      "name": "naturalName",
-      "type": "string"
+      "name": "recoveryEmail",
+      "type": "string",
+      "index": 2
     }, {
       "name": "password",
-      "type": "string"
+      "type": "string",
+      "index": 3
+    }, {
+      "name": "naturalName",
+      "type": "string",
+      "index": 4
+    }, {
+      "name": "contactEmail",
+      "type": "string",
+      "index": 5
     }, {
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "./account_type",
+      "index": 6
     }]
   }
 }, {
-  "name": "SignUpResponse",
   "message": {
+    "name": "SignUpResponse",
     "fields": [{
       "name": "usernameIsNotAvailable",
       "type": "boolean",
+      "index": 1,
       "comment": "If set, no other fields will be populated."
     }, {
       "name": "signedSession",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }]
   }
 }, {
-  "name": "SignUp",
-  "service": {
-    "path": "/SignUp",
-    "body": "SignUpRequestBody",
-    "response": "SignUpResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "SignInRequestBody",
   "message": {
+    "name": "SignInRequestBody",
     "fields": [{
       "name": "username",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }, {
       "name": "password",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }]
   }
 }, {
-  "name": "SignInResponse",
   "message": {
+    "name": "SignInResponse",
     "fields": [{
       "name": "signedSession",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }]
   }
 }, {
-  "name": "SignIn",
-  "service": {
-    "path": "/SignIn",
-    "body": "SignInRequestBody",
-    "response": "SignInResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "UpdatePasswordRequestBody",
   "message": {
+    "name": "UpdatePasswordRequestBody",
     "fields": [{
       "name": "currentPassword",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }, {
       "name": "newPassword",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }]
   }
 }, {
-  "name": "UpdatePasswordResponse",
   "message": {
+    "name": "UpdatePasswordResponse",
     "fields": []
   }
 }, {
-  "name": "UpdatePassword",
-  "service": {
-    "path": "/UpdatePassword",
-    "body": "UpdatePasswordRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "UpdatePasswordResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "UpdateUsernameRequestBody",
   "message": {
+    "name": "UpdateUsernameRequestBody",
     "fields": [{
       "name": "currentPassword",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }, {
       "name": "newUsername",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }]
   }
 }, {
-  "name": "UpdateUsernameResponse",
   "message": {
+    "name": "UpdateUsernameResponse",
     "fields": [{
       "name": "usernameIsNotAvailable",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 1
     }]
   }
 }, {
-  "name": "UpdateUsername",
-  "service": {
-    "path": "/UpdateUsername",
-    "body": "UpdateUsernameRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "UpdateUsernameResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "UpdateRecoveryEmailRequestBody",
   "message": {
+    "name": "UpdateRecoveryEmailRequestBody",
     "fields": [{
       "name": "currentPassword",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }, {
       "name": "newEmail",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }]
   }
 }, {
-  "name": "UpdateRecoveryEmailResponse",
   "message": {
+    "name": "UpdateRecoveryEmailResponse",
     "fields": []
   }
 }, {
-  "name": "UpdateRecoveryEmail",
-  "service": {
-    "path": "/UpdateRecoveryEmail",
-    "body": "UpdateRecoveryEmailRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "UpdateRecoveryEmailResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "CreateAccountRequestBody",
   "message": {
+    "name": "CreateAccountRequestBody",
     "fields": [{
       "name": "naturalName",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }, {
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "./account_type",
+      "index": 2
     }]
   }
 }, {
-  "name": "CreateAccountResponse",
   "message": {
+    "name": "CreateAccountResponse",
     "fields": [{
       "name": "signedSession",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }]
   }
 }, {
-  "name": "CreateAccount",
-  "service": {
-    "path": "/CreateAccount",
-    "body": "CreateAccountRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "CreateAccountResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "SwitchAccountRequestBody",
   "message": {
+    "name": "SwitchAccountRequestBody",
     "fields": [{
       "name": "accountId",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }]
   }
 }, {
-  "name": "SwitchAccountResponse",
   "message": {
+    "name": "SwitchAccountResponse",
     "fields": [{
       "name": "signedSession",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }]
   }
 }, {
-  "name": "SwitchAccount",
-  "service": {
-    "path": "/SwitchAccount",
-    "body": "SwitchAccountRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "SwitchAccountResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "ListAccountsRequestBody",
   "message": {
+    "name": "ListAccountsRequestBody",
     "fields": []
   }
 }, {
-  "name": "ListAccountsResponse",
   "message": {
+    "name": "ListAccountsResponse",
     "fields": [{
       "name": "accounts",
       "type": "AccountOverview",
-      "import": "./account",
-      "isArray": true
+      "import": "./self/frontend/account",
+      "isArray": true,
+      "index": 1
     }]
   }
 }, {
-  "name": "ListAccounts",
-  "service": {
-    "path": "/ListAccounts",
-    "body": "ListAccountsRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "ListAccountsResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "UpdateAccountRequestBody",
   "message": {
-    "fields": [{
-      "name": "naturalName",
-      "type": "string"
-    }, {
-      "name": "contactEmail",
-      "type": "string"
-    }, {
-      "name": "description",
-      "type": "string"
-    }]
-  }
-}, {
-  "name": "UpdateAccountResponse",
-  "message": {
+    "name": "UpdateAccountResponse",
     "fields": []
   }
 }, {
-  "name": "UpdateAccount",
-  "service": {
-    "path": "/UpdateAccount",
-    "body": "UpdateAccountRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "UpdateAccountResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "UploadAccountAvatarResponse",
   "message": {
+    "name": "UploadAccountAvatarResponse",
     "fields": []
   }
 }, {
-  "name": "UploadAccountAvatar",
-  "service": {
-    "path": "/UploadAccountAvatar",
-    "body": "bytes",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "UploadAccountAvatarResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "GetAccountAndUserRequestBody",
   "message": {
+    "name": "GetAccountAndUserRequestBody",
     "fields": []
   }
 }, {
-  "name": "GetAccountAndUserResponse",
   "message": {
+    "name": "GetAccountAndUserResponse",
     "fields": [{
       "name": "account",
       "type": "AccountAndUser",
-      "import": "./account"
+      "import": "./self/frontend/account",
+      "index": 1
     }]
   }
 }, {
-  "name": "GetAccountAndUser",
-  "service": {
-    "path": "/GetAccountAndUser",
-    "body": "GetAccountAndUserRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "GetAccountAndUserResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
+  "message": {
+    "name": "UpdateAccountRequestBody",
+    "fields": [{
+      "name": "naturalName",
+      "type": "string",
+      "index": 1
+    }, {
+      "name": "contactEmail",
+      "type": "string",
+      "index": 2
+    }, {
+      "name": "description",
+      "type": "string",
+      "index": 3
+    }]
+  }
+}, {
+  "webService": {
+    "name": "UserSelfFrontendService",
+    "remoteCalls": [{
+      "name": "SignUp",
+      "path": "/SignUp",
+      "body": "SignUpRequestBody",
+      "response": "SignUpResponse"
+    }, {
+      "name": "SignIn",
+      "path": "/SignIn",
+      "body": "SignInRequestBody",
+      "response": "SignInResponse"
+    }, {
+      "name": "UpdatePassword",
+      "path": "/UpdatePassword",
+      "body": "UpdatePasswordRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "UpdatePasswordResponse"
+    }, {
+      "name": "UpdateUsername",
+      "path": "/UpdateUsername",
+      "body": "UpdateUsernameRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "UpdateUsernameResponse"
+    }, {
+      "name": "UpdateRecoveryEmail",
+      "path": "/UpdateRecoveryEmail",
+      "body": "UpdateRecoveryEmailRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "UpdateRecoveryEmailResponse"
+    }, {
+      "name": "CreateAccount",
+      "path": "/CreateAccount",
+      "body": "CreateAccountRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "CreateAccountResponse"
+    }, {
+      "name": "SwitchAccount",
+      "path": "/SwitchAccount",
+      "body": "SwitchAccountRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "SwitchAccountResponse"
+    }, {
+      "name": "ListAccounts",
+      "path": "/ListAccounts",
+      "body": "ListAccountsRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "ListAccountsResponse"
+    }, {
+      "name": "UpdateAccount",
+      "path": "/UpdateAccount",
+      "body": "UpdateAccountRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "UpdateAccountResponse"
+    }, {
+      "name": "UploadAccountAvatar",
+      "path": "/UploadAccountAvatar",
+      "body": "bytes",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "UploadAccountAvatarResponse"
+    }, {
+      "name": "GetAccountAndUser",
+      "path": "/GetAccountAndUser",
+      "body": "GetAccountAndUserRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "GetAccountAndUserResponse"
+    }],
+    "outputClient": "./self/frontend/client",
+    "outputHandler": "./self/frontend/handler"
   }
 }]

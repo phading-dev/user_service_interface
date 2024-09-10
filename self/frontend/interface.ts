@@ -1,59 +1,320 @@
-import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
-import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
-import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
 import { AccountOverview, ACCOUNT_OVERVIEW, AccountAndUser, ACCOUNT_AND_USER } from './account';
+import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
+import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
 
 export interface SignUpRequestBody {
   username?: string,
-  naturalName?: string,
+  recoveryEmail?: string,
   password?: string,
+  naturalName?: string,
+  contactEmail?: string,
   accountType?: AccountType,
 }
 
 export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
   name: 'SignUpRequestBody',
-  fields: [
-    {
-      name: 'username',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'naturalName',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'password',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'accountType',
-      enumType: ACCOUNT_TYPE,
-    },
-  ]
+  fields: [{
+    name: 'username',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'recoveryEmail',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'password',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'naturalName',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'contactEmail',
+    index: 5,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'accountType',
+    index: 6,
+    enumType: ACCOUNT_TYPE,
+  }],
 };
 
 export interface SignUpResponse {
-/* If set, no other fields will be populated. */
+  /* If set, no other fields will be populated. */
   usernameIsNotAvailable?: boolean,
   signedSession?: string,
 }
 
 export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
   name: 'SignUpResponse',
-  fields: [
-    {
-      name: 'usernameIsNotAvailable',
-      primitiveType: PrimitiveType.BOOLEAN,
-    },
-    {
-      name: 'signedSession',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
+  fields: [{
+    name: 'usernameIsNotAvailable',
+    index: 1,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }, {
+    name: 'signedSession',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
 };
 
-export let SIGN_UP: ServiceDescriptor = {
+export interface SignInRequestBody {
+  username?: string,
+  password?: string,
+}
+
+export let SIGN_IN_REQUEST_BODY: MessageDescriptor<SignInRequestBody> = {
+  name: 'SignInRequestBody',
+  fields: [{
+    name: 'username',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'password',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface SignInResponse {
+  signedSession?: string,
+}
+
+export let SIGN_IN_RESPONSE: MessageDescriptor<SignInResponse> = {
+  name: 'SignInResponse',
+  fields: [{
+    name: 'signedSession',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface UpdatePasswordRequestBody {
+  currentPassword?: string,
+  newPassword?: string,
+}
+
+export let UPDATE_PASSWORD_REQUEST_BODY: MessageDescriptor<UpdatePasswordRequestBody> = {
+  name: 'UpdatePasswordRequestBody',
+  fields: [{
+    name: 'currentPassword',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'newPassword',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface UpdatePasswordResponse {
+}
+
+export let UPDATE_PASSWORD_RESPONSE: MessageDescriptor<UpdatePasswordResponse> = {
+  name: 'UpdatePasswordResponse',
+  fields: [],
+};
+
+export interface UpdateUsernameRequestBody {
+  currentPassword?: string,
+  newUsername?: string,
+}
+
+export let UPDATE_USERNAME_REQUEST_BODY: MessageDescriptor<UpdateUsernameRequestBody> = {
+  name: 'UpdateUsernameRequestBody',
+  fields: [{
+    name: 'currentPassword',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'newUsername',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface UpdateUsernameResponse {
+  usernameIsNotAvailable?: boolean,
+}
+
+export let UPDATE_USERNAME_RESPONSE: MessageDescriptor<UpdateUsernameResponse> = {
+  name: 'UpdateUsernameResponse',
+  fields: [{
+    name: 'usernameIsNotAvailable',
+    index: 1,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
+};
+
+export interface UpdateRecoveryEmailRequestBody {
+  currentPassword?: string,
+  newEmail?: string,
+}
+
+export let UPDATE_RECOVERY_EMAIL_REQUEST_BODY: MessageDescriptor<UpdateRecoveryEmailRequestBody> = {
+  name: 'UpdateRecoveryEmailRequestBody',
+  fields: [{
+    name: 'currentPassword',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'newEmail',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface UpdateRecoveryEmailResponse {
+}
+
+export let UPDATE_RECOVERY_EMAIL_RESPONSE: MessageDescriptor<UpdateRecoveryEmailResponse> = {
+  name: 'UpdateRecoveryEmailResponse',
+  fields: [],
+};
+
+export interface CreateAccountRequestBody {
+  naturalName?: string,
+  accountType?: AccountType,
+}
+
+export let CREATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<CreateAccountRequestBody> = {
+  name: 'CreateAccountRequestBody',
+  fields: [{
+    name: 'naturalName',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'accountType',
+    index: 2,
+    enumType: ACCOUNT_TYPE,
+  }],
+};
+
+export interface CreateAccountResponse {
+  signedSession?: string,
+}
+
+export let CREATE_ACCOUNT_RESPONSE: MessageDescriptor<CreateAccountResponse> = {
+  name: 'CreateAccountResponse',
+  fields: [{
+    name: 'signedSession',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface SwitchAccountRequestBody {
+  accountId?: string,
+}
+
+export let SWITCH_ACCOUNT_REQUEST_BODY: MessageDescriptor<SwitchAccountRequestBody> = {
+  name: 'SwitchAccountRequestBody',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface SwitchAccountResponse {
+  signedSession?: string,
+}
+
+export let SWITCH_ACCOUNT_RESPONSE: MessageDescriptor<SwitchAccountResponse> = {
+  name: 'SwitchAccountResponse',
+  fields: [{
+    name: 'signedSession',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface ListAccountsRequestBody {
+}
+
+export let LIST_ACCOUNTS_REQUEST_BODY: MessageDescriptor<ListAccountsRequestBody> = {
+  name: 'ListAccountsRequestBody',
+  fields: [],
+};
+
+export interface ListAccountsResponse {
+  accounts?: Array<AccountOverview>,
+}
+
+export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
+  name: 'ListAccountsResponse',
+  fields: [{
+    name: 'accounts',
+    index: 1,
+    messageType: ACCOUNT_OVERVIEW,
+    isArray: true,
+  }],
+};
+
+export interface UpdateAccountResponse {
+}
+
+export let UPDATE_ACCOUNT_RESPONSE: MessageDescriptor<UpdateAccountResponse> = {
+  name: 'UpdateAccountResponse',
+  fields: [],
+};
+
+export interface UploadAccountAvatarResponse {
+}
+
+export let UPLOAD_ACCOUNT_AVATAR_RESPONSE: MessageDescriptor<UploadAccountAvatarResponse> = {
+  name: 'UploadAccountAvatarResponse',
+  fields: [],
+};
+
+export interface GetAccountAndUserRequestBody {
+}
+
+export let GET_ACCOUNT_AND_USER_REQUEST_BODY: MessageDescriptor<GetAccountAndUserRequestBody> = {
+  name: 'GetAccountAndUserRequestBody',
+  fields: [],
+};
+
+export interface GetAccountAndUserResponse {
+  account?: AccountAndUser,
+}
+
+export let GET_ACCOUNT_AND_USER_RESPONSE: MessageDescriptor<GetAccountAndUserResponse> = {
+  name: 'GetAccountAndUserResponse',
+  fields: [{
+    name: 'account',
+    index: 1,
+    messageType: ACCOUNT_AND_USER,
+  }],
+};
+
+export interface UpdateAccountRequestBody {
+  naturalName?: string,
+  contactEmail?: string,
+  description?: string,
+}
+
+export let UPDATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<UpdateAccountRequestBody> = {
+  name: 'UpdateAccountRequestBody',
+  fields: [{
+    name: 'naturalName',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'contactEmail',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'description',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export let SIGN_UP: WebRemoteCallDescriptor = {
   name: "SignUp",
   path: "/SignUp",
   body: {
@@ -64,40 +325,7 @@ export let SIGN_UP: ServiceDescriptor = {
   },
 }
 
-export interface SignInRequestBody {
-  username?: string,
-  password?: string,
-}
-
-export let SIGN_IN_REQUEST_BODY: MessageDescriptor<SignInRequestBody> = {
-  name: 'SignInRequestBody',
-  fields: [
-    {
-      name: 'username',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'password',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface SignInResponse {
-  signedSession?: string,
-}
-
-export let SIGN_IN_RESPONSE: MessageDescriptor<SignInResponse> = {
-  name: 'SignInResponse',
-  fields: [
-    {
-      name: 'signedSession',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export let SIGN_IN: ServiceDescriptor = {
+export let SIGN_IN: WebRemoteCallDescriptor = {
   name: "SignIn",
   path: "/SignIn",
   body: {
@@ -108,35 +336,7 @@ export let SIGN_IN: ServiceDescriptor = {
   },
 }
 
-export interface UpdatePasswordRequestBody {
-  currentPassword?: string,
-  newPassword?: string,
-}
-
-export let UPDATE_PASSWORD_REQUEST_BODY: MessageDescriptor<UpdatePasswordRequestBody> = {
-  name: 'UpdatePasswordRequestBody',
-  fields: [
-    {
-      name: 'currentPassword',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'newPassword',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface UpdatePasswordResponse {
-}
-
-export let UPDATE_PASSWORD_RESPONSE: MessageDescriptor<UpdatePasswordResponse> = {
-  name: 'UpdatePasswordResponse',
-  fields: [
-  ]
-};
-
-export let UPDATE_PASSWORD: ServiceDescriptor = {
+export let UPDATE_PASSWORD: WebRemoteCallDescriptor = {
   name: "UpdatePassword",
   path: "/UpdatePassword",
   body: {
@@ -151,40 +351,7 @@ export let UPDATE_PASSWORD: ServiceDescriptor = {
   },
 }
 
-export interface UpdateUsernameRequestBody {
-  currentPassword?: string,
-  newUsername?: string,
-}
-
-export let UPDATE_USERNAME_REQUEST_BODY: MessageDescriptor<UpdateUsernameRequestBody> = {
-  name: 'UpdateUsernameRequestBody',
-  fields: [
-    {
-      name: 'currentPassword',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'newUsername',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface UpdateUsernameResponse {
-  usernameIsNotAvailable?: boolean,
-}
-
-export let UPDATE_USERNAME_RESPONSE: MessageDescriptor<UpdateUsernameResponse> = {
-  name: 'UpdateUsernameResponse',
-  fields: [
-    {
-      name: 'usernameIsNotAvailable',
-      primitiveType: PrimitiveType.BOOLEAN,
-    },
-  ]
-};
-
-export let UPDATE_USERNAME: ServiceDescriptor = {
+export let UPDATE_USERNAME: WebRemoteCallDescriptor = {
   name: "UpdateUsername",
   path: "/UpdateUsername",
   body: {
@@ -199,35 +366,7 @@ export let UPDATE_USERNAME: ServiceDescriptor = {
   },
 }
 
-export interface UpdateRecoveryEmailRequestBody {
-  currentPassword?: string,
-  newEmail?: string,
-}
-
-export let UPDATE_RECOVERY_EMAIL_REQUEST_BODY: MessageDescriptor<UpdateRecoveryEmailRequestBody> = {
-  name: 'UpdateRecoveryEmailRequestBody',
-  fields: [
-    {
-      name: 'currentPassword',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'newEmail',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface UpdateRecoveryEmailResponse {
-}
-
-export let UPDATE_RECOVERY_EMAIL_RESPONSE: MessageDescriptor<UpdateRecoveryEmailResponse> = {
-  name: 'UpdateRecoveryEmailResponse',
-  fields: [
-  ]
-};
-
-export let UPDATE_RECOVERY_EMAIL: ServiceDescriptor = {
+export let UPDATE_RECOVERY_EMAIL: WebRemoteCallDescriptor = {
   name: "UpdateRecoveryEmail",
   path: "/UpdateRecoveryEmail",
   body: {
@@ -242,40 +381,7 @@ export let UPDATE_RECOVERY_EMAIL: ServiceDescriptor = {
   },
 }
 
-export interface CreateAccountRequestBody {
-  naturalName?: string,
-  accountType?: AccountType,
-}
-
-export let CREATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<CreateAccountRequestBody> = {
-  name: 'CreateAccountRequestBody',
-  fields: [
-    {
-      name: 'naturalName',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'accountType',
-      enumType: ACCOUNT_TYPE,
-    },
-  ]
-};
-
-export interface CreateAccountResponse {
-  signedSession?: string,
-}
-
-export let CREATE_ACCOUNT_RESPONSE: MessageDescriptor<CreateAccountResponse> = {
-  name: 'CreateAccountResponse',
-  fields: [
-    {
-      name: 'signedSession',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export let CREATE_ACCOUNT: ServiceDescriptor = {
+export let CREATE_ACCOUNT: WebRemoteCallDescriptor = {
   name: "CreateAccount",
   path: "/CreateAccount",
   body: {
@@ -290,35 +396,7 @@ export let CREATE_ACCOUNT: ServiceDescriptor = {
   },
 }
 
-export interface SwitchAccountRequestBody {
-  accountId?: string,
-}
-
-export let SWITCH_ACCOUNT_REQUEST_BODY: MessageDescriptor<SwitchAccountRequestBody> = {
-  name: 'SwitchAccountRequestBody',
-  fields: [
-    {
-      name: 'accountId',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface SwitchAccountResponse {
-  signedSession?: string,
-}
-
-export let SWITCH_ACCOUNT_RESPONSE: MessageDescriptor<SwitchAccountResponse> = {
-  name: 'SwitchAccountResponse',
-  fields: [
-    {
-      name: 'signedSession',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export let SWITCH_ACCOUNT: ServiceDescriptor = {
+export let SWITCH_ACCOUNT: WebRemoteCallDescriptor = {
   name: "SwitchAccount",
   path: "/SwitchAccount",
   body: {
@@ -333,31 +411,7 @@ export let SWITCH_ACCOUNT: ServiceDescriptor = {
   },
 }
 
-export interface ListAccountsRequestBody {
-}
-
-export let LIST_ACCOUNTS_REQUEST_BODY: MessageDescriptor<ListAccountsRequestBody> = {
-  name: 'ListAccountsRequestBody',
-  fields: [
-  ]
-};
-
-export interface ListAccountsResponse {
-  accounts?: Array<AccountOverview>,
-}
-
-export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
-  name: 'ListAccountsResponse',
-  fields: [
-    {
-      name: 'accounts',
-      messageType: ACCOUNT_OVERVIEW,
-      isArray: true,
-    },
-  ]
-};
-
-export let LIST_ACCOUNTS: ServiceDescriptor = {
+export let LIST_ACCOUNTS: WebRemoteCallDescriptor = {
   name: "ListAccounts",
   path: "/ListAccounts",
   body: {
@@ -372,40 +426,7 @@ export let LIST_ACCOUNTS: ServiceDescriptor = {
   },
 }
 
-export interface UpdateAccountRequestBody {
-  naturalName?: string,
-  contactEmail?: string,
-  description?: string,
-}
-
-export let UPDATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<UpdateAccountRequestBody> = {
-  name: 'UpdateAccountRequestBody',
-  fields: [
-    {
-      name: 'naturalName',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'contactEmail',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'description',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface UpdateAccountResponse {
-}
-
-export let UPDATE_ACCOUNT_RESPONSE: MessageDescriptor<UpdateAccountResponse> = {
-  name: 'UpdateAccountResponse',
-  fields: [
-  ]
-};
-
-export let UPDATE_ACCOUNT: ServiceDescriptor = {
+export let UPDATE_ACCOUNT: WebRemoteCallDescriptor = {
   name: "UpdateAccount",
   path: "/UpdateAccount",
   body: {
@@ -420,16 +441,7 @@ export let UPDATE_ACCOUNT: ServiceDescriptor = {
   },
 }
 
-export interface UploadAccountAvatarResponse {
-}
-
-export let UPLOAD_ACCOUNT_AVATAR_RESPONSE: MessageDescriptor<UploadAccountAvatarResponse> = {
-  name: 'UploadAccountAvatarResponse',
-  fields: [
-  ]
-};
-
-export let UPLOAD_ACCOUNT_AVATAR: ServiceDescriptor = {
+export let UPLOAD_ACCOUNT_AVATAR: WebRemoteCallDescriptor = {
   name: "UploadAccountAvatar",
   path: "/UploadAccountAvatar",
   body: {
@@ -444,30 +456,7 @@ export let UPLOAD_ACCOUNT_AVATAR: ServiceDescriptor = {
   },
 }
 
-export interface GetAccountAndUserRequestBody {
-}
-
-export let GET_ACCOUNT_AND_USER_REQUEST_BODY: MessageDescriptor<GetAccountAndUserRequestBody> = {
-  name: 'GetAccountAndUserRequestBody',
-  fields: [
-  ]
-};
-
-export interface GetAccountAndUserResponse {
-  account?: AccountAndUser,
-}
-
-export let GET_ACCOUNT_AND_USER_RESPONSE: MessageDescriptor<GetAccountAndUserResponse> = {
-  name: 'GetAccountAndUserResponse',
-  fields: [
-    {
-      name: 'account',
-      messageType: ACCOUNT_AND_USER,
-    },
-  ]
-};
-
-export let GET_ACCOUNT_AND_USER: ServiceDescriptor = {
+export let GET_ACCOUNT_AND_USER: WebRemoteCallDescriptor = {
   name: "GetAccountAndUser",
   path: "/GetAccountAndUser",
   body: {

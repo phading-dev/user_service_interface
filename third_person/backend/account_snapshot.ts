@@ -1,5 +1,5 @@
-import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
+import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
 export interface AccountSnapshot {
   accountType?: AccountType,
@@ -10,22 +10,21 @@ export interface AccountSnapshot {
 
 export let ACCOUNT_SNAPSHOT: MessageDescriptor<AccountSnapshot> = {
   name: 'AccountSnapshot',
-  fields: [
-    {
-      name: 'accountType',
-      enumType: ACCOUNT_TYPE,
-    },
-    {
-      name: 'accountId',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'naturalName',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'avatarSmallPath',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
+  fields: [{
+    name: 'accountType',
+    index: 1,
+    enumType: ACCOUNT_TYPE,
+  }, {
+    name: 'accountId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'naturalName',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'avatarSmallPath',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }],
 };

@@ -1,6 +1,6 @@
 [{
-  "name": "AccountType",
   "enum": {
+    "name": "AccountType",
     "values": [{
       "name": "CONSUMER",
       "value": 1

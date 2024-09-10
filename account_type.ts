@@ -7,14 +7,11 @@ export enum AccountType {
 
 export let ACCOUNT_TYPE: EnumDescriptor<AccountType> = {
   name: 'AccountType',
-  values: [
-    {
-      name: 'CONSUMER',
-      value: 1,
-    },
-    {
-      name: 'PUBLISHER',
-      value: 2,
-    },
-  ]
+  values: [{
+    name: 'CONSUMER',
+    value: 1,
+  }, {
+    name: 'PUBLISHER',
+    value: 2,
+  }]
 }

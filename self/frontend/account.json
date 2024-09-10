@@ -1,49 +1,61 @@
 [{
-  "name": "AccountAndUser",
   "message": {
+    "name": "AccountAndUser",
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "./account_type",
+      "index": 1
     }, {
       "name": "accountId",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }, {
       "name": "naturalName",
-      "type": "string"
+      "type": "string",
+      "index": 3
     }, {
       "name": "contactEmail",
-      "type": "string"
+      "type": "string",
+      "index": 4
     }, {
       "name": "description",
-      "type": "string"
+      "type": "string",
+      "index": 5
     }, {
       "name": "avatarLargePath",
-      "type": "string"
+      "type": "string",
+      "index": 6
     }, {
       "name": "username",
-      "type": "string"
+      "type": "string",
+      "index": 7
     }, {
       "name": "recoveryEmail",
-      "type": "string"
+      "type": "string",
+      "index": 8
     }]
   }
 }, {
-  "name": "AccountOverview",
   "message": {
+    "name": "AccountOverview",
     "fields": [{
       "name": "accountType",
       "type": "AccountType",
-      "import": "../../account_type"
+      "import": "./account_type",
+      "index": 1
     }, {
       "name": "accountId",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }, {
       "name": "naturalName",
-      "type": "string"
+      "type": "string",
+      "index": 3
     }, {
       "name": "avatarSmallPath",
-      "type": "string"
+      "type": "string",
+      "index": 4
     }]
   }
 }]

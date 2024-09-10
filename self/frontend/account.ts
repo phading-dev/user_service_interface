@@ -1,5 +1,5 @@
-import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
+import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
 export interface AccountAndUser {
   accountType?: AccountType,
@@ -14,40 +14,39 @@ export interface AccountAndUser {
 
 export let ACCOUNT_AND_USER: MessageDescriptor<AccountAndUser> = {
   name: 'AccountAndUser',
-  fields: [
-    {
-      name: 'accountType',
-      enumType: ACCOUNT_TYPE,
-    },
-    {
-      name: 'accountId',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'naturalName',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'contactEmail',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'description',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'avatarLargePath',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'username',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'recoveryEmail',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
+  fields: [{
+    name: 'accountType',
+    index: 1,
+    enumType: ACCOUNT_TYPE,
+  }, {
+    name: 'accountId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'naturalName',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'contactEmail',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'description',
+    index: 5,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'avatarLargePath',
+    index: 6,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'username',
+    index: 7,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'recoveryEmail',
+    index: 8,
+    primitiveType: PrimitiveType.STRING,
+  }],
 };
 
 export interface AccountOverview {
@@ -59,22 +58,21 @@ export interface AccountOverview {
 
 export let ACCOUNT_OVERVIEW: MessageDescriptor<AccountOverview> = {
   name: 'AccountOverview',
-  fields: [
-    {
-      name: 'accountType',
-      enumType: ACCOUNT_TYPE,
-    },
-    {
-      name: 'accountId',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'naturalName',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'avatarSmallPath',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
+  fields: [{
+    name: 'accountType',
+    index: 1,
+    enumType: ACCOUNT_TYPE,
+  }, {
+    name: 'accountId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'naturalName',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'avatarSmallPath',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }],
 };
