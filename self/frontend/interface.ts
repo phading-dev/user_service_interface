@@ -2,7 +2,6 @@ import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 import { AccountOverview, ACCOUNT_OVERVIEW, AccountAndUser, ACCOUNT_AND_USER } from './account';
 import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
-import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
 
 export interface SignUpRequestBody {
   username?: string,
@@ -118,37 +117,6 @@ export let UPDATE_PASSWORD_RESPONSE: MessageDescriptor<UpdatePasswordResponse> =
   fields: [],
 };
 
-export interface UpdateUsernameRequestBody {
-  currentPassword?: string,
-  newUsername?: string,
-}
-
-export let UPDATE_USERNAME_REQUEST_BODY: MessageDescriptor<UpdateUsernameRequestBody> = {
-  name: 'UpdateUsernameRequestBody',
-  fields: [{
-    name: 'currentPassword',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'newUsername',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface UpdateUsernameResponse {
-  usernameIsNotAvailable?: boolean,
-}
-
-export let UPDATE_USERNAME_RESPONSE: MessageDescriptor<UpdateUsernameResponse> = {
-  name: 'UpdateUsernameResponse',
-  fields: [{
-    name: 'usernameIsNotAvailable',
-    index: 1,
-    primitiveType: PrimitiveType.BOOLEAN,
-  }],
-};
-
 export interface UpdateRecoveryEmailRequestBody {
   currentPassword?: string,
   newEmail?: string,
@@ -177,6 +145,7 @@ export let UPDATE_RECOVERY_EMAIL_RESPONSE: MessageDescriptor<UpdateRecoveryEmail
 
 export interface CreateAccountRequestBody {
   naturalName?: string,
+  contactEmail?: string,
   accountType?: AccountType,
 }
 
@@ -187,8 +156,12 @@ export let CREATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<CreateAccountRequestBo
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'accountType',
+    name: 'contactEmail',
     index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'accountType',
+    index: 3,
     enumType: ACCOUNT_TYPE,
   }],
 };
@@ -342,27 +315,9 @@ export let UPDATE_PASSWORD: WebRemoteCallDescriptor = {
   body: {
     messageType: UPDATE_PASSWORD_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: UPDATE_PASSWORD_RESPONSE,
-  },
-}
-
-export let UPDATE_USERNAME: WebRemoteCallDescriptor = {
-  name: "UpdateUsername",
-  path: "/UpdateUsername",
-  body: {
-    messageType: UPDATE_USERNAME_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
-  response: {
-    messageType: UPDATE_USERNAME_RESPONSE,
   },
 }
 
@@ -372,10 +327,7 @@ export let UPDATE_RECOVERY_EMAIL: WebRemoteCallDescriptor = {
   body: {
     messageType: UPDATE_RECOVERY_EMAIL_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: UPDATE_RECOVERY_EMAIL_RESPONSE,
   },
@@ -387,10 +339,7 @@ export let CREATE_ACCOUNT: WebRemoteCallDescriptor = {
   body: {
     messageType: CREATE_ACCOUNT_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: CREATE_ACCOUNT_RESPONSE,
   },
@@ -402,10 +351,7 @@ export let SWITCH_ACCOUNT: WebRemoteCallDescriptor = {
   body: {
     messageType: SWITCH_ACCOUNT_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: SWITCH_ACCOUNT_RESPONSE,
   },
@@ -417,10 +363,7 @@ export let LIST_ACCOUNTS: WebRemoteCallDescriptor = {
   body: {
     messageType: LIST_ACCOUNTS_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: LIST_ACCOUNTS_RESPONSE,
   },
@@ -432,10 +375,7 @@ export let UPDATE_ACCOUNT: WebRemoteCallDescriptor = {
   body: {
     messageType: UPDATE_ACCOUNT_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: UPDATE_ACCOUNT_RESPONSE,
   },
@@ -447,10 +387,7 @@ export let UPLOAD_ACCOUNT_AVATAR: WebRemoteCallDescriptor = {
   body: {
     primitiveType: PrimitveTypeForBody.BYTES,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: UPLOAD_ACCOUNT_AVATAR_RESPONSE,
   },
@@ -462,10 +399,7 @@ export let GET_ACCOUNT_AND_USER: WebRemoteCallDescriptor = {
   body: {
     messageType: GET_ACCOUNT_AND_USER_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: GET_ACCOUNT_AND_USER_RESPONSE,
   },

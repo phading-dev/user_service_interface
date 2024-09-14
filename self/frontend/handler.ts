@@ -1,6 +1,5 @@
-import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateUsernameRequestBody, UPDATE_USERNAME, UpdateUsernameResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse } from './interface';
+import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse } from './interface';
 import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
-import { ClientSession } from '@phading/user_session_service_interface/client_session';
 import { Readable } from 'stream';
 
 export abstract class SignUpHandlerInterface implements WebHandlerInterface {
@@ -24,17 +23,8 @@ export abstract class UpdatePasswordHandlerInterface implements WebHandlerInterf
   public abstract handle(
     loggingPrefix: string,
     body: UpdatePasswordRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<UpdatePasswordResponse>;
-}
-
-export abstract class UpdateUsernameHandlerInterface implements WebHandlerInterface {
-  public descriptor = UPDATE_USERNAME;
-  public abstract handle(
-    loggingPrefix: string,
-    body: UpdateUsernameRequestBody,
-    auth: ClientSession,
-  ): Promise<UpdateUsernameResponse>;
 }
 
 export abstract class UpdateRecoveryEmailHandlerInterface implements WebHandlerInterface {
@@ -42,7 +32,7 @@ export abstract class UpdateRecoveryEmailHandlerInterface implements WebHandlerI
   public abstract handle(
     loggingPrefix: string,
     body: UpdateRecoveryEmailRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<UpdateRecoveryEmailResponse>;
 }
 
@@ -51,7 +41,7 @@ export abstract class CreateAccountHandlerInterface implements WebHandlerInterfa
   public abstract handle(
     loggingPrefix: string,
     body: CreateAccountRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<CreateAccountResponse>;
 }
 
@@ -60,7 +50,7 @@ export abstract class SwitchAccountHandlerInterface implements WebHandlerInterfa
   public abstract handle(
     loggingPrefix: string,
     body: SwitchAccountRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<SwitchAccountResponse>;
 }
 
@@ -69,7 +59,7 @@ export abstract class ListAccountsHandlerInterface implements WebHandlerInterfac
   public abstract handle(
     loggingPrefix: string,
     body: ListAccountsRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<ListAccountsResponse>;
 }
 
@@ -78,7 +68,7 @@ export abstract class UpdateAccountHandlerInterface implements WebHandlerInterfa
   public abstract handle(
     loggingPrefix: string,
     body: UpdateAccountRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<UpdateAccountResponse>;
 }
 
@@ -87,7 +77,7 @@ export abstract class UploadAccountAvatarHandlerInterface implements WebHandlerI
   public abstract handle(
     loggingPrefix: string,
     body: Readable,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<UploadAccountAvatarResponse>;
 }
 
@@ -96,6 +86,6 @@ export abstract class GetAccountAndUserHandlerInterface implements WebHandlerInt
   public abstract handle(
     loggingPrefix: string,
     body: GetAccountAndUserRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<GetAccountAndUserResponse>;
 }
