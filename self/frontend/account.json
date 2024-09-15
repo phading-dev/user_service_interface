@@ -2,15 +2,6 @@
   "message": {
     "name": "AccountAndUser",
     "fields": [{
-      "name": "accountType",
-      "type": "AccountType",
-      "import": "./account_type",
-      "index": 1
-    }, {
-      "name": "accountId",
-      "type": "string",
-      "index": 2
-    }, {
       "name": "naturalName",
       "type": "string",
       "index": 3

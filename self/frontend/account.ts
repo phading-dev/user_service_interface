@@ -1,9 +1,7 @@
-import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 
 export interface AccountAndUser {
-  accountType?: AccountType,
-  accountId?: string,
   naturalName?: string,
   contactEmail?: string,
   description?: string,
@@ -15,14 +13,6 @@ export interface AccountAndUser {
 export let ACCOUNT_AND_USER: MessageDescriptor<AccountAndUser> = {
   name: 'AccountAndUser',
   fields: [{
-    name: 'accountType',
-    index: 1,
-    enumType: ACCOUNT_TYPE,
-  }, {
-    name: 'accountId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }, {
     name: 'naturalName',
     index: 3,
     primitiveType: PrimitiveType.STRING,
