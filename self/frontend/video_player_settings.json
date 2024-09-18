@@ -1,0 +1,89 @@
+[{
+  "message": {
+    "name": "VideoSettings",
+    "fields": [{
+      "name": "volume",
+      "type": "number",
+      "index": 1,
+      "comment": "0 to 1"
+    }, {
+      "name": "muted",
+      "type": "boolean",
+      "index": 2
+    }, {
+      "name": "playbackSpeed",
+      "type": "number",
+      "index": 3,
+      "comment": ".25x to 4x"
+    }]
+  }
+}, {
+  "enum": {
+    "name": "StackingMethod",
+    "values": [{
+      "name": "RANDOM",
+      "value": 1
+    }, {
+      "name": "TOP_DOWN",
+      "value": 2
+    }]
+  }
+}, {
+  "message": {
+    "name": "DanmakuSettings",
+    "fields": [{
+      "name": "enable",
+      "type": "boolean",
+      "index": 1
+    }, {
+      "name": "speed",
+      "type": "number",
+      "index": 2
+    }, {
+      "name": "opacity",
+      "type": "number",
+      "index": 3,
+      "comment": "0 to 100 percentage."
+    }, {
+      "name": "fontSize",
+      "type": "number",
+      "index": 4
+    }, {
+      "name": "density",
+      "type": "number",
+      "index": 5,
+      "comment": "0 to 100 percentage. For every 100 pixels, the number of pixels should be occupied."
+    }, {
+      "name": "topMargin",
+      "type": "number",
+      "index": 6,
+      "comment":"0 to 100 percentage."
+    }, {
+      "name": "bottomMargin",
+      "type": "number",
+      "index": 7,
+      "comment":"0 to 100 percentage."
+    }, {
+      "name": "fontFamily",
+      "type": "string",
+      "index": 8
+    }, {
+      "name": "stackingMethod",
+      "type": "StackingMethod",
+      "index": 9
+    }]
+  }
+}, {
+  "message": {
+    "name": "VideoPlayerSettings",
+    "fields": [{
+      "name": "videoSettings",
+      "type": "VideoSettings",
+      "index": 1
+    }, {
+      "name": "danmakuSettings",
+      "type": "DanmakuSettings",
+      "index": 2
+    }]
+  }
+}]

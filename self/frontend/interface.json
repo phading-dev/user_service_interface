@@ -204,6 +204,36 @@
     }]
   }
 }, {
+  "message": {
+    "name": "GetVideoPlayerSettingsRequestBody",
+    "fields": []
+  }
+}, {
+  "message": {
+    "name": "GetVideoPlayerSettingsResponse",
+    "fields": [{
+      "name": "playerSettings",
+      "type": "VideoPlayerSettings",
+      "import": "./self/frontend/video_player_settings",
+      "index": 1
+    }]
+  }
+}, {
+  "message": {
+    "name": "SaveVideoPlayerSettingsRequestBody",
+    "fields": [{
+      "name": "playerSettings",
+      "type": "VideoPlayerSettings",
+      "import": "./self/frontend/video_player_settings",
+      "index": 1
+    }]
+  }
+}, {
+  "message": {
+    "name": "SaveVideoPlayerSettingsResponse",
+    "fields": []
+  }
+}, {
   "webService": {
     "name": "UserSelfFrontendService",
     "remoteCalls": [{
@@ -264,6 +294,18 @@
       "body": "GetAccountAndUserRequestBody",
       "sessionKey": "sk",
       "response": "GetAccountAndUserResponse"
+    }, {
+      "name": "GetVideoPlayerSettings",
+      "path": "/GetVideoPlayerSettings",
+      "body": "GetVideoPlayerSettingsRequestBody",
+      "sessionKey": "sk",
+      "response": "GetVideoPlayerSettingsResponse"
+    }, {
+      "name": "SaveVideoPlayerSettings",
+      "path": "/SaveVideoPlayerSettings",
+      "body": "SaveVideoPlayerSettingsRequestBody",
+      "sessionKey": "sk",
+      "response": "SaveVideoPlayerSettingsResponse"
     }],
     "outputClient": "./self/frontend/client",
     "outputHandler": "./self/frontend/handler"

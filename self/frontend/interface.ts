@@ -1,6 +1,7 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 import { AccountOverview, ACCOUNT_OVERVIEW, AccountAndUser, ACCOUNT_AND_USER } from './account';
+import { VideoPlayerSettings, VIDEO_PLAYER_SETTINGS } from './video_player_settings';
 import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 
 export interface SignUpRequestBody {
@@ -287,6 +288,48 @@ export let UPDATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<UpdateAccountRequestBo
   }],
 };
 
+export interface GetVideoPlayerSettingsRequestBody {
+}
+
+export let GET_VIDEO_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<GetVideoPlayerSettingsRequestBody> = {
+  name: 'GetVideoPlayerSettingsRequestBody',
+  fields: [],
+};
+
+export interface GetVideoPlayerSettingsResponse {
+  playerSettings?: VideoPlayerSettings,
+}
+
+export let GET_VIDEO_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<GetVideoPlayerSettingsResponse> = {
+  name: 'GetVideoPlayerSettingsResponse',
+  fields: [{
+    name: 'playerSettings',
+    index: 1,
+    messageType: VIDEO_PLAYER_SETTINGS,
+  }],
+};
+
+export interface SaveVideoPlayerSettingsRequestBody {
+  playerSettings?: VideoPlayerSettings,
+}
+
+export let SAVE_VIDEO_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<SaveVideoPlayerSettingsRequestBody> = {
+  name: 'SaveVideoPlayerSettingsRequestBody',
+  fields: [{
+    name: 'playerSettings',
+    index: 1,
+    messageType: VIDEO_PLAYER_SETTINGS,
+  }],
+};
+
+export interface SaveVideoPlayerSettingsResponse {
+}
+
+export let SAVE_VIDEO_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<SaveVideoPlayerSettingsResponse> = {
+  name: 'SaveVideoPlayerSettingsResponse',
+  fields: [],
+};
+
 export let SIGN_UP: WebRemoteCallDescriptor = {
   name: "SignUp",
   path: "/SignUp",
@@ -402,5 +445,29 @@ export let GET_ACCOUNT_AND_USER: WebRemoteCallDescriptor = {
   sessionKey: "sk",
   response: {
     messageType: GET_ACCOUNT_AND_USER_RESPONSE,
+  },
+}
+
+export let GET_VIDEO_PLAYER_SETTINGS: WebRemoteCallDescriptor = {
+  name: "GetVideoPlayerSettings",
+  path: "/GetVideoPlayerSettings",
+  body: {
+    messageType: GET_VIDEO_PLAYER_SETTINGS_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: GET_VIDEO_PLAYER_SETTINGS_RESPONSE,
+  },
+}
+
+export let SAVE_VIDEO_PLAYER_SETTINGS: WebRemoteCallDescriptor = {
+  name: "SaveVideoPlayerSettings",
+  path: "/SaveVideoPlayerSettings",
+  body: {
+    messageType: SAVE_VIDEO_PLAYER_SETTINGS_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: SAVE_VIDEO_PLAYER_SETTINGS_RESPONSE,
   },
 }

@@ -1,4 +1,4 @@
-import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse } from './interface';
+import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse, GetVideoPlayerSettingsRequestBody, GET_VIDEO_PLAYER_SETTINGS, GetVideoPlayerSettingsResponse, SaveVideoPlayerSettingsRequestBody, SAVE_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsResponse } from './interface';
 import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 import { Readable } from 'stream';
 
@@ -88,4 +88,22 @@ export abstract class GetAccountAndUserHandlerInterface implements WebHandlerInt
     body: GetAccountAndUserRequestBody,
     sessionStr: string,
   ): Promise<GetAccountAndUserResponse>;
+}
+
+export abstract class GetVideoPlayerSettingsHandlerInterface implements WebHandlerInterface {
+  public descriptor = GET_VIDEO_PLAYER_SETTINGS;
+  public abstract handle(
+    loggingPrefix: string,
+    body: GetVideoPlayerSettingsRequestBody,
+    sessionStr: string,
+  ): Promise<GetVideoPlayerSettingsResponse>;
+}
+
+export abstract class SaveVideoPlayerSettingsHandlerInterface implements WebHandlerInterface {
+  public descriptor = SAVE_VIDEO_PLAYER_SETTINGS;
+  public abstract handle(
+    loggingPrefix: string,
+    body: SaveVideoPlayerSettingsRequestBody,
+    sessionStr: string,
+  ): Promise<SaveVideoPlayerSettingsResponse>;
 }
