@@ -212,7 +212,7 @@
   "message": {
     "name": "GetVideoPlayerSettingsResponse",
     "fields": [{
-      "name": "playerSettings",
+      "name": "settings",
       "type": "VideoPlayerSettings",
       "import": "./self/frontend/video_player_settings",
       "index": 1
@@ -222,7 +222,7 @@
   "message": {
     "name": "SaveVideoPlayerSettingsRequestBody",
     "fields": [{
-      "name": "playerSettings",
+      "name": "settings",
       "type": "VideoPlayerSettings",
       "import": "./self/frontend/video_player_settings",
       "index": 1

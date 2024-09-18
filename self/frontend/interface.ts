@@ -297,26 +297,26 @@ export let GET_VIDEO_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<GetVideoPla
 };
 
 export interface GetVideoPlayerSettingsResponse {
-  playerSettings?: VideoPlayerSettings,
+  settings?: VideoPlayerSettings,
 }
 
 export let GET_VIDEO_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<GetVideoPlayerSettingsResponse> = {
   name: 'GetVideoPlayerSettingsResponse',
   fields: [{
-    name: 'playerSettings',
+    name: 'settings',
     index: 1,
     messageType: VIDEO_PLAYER_SETTINGS,
   }],
 };
 
 export interface SaveVideoPlayerSettingsRequestBody {
-  playerSettings?: VideoPlayerSettings,
+  settings?: VideoPlayerSettings,
 }
 
 export let SAVE_VIDEO_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<SaveVideoPlayerSettingsRequestBody> = {
   name: 'SaveVideoPlayerSettingsRequestBody',
   fields: [{
-    name: 'playerSettings',
+    name: 'settings',
     index: 1,
     messageType: VIDEO_PLAYER_SETTINGS,
   }],
