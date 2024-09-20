@@ -1,0 +1,22 @@
+- message:
+    name: GetAccountSnapshotRequestBody
+    fields:
+      - name: accountId
+        type: string
+        index: 1
+- message:
+    name: GetAccountSnapshotResponse
+    fields:
+      - name: account
+        type: AccountSnapshot
+        import: ./third_person/backend/account_snapshot
+        index: 1
+- nodeService:
+    name: UserThirdPersonBackendService
+    remoteCalls:
+      - name: GetAccountSnapshot
+        path: /GetAccountSnapshot
+        body: GetAccountSnapshotRequestBody
+        response: GetAccountSnapshotResponse
+    outputClient: ./third_person/backend/client
+    outputHandler: ./third_person/backend/handler

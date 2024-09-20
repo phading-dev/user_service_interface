@@ -43,7 +43,6 @@ export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
 };
 
 export interface SignUpResponse {
-  /* If set, no other fields will be populated. */
   usernameIsNotAvailable?: boolean,
   signedSession?: string,
 }
@@ -228,6 +227,29 @@ export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
   }],
 };
 
+export interface UpdateAccountRequestBody {
+  naturalName?: string,
+  contactEmail?: string,
+  description?: string,
+}
+
+export let UPDATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<UpdateAccountRequestBody> = {
+  name: 'UpdateAccountRequestBody',
+  fields: [{
+    name: 'naturalName',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'contactEmail',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'description',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
 export interface UpdateAccountResponse {
 }
 
@@ -262,29 +284,6 @@ export let GET_ACCOUNT_AND_USER_RESPONSE: MessageDescriptor<GetAccountAndUserRes
     name: 'account',
     index: 1,
     messageType: ACCOUNT_AND_USER,
-  }],
-};
-
-export interface UpdateAccountRequestBody {
-  naturalName?: string,
-  contactEmail?: string,
-  description?: string,
-}
-
-export let UPDATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<UpdateAccountRequestBody> = {
-  name: 'UpdateAccountRequestBody',
-  fields: [{
-    name: 'naturalName',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'contactEmail',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'description',
-    index: 3,
-    primitiveType: PrimitiveType.STRING,
   }],
 };
 

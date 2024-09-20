@@ -14,27 +14,27 @@ export let ACCOUNT_AND_USER: MessageDescriptor<AccountAndUser> = {
   name: 'AccountAndUser',
   fields: [{
     name: 'naturalName',
-    index: 3,
+    index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'contactEmail',
-    index: 4,
+    index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'description',
-    index: 5,
+    index: 3,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'avatarLargeUrl',
-    index: 6,
+    index: 4,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'username',
-    index: 7,
+    index: 5,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'recoveryEmail',
-    index: 8,
+    index: 6,
     primitiveType: PrimitiveType.STRING,
   }],
 };

@@ -1,10 +1,8 @@
 import { PrimitiveType, MessageDescriptor, EnumDescriptor } from '@selfage/message/descriptor';
 
 export interface VideoSettings {
-  /* 0 to 1 */
   volume?: number,
   muted?: boolean,
-  /* .25x to 4x */
   playbackSpeed?: number,
 }
 
@@ -44,14 +42,10 @@ export let STACKING_METHOD: EnumDescriptor<StackingMethod> = {
 export interface DanmakuSettings {
   enable?: boolean,
   speed?: number,
-  /* 0 to 100 percentage. */
   opacity?: number,
-  fontSize?: number,
-  /* 0 to 100 percentage. For every 100 pixels, the number of pixels should be occupied. */
+  frontSize?: number,
   density?: number,
-  /* 0 to 100 percentage. */
   topMargin?: number,
-  /* 0 to 100 percentage. */
   bottomMargin?: number,
   fontFamily?: string,
   stackingMethod?: StackingMethod,
@@ -72,7 +66,7 @@ export let DANMAKU_SETTINGS: MessageDescriptor<DanmakuSettings> = {
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'fontSize',
+    name: 'frontSize',
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {
