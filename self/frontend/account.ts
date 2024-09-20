@@ -5,7 +5,7 @@ export interface AccountAndUser {
   naturalName?: string,
   contactEmail?: string,
   description?: string,
-  avatarLargePath?: string,
+  avatarLargeUrl?: string,
   username?: string,
   recoveryEmail?: string,
 }
@@ -25,7 +25,7 @@ export let ACCOUNT_AND_USER: MessageDescriptor<AccountAndUser> = {
     index: 5,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'avatarLargePath',
+    name: 'avatarLargeUrl',
     index: 6,
     primitiveType: PrimitiveType.STRING,
   }, {
@@ -43,7 +43,7 @@ export interface AccountOverview {
   accountType?: AccountType,
   accountId?: string,
   naturalName?: string,
-  avatarSmallPath?: string,
+  avatarSmallUrl?: string,
 }
 
 export let ACCOUNT_OVERVIEW: MessageDescriptor<AccountOverview> = {
@@ -61,7 +61,7 @@ export let ACCOUNT_OVERVIEW: MessageDescriptor<AccountOverview> = {
     index: 3,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'avatarSmallPath',
+    name: 'avatarSmallUrl',
     index: 4,
     primitiveType: PrimitiveType.STRING,
   }],

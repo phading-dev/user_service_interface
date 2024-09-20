@@ -1,6 +1,6 @@
 {
   "name": "@phading/user_service_interface",
-  "version": "0.17.1",
+  "version": "0.17.2",
   "description": "The interface of UserService.",
   "repository": {
     "type": "git",

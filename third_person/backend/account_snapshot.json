@@ -10,7 +10,7 @@
       "type": "string",
       "index": 2
     }, {
-      "name": "avatarSmallPath",
+      "name": "avatarSmallUrl",
       "type": "string",
       "index": 3
     }]

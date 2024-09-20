@@ -3,7 +3,7 @@ import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 export interface AccountSnapshot {
   accountId?: string,
   naturalName?: string,
-  avatarSmallPath?: string,
+  avatarSmallUrl?: string,
 }
 
 export let ACCOUNT_SNAPSHOT: MessageDescriptor<AccountSnapshot> = {
@@ -17,7 +17,7 @@ export let ACCOUNT_SNAPSHOT: MessageDescriptor<AccountSnapshot> = {
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'avatarSmallPath',
+    name: 'avatarSmallUrl',
     index: 3,
     primitiveType: PrimitiveType.STRING,
   }],

@@ -14,7 +14,7 @@
       "type": "string",
       "index": 5
     }, {
-      "name": "avatarLargePath",
+      "name": "avatarLargeUrl",
       "type": "string",
       "index": 6
     }, {
@@ -44,7 +44,7 @@
       "type": "string",
       "index": 3
     }, {
-      "name": "avatarSmallPath",
+      "name": "avatarSmallUrl",
       "type": "string",
       "index": 4
     }]
