@@ -11,6 +11,29 @@
         type: AccountSnapshot
         import: ./third_person/backend/account_snapshot
         index: 1
+- message:
+    name: ListAccountsRequestBody
+    fields:
+      - name: accountType
+        type: AccountType
+        import: ./account_type
+        index: 1
+      - name: createdTimeMsCursor
+        type: number
+        index: 2
+      - name: limit
+        type: number
+        index: 3
+- message:
+    name: ListAccountsResponse
+    fields:
+      - name: accountIds
+        type: string
+        isArray: true
+        index: 1
+      - name: createdTimeMsCursor
+        type: number
+        index: 2
 - nodeService:
     name: UserThirdPersonBackendService
     remoteCalls:
@@ -18,5 +41,9 @@
         path: /GetAccountSnapshot
         body: GetAccountSnapshotRequestBody
         response: GetAccountSnapshotResponse
+      - name: ListAccounts
+        path: /ListAccounts
+        body: ListAccountsRequestBody
+        response: ListAccountsResponse
     outputClient: ./third_person/backend/client
     outputHandler: ./third_person/backend/handler

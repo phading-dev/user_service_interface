@@ -1,4 +1,4 @@
-import { GetAccountSnapshotRequestBody, GET_ACCOUNT_SNAPSHOT, GetAccountSnapshotResponse } from './interface';
+import { GetAccountSnapshotRequestBody, GET_ACCOUNT_SNAPSHOT, GetAccountSnapshotResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse } from './interface';
 import { NodeHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 
 export abstract class GetAccountSnapshotHandlerInterface implements NodeHandlerInterface {
@@ -7,4 +7,12 @@ export abstract class GetAccountSnapshotHandlerInterface implements NodeHandlerI
     loggingPrefix: string,
     body: GetAccountSnapshotRequestBody,
   ): Promise<GetAccountSnapshotResponse>;
+}
+
+export abstract class ListAccountsHandlerInterface implements NodeHandlerInterface {
+  public descriptor = LIST_ACCOUNTS;
+  public abstract handle(
+    loggingPrefix: string,
+    body: ListAccountsRequestBody,
+  ): Promise<ListAccountsResponse>;
 }
