@@ -1,6 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { AccountSnapshot, ACCOUNT_SNAPSHOT } from './account_snapshot';
-import { AccountType, ACCOUNT_TYPE } from '../../account_type';
+import { AccountType, ACCOUNT_TYPE } from '../account_type';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetAccountSnapshotRequestBody {

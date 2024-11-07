@@ -104,7 +104,7 @@
     fields:
       - name: accounts
         type: AccountOverview
-        import: ./self/frontend/account
+        import: ./frontend/self/account
         isArray: true
         index: 1
 - message:
@@ -130,7 +130,7 @@
     fields:
       - name: account
         type: AccountAndUser
-        import: ./self/frontend/account
+        import: ./frontend/self/account
         index: 1
 - message:
     name: GetVideoPlayerSettingsRequestBody
@@ -139,14 +139,14 @@
     fields:
       - name: settings
         type: VideoPlayerSettings
-        import: ./self/frontend/video_player_settings
+        import: ./frontend/self/video_player_settings
         index: 1
 - message:
     name: SaveVideoPlayerSettingsRequestBody
     fields:
       - name: settings
         type: VideoPlayerSettings
-        import: ./self/frontend/video_player_settings
+        import: ./frontend/self/video_player_settings
         index: 1
 - message:
     name: SaveVideoPlayerSettingsResponse
@@ -211,5 +211,5 @@
         body: SaveVideoPlayerSettingsRequestBody
         sessionKey: sk
         response: SaveVideoPlayerSettingsResponse
-    outputClient: ./self/frontend/client
-    outputHandler: ./self/frontend/handler
+    outputClient: ./frontend/self/client
+    outputHandler: ./frontend/self/handler

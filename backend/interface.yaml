@@ -9,7 +9,7 @@
     fields:
       - name: account
         type: AccountSnapshot
-        import: ./third_person/backend/account_snapshot
+        import: ./backend/account_snapshot
         index: 1
 - message:
     name: ListAccountsRequestBody
@@ -35,7 +35,7 @@
         type: number
         index: 2
 - nodeService:
-    name: UserThirdPersonBackendService
+    name: UserBackendService
     remoteCalls:
       - name: GetAccountSnapshot
         path: /GetAccountSnapshot
@@ -45,5 +45,5 @@
         path: /ListAccounts
         body: ListAccountsRequestBody
         response: ListAccountsResponse
-    outputClient: ./third_person/backend/client
-    outputHandler: ./third_person/backend/handler
+    outputClient: ./backend/client
+    outputHandler: ./backend/handler
