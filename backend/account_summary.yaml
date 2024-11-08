@@ -1,5 +1,5 @@
 - message:
-    name: AccountSnapshot
+    name: AccountSummary
     fields:
       - name: accountId
         type: string

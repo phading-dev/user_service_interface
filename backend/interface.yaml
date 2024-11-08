@@ -1,15 +1,15 @@
 - message:
-    name: GetAccountSnapshotRequestBody
+    name: GetAccountSummaryRequestBody
     fields:
       - name: accountId
         type: string
         index: 1
 - message:
-    name: GetAccountSnapshotResponse
+    name: GetAccountSummaryResponse
     fields:
       - name: account
-        type: AccountSnapshot
-        import: ./backend/account_snapshot
+        type: AccountSummary
+        import: ./backend/account_summary
         index: 1
 - message:
     name: ListAccountsRequestBody
@@ -37,10 +37,10 @@
 - nodeService:
     name: UserBackendService
     remoteCalls:
-      - name: GetAccountSnapshot
-        path: /GetAccountSnapshot
-        body: GetAccountSnapshotRequestBody
-        response: GetAccountSnapshotResponse
+      - name: GetAccountSummary
+        path: /GetAccountSummary
+        body: GetAccountSummaryRequestBody
+        response: GetAccountSummaryResponse
       - name: ListAccounts
         path: /ListAccounts
         body: ListAccountsRequestBody

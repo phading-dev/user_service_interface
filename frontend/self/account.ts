@@ -39,15 +39,15 @@ export let ACCOUNT_AND_USER: MessageDescriptor<AccountAndUser> = {
   }],
 };
 
-export interface AccountOverview {
+export interface AccountSummary {
   accountType?: AccountType,
   accountId?: string,
   naturalName?: string,
   avatarSmallUrl?: string,
 }
 
-export let ACCOUNT_OVERVIEW: MessageDescriptor<AccountOverview> = {
-  name: 'AccountOverview',
+export let ACCOUNT_SUMMARY: MessageDescriptor<AccountSummary> = {
+  name: 'AccountSummary',
   fields: [{
     name: 'accountType',
     index: 1,

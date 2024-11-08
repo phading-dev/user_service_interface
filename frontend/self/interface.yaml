@@ -22,13 +22,11 @@
         index: 6
 - message:
     name: SignUpResponse
+    # HTTP 409 Conflict error is thrown if username is not available.
     fields:
-      - name: usernameIsNotAvailable # If set, no other fields will be populated.
-        type: boolean
-        index: 1
       - name: signedSession
         type: string
-        index: 2
+        index: 1
 - message:
     name: SignInRequestBody
     fields:
@@ -103,7 +101,7 @@
     name: ListAccountsResponse
     fields:
       - name: accounts
-        type: AccountOverview
+        type: AccountSummary
         import: ./frontend/self/account
         isArray: true
         index: 1

@@ -1,6 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
-import { AccountOverview, ACCOUNT_OVERVIEW, AccountAndUser, ACCOUNT_AND_USER } from './account';
+import { AccountSummary, ACCOUNT_SUMMARY, AccountAndUser, ACCOUNT_AND_USER } from './account';
 import { VideoPlayerSettings, VIDEO_PLAYER_SETTINGS } from './video_player_settings';
 import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 
@@ -43,19 +43,14 @@ export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
 };
 
 export interface SignUpResponse {
-  usernameIsNotAvailable?: boolean,
   signedSession?: string,
 }
 
 export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
   name: 'SignUpResponse',
   fields: [{
-    name: 'usernameIsNotAvailable',
-    index: 1,
-    primitiveType: PrimitiveType.BOOLEAN,
-  }, {
     name: 'signedSession',
-    index: 2,
+    index: 1,
     primitiveType: PrimitiveType.STRING,
   }],
 };
@@ -214,7 +209,7 @@ export let LIST_ACCOUNTS_REQUEST_BODY: MessageDescriptor<ListAccountsRequestBody
 };
 
 export interface ListAccountsResponse {
-  accounts?: Array<AccountOverview>,
+  accounts?: Array<AccountSummary>,
 }
 
 export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
@@ -222,7 +217,7 @@ export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
   fields: [{
     name: 'accounts',
     index: 1,
-    messageType: ACCOUNT_OVERVIEW,
+    messageType: ACCOUNT_SUMMARY,
     isArray: true,
   }],
 };

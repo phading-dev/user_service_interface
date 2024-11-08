@@ -20,7 +20,7 @@
         type: string
         index: 6
 - message:
-    name: AccountOverview
+    name: AccountSummary
     fields:
       - name: accountType
         type: AccountType

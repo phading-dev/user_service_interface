@@ -1,14 +1,14 @@
-import { GetAccountSnapshotRequestBody, GetAccountSnapshotResponse, GET_ACCOUNT_SNAPSHOT, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS } from './interface';
+import { GetAccountSummaryRequestBody, GetAccountSummaryResponse, GET_ACCOUNT_SUMMARY, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS } from './interface';
 import { NodeClientInterface, NodeClientOptions } from '@selfage/service_descriptor/client_interface';
 
-export function getAccountSnapshot(
+export function getAccountSummary(
   client: NodeClientInterface,
-  body: GetAccountSnapshotRequestBody,
+  body: GetAccountSummaryRequestBody,
   options?: NodeClientOptions,
-): Promise<GetAccountSnapshotResponse> {
+): Promise<GetAccountSummaryResponse> {
   return client.send(
     {
-      descriptor: GET_ACCOUNT_SNAPSHOT,
+      descriptor: GET_ACCOUNT_SUMMARY,
       body,
     },
     options,

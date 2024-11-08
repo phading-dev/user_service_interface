@@ -1,14 +1,14 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { AccountSnapshot, ACCOUNT_SNAPSHOT } from './account_snapshot';
+import { AccountSummary, ACCOUNT_SUMMARY } from './account_summary';
 import { AccountType, ACCOUNT_TYPE } from '../account_type';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
-export interface GetAccountSnapshotRequestBody {
+export interface GetAccountSummaryRequestBody {
   accountId?: string,
 }
 
-export let GET_ACCOUNT_SNAPSHOT_REQUEST_BODY: MessageDescriptor<GetAccountSnapshotRequestBody> = {
-  name: 'GetAccountSnapshotRequestBody',
+export let GET_ACCOUNT_SUMMARY_REQUEST_BODY: MessageDescriptor<GetAccountSummaryRequestBody> = {
+  name: 'GetAccountSummaryRequestBody',
   fields: [{
     name: 'accountId',
     index: 1,
@@ -16,16 +16,16 @@ export let GET_ACCOUNT_SNAPSHOT_REQUEST_BODY: MessageDescriptor<GetAccountSnapsh
   }],
 };
 
-export interface GetAccountSnapshotResponse {
-  account?: AccountSnapshot,
+export interface GetAccountSummaryResponse {
+  account?: AccountSummary,
 }
 
-export let GET_ACCOUNT_SNAPSHOT_RESPONSE: MessageDescriptor<GetAccountSnapshotResponse> = {
-  name: 'GetAccountSnapshotResponse',
+export let GET_ACCOUNT_SUMMARY_RESPONSE: MessageDescriptor<GetAccountSummaryResponse> = {
+  name: 'GetAccountSummaryResponse',
   fields: [{
     name: 'account',
     index: 1,
-    messageType: ACCOUNT_SNAPSHOT,
+    messageType: ACCOUNT_SUMMARY,
   }],
 };
 
@@ -71,14 +71,14 @@ export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
   }],
 };
 
-export let GET_ACCOUNT_SNAPSHOT: NodeRemoteCallDescriptor = {
-  name: "GetAccountSnapshot",
-  path: "/GetAccountSnapshot",
+export let GET_ACCOUNT_SUMMARY: NodeRemoteCallDescriptor = {
+  name: "GetAccountSummary",
+  path: "/GetAccountSummary",
   body: {
-    messageType: GET_ACCOUNT_SNAPSHOT_REQUEST_BODY,
+    messageType: GET_ACCOUNT_SUMMARY_REQUEST_BODY,
   },
   response: {
-    messageType: GET_ACCOUNT_SNAPSHOT_RESPONSE,
+    messageType: GET_ACCOUNT_SUMMARY_RESPONSE,
   },
 }
 

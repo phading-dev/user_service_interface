@@ -1,13 +1,13 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
-export interface AccountSnapshot {
+export interface AccountSummary {
   accountId?: string,
   naturalName?: string,
   avatarSmallUrl?: string,
 }
 
-export let ACCOUNT_SNAPSHOT: MessageDescriptor<AccountSnapshot> = {
-  name: 'AccountSnapshot',
+export let ACCOUNT_SUMMARY: MessageDescriptor<AccountSummary> = {
+  name: 'AccountSummary',
   fields: [{
     name: 'accountId',
     index: 1,
