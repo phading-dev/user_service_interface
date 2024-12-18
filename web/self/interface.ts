@@ -230,7 +230,6 @@ export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
 export interface UpdateAccountDataRequestBody {
   naturalName?: string,
   contactEmail?: string,
-  description?: string,
 }
 
 export let UPDATE_ACCOUNT_DATA_REQUEST_BODY: MessageDescriptor<UpdateAccountDataRequestBody> = {
@@ -242,10 +241,6 @@ export let UPDATE_ACCOUNT_DATA_REQUEST_BODY: MessageDescriptor<UpdateAccountData
   }, {
     name: 'contactEmail',
     index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'description',
-    index: 3,
     primitiveType: PrimitiveType.STRING,
   }],
 };

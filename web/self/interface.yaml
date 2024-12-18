@@ -116,9 +116,6 @@
       - name: contactEmail
         type: string
         index: 2
-      - name: description
-        type: string
-        index: 3
 - message:
     name: UpdateAccountDataResponse
 - message:
