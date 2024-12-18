@@ -108,7 +108,7 @@
         isArray: true
         index: 1
 - message:
-    name: UpdateAccountRequestBody
+    name: UpdateAccountDataRequestBody
     fields:
       - name: naturalName
         type: string
@@ -120,7 +120,15 @@
         type: string
         index: 3
 - message:
-    name: UpdateAccountResponse
+    name: UpdateAccountDataResponse
+- message:
+    name: UpdateAccountDescriptionRequestBody
+    fields:
+      - name: description
+        type: string
+        index: 1
+- message:
+    name: UpdateAccountDescriptionResponse
 - message:
     name: UploadAccountAvatarResponse
 - message:
@@ -186,11 +194,16 @@
         body: ListAccountsRequestBody
         sessionKey: sk
         response: ListAccountsResponse
-      - name: UpdateAccount
-        path: /UpdateAccount
-        body: UpdateAccountRequestBody
+      - name: UpdateAccountData
+        path: /UpdateAccountData
+        body: UpdateAccountDataRequestBody
         sessionKey: sk
-        response: UpdateAccountResponse
+        response: UpdateAccountDataResponse
+      - name: UpdateAccountDescription
+        path: /UpdateAccountDescription
+        body: UpdateAccountDescriptionRequestBody
+        sessionKey: sk
+        response: UpdateAccountDescriptionResponse
       - name: UploadAccountAvatar
         path: /UploadAccountAvatar
         body: bytes

@@ -227,14 +227,14 @@ export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
   }],
 };
 
-export interface UpdateAccountRequestBody {
+export interface UpdateAccountDataRequestBody {
   naturalName?: string,
   contactEmail?: string,
   description?: string,
 }
 
-export let UPDATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<UpdateAccountRequestBody> = {
-  name: 'UpdateAccountRequestBody',
+export let UPDATE_ACCOUNT_DATA_REQUEST_BODY: MessageDescriptor<UpdateAccountDataRequestBody> = {
+  name: 'UpdateAccountDataRequestBody',
   fields: [{
     name: 'naturalName',
     index: 1,
@@ -250,11 +250,32 @@ export let UPDATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<UpdateAccountRequestBo
   }],
 };
 
-export interface UpdateAccountResponse {
+export interface UpdateAccountDataResponse {
 }
 
-export let UPDATE_ACCOUNT_RESPONSE: MessageDescriptor<UpdateAccountResponse> = {
-  name: 'UpdateAccountResponse',
+export let UPDATE_ACCOUNT_DATA_RESPONSE: MessageDescriptor<UpdateAccountDataResponse> = {
+  name: 'UpdateAccountDataResponse',
+  fields: [],
+};
+
+export interface UpdateAccountDescriptionRequestBody {
+  description?: string,
+}
+
+export let UPDATE_ACCOUNT_DESCRIPTION_REQUEST_BODY: MessageDescriptor<UpdateAccountDescriptionRequestBody> = {
+  name: 'UpdateAccountDescriptionRequestBody',
+  fields: [{
+    name: 'description',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface UpdateAccountDescriptionResponse {
+}
+
+export let UPDATE_ACCOUNT_DESCRIPTION_RESPONSE: MessageDescriptor<UpdateAccountDescriptionResponse> = {
+  name: 'UpdateAccountDescriptionResponse',
   fields: [],
 };
 
@@ -411,15 +432,27 @@ export let LIST_ACCOUNTS: WebRemoteCallDescriptor = {
   },
 }
 
-export let UPDATE_ACCOUNT: WebRemoteCallDescriptor = {
-  name: "UpdateAccount",
-  path: "/UpdateAccount",
+export let UPDATE_ACCOUNT_DATA: WebRemoteCallDescriptor = {
+  name: "UpdateAccountData",
+  path: "/UpdateAccountData",
   body: {
-    messageType: UPDATE_ACCOUNT_REQUEST_BODY,
+    messageType: UPDATE_ACCOUNT_DATA_REQUEST_BODY,
   },
   sessionKey: "sk",
   response: {
-    messageType: UPDATE_ACCOUNT_RESPONSE,
+    messageType: UPDATE_ACCOUNT_DATA_RESPONSE,
+  },
+}
+
+export let UPDATE_ACCOUNT_DESCRIPTION: WebRemoteCallDescriptor = {
+  name: "UpdateAccountDescription",
+  path: "/UpdateAccountDescription",
+  body: {
+    messageType: UPDATE_ACCOUNT_DESCRIPTION_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: UPDATE_ACCOUNT_DESCRIPTION_RESPONSE,
   },
 }
 
