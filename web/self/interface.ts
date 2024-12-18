@@ -44,6 +44,7 @@ export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
 
 export interface SignUpResponse {
   signedSession?: string,
+  usernameIsAvailable?: boolean,
 }
 
 export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
@@ -52,6 +53,10 @@ export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
     name: 'signedSession',
     index: 1,
     primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'usernameIsAvailable',
+    index: 2,
+    primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
 

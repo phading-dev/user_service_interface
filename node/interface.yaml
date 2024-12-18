@@ -9,7 +9,7 @@
     fields:
       - name: account
         type: AccountSummary
-        import: ./backend/account_summary
+        import: ./node/account_summary
         index: 1
 - message:
     name: ListAccountsRequestBody
@@ -35,7 +35,7 @@
         type: number
         index: 2
 - nodeService:
-    name: UserBackendService
+    name: UserNodeService
     remoteCalls:
       - name: GetAccountSummary
         path: /GetAccountSummary
@@ -45,5 +45,5 @@
         path: /ListAccounts
         body: ListAccountsRequestBody
         response: ListAccountsResponse
-    outputClient: ./backend/client
-    outputHandler: ./backend/handler
+    outputClient: ./node/client
+    outputHandler: ./node/handler

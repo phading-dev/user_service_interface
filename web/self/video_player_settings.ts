@@ -4,6 +4,8 @@ export interface VideoSettings {
   volume?: number,
   muted?: boolean,
   playbackSpeed?: number,
+  preferredAudioLanguage?: string,
+  preferredSubtitleLanguage?: string,
 }
 
 export let VIDEO_SETTINGS: MessageDescriptor<VideoSettings> = {
@@ -20,6 +22,14 @@ export let VIDEO_SETTINGS: MessageDescriptor<VideoSettings> = {
     name: 'playbackSpeed',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'preferredAudioLanguage',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'preferredSubtitleLanguage',
+    index: 5,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
