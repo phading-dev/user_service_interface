@@ -1,4 +1,4 @@
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, UPDATE_RECOVERY_EMAIL, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS, UpdateAccountDataRequestBody, UpdateAccountDataResponse, UPDATE_ACCOUNT_DATA, UpdateAccountDescriptionRequestBody, UpdateAccountDescriptionResponse, UPDATE_ACCOUNT_DESCRIPTION, UploadAccountAvatarResponse, UPLOAD_ACCOUNT_AVATAR, GetAccountAndUserRequestBody, GetAccountAndUserResponse, GET_ACCOUNT_AND_USER, GetVideoPlayerSettingsRequestBody, GetVideoPlayerSettingsResponse, GET_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsRequestBody, SaveVideoPlayerSettingsResponse, SAVE_VIDEO_PLAYER_SETTINGS } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, UPDATE_RECOVERY_EMAIL, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS, UpdateAccountRequestBody, UpdateAccountResponse, UPDATE_ACCOUNT, UploadAccountAvatarResponse, UPLOAD_ACCOUNT_AVATAR, GetAccountAndUserRequestBody, GetAccountAndUserResponse, GET_ACCOUNT_AND_USER, GetVideoPlayerSettingsRequestBody, GetVideoPlayerSettingsResponse, GET_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsRequestBody, SaveVideoPlayerSettingsResponse, SAVE_VIDEO_PLAYER_SETTINGS } from './interface';
 import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function signUp(
@@ -99,28 +99,14 @@ export function listAccounts(
   );
 }
 
-export function updateAccountData(
+export function updateAccount(
   client: WebClientInterface,
-  body: UpdateAccountDataRequestBody,
+  body: UpdateAccountRequestBody,
   options?: WebClientOptions,
-): Promise<UpdateAccountDataResponse> {
+): Promise<UpdateAccountResponse> {
   return client.send(
     {
-      descriptor: UPDATE_ACCOUNT_DATA,
-      body,
-    },
-    options,
-  );
-}
-
-export function updateAccountDescription(
-  client: WebClientInterface,
-  body: UpdateAccountDescriptionRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdateAccountDescriptionResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_ACCOUNT_DESCRIPTION,
+      descriptor: UPDATE_ACCOUNT,
       body,
     },
     options,

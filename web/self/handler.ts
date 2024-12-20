@@ -1,4 +1,4 @@
-import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountDataRequestBody, UPDATE_ACCOUNT_DATA, UpdateAccountDataResponse, UpdateAccountDescriptionRequestBody, UPDATE_ACCOUNT_DESCRIPTION, UpdateAccountDescriptionResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse, GetVideoPlayerSettingsRequestBody, GET_VIDEO_PLAYER_SETTINGS, GetVideoPlayerSettingsResponse, SaveVideoPlayerSettingsRequestBody, SAVE_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsResponse } from './interface';
+import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse, GetVideoPlayerSettingsRequestBody, GET_VIDEO_PLAYER_SETTINGS, GetVideoPlayerSettingsResponse, SaveVideoPlayerSettingsRequestBody, SAVE_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsResponse } from './interface';
 import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 import { Readable } from 'stream';
 
@@ -63,22 +63,13 @@ export abstract class ListAccountsHandlerInterface implements WebHandlerInterfac
   ): Promise<ListAccountsResponse>;
 }
 
-export abstract class UpdateAccountDataHandlerInterface implements WebHandlerInterface {
-  public descriptor = UPDATE_ACCOUNT_DATA;
+export abstract class UpdateAccountHandlerInterface implements WebHandlerInterface {
+  public descriptor = UPDATE_ACCOUNT;
   public abstract handle(
     loggingPrefix: string,
-    body: UpdateAccountDataRequestBody,
+    body: UpdateAccountRequestBody,
     sessionStr: string,
-  ): Promise<UpdateAccountDataResponse>;
-}
-
-export abstract class UpdateAccountDescriptionHandlerInterface implements WebHandlerInterface {
-  public descriptor = UPDATE_ACCOUNT_DESCRIPTION;
-  public abstract handle(
-    loggingPrefix: string,
-    body: UpdateAccountDescriptionRequestBody,
-    sessionStr: string,
-  ): Promise<UpdateAccountDescriptionResponse>;
+  ): Promise<UpdateAccountResponse>;
 }
 
 export abstract class UploadAccountAvatarHandlerInterface implements WebHandlerInterface {
