@@ -1,37 +1,37 @@
-- message:
-    name: AccountAndUser
-    fields:
-      - name: naturalName
-        type: string
-        index: 1
-      - name: contactEmail
-        type: string
-        index: 2
-      - name: description
-        type: string
-        index: 3
-      - name: avatarLargeUrl
-        type: string
-        index: 4
-      - name: username
-        type: string
-        index: 5
-      - name: recoveryEmail
-        type: string
-        index: 6
-- message:
-    name: AccountSummary
-    fields:
-      - name: accountType
-        type: AccountType
-        import: ./account_type
-        index: 1
-      - name: accountId
-        type: string
-        index: 2
-      - name: naturalName
-        type: string
-        index: 3
-      - name: avatarSmallUrl
-        type: string
-        index: 4
+- kind: Message
+  name: AccountAndUser
+  fields:
+    - name: naturalName
+      type: string
+      index: 1
+    - name: contactEmail
+      type: string
+      index: 2
+    - name: description
+      type: string
+      index: 3
+    - name: avatarLargeUrl
+      type: string
+      index: 4
+    - name: username
+      type: string
+      index: 5
+    - name: recoveryEmail
+      type: string
+      index: 6
+- kind: Message
+  name: AccountSummary
+  fields:
+    - name: accountType
+      type: AccountType
+      import: ./account_type
+      index: 1
+    - name: accountId
+      type: string
+      index: 2
+    - name: naturalName
+      type: string
+      index: 3
+    - name: avatarSmallUrl
+      type: string
+      index: 4

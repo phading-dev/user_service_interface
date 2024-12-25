@@ -1,215 +1,215 @@
-- message:
-    name: SignUpRequestBody
-    fields:
-      - name: username
-        type: string
-        index: 1
-      - name: recoveryEmail
-        type: string
-        index: 2
-      - name: password
-        type: string
-        index: 3
-      - name: naturalName
-        type: string
-        index: 4
-      - name: contactEmail
-        type: string
-        index: 5
-      - name: accountType
-        type: AccountType
-        import: ./account_type
-        index: 6
-- message:
-    name: SignUpResponse
-    fields:
-      - name: signedSession
-        type: string
-        index: 1
-      - name: usernameIsAvailable
-        type: boolean
-        index: 2
-- message:
-    name: SignInRequestBody
-    fields:
-      - name: username
-        type: string
-        index: 1
-      - name: password
-        type: string
-        index: 2
-- message:
-    name: SignInResponse
-    fields:
-      - name: signedSession
-        type: string
-        index: 1
-- message:
-    name: UpdatePasswordRequestBody
-    fields:
-      - name: currentPassword
-        type: string
-        index: 1
-      - name: newPassword
-        type: string
-        index: 2
-- message:
-    name: UpdatePasswordResponse
-- message:
-    name: UpdateRecoveryEmailRequestBody
-    fields:
-      - name: currentPassword
-        type: string
-        index: 1
-      - name: newEmail
-        type: string
-        index: 2
-- message:
-    name: UpdateRecoveryEmailResponse
-- message:
-    name: CreateAccountRequestBody
-    fields:
-      - name: naturalName
-        type: string
-        index: 1
-      - name: contactEmail
-        type: string
-        index: 2
-      - name: accountType
-        type: AccountType
-        import: ./account_type
-        index: 3
-- message:
-    name: CreateAccountResponse
-    fields:
-      - name: signedSession
-        type: string
-        index: 1
-- message:
-    name: SwitchAccountRequestBody
-    fields:
-      - name: accountId
-        type: string
-        index: 1
-- message:
-    name: SwitchAccountResponse
-    fields:
-      - name: signedSession
-        type: string
-        index: 1
-- message:
-    name: ListAccountsRequestBody
-- message:
-    name: ListAccountsResponse
-    fields:
-      - name: accounts
-        type: AccountSummary
-        import: ./web/self/account
-        isArray: true
-        index: 1
-- message:
-    name: UpdateAccountRequestBody
-    fields:
-      - name: naturalName
-        type: string
-        index: 1
-      - name: contactEmail
-        type: string
-        index: 2
-      - name: description
-        type: string
-        index: 3
-- message:
-    name: UpdateAccountResponse
-- message:
-    name: UploadAccountAvatarResponse
-- message:
-    name: GetAccountAndUserRequestBody
-- message:
-    name: GetAccountAndUserResponse
-    fields:
-      - name: account
-        type: AccountAndUser
-        import: ./web/self/account
-        index: 1
-- message:
-    name: GetVideoPlayerSettingsRequestBody
-- message:
-    name: GetVideoPlayerSettingsResponse
-    fields:
-      - name: settings
-        type: VideoPlayerSettings
-        import: ./web/self/video_player_settings
-        index: 1
-- message:
-    name: SaveVideoPlayerSettingsRequestBody
-    fields:
-      - name: settings
-        type: VideoPlayerSettings
-        import: ./web/self/video_player_settings
-        index: 1
-- message:
-    name: SaveVideoPlayerSettingsResponse
-- webService:
-    name: UserWebSelfService
-    remoteCalls:
-      - name: SignUp
-        path: /SignUp
-        body: SignUpRequestBody
-        response: SignUpResponse
-      - name: SignIn
-        path: /SignIn
-        body: SignInRequestBody
-        response: SignInResponse
-      - name: UpdatePassword
-        path: /UpdatePassword
-        body: UpdatePasswordRequestBody
-        sessionKey: sk
-        response: UpdatePasswordResponse
-      - name: UpdateRecoveryEmail
-        path: /UpdateRecoveryEmail
-        body: UpdateRecoveryEmailRequestBody
-        sessionKey: sk
-        response: UpdateRecoveryEmailResponse
-      - name: CreateAccount
-        path: /CreateAccount
-        body: CreateAccountRequestBody
-        sessionKey: sk
-        response: CreateAccountResponse
-      - name: SwitchAccount
-        path: /SwitchAccount
-        body: SwitchAccountRequestBody
-        sessionKey: sk
-        response: SwitchAccountResponse
-      - name: ListAccounts
-        path: /ListAccounts
-        body: ListAccountsRequestBody
-        sessionKey: sk
-        response: ListAccountsResponse
-      - name: UpdateAccount
-        path: /UpdateAccount
-        body: UpdateAccountRequestBody
-        sessionKey: sk
-        response: UpdateAccountResponse
-      - name: UploadAccountAvatar
-        path: /UploadAccountAvatar
-        body: bytes
-        sessionKey: sk
-        response: UploadAccountAvatarResponse
-      - name: GetAccountAndUser
-        path: /GetAccountAndUser
-        body: GetAccountAndUserRequestBody
-        sessionKey: sk
-        response: GetAccountAndUserResponse
-      - name: GetVideoPlayerSettings
-        path: /GetVideoPlayerSettings
-        body: GetVideoPlayerSettingsRequestBody
-        sessionKey: sk
-        response: GetVideoPlayerSettingsResponse
-      - name: SaveVideoPlayerSettings
-        path: /SaveVideoPlayerSettings
-        body: SaveVideoPlayerSettingsRequestBody
-        sessionKey: sk
-        response: SaveVideoPlayerSettingsResponse
-    outputClient: ./web/self/client
-    outputHandler: ./web/self/handler
+- kind: Message
+  name: SignUpRequestBody
+  fields:
+    - name: username
+      type: string
+      index: 1
+    - name: recoveryEmail
+      type: string
+      index: 2
+    - name: password
+      type: string
+      index: 3
+    - name: naturalName
+      type: string
+      index: 4
+    - name: contactEmail
+      type: string
+      index: 5
+    - name: accountType
+      type: AccountType
+      import: ./account_type
+      index: 6
+- kind: Message
+  name: SignUpResponse
+  fields:
+    - name: signedSession
+      type: string
+      index: 1
+    - name: usernameIsAvailable
+      type: boolean
+      index: 2
+- kind: Message
+  name: SignInRequestBody
+  fields:
+    - name: username
+      type: string
+      index: 1
+    - name: password
+      type: string
+      index: 2
+- kind: Message
+  name: SignInResponse
+  fields:
+    - name: signedSession
+      type: string
+      index: 1
+- kind: Message
+  name: UpdatePasswordRequestBody
+  fields:
+    - name: currentPassword
+      type: string
+      index: 1
+    - name: newPassword
+      type: string
+      index: 2
+- kind: Message
+  name: UpdatePasswordResponse
+- kind: Message
+  name: UpdateRecoveryEmailRequestBody
+  fields:
+    - name: currentPassword
+      type: string
+      index: 1
+    - name: newEmail
+      type: string
+      index: 2
+- kind: Message
+  name: UpdateRecoveryEmailResponse
+- kind: Message
+  name: CreateAccountRequestBody
+  fields:
+    - name: naturalName
+      type: string
+      index: 1
+    - name: contactEmail
+      type: string
+      index: 2
+    - name: accountType
+      type: AccountType
+      import: ./account_type
+      index: 3
+- kind: Message
+  name: CreateAccountResponse
+  fields:
+    - name: signedSession
+      type: string
+      index: 1
+- kind: Message
+  name: SwitchAccountRequestBody
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+- kind: Message
+  name: SwitchAccountResponse
+  fields:
+    - name: signedSession
+      type: string
+      index: 1
+- kind: Message
+  name: ListAccountsRequestBody
+- kind: Message
+  name: ListAccountsResponse
+  fields:
+    - name: accounts
+      type: AccountSummary
+      import: ./web/self/account
+      isArray: true
+      index: 1
+- kind: Message
+  name: UpdateAccountRequestBody
+  fields:
+    - name: naturalName
+      type: string
+      index: 1
+    - name: contactEmail
+      type: string
+      index: 2
+    - name: description
+      type: string
+      index: 3
+- kind: Message
+  name: UpdateAccountResponse
+- kind: Message
+  name: UploadAccountAvatarResponse
+- kind: Message
+  name: GetAccountAndUserRequestBody
+- kind: Message
+  name: GetAccountAndUserResponse
+  fields:
+    - name: account
+      type: AccountAndUser
+      import: ./web/self/account
+      index: 1
+- kind: Message
+  name: GetVideoPlayerSettingsRequestBody
+- kind: Message
+  name: GetVideoPlayerSettingsResponse
+  fields:
+    - name: settings
+      type: VideoPlayerSettings
+      import: ./web/self/video_player_settings
+      index: 1
+- kind: Message
+  name: SaveVideoPlayerSettingsRequestBody
+  fields:
+    - name: settings
+      type: VideoPlayerSettings
+      import: ./web/self/video_player_settings
+      index: 1
+- kind: Message
+  name: SaveVideoPlayerSettingsResponse
+- kind: WebService
+  name: UserWebSelfService
+  remoteCalls:
+    - name: SignUp
+      path: /SignUp
+      body: SignUpRequestBody
+      response: SignUpResponse
+    - name: SignIn
+      path: /SignIn
+      body: SignInRequestBody
+      response: SignInResponse
+    - name: UpdatePassword
+      path: /UpdatePassword
+      body: UpdatePasswordRequestBody
+      sessionKey: sk
+      response: UpdatePasswordResponse
+    - name: UpdateRecoveryEmail
+      path: /UpdateRecoveryEmail
+      body: UpdateRecoveryEmailRequestBody
+      sessionKey: sk
+      response: UpdateRecoveryEmailResponse
+    - name: CreateAccount
+      path: /CreateAccount
+      body: CreateAccountRequestBody
+      sessionKey: sk
+      response: CreateAccountResponse
+    - name: SwitchAccount
+      path: /SwitchAccount
+      body: SwitchAccountRequestBody
+      sessionKey: sk
+      response: SwitchAccountResponse
+    - name: ListAccounts
+      path: /ListAccounts
+      body: ListAccountsRequestBody
+      sessionKey: sk
+      response: ListAccountsResponse
+    - name: UpdateAccount
+      path: /UpdateAccount
+      body: UpdateAccountRequestBody
+      sessionKey: sk
+      response: UpdateAccountResponse
+    - name: UploadAccountAvatar
+      path: /UploadAccountAvatar
+      body: bytes
+      sessionKey: sk
+      response: UploadAccountAvatarResponse
+    - name: GetAccountAndUser
+      path: /GetAccountAndUser
+      body: GetAccountAndUserRequestBody
+      sessionKey: sk
+      response: GetAccountAndUserResponse
+    - name: GetVideoPlayerSettings
+      path: /GetVideoPlayerSettings
+      body: GetVideoPlayerSettingsRequestBody
+      sessionKey: sk
+      response: GetVideoPlayerSettingsResponse
+    - name: SaveVideoPlayerSettings
+      path: /SaveVideoPlayerSettings
+      body: SaveVideoPlayerSettingsRequestBody
+      sessionKey: sk
+      response: SaveVideoPlayerSettingsResponse
+  outputClient: ./web/self/client
+  outputHandler: ./web/self/handler

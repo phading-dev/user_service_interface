@@ -1,64 +1,64 @@
-- message:
-    name: VideoSettings
-    fields:
-      - name: volume # 0 to 1
-        type: number
-        index: 1
-      - name: muted
-        type: boolean
-        index: 2
-      - name: playbackSpeed # .25x to 4x
-        type: number
-        index: 3
-      - name: preferredAudioLanguage
-        type: string
-        index: 4
-      - name: preferredSubtitleLanguage
-        type: string
-        index: 5
-- enum:
-    name: StackingMethod
-    values:
-      - name: RANDOM
-        value: 1
-      - name: TOP_DOWN
-        value: 2
-- message:
-    name: DanmakuSettings
-    fields:
-      - name: enable
-        type: boolean
-        index: 1
-      - name: speed
-        type: number
-        index: 2
-      - name: opacity # 0 to 100 percentage
-        type: number
-        index: 3
-      - name: frontSize
-        type: number
-        index: 4
-      - name: density # 0 to 100 percentage, meaning for every 100 pixels, the number of pixels should be occupied.
-        type: number
-        index: 5
-      - name: topMargin # 0 to 100 percentage
-        type: number
-        index: 6
-      - name: bottomMargin
-        type: number
-        index: 7
-      - name: fontFamily
-        type: string
-        index: 8
-      - name: stackingMethod
-        type: StackingMethod
-        index: 9
-- message:
-    name: VideoPlayerSettings
-    fields:
-      - name: videoSettings
-        type: VideoSettings
-        index: 1
-      - name: danmakuSettings
-        type: DanmakuSettings
-        index: 2
+- kind: Message
+  name: VideoSettings
+  fields:
+  - name: volume # 0 to 1
+    type: number
+    index: 1
+  - name: muted
+    type: boolean
+    index: 2
+  - name: playbackSpeed # .25x to 4x
+    type: number
+    index: 3
+  - name: preferredAudioLanguage
+    type: string
+    index: 4
+  - name: preferredSubtitleLanguage
+    type: string
+    index: 5
+- kind: Enum
+  name: StackingMethod
+  values:
+  - name: RANDOM
+    value: 1
+  - name: TOP_DOWN
+    value: 2
+- kind: Message
+  name: DanmakuSettings
+  fields:
+  - name: enable
+    type: boolean
+    index: 1
+  - name: speed
+    type: number
+    index: 2
+  - name: opacity # 0 to 100 percentage
+    type: number
+    index: 3
+  - name: frontSize
+    type: number
+    index: 4
+  - name: density # 0 to 100 percentage, meaning for every 100 pixels, the number of pixels should be occupied.
+    type: number
+    index: 5
+  - name: topMargin # 0 to 100 percentage
+    type: number
+    index: 6
+  - name: bottomMargin
+    type: number
+    index: 7
+  - name: fontFamily
+    type: string
+    index: 8
+  - name: stackingMethod
+    type: StackingMethod
+    index: 9
+- kind: Message
+  name: VideoPlayerSettings
+  fields:
+  - name: videoSettings
+    type: VideoSettings
+    index: 1
+  - name: danmakuSettings
+    type: DanmakuSettings
+    index: 2

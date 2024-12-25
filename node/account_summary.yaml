@@ -1,12 +1,12 @@
-- message:
-    name: AccountSummary
-    fields:
-      - name: accountId
-        type: string
-        index: 1
-      - name: naturalName
-        type: string
-        index: 2
-      - name: avatarSmallUrl
-        type: string
-        index: 3
+- kind: Message
+  name: AccountSummary
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+    - name: naturalName
+      type: string
+      index: 2
+    - name: avatarSmallUrl
+      type: string
+      index: 3

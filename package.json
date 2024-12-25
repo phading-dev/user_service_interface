@@ -1,6 +1,6 @@
 {
   "name": "@phading/user_service_interface",
-  "version": "0.19.3",
+  "version": "0.20.0",
   "description": "The interface of UserService.",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "**/*.yaml"
   ],
   "devDependencies": {
-    "@selfage/generator_cli": "^3.3.0",
+    "@selfage/generator_cli": "^4.0.1",
     "@selfage/tsconfig": "^1.1.0",
     "@types/node": "^22.5.4",
     "typescript": "^5.6.2"

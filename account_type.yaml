@@ -1,7 +1,7 @@
-- enum:
-    name: AccountType
-    values:
-      - name: CONSUMER
-        value: 1
-      - name: PUBLISHER
-        value: 2
+- kind: Enum
+  name: AccountType
+  values:
+    - name: CONSUMER
+      value: 1
+    - name: PUBLISHER
+      value: 2
