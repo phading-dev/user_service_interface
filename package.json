@@ -1,12 +1,12 @@
 {
   "name": "@phading/user_service_interface",
-  "version": "0.20.0",
+  "version": "0.20.1",
   "description": "The interface of UserService.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/phading-dev/user_service_interface.git"
   },
-  "author": "Yuxuan Xie <teststaybaka@gmail.com> (http://www.yuxuanxie.com)",
+  "author": "Yuxuan Xie <ykuyo.dev@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/phading-dev/user_service_interface/issues"
@@ -18,7 +18,7 @@
     "**/*.yaml"
   ],
   "devDependencies": {
-    "@selfage/generator_cli": "^4.0.1",
+    "@selfage/generator_cli": "^4.0.4",
     "@selfage/tsconfig": "^1.1.0",
     "@types/node": "^22.5.4",
     "typescript": "^5.6.2"

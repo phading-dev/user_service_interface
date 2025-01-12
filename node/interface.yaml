@@ -11,39 +11,46 @@
     type: AccountSummary
     import: ./node/account_summary
     index: 1
+- kind: Enum
+  name: SuspensionReason
+  values:
+    - name: PAST_DUE
+      value: 1
+    - name: FRAUD
+      value: 2
 - kind: Message
-  name: ListAccountsRequestBody
+  name: SuspendAccountRequestBody
   fields:
-  - name: accountType
-    type: AccountType
-    import: ./account_type
-    index: 1
-  - name: createdTimeMsCursor
-    type: number
-    index: 2
-  - name: limit
-    type: number
-    index: 3
+    - name: accountId
+      type: string
+      index: 1
+    - name: reason
+      type: SuspensionReason
+      index: 2
 - kind: Message
-  name: ListAccountsResponse
+  name: SuspendAccountResponse
+- kind: Message
+  name: RestoreAccountRequestBody
   fields:
-  - name: accountIds
-    type: string
-    isArray: true
-    index: 1
-  - name: createdTimeMsCursor
-    type: number
-    index: 2
+    - name: accountId
+      type: string
+      index: 1
+- kind: Message
+  name: RestoreAccountResponse
 - kind: NodeService
   name: UserNodeService
   remoteCalls:
-  - name: GetAccountSummary
-    path: /GetAccountSummary
-    body: GetAccountSummaryRequestBody
-    response: GetAccountSummaryResponse
-  - name: ListAccounts
-    path: /ListAccounts
-    body: ListAccountsRequestBody
-    response: ListAccountsResponse
+    - name: GetAccountSummary
+      path: /GetAccountSummary
+      body: GetAccountSummaryRequestBody
+      response: GetAccountSummaryResponse
+    - name: SuspendAccount
+      path: /SuspendAccount
+      body: SuspendAccountRequestBody
+      response: SuspendAccountResponse
+    - name: RestoreAccount
+      path: /RestoreAccount
+      body: RestoreAccountRequestBody
+      response: RestoreAccountResponse
   outputClient: ./node/client
   outputHandler: ./node/handler

@@ -1,4 +1,4 @@
-import { GetAccountSummaryRequestBody, GetAccountSummaryResponse, GET_ACCOUNT_SUMMARY, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS } from './interface';
+import { GetAccountSummaryRequestBody, GetAccountSummaryResponse, GET_ACCOUNT_SUMMARY, SuspendAccountRequestBody, SuspendAccountResponse, SUSPEND_ACCOUNT, RestoreAccountRequestBody, RestoreAccountResponse, RESTORE_ACCOUNT } from './interface';
 import { NodeClientInterface, NodeClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function getAccountSummary(
@@ -15,14 +15,28 @@ export function getAccountSummary(
   );
 }
 
-export function listAccounts(
+export function suspendAccount(
   client: NodeClientInterface,
-  body: ListAccountsRequestBody,
+  body: SuspendAccountRequestBody,
   options?: NodeClientOptions,
-): Promise<ListAccountsResponse> {
+): Promise<SuspendAccountResponse> {
   return client.send(
     {
-      descriptor: LIST_ACCOUNTS,
+      descriptor: SUSPEND_ACCOUNT,
+      body,
+    },
+    options,
+  );
+}
+
+export function restoreAccount(
+  client: NodeClientInterface,
+  body: RestoreAccountRequestBody,
+  options?: NodeClientOptions,
+): Promise<RestoreAccountResponse> {
+  return client.send(
+    {
+      descriptor: RESTORE_ACCOUNT,
       body,
     },
     options,

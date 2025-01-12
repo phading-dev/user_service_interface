@@ -1,4 +1,4 @@
-import { GetAccountSummaryRequestBody, GET_ACCOUNT_SUMMARY, GetAccountSummaryResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse } from './interface';
+import { GetAccountSummaryRequestBody, GET_ACCOUNT_SUMMARY, GetAccountSummaryResponse, SuspendAccountRequestBody, SUSPEND_ACCOUNT, SuspendAccountResponse, RestoreAccountRequestBody, RESTORE_ACCOUNT, RestoreAccountResponse } from './interface';
 import { NodeHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 
 export abstract class GetAccountSummaryHandlerInterface implements NodeHandlerInterface {
@@ -9,10 +9,18 @@ export abstract class GetAccountSummaryHandlerInterface implements NodeHandlerIn
   ): Promise<GetAccountSummaryResponse>;
 }
 
-export abstract class ListAccountsHandlerInterface implements NodeHandlerInterface {
-  public descriptor = LIST_ACCOUNTS;
+export abstract class SuspendAccountHandlerInterface implements NodeHandlerInterface {
+  public descriptor = SUSPEND_ACCOUNT;
   public abstract handle(
     loggingPrefix: string,
-    body: ListAccountsRequestBody,
-  ): Promise<ListAccountsResponse>;
+    body: SuspendAccountRequestBody,
+  ): Promise<SuspendAccountResponse>;
+}
+
+export abstract class RestoreAccountHandlerInterface implements NodeHandlerInterface {
+  public descriptor = RESTORE_ACCOUNT;
+  public abstract handle(
+    loggingPrefix: string,
+    body: RestoreAccountRequestBody,
+  ): Promise<RestoreAccountResponse>;
 }

@@ -1,6 +1,5 @@
-import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { PrimitiveType, MessageDescriptor, EnumDescriptor } from '@selfage/message/descriptor';
 import { AccountSummary, ACCOUNT_SUMMARY } from './account_summary';
-import { AccountType, ACCOUNT_TYPE } from '../account_type';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetAccountSummaryRequestBody {
@@ -29,46 +28,67 @@ export let GET_ACCOUNT_SUMMARY_RESPONSE: MessageDescriptor<GetAccountSummaryResp
   }],
 };
 
-export interface ListAccountsRequestBody {
-  accountType?: AccountType,
-  createdTimeMsCursor?: number,
-  limit?: number,
+export enum SuspensionReason {
+  PAST_DUE = 1,
+  FRAUD = 2,
 }
 
-export let LIST_ACCOUNTS_REQUEST_BODY: MessageDescriptor<ListAccountsRequestBody> = {
-  name: 'ListAccountsRequestBody',
+export let SUSPENSION_REASON: EnumDescriptor<SuspensionReason> = {
+  name: 'SuspensionReason',
+  values: [{
+    name: 'PAST_DUE',
+    value: 1,
+  }, {
+    name: 'FRAUD',
+    value: 2,
+  }]
+}
+
+export interface SuspendAccountRequestBody {
+  accountId?: string,
+  reason?: SuspensionReason,
+}
+
+export let SUSPEND_ACCOUNT_REQUEST_BODY: MessageDescriptor<SuspendAccountRequestBody> = {
+  name: 'SuspendAccountRequestBody',
   fields: [{
-    name: 'accountType',
+    name: 'accountId',
     index: 1,
-    enumType: ACCOUNT_TYPE,
+    primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'createdTimeMsCursor',
+    name: 'reason',
     index: 2,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'limit',
-    index: 3,
-    primitiveType: PrimitiveType.NUMBER,
+    enumType: SUSPENSION_REASON,
   }],
 };
 
-export interface ListAccountsResponse {
-  accountIds?: Array<string>,
-  createdTimeMsCursor?: number,
+export interface SuspendAccountResponse {
 }
 
-export let LIST_ACCOUNTS_RESPONSE: MessageDescriptor<ListAccountsResponse> = {
-  name: 'ListAccountsResponse',
+export let SUSPEND_ACCOUNT_RESPONSE: MessageDescriptor<SuspendAccountResponse> = {
+  name: 'SuspendAccountResponse',
+  fields: [],
+};
+
+export interface RestoreAccountRequestBody {
+  accountId?: string,
+}
+
+export let RESTORE_ACCOUNT_REQUEST_BODY: MessageDescriptor<RestoreAccountRequestBody> = {
+  name: 'RestoreAccountRequestBody',
   fields: [{
-    name: 'accountIds',
+    name: 'accountId',
     index: 1,
     primitiveType: PrimitiveType.STRING,
-    isArray: true,
-  }, {
-    name: 'createdTimeMsCursor',
-    index: 2,
-    primitiveType: PrimitiveType.NUMBER,
   }],
+};
+
+export interface RestoreAccountResponse {
+}
+
+export let RESTORE_ACCOUNT_RESPONSE: MessageDescriptor<RestoreAccountResponse> = {
+  name: 'RestoreAccountResponse',
+  fields: [],
 };
 
 export let GET_ACCOUNT_SUMMARY: NodeRemoteCallDescriptor = {
@@ -82,13 +102,24 @@ export let GET_ACCOUNT_SUMMARY: NodeRemoteCallDescriptor = {
   },
 }
 
-export let LIST_ACCOUNTS: NodeRemoteCallDescriptor = {
-  name: "ListAccounts",
-  path: "/ListAccounts",
+export let SUSPEND_ACCOUNT: NodeRemoteCallDescriptor = {
+  name: "SuspendAccount",
+  path: "/SuspendAccount",
   body: {
-    messageType: LIST_ACCOUNTS_REQUEST_BODY,
+    messageType: SUSPEND_ACCOUNT_REQUEST_BODY,
   },
   response: {
-    messageType: LIST_ACCOUNTS_RESPONSE,
+    messageType: SUSPEND_ACCOUNT_RESPONSE,
+  },
+}
+
+export let RESTORE_ACCOUNT: NodeRemoteCallDescriptor = {
+  name: "RestoreAccount",
+  path: "/RestoreAccount",
+  body: {
+    messageType: RESTORE_ACCOUNT_REQUEST_BODY,
+  },
+  response: {
+    messageType: RESTORE_ACCOUNT_RESPONSE,
   },
 }
