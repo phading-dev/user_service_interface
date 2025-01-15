@@ -11,6 +11,19 @@
     type: AccountSummary
     import: ./node/account_summary
     index: 1
+- kind: Message
+  name: GetAccountContactRequestBody
+  fields:
+  - name: accountId
+    type: string
+    index: 1
+- kind: Message
+  name: GetAccountContactResponse
+  fields:
+  - name: contact
+    type: AccountContact
+    import: ./node/account_contact
+    index: 1
 - kind: Enum
   name: SuspensionReason
   values:
@@ -44,6 +57,10 @@
       path: /GetAccountSummary
       body: GetAccountSummaryRequestBody
       response: GetAccountSummaryResponse
+    - name: GetAccountContact
+      path: /GetAccountContact
+      body: GetAccountContactRequestBody
+      response: GetAccountContactResponse
     - name: SuspendAccount
       path: /SuspendAccount
       body: SuspendAccountRequestBody

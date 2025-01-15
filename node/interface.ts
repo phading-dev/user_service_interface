@@ -1,5 +1,6 @@
 import { PrimitiveType, MessageDescriptor, EnumDescriptor } from '@selfage/message/descriptor';
 import { AccountSummary, ACCOUNT_SUMMARY } from './account_summary';
+import { AccountContact, ACCOUNT_CONTACT } from './account_contact';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetAccountSummaryRequestBody {
@@ -25,6 +26,32 @@ export let GET_ACCOUNT_SUMMARY_RESPONSE: MessageDescriptor<GetAccountSummaryResp
     name: 'account',
     index: 1,
     messageType: ACCOUNT_SUMMARY,
+  }],
+};
+
+export interface GetAccountContactRequestBody {
+  accountId?: string,
+}
+
+export let GET_ACCOUNT_CONTACT_REQUEST_BODY: MessageDescriptor<GetAccountContactRequestBody> = {
+  name: 'GetAccountContactRequestBody',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetAccountContactResponse {
+  contact?: AccountContact,
+}
+
+export let GET_ACCOUNT_CONTACT_RESPONSE: MessageDescriptor<GetAccountContactResponse> = {
+  name: 'GetAccountContactResponse',
+  fields: [{
+    name: 'contact',
+    index: 1,
+    messageType: ACCOUNT_CONTACT,
   }],
 };
 
@@ -99,6 +126,17 @@ export let GET_ACCOUNT_SUMMARY: NodeRemoteCallDescriptor = {
   },
   response: {
     messageType: GET_ACCOUNT_SUMMARY_RESPONSE,
+  },
+}
+
+export let GET_ACCOUNT_CONTACT: NodeRemoteCallDescriptor = {
+  name: "GetAccountContact",
+  path: "/GetAccountContact",
+  body: {
+    messageType: GET_ACCOUNT_CONTACT_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_ACCOUNT_CONTACT_RESPONSE,
   },
 }
 
