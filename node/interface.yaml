@@ -12,44 +12,20 @@
     import: ./node/account_summary
     index: 1
 - kind: Message
-  name: GetAccountContactRequestBody
+  name: SyncBillingAccountStateRequestBody
   fields:
   - name: accountId
     type: string
     index: 1
+  - name: version
+    type: number
+    index: 2
+  - name: state
+    type: BillingAccountState
+    import: ./node/billing_account_state
+    index: 3
 - kind: Message
-  name: GetAccountContactResponse
-  fields:
-  - name: contact
-    type: AccountContact
-    import: ./node/account_contact
-    index: 1
-- kind: Enum
-  name: SuspensionReason
-  values:
-    - name: PAST_DUE
-      value: 1
-    - name: FRAUD
-      value: 2
-- kind: Message
-  name: SuspendAccountRequestBody
-  fields:
-    - name: accountId
-      type: string
-      index: 1
-    - name: reason
-      type: SuspensionReason
-      index: 2
-- kind: Message
-  name: SuspendAccountResponse
-- kind: Message
-  name: RestoreAccountRequestBody
-  fields:
-    - name: accountId
-      type: string
-      index: 1
-- kind: Message
-  name: RestoreAccountResponse
+  name: SyncBillingAccountStateResponse
 - kind: NodeService
   name: UserNodeService
   remoteCalls:
@@ -57,17 +33,9 @@
       path: /GetAccountSummary
       body: GetAccountSummaryRequestBody
       response: GetAccountSummaryResponse
-    - name: GetAccountContact
-      path: /GetAccountContact
-      body: GetAccountContactRequestBody
-      response: GetAccountContactResponse
-    - name: SuspendAccount
-      path: /SuspendAccount
-      body: SuspendAccountRequestBody
-      response: SuspendAccountResponse
-    - name: RestoreAccount
-      path: /RestoreAccount
-      body: RestoreAccountRequestBody
-      response: RestoreAccountResponse
+    - name: SyncBillingAccountState
+      path: /SyncBillingAccountState
+      body: SyncBillingAccountStateRequestBody
+      response: SyncBillingAccountStateResponse
   outputClient: ./node/client
   outputHandler: ./node/handler

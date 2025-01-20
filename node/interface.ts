@@ -1,6 +1,6 @@
-import { PrimitiveType, MessageDescriptor, EnumDescriptor } from '@selfage/message/descriptor';
+import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { AccountSummary, ACCOUNT_SUMMARY } from './account_summary';
-import { AccountContact, ACCOUNT_CONTACT } from './account_contact';
+import { BillingAccountState, BILLING_ACCOUNT_STATE } from './billing_account_state';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetAccountSummaryRequestBody {
@@ -29,92 +29,34 @@ export let GET_ACCOUNT_SUMMARY_RESPONSE: MessageDescriptor<GetAccountSummaryResp
   }],
 };
 
-export interface GetAccountContactRequestBody {
+export interface SyncBillingAccountStateRequestBody {
   accountId?: string,
+  version?: number,
+  state?: BillingAccountState,
 }
 
-export let GET_ACCOUNT_CONTACT_REQUEST_BODY: MessageDescriptor<GetAccountContactRequestBody> = {
-  name: 'GetAccountContactRequestBody',
-  fields: [{
-    name: 'accountId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface GetAccountContactResponse {
-  contact?: AccountContact,
-}
-
-export let GET_ACCOUNT_CONTACT_RESPONSE: MessageDescriptor<GetAccountContactResponse> = {
-  name: 'GetAccountContactResponse',
-  fields: [{
-    name: 'contact',
-    index: 1,
-    messageType: ACCOUNT_CONTACT,
-  }],
-};
-
-export enum SuspensionReason {
-  PAST_DUE = 1,
-  FRAUD = 2,
-}
-
-export let SUSPENSION_REASON: EnumDescriptor<SuspensionReason> = {
-  name: 'SuspensionReason',
-  values: [{
-    name: 'PAST_DUE',
-    value: 1,
-  }, {
-    name: 'FRAUD',
-    value: 2,
-  }]
-}
-
-export interface SuspendAccountRequestBody {
-  accountId?: string,
-  reason?: SuspensionReason,
-}
-
-export let SUSPEND_ACCOUNT_REQUEST_BODY: MessageDescriptor<SuspendAccountRequestBody> = {
-  name: 'SuspendAccountRequestBody',
+export let SYNC_BILLING_ACCOUNT_STATE_REQUEST_BODY: MessageDescriptor<SyncBillingAccountStateRequestBody> = {
+  name: 'SyncBillingAccountStateRequestBody',
   fields: [{
     name: 'accountId',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'reason',
+    name: 'version',
     index: 2,
-    enumType: SUSPENSION_REASON,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'state',
+    index: 3,
+    enumType: BILLING_ACCOUNT_STATE,
   }],
 };
 
-export interface SuspendAccountResponse {
+export interface SyncBillingAccountStateResponse {
 }
 
-export let SUSPEND_ACCOUNT_RESPONSE: MessageDescriptor<SuspendAccountResponse> = {
-  name: 'SuspendAccountResponse',
-  fields: [],
-};
-
-export interface RestoreAccountRequestBody {
-  accountId?: string,
-}
-
-export let RESTORE_ACCOUNT_REQUEST_BODY: MessageDescriptor<RestoreAccountRequestBody> = {
-  name: 'RestoreAccountRequestBody',
-  fields: [{
-    name: 'accountId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface RestoreAccountResponse {
-}
-
-export let RESTORE_ACCOUNT_RESPONSE: MessageDescriptor<RestoreAccountResponse> = {
-  name: 'RestoreAccountResponse',
+export let SYNC_BILLING_ACCOUNT_STATE_RESPONSE: MessageDescriptor<SyncBillingAccountStateResponse> = {
+  name: 'SyncBillingAccountStateResponse',
   fields: [],
 };
 
@@ -129,35 +71,13 @@ export let GET_ACCOUNT_SUMMARY: NodeRemoteCallDescriptor = {
   },
 }
 
-export let GET_ACCOUNT_CONTACT: NodeRemoteCallDescriptor = {
-  name: "GetAccountContact",
-  path: "/GetAccountContact",
+export let SYNC_BILLING_ACCOUNT_STATE: NodeRemoteCallDescriptor = {
+  name: "SyncBillingAccountState",
+  path: "/SyncBillingAccountState",
   body: {
-    messageType: GET_ACCOUNT_CONTACT_REQUEST_BODY,
+    messageType: SYNC_BILLING_ACCOUNT_STATE_REQUEST_BODY,
   },
   response: {
-    messageType: GET_ACCOUNT_CONTACT_RESPONSE,
-  },
-}
-
-export let SUSPEND_ACCOUNT: NodeRemoteCallDescriptor = {
-  name: "SuspendAccount",
-  path: "/SuspendAccount",
-  body: {
-    messageType: SUSPEND_ACCOUNT_REQUEST_BODY,
-  },
-  response: {
-    messageType: SUSPEND_ACCOUNT_RESPONSE,
-  },
-}
-
-export let RESTORE_ACCOUNT: NodeRemoteCallDescriptor = {
-  name: "RestoreAccount",
-  path: "/RestoreAccount",
-  body: {
-    messageType: RESTORE_ACCOUNT_REQUEST_BODY,
-  },
-  response: {
-    messageType: RESTORE_ACCOUNT_RESPONSE,
+    messageType: SYNC_BILLING_ACCOUNT_STATE_RESPONSE,
   },
 }

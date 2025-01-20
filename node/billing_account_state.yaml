@@ -1,0 +1,7 @@
+- kind: Enum
+  name: BillingAccountState
+  values:
+    - name: HEALTHY
+      value: 1
+    - name: SUSPENDED
+      value: 2
