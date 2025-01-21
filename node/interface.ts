@@ -29,6 +29,37 @@ export let GET_ACCOUNT_SUMMARY_RESPONSE: MessageDescriptor<GetAccountSummaryResp
   }],
 };
 
+export interface GetAccountContactRequestBody {
+  accountId?: string,
+}
+
+export let GET_ACCOUNT_CONTACT_REQUEST_BODY: MessageDescriptor<GetAccountContactRequestBody> = {
+  name: 'GetAccountContactRequestBody',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetAccountContactResponse {
+  naturalName?: string,
+  contactEmail?: string,
+}
+
+export let GET_ACCOUNT_CONTACT_RESPONSE: MessageDescriptor<GetAccountContactResponse> = {
+  name: 'GetAccountContactResponse',
+  fields: [{
+    name: 'naturalName',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'contactEmail',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
 export interface SyncBillingAccountStateRequestBody {
   accountId?: string,
   version?: number,
@@ -68,6 +99,17 @@ export let GET_ACCOUNT_SUMMARY: NodeRemoteCallDescriptor = {
   },
   response: {
     messageType: GET_ACCOUNT_SUMMARY_RESPONSE,
+  },
+}
+
+export let GET_ACCOUNT_CONTACT: NodeRemoteCallDescriptor = {
+  name: "GetAccountContact",
+  path: "/GetAccountContact",
+  body: {
+    messageType: GET_ACCOUNT_CONTACT_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_ACCOUNT_CONTACT_RESPONSE,
   },
 }
 
