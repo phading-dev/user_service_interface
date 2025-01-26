@@ -32,15 +32,35 @@
     - name: accountId
       type: string
       index: 1
-    - name: version
+    - name: billingAccountStateVersion
       type: number
       index: 2
-    - name: state
+    - name: billingAccountState
       type: BillingAccountState
       import: ./node/billing_account_state
       index: 3
 - kind: Message
   name: SyncBillingAccountStateResponse
+- kind: Message
+  name: ProcessAccountCapabilitiesUpdatingTaskRequestBody
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+    - name: capabilitiesVersion
+      type: number
+      index: 2
+- kind: Message
+  name: ProcessAccountCapabilitiesUpdatingTaskResponse
+- kind: Message
+  name: ListAccountCapabilitiesUpdatingTasksRequestBody
+- kind: Message
+  name: ListAccountCapabilitiesUpdatingTasksResponse
+  fields:
+    - name: tasks
+      type: ProcessAccountCapabilitiesUpdatingTaskRequestBody
+      isArray: true
+      index: 1
 - kind: NodeService
   name: UserNodeService
   remoteCalls:
@@ -56,5 +76,13 @@
       path: /SyncBillingAccountState
       body: SyncBillingAccountStateRequestBody
       response: SyncBillingAccountStateResponse
+    - name: ProcessAccountCapabilitiesUpdatingTask
+      path: /ProcessAccountCapabilitiesUpdatingTask
+      body: ProcessAccountCapabilitiesUpdatingTaskRequestBody
+      response: ProcessAccountCapabilitiesUpdatingTaskResponse
+    - name: ListAccountCapabilitiesUpdatingTasks
+      path: /ListAccountCapabilitiesUpdatingTasks
+      body: ListAccountCapabilitiesUpdatingTasksRequestBody
+      response: ListAccountCapabilitiesUpdatingTasksResponse
   outputClient: ./node/client
   outputHandler: ./node/handler

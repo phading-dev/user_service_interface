@@ -62,8 +62,8 @@ export let GET_ACCOUNT_CONTACT_RESPONSE: MessageDescriptor<GetAccountContactResp
 
 export interface SyncBillingAccountStateRequestBody {
   accountId?: string,
-  version?: number,
-  state?: BillingAccountState,
+  billingAccountStateVersion?: number,
+  billingAccountState?: BillingAccountState,
 }
 
 export let SYNC_BILLING_ACCOUNT_STATE_REQUEST_BODY: MessageDescriptor<SyncBillingAccountStateRequestBody> = {
@@ -73,11 +73,11 @@ export let SYNC_BILLING_ACCOUNT_STATE_REQUEST_BODY: MessageDescriptor<SyncBillin
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'version',
+    name: 'billingAccountStateVersion',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'state',
+    name: 'billingAccountState',
     index: 3,
     enumType: BILLING_ACCOUNT_STATE,
   }],
@@ -89,6 +89,54 @@ export interface SyncBillingAccountStateResponse {
 export let SYNC_BILLING_ACCOUNT_STATE_RESPONSE: MessageDescriptor<SyncBillingAccountStateResponse> = {
   name: 'SyncBillingAccountStateResponse',
   fields: [],
+};
+
+export interface ProcessAccountCapabilitiesUpdatingTaskRequestBody {
+  accountId?: string,
+  capabilitiesVersion?: number,
+}
+
+export let PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessAccountCapabilitiesUpdatingTaskRequestBody> = {
+  name: 'ProcessAccountCapabilitiesUpdatingTaskRequestBody',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'capabilitiesVersion',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ProcessAccountCapabilitiesUpdatingTaskResponse {
+}
+
+export let PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK_RESPONSE: MessageDescriptor<ProcessAccountCapabilitiesUpdatingTaskResponse> = {
+  name: 'ProcessAccountCapabilitiesUpdatingTaskResponse',
+  fields: [],
+};
+
+export interface ListAccountCapabilitiesUpdatingTasksRequestBody {
+}
+
+export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_REQUEST_BODY: MessageDescriptor<ListAccountCapabilitiesUpdatingTasksRequestBody> = {
+  name: 'ListAccountCapabilitiesUpdatingTasksRequestBody',
+  fields: [],
+};
+
+export interface ListAccountCapabilitiesUpdatingTasksResponse {
+  tasks?: Array<ProcessAccountCapabilitiesUpdatingTaskRequestBody>,
+}
+
+export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_RESPONSE: MessageDescriptor<ListAccountCapabilitiesUpdatingTasksResponse> = {
+  name: 'ListAccountCapabilitiesUpdatingTasksResponse',
+  fields: [{
+    name: 'tasks',
+    index: 1,
+    messageType: PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK_REQUEST_BODY,
+    isArray: true,
+  }],
 };
 
 export let GET_ACCOUNT_SUMMARY: NodeRemoteCallDescriptor = {
@@ -121,5 +169,27 @@ export let SYNC_BILLING_ACCOUNT_STATE: NodeRemoteCallDescriptor = {
   },
   response: {
     messageType: SYNC_BILLING_ACCOUNT_STATE_RESPONSE,
+  },
+}
+
+export let PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK: NodeRemoteCallDescriptor = {
+  name: "ProcessAccountCapabilitiesUpdatingTask",
+  path: "/ProcessAccountCapabilitiesUpdatingTask",
+  body: {
+    messageType: PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK_REQUEST_BODY,
+  },
+  response: {
+    messageType: PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK_RESPONSE,
+  },
+}
+
+export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS: NodeRemoteCallDescriptor = {
+  name: "ListAccountCapabilitiesUpdatingTasks",
+  path: "/ListAccountCapabilitiesUpdatingTasks",
+  body: {
+    messageType: LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_REQUEST_BODY,
+  },
+  response: {
+    messageType: LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_RESPONSE,
   },
 }

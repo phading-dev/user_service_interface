@@ -1,4 +1,4 @@
-import { GetAccountSummaryRequestBody, GET_ACCOUNT_SUMMARY, GetAccountSummaryResponse, GetAccountContactRequestBody, GET_ACCOUNT_CONTACT, GetAccountContactResponse, SyncBillingAccountStateRequestBody, SYNC_BILLING_ACCOUNT_STATE, SyncBillingAccountStateResponse } from './interface';
+import { GetAccountSummaryRequestBody, GET_ACCOUNT_SUMMARY, GetAccountSummaryResponse, GetAccountContactRequestBody, GET_ACCOUNT_CONTACT, GetAccountContactResponse, SyncBillingAccountStateRequestBody, SYNC_BILLING_ACCOUNT_STATE, SyncBillingAccountStateResponse, ProcessAccountCapabilitiesUpdatingTaskRequestBody, PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK, ProcessAccountCapabilitiesUpdatingTaskResponse, ListAccountCapabilitiesUpdatingTasksRequestBody, LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS, ListAccountCapabilitiesUpdatingTasksResponse } from './interface';
 import { NodeHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 
 export abstract class GetAccountSummaryHandlerInterface implements NodeHandlerInterface {
@@ -23,4 +23,20 @@ export abstract class SyncBillingAccountStateHandlerInterface implements NodeHan
     loggingPrefix: string,
     body: SyncBillingAccountStateRequestBody,
   ): Promise<SyncBillingAccountStateResponse>;
+}
+
+export abstract class ProcessAccountCapabilitiesUpdatingTaskHandlerInterface implements NodeHandlerInterface {
+  public descriptor = PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK;
+  public abstract handle(
+    loggingPrefix: string,
+    body: ProcessAccountCapabilitiesUpdatingTaskRequestBody,
+  ): Promise<ProcessAccountCapabilitiesUpdatingTaskResponse>;
+}
+
+export abstract class ListAccountCapabilitiesUpdatingTasksHandlerInterface implements NodeHandlerInterface {
+  public descriptor = LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS;
+  public abstract handle(
+    loggingPrefix: string,
+    body: ListAccountCapabilitiesUpdatingTasksRequestBody,
+  ): Promise<ListAccountCapabilitiesUpdatingTasksResponse>;
 }
