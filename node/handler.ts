@@ -1,7 +1,7 @@
 import { GetAccountSummaryRequestBody, GET_ACCOUNT_SUMMARY, GetAccountSummaryResponse, GetAccountContactRequestBody, GET_ACCOUNT_CONTACT, GetAccountContactResponse, SyncBillingAccountStateRequestBody, SYNC_BILLING_ACCOUNT_STATE, SyncBillingAccountStateResponse, ProcessAccountCapabilitiesUpdatingTaskRequestBody, PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK, ProcessAccountCapabilitiesUpdatingTaskResponse, ListAccountCapabilitiesUpdatingTasksRequestBody, LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS, ListAccountCapabilitiesUpdatingTasksResponse } from './interface';
-import { NodeHandlerInterface } from '@selfage/service_descriptor/handler_interface';
+import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 
-export abstract class GetAccountSummaryHandlerInterface implements NodeHandlerInterface {
+export abstract class GetAccountSummaryHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = GET_ACCOUNT_SUMMARY;
   public abstract handle(
     loggingPrefix: string,
@@ -9,7 +9,7 @@ export abstract class GetAccountSummaryHandlerInterface implements NodeHandlerIn
   ): Promise<GetAccountSummaryResponse>;
 }
 
-export abstract class GetAccountContactHandlerInterface implements NodeHandlerInterface {
+export abstract class GetAccountContactHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = GET_ACCOUNT_CONTACT;
   public abstract handle(
     loggingPrefix: string,
@@ -17,7 +17,7 @@ export abstract class GetAccountContactHandlerInterface implements NodeHandlerIn
   ): Promise<GetAccountContactResponse>;
 }
 
-export abstract class SyncBillingAccountStateHandlerInterface implements NodeHandlerInterface {
+export abstract class SyncBillingAccountStateHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = SYNC_BILLING_ACCOUNT_STATE;
   public abstract handle(
     loggingPrefix: string,
@@ -25,7 +25,7 @@ export abstract class SyncBillingAccountStateHandlerInterface implements NodeHan
   ): Promise<SyncBillingAccountStateResponse>;
 }
 
-export abstract class ProcessAccountCapabilitiesUpdatingTaskHandlerInterface implements NodeHandlerInterface {
+export abstract class ProcessAccountCapabilitiesUpdatingTaskHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK;
   public abstract handle(
     loggingPrefix: string,
@@ -33,7 +33,7 @@ export abstract class ProcessAccountCapabilitiesUpdatingTaskHandlerInterface imp
   ): Promise<ProcessAccountCapabilitiesUpdatingTaskResponse>;
 }
 
-export abstract class ListAccountCapabilitiesUpdatingTasksHandlerInterface implements NodeHandlerInterface {
+export abstract class ListAccountCapabilitiesUpdatingTasksHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS;
   public abstract handle(
     loggingPrefix: string,

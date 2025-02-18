@@ -2,7 +2,8 @@ import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 import { AccountSummary, ACCOUNT_SUMMARY, AccountAndUser, ACCOUNT_AND_USER } from './account';
 import { VideoPlayerSettings, VIDEO_PLAYER_SETTINGS } from './video_player_settings';
-import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
+import { USER_WEB_SERVICE } from '../../service';
+import { RemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 
 export interface SignUpRequestBody {
   username?: string,
@@ -329,8 +330,9 @@ export let SAVE_VIDEO_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<SaveVideoPlaye
   fields: [],
 };
 
-export let SIGN_UP: WebRemoteCallDescriptor = {
+export let SIGN_UP: RemoteCallDescriptor = {
   name: "SignUp",
+  service: USER_WEB_SERVICE,
   path: "/SignUp",
   body: {
     messageType: SIGN_UP_REQUEST_BODY,
@@ -340,8 +342,9 @@ export let SIGN_UP: WebRemoteCallDescriptor = {
   },
 }
 
-export let SIGN_IN: WebRemoteCallDescriptor = {
+export let SIGN_IN: RemoteCallDescriptor = {
   name: "SignIn",
+  service: USER_WEB_SERVICE,
   path: "/SignIn",
   body: {
     messageType: SIGN_IN_REQUEST_BODY,
@@ -351,121 +354,121 @@ export let SIGN_IN: WebRemoteCallDescriptor = {
   },
 }
 
-export let UPDATE_PASSWORD: WebRemoteCallDescriptor = {
+export let UPDATE_PASSWORD: RemoteCallDescriptor = {
   name: "UpdatePassword",
+  service: USER_WEB_SERVICE,
   path: "/UpdatePassword",
   body: {
     messageType: UPDATE_PASSWORD_REQUEST_BODY,
   },
-  sessionKey: "sk",
   response: {
     messageType: UPDATE_PASSWORD_RESPONSE,
   },
 }
 
-export let UPDATE_RECOVERY_EMAIL: WebRemoteCallDescriptor = {
+export let UPDATE_RECOVERY_EMAIL: RemoteCallDescriptor = {
   name: "UpdateRecoveryEmail",
+  service: USER_WEB_SERVICE,
   path: "/UpdateRecoveryEmail",
   body: {
     messageType: UPDATE_RECOVERY_EMAIL_REQUEST_BODY,
   },
-  sessionKey: "sk",
   response: {
     messageType: UPDATE_RECOVERY_EMAIL_RESPONSE,
   },
 }
 
-export let CREATE_ACCOUNT: WebRemoteCallDescriptor = {
+export let CREATE_ACCOUNT: RemoteCallDescriptor = {
   name: "CreateAccount",
+  service: USER_WEB_SERVICE,
   path: "/CreateAccount",
   body: {
     messageType: CREATE_ACCOUNT_REQUEST_BODY,
   },
-  sessionKey: "sk",
   response: {
     messageType: CREATE_ACCOUNT_RESPONSE,
   },
 }
 
-export let SWITCH_ACCOUNT: WebRemoteCallDescriptor = {
+export let SWITCH_ACCOUNT: RemoteCallDescriptor = {
   name: "SwitchAccount",
+  service: USER_WEB_SERVICE,
   path: "/SwitchAccount",
   body: {
     messageType: SWITCH_ACCOUNT_REQUEST_BODY,
   },
-  sessionKey: "sk",
   response: {
     messageType: SWITCH_ACCOUNT_RESPONSE,
   },
 }
 
-export let LIST_ACCOUNTS: WebRemoteCallDescriptor = {
+export let LIST_ACCOUNTS: RemoteCallDescriptor = {
   name: "ListAccounts",
+  service: USER_WEB_SERVICE,
   path: "/ListAccounts",
   body: {
     messageType: LIST_ACCOUNTS_REQUEST_BODY,
   },
-  sessionKey: "sk",
   response: {
     messageType: LIST_ACCOUNTS_RESPONSE,
   },
 }
 
-export let UPDATE_ACCOUNT: WebRemoteCallDescriptor = {
+export let UPDATE_ACCOUNT: RemoteCallDescriptor = {
   name: "UpdateAccount",
+  service: USER_WEB_SERVICE,
   path: "/UpdateAccount",
   body: {
     messageType: UPDATE_ACCOUNT_REQUEST_BODY,
   },
-  sessionKey: "sk",
   response: {
     messageType: UPDATE_ACCOUNT_RESPONSE,
   },
 }
 
-export let UPLOAD_ACCOUNT_AVATAR: WebRemoteCallDescriptor = {
+export let UPLOAD_ACCOUNT_AVATAR: RemoteCallDescriptor = {
   name: "UploadAccountAvatar",
+  service: USER_WEB_SERVICE,
   path: "/UploadAccountAvatar",
   body: {
     primitiveType: PrimitveTypeForBody.BYTES,
   },
-  sessionKey: "sk",
   response: {
     messageType: UPLOAD_ACCOUNT_AVATAR_RESPONSE,
   },
 }
 
-export let GET_ACCOUNT_AND_USER: WebRemoteCallDescriptor = {
+export let GET_ACCOUNT_AND_USER: RemoteCallDescriptor = {
   name: "GetAccountAndUser",
+  service: USER_WEB_SERVICE,
   path: "/GetAccountAndUser",
   body: {
     messageType: GET_ACCOUNT_AND_USER_REQUEST_BODY,
   },
-  sessionKey: "sk",
   response: {
     messageType: GET_ACCOUNT_AND_USER_RESPONSE,
   },
 }
 
-export let GET_VIDEO_PLAYER_SETTINGS: WebRemoteCallDescriptor = {
+export let GET_VIDEO_PLAYER_SETTINGS: RemoteCallDescriptor = {
   name: "GetVideoPlayerSettings",
+  service: USER_WEB_SERVICE,
   path: "/GetVideoPlayerSettings",
   body: {
     messageType: GET_VIDEO_PLAYER_SETTINGS_REQUEST_BODY,
   },
-  sessionKey: "sk",
   response: {
     messageType: GET_VIDEO_PLAYER_SETTINGS_RESPONSE,
   },
 }
 
-export let SAVE_VIDEO_PLAYER_SETTINGS: WebRemoteCallDescriptor = {
+export let SAVE_VIDEO_PLAYER_SETTINGS: RemoteCallDescriptor = {
   name: "SaveVideoPlayerSettings",
+  service: USER_WEB_SERVICE,
   path: "/SaveVideoPlayerSettings",
   body: {
     messageType: SAVE_VIDEO_PLAYER_SETTINGS_REQUEST_BODY,
   },
-  sessionKey: "sk",
   response: {
     messageType: SAVE_VIDEO_PLAYER_SETTINGS_RESPONSE,
   },

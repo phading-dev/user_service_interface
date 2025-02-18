@@ -1,7 +1,8 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { AccountSummary, ACCOUNT_SUMMARY } from './account_summary';
 import { BillingAccountState, BILLING_ACCOUNT_STATE } from './billing_account_state';
-import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
+import { USER_NODE_SERVICE } from '../service';
+import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetAccountSummaryRequestBody {
   accountId?: string,
@@ -139,8 +140,9 @@ export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_RESPONSE: MessageDescriptor<
   }],
 };
 
-export let GET_ACCOUNT_SUMMARY: NodeRemoteCallDescriptor = {
+export let GET_ACCOUNT_SUMMARY: RemoteCallDescriptor = {
   name: "GetAccountSummary",
+  service: USER_NODE_SERVICE,
   path: "/GetAccountSummary",
   body: {
     messageType: GET_ACCOUNT_SUMMARY_REQUEST_BODY,
@@ -150,8 +152,9 @@ export let GET_ACCOUNT_SUMMARY: NodeRemoteCallDescriptor = {
   },
 }
 
-export let GET_ACCOUNT_CONTACT: NodeRemoteCallDescriptor = {
+export let GET_ACCOUNT_CONTACT: RemoteCallDescriptor = {
   name: "GetAccountContact",
+  service: USER_NODE_SERVICE,
   path: "/GetAccountContact",
   body: {
     messageType: GET_ACCOUNT_CONTACT_REQUEST_BODY,
@@ -161,8 +164,9 @@ export let GET_ACCOUNT_CONTACT: NodeRemoteCallDescriptor = {
   },
 }
 
-export let SYNC_BILLING_ACCOUNT_STATE: NodeRemoteCallDescriptor = {
+export let SYNC_BILLING_ACCOUNT_STATE: RemoteCallDescriptor = {
   name: "SyncBillingAccountState",
+  service: USER_NODE_SERVICE,
   path: "/SyncBillingAccountState",
   body: {
     messageType: SYNC_BILLING_ACCOUNT_STATE_REQUEST_BODY,
@@ -172,8 +176,9 @@ export let SYNC_BILLING_ACCOUNT_STATE: NodeRemoteCallDescriptor = {
   },
 }
 
-export let PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK: NodeRemoteCallDescriptor = {
+export let PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK: RemoteCallDescriptor = {
   name: "ProcessAccountCapabilitiesUpdatingTask",
+  service: USER_NODE_SERVICE,
   path: "/ProcessAccountCapabilitiesUpdatingTask",
   body: {
     messageType: PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK_REQUEST_BODY,
@@ -183,8 +188,9 @@ export let PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK: NodeRemoteCallDescriptor 
   },
 }
 
-export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS: NodeRemoteCallDescriptor = {
+export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS: RemoteCallDescriptor = {
   name: "ListAccountCapabilitiesUpdatingTasks",
+  service: USER_NODE_SERVICE,
   path: "/ListAccountCapabilitiesUpdatingTasks",
   body: {
     messageType: LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_REQUEST_BODY,

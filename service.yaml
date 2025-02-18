@@ -1,0 +1,6 @@
+- kind: Service
+  name: UserWebService
+  path: /u/w
+- kind: Service
+  name: UserNodeService
+  path: /u/n

@@ -150,9 +150,11 @@
       index: 1
 - kind: Message
   name: SaveVideoPlayerSettingsResponse
-- kind: WebService
-  name: UserWebSelfService
-  remoteCalls:
+- kind: RemoteCallsGroup
+  name: UserWebSelfRemoteCalls
+  service: UserWebService
+  importService: ./service
+  calls:
     - name: SignUp
       path: /SignUp
       body: SignUpRequestBody

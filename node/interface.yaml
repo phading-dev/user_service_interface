@@ -61,9 +61,11 @@
       type: ProcessAccountCapabilitiesUpdatingTaskRequestBody
       isArray: true
       index: 1
-- kind: NodeService
-  name: UserNodeService
-  remoteCalls:
+- kind: RemoteCallsGroup
+  name: UserNodeRemoteCalls
+  service: UserNodeService
+  importService: ./service
+  calls:
     - name: GetAccountSummary
       path: /GetAccountSummary
       body: GetAccountSummaryRequestBody

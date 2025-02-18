@@ -1,170 +1,110 @@
 import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, UpdateRecoveryEmailRequestBody, UpdateRecoveryEmailResponse, UPDATE_RECOVERY_EMAIL, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS, UpdateAccountRequestBody, UpdateAccountResponse, UPDATE_ACCOUNT, UploadAccountAvatarResponse, UPLOAD_ACCOUNT_AVATAR, GetAccountAndUserRequestBody, GetAccountAndUserResponse, GET_ACCOUNT_AND_USER, GetVideoPlayerSettingsRequestBody, GetVideoPlayerSettingsResponse, GET_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsRequestBody, SaveVideoPlayerSettingsResponse, SAVE_VIDEO_PLAYER_SETTINGS } from './interface';
-import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
+import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
-export function signUp(
-  client: WebClientInterface,
+export function newSignUpRequest(
   body: SignUpRequestBody,
-  options?: WebClientOptions,
-): Promise<SignUpResponse> {
-  return client.send(
-    {
-      descriptor: SIGN_UP,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<SignUpResponse> {
+  return {
+    descriptor: SIGN_UP,
+    body,
+  };
 }
 
-export function signIn(
-  client: WebClientInterface,
+export function newSignInRequest(
   body: SignInRequestBody,
-  options?: WebClientOptions,
-): Promise<SignInResponse> {
-  return client.send(
-    {
-      descriptor: SIGN_IN,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<SignInResponse> {
+  return {
+    descriptor: SIGN_IN,
+    body,
+  };
 }
 
-export function updatePassword(
-  client: WebClientInterface,
+export function newUpdatePasswordRequest(
   body: UpdatePasswordRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdatePasswordResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_PASSWORD,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdatePasswordResponse> {
+  return {
+    descriptor: UPDATE_PASSWORD,
+    body,
+  };
 }
 
-export function updateRecoveryEmail(
-  client: WebClientInterface,
+export function newUpdateRecoveryEmailRequest(
   body: UpdateRecoveryEmailRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdateRecoveryEmailResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_RECOVERY_EMAIL,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdateRecoveryEmailResponse> {
+  return {
+    descriptor: UPDATE_RECOVERY_EMAIL,
+    body,
+  };
 }
 
-export function createAccount(
-  client: WebClientInterface,
+export function newCreateAccountRequest(
   body: CreateAccountRequestBody,
-  options?: WebClientOptions,
-): Promise<CreateAccountResponse> {
-  return client.send(
-    {
-      descriptor: CREATE_ACCOUNT,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CreateAccountResponse> {
+  return {
+    descriptor: CREATE_ACCOUNT,
+    body,
+  };
 }
 
-export function switchAccount(
-  client: WebClientInterface,
+export function newSwitchAccountRequest(
   body: SwitchAccountRequestBody,
-  options?: WebClientOptions,
-): Promise<SwitchAccountResponse> {
-  return client.send(
-    {
-      descriptor: SWITCH_ACCOUNT,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<SwitchAccountResponse> {
+  return {
+    descriptor: SWITCH_ACCOUNT,
+    body,
+  };
 }
 
-export function listAccounts(
-  client: WebClientInterface,
+export function newListAccountsRequest(
   body: ListAccountsRequestBody,
-  options?: WebClientOptions,
-): Promise<ListAccountsResponse> {
-  return client.send(
-    {
-      descriptor: LIST_ACCOUNTS,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<ListAccountsResponse> {
+  return {
+    descriptor: LIST_ACCOUNTS,
+    body,
+  };
 }
 
-export function updateAccount(
-  client: WebClientInterface,
+export function newUpdateAccountRequest(
   body: UpdateAccountRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdateAccountResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_ACCOUNT,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdateAccountResponse> {
+  return {
+    descriptor: UPDATE_ACCOUNT,
+    body,
+  };
 }
 
-export function uploadAccountAvatar(
-  client: WebClientInterface,
+export function newUploadAccountAvatarRequest(
   body: Blob,
-  options?: WebClientOptions,
-): Promise<UploadAccountAvatarResponse> {
-  return client.send(
-    {
-      descriptor: UPLOAD_ACCOUNT_AVATAR,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UploadAccountAvatarResponse> {
+  return {
+    descriptor: UPLOAD_ACCOUNT_AVATAR,
+    body,
+  };
 }
 
-export function getAccountAndUser(
-  client: WebClientInterface,
+export function newGetAccountAndUserRequest(
   body: GetAccountAndUserRequestBody,
-  options?: WebClientOptions,
-): Promise<GetAccountAndUserResponse> {
-  return client.send(
-    {
-      descriptor: GET_ACCOUNT_AND_USER,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<GetAccountAndUserResponse> {
+  return {
+    descriptor: GET_ACCOUNT_AND_USER,
+    body,
+  };
 }
 
-export function getVideoPlayerSettings(
-  client: WebClientInterface,
+export function newGetVideoPlayerSettingsRequest(
   body: GetVideoPlayerSettingsRequestBody,
-  options?: WebClientOptions,
-): Promise<GetVideoPlayerSettingsResponse> {
-  return client.send(
-    {
-      descriptor: GET_VIDEO_PLAYER_SETTINGS,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<GetVideoPlayerSettingsResponse> {
+  return {
+    descriptor: GET_VIDEO_PLAYER_SETTINGS,
+    body,
+  };
 }
 
-export function saveVideoPlayerSettings(
-  client: WebClientInterface,
+export function newSaveVideoPlayerSettingsRequest(
   body: SaveVideoPlayerSettingsRequestBody,
-  options?: WebClientOptions,
-): Promise<SaveVideoPlayerSettingsResponse> {
-  return client.send(
-    {
-      descriptor: SAVE_VIDEO_PLAYER_SETTINGS,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<SaveVideoPlayerSettingsResponse> {
+  return {
+    descriptor: SAVE_VIDEO_PLAYER_SETTINGS,
+    body,
+  };
 }
