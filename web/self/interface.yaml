@@ -166,52 +166,52 @@
     - name: UpdatePassword
       path: /UpdatePassword
       body: UpdatePasswordRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UpdatePasswordResponse
     - name: UpdateRecoveryEmail
       path: /UpdateRecoveryEmail
       body: UpdateRecoveryEmailRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UpdateRecoveryEmailResponse
     - name: CreateAccount
       path: /CreateAccount
       body: CreateAccountRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CreateAccountResponse
     - name: SwitchAccount
       path: /SwitchAccount
       body: SwitchAccountRequestBody
-      sessionKey: sk
+      authKey: sk
       response: SwitchAccountResponse
     - name: ListAccounts
       path: /ListAccounts
       body: ListAccountsRequestBody
-      sessionKey: sk
+      authKey: sk
       response: ListAccountsResponse
     - name: UpdateAccount
       path: /UpdateAccount
       body: UpdateAccountRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UpdateAccountResponse
     - name: UploadAccountAvatar
       path: /UploadAccountAvatar
       body: bytes
-      sessionKey: sk
+      authKey: sk
       response: UploadAccountAvatarResponse
     - name: GetAccountAndUser
       path: /GetAccountAndUser
       body: GetAccountAndUserRequestBody
-      sessionKey: sk
+      authKey: sk
       response: GetAccountAndUserResponse
     - name: GetVideoPlayerSettings
       path: /GetVideoPlayerSettings
       body: GetVideoPlayerSettingsRequestBody
-      sessionKey: sk
+      authKey: sk
       response: GetVideoPlayerSettingsResponse
     - name: SaveVideoPlayerSettings
       path: /SaveVideoPlayerSettings
       body: SaveVideoPlayerSettingsRequestBody
-      sessionKey: sk
+      authKey: sk
       response: SaveVideoPlayerSettingsResponse
   outputClient: ./web/self/client
   outputHandler: ./web/self/handler

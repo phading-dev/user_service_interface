@@ -23,6 +23,7 @@ export abstract class UpdatePasswordHandlerInterface implements RemoteCallHandle
   public abstract handle(
     loggingPrefix: string,
     body: UpdatePasswordRequestBody,
+    authStr: string,
   ): Promise<UpdatePasswordResponse>;
 }
 
@@ -31,6 +32,7 @@ export abstract class UpdateRecoveryEmailHandlerInterface implements RemoteCallH
   public abstract handle(
     loggingPrefix: string,
     body: UpdateRecoveryEmailRequestBody,
+    authStr: string,
   ): Promise<UpdateRecoveryEmailResponse>;
 }
 
@@ -39,6 +41,7 @@ export abstract class CreateAccountHandlerInterface implements RemoteCallHandler
   public abstract handle(
     loggingPrefix: string,
     body: CreateAccountRequestBody,
+    authStr: string,
   ): Promise<CreateAccountResponse>;
 }
 
@@ -47,6 +50,7 @@ export abstract class SwitchAccountHandlerInterface implements RemoteCallHandler
   public abstract handle(
     loggingPrefix: string,
     body: SwitchAccountRequestBody,
+    authStr: string,
   ): Promise<SwitchAccountResponse>;
 }
 
@@ -55,6 +59,7 @@ export abstract class ListAccountsHandlerInterface implements RemoteCallHandlerI
   public abstract handle(
     loggingPrefix: string,
     body: ListAccountsRequestBody,
+    authStr: string,
   ): Promise<ListAccountsResponse>;
 }
 
@@ -63,6 +68,7 @@ export abstract class UpdateAccountHandlerInterface implements RemoteCallHandler
   public abstract handle(
     loggingPrefix: string,
     body: UpdateAccountRequestBody,
+    authStr: string,
   ): Promise<UpdateAccountResponse>;
 }
 
@@ -71,6 +77,7 @@ export abstract class UploadAccountAvatarHandlerInterface implements RemoteCallH
   public abstract handle(
     loggingPrefix: string,
     body: Readable,
+    authStr: string,
   ): Promise<UploadAccountAvatarResponse>;
 }
 
@@ -79,6 +86,7 @@ export abstract class GetAccountAndUserHandlerInterface implements RemoteCallHan
   public abstract handle(
     loggingPrefix: string,
     body: GetAccountAndUserRequestBody,
+    authStr: string,
   ): Promise<GetAccountAndUserResponse>;
 }
 
@@ -87,6 +95,7 @@ export abstract class GetVideoPlayerSettingsHandlerInterface implements RemoteCa
   public abstract handle(
     loggingPrefix: string,
     body: GetVideoPlayerSettingsRequestBody,
+    authStr: string,
   ): Promise<GetVideoPlayerSettingsResponse>;
 }
 
@@ -95,5 +104,6 @@ export abstract class SaveVideoPlayerSettingsHandlerInterface implements RemoteC
   public abstract handle(
     loggingPrefix: string,
     body: SaveVideoPlayerSettingsRequestBody,
+    authStr: string,
   ): Promise<SaveVideoPlayerSettingsResponse>;
 }
