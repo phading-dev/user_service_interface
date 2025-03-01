@@ -361,7 +361,7 @@ export let UPDATE_PASSWORD: RemoteCallDescriptor = {
   body: {
     messageType: UPDATE_PASSWORD_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPDATE_PASSWORD_RESPONSE,
   },
@@ -374,7 +374,7 @@ export let UPDATE_RECOVERY_EMAIL: RemoteCallDescriptor = {
   body: {
     messageType: UPDATE_RECOVERY_EMAIL_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPDATE_RECOVERY_EMAIL_RESPONSE,
   },
@@ -387,7 +387,7 @@ export let CREATE_ACCOUNT: RemoteCallDescriptor = {
   body: {
     messageType: CREATE_ACCOUNT_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: CREATE_ACCOUNT_RESPONSE,
   },
@@ -400,7 +400,7 @@ export let SWITCH_ACCOUNT: RemoteCallDescriptor = {
   body: {
     messageType: SWITCH_ACCOUNT_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: SWITCH_ACCOUNT_RESPONSE,
   },
@@ -413,7 +413,7 @@ export let LIST_ACCOUNTS: RemoteCallDescriptor = {
   body: {
     messageType: LIST_ACCOUNTS_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: LIST_ACCOUNTS_RESPONSE,
   },
@@ -426,7 +426,7 @@ export let UPDATE_ACCOUNT: RemoteCallDescriptor = {
   body: {
     messageType: UPDATE_ACCOUNT_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPDATE_ACCOUNT_RESPONSE,
   },
@@ -439,7 +439,7 @@ export let UPLOAD_ACCOUNT_AVATAR: RemoteCallDescriptor = {
   body: {
     primitiveType: PrimitveTypeForBody.BYTES,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPLOAD_ACCOUNT_AVATAR_RESPONSE,
   },
@@ -452,7 +452,7 @@ export let GET_ACCOUNT_AND_USER: RemoteCallDescriptor = {
   body: {
     messageType: GET_ACCOUNT_AND_USER_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: GET_ACCOUNT_AND_USER_RESPONSE,
   },
@@ -465,7 +465,7 @@ export let GET_VIDEO_PLAYER_SETTINGS: RemoteCallDescriptor = {
   body: {
     messageType: GET_VIDEO_PLAYER_SETTINGS_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: GET_VIDEO_PLAYER_SETTINGS_RESPONSE,
   },
@@ -478,7 +478,7 @@ export let SAVE_VIDEO_PLAYER_SETTINGS: RemoteCallDescriptor = {
   body: {
     messageType: SAVE_VIDEO_PLAYER_SETTINGS_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: SAVE_VIDEO_PLAYER_SETTINGS_RESPONSE,
   },
