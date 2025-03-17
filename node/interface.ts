@@ -1,34 +1,7 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { AccountSummary, ACCOUNT_SUMMARY } from './account_summary';
 import { BillingAccountState, BILLING_ACCOUNT_STATE } from './billing_account_state';
 import { USER_NODE_SERVICE } from '../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
-
-export interface GetAccountSummaryRequestBody {
-  accountId?: string,
-}
-
-export let GET_ACCOUNT_SUMMARY_REQUEST_BODY: MessageDescriptor<GetAccountSummaryRequestBody> = {
-  name: 'GetAccountSummaryRequestBody',
-  fields: [{
-    name: 'accountId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface GetAccountSummaryResponse {
-  account?: AccountSummary,
-}
-
-export let GET_ACCOUNT_SUMMARY_RESPONSE: MessageDescriptor<GetAccountSummaryResponse> = {
-  name: 'GetAccountSummaryResponse',
-  fields: [{
-    name: 'account',
-    index: 1,
-    messageType: ACCOUNT_SUMMARY,
-  }],
-};
 
 export interface GetAccountContactRequestBody {
   accountId?: string,
@@ -139,18 +112,6 @@ export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_RESPONSE: MessageDescriptor<
     isArray: true,
   }],
 };
-
-export let GET_ACCOUNT_SUMMARY: RemoteCallDescriptor = {
-  name: "GetAccountSummary",
-  service: USER_NODE_SERVICE,
-  path: "/GetAccountSummary",
-  body: {
-    messageType: GET_ACCOUNT_SUMMARY_REQUEST_BODY,
-  },
-  response: {
-    messageType: GET_ACCOUNT_SUMMARY_RESPONSE,
-  },
-}
 
 export let GET_ACCOUNT_CONTACT: RemoteCallDescriptor = {
   name: "GetAccountContact",

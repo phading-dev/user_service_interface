@@ -1,0 +1,53 @@
+- kind: Message
+  name: GetAccountSummaryRequestBody
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+- kind: Message
+  name: GetAccountSummaryResponse
+  fields:
+    - name: account
+      type: AccountSummary
+      import: ./web/third_person/account_summary
+      index: 1
+- kind: Message
+  name: SearchAccountsRequestBody
+  fields:
+    - name: query
+      type: string
+      index: 1
+    - name: limit
+      type: number
+      index: 2
+    - name: scoreCusor
+      type: number
+      index: 3
+- kind: Message
+  name: SearchAccountsResponse
+  fields:
+    - name: accounts
+      type: AccountSummary
+      import: ./web/third_person/account_summary
+      repeated: true
+      index: 1
+    - name: scoreCusor
+      type: number
+      index: 2
+- kind: RemoteCallsGroup
+  name: UserWebThirdPersonRemoteCalls
+  service: UserWebService
+  importService: ./service
+  calls:
+    - name: GetAccountSummary
+      path: /GetAccountSummary
+      body: GetAccountSummaryRequestBody
+      authKey: a
+      response: GetAccountSummaryResponse
+    - name: SearchAccounts
+      path: /SearchAccounts
+      body: SearchAccountsRequestBody
+      authKey: a
+      response: SearchAccountsResponse
+  outputClient: ./web/third_person/client
+  outputHandler: ./web/third_person/handler
