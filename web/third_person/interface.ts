@@ -53,7 +53,7 @@ export let SEARCH_ACCOUNTS_REQUEST_BODY: MessageDescriptor<SearchAccountsRequest
 };
 
 export interface SearchAccountsResponse {
-  accounts?: AccountSummary,
+  accounts?: Array<AccountSummary>,
   scoreCusor?: number,
 }
 
@@ -63,6 +63,7 @@ export let SEARCH_ACCOUNTS_RESPONSE: MessageDescriptor<SearchAccountsResponse> =
     name: 'accounts',
     index: 1,
     messageType: ACCOUNT_SUMMARY,
+    isArray: true,
   }, {
     name: 'scoreCusor',
     index: 2,

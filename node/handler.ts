@@ -1,4 +1,4 @@
-import { GetAccountContactRequestBody, GET_ACCOUNT_CONTACT, GetAccountContactResponse, SyncBillingAccountStateRequestBody, SYNC_BILLING_ACCOUNT_STATE, SyncBillingAccountStateResponse, ProcessAccountCapabilitiesUpdatingTaskRequestBody, PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK, ProcessAccountCapabilitiesUpdatingTaskResponse, ListAccountCapabilitiesUpdatingTasksRequestBody, LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS, ListAccountCapabilitiesUpdatingTasksResponse } from './interface';
+import { GetAccountContactRequestBody, GET_ACCOUNT_CONTACT, GetAccountContactResponse, SyncBillingAccountStateRequestBody, SYNC_BILLING_ACCOUNT_STATE, SyncBillingAccountStateResponse, ProcessAccountCapabilitiesUpdatingTaskRequestBody, PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK, ProcessAccountCapabilitiesUpdatingTaskResponse, ListAccountCapabilitiesUpdatingTasksRequestBody, LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS, ListAccountCapabilitiesUpdatingTasksResponse, ProcessBillingAccountCreatingTaskRequestBody, PROCESS_BILLING_ACCOUNT_CREATING_TASK, ProcessBillingAccountCreatingTaskResponse, ListBillingAccountCreatingTasksRequestBody, LIST_BILLING_ACCOUNT_CREATING_TASKS, ListBillingAccountCreatingTasksResponse } from './interface';
 import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 
 export abstract class GetAccountContactHandlerInterface implements RemoteCallHandlerInterface {
@@ -31,4 +31,20 @@ export abstract class ListAccountCapabilitiesUpdatingTasksHandlerInterface imple
     loggingPrefix: string,
     body: ListAccountCapabilitiesUpdatingTasksRequestBody,
   ): Promise<ListAccountCapabilitiesUpdatingTasksResponse>;
+}
+
+export abstract class ProcessBillingAccountCreatingTaskHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = PROCESS_BILLING_ACCOUNT_CREATING_TASK;
+  public abstract handle(
+    loggingPrefix: string,
+    body: ProcessBillingAccountCreatingTaskRequestBody,
+  ): Promise<ProcessBillingAccountCreatingTaskResponse>;
+}
+
+export abstract class ListBillingAccountCreatingTasksHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = LIST_BILLING_ACCOUNT_CREATING_TASKS;
+  public abstract handle(
+    loggingPrefix: string,
+    body: ListBillingAccountCreatingTasksRequestBody,
+  ): Promise<ListBillingAccountCreatingTasksResponse>;
 }

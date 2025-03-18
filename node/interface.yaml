@@ -48,6 +48,23 @@
       type: ProcessAccountCapabilitiesUpdatingTaskRequestBody
       isArray: true
       index: 1
+- kind: Message
+  name: ProcessBillingAccountCreatingTaskRequestBody
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+- kind: Message
+  name: ProcessBillingAccountCreatingTaskResponse
+- kind: Message
+  name: ListBillingAccountCreatingTasksRequestBody
+- kind: Message
+  name: ListBillingAccountCreatingTasksResponse
+  fields:
+    - name: tasks
+      type: ProcessBillingAccountCreatingTaskRequestBody
+      isArray: true
+      index: 1
 - kind: RemoteCallsGroup
   name: UserNodeRemoteCalls
   service: UserNodeService
@@ -69,5 +86,13 @@
       path: /ListAccountCapabilitiesUpdatingTasks
       body: ListAccountCapabilitiesUpdatingTasksRequestBody
       response: ListAccountCapabilitiesUpdatingTasksResponse
+    - name: ProcessBillingAccountCreatingTask
+      path: /ProcessBillingAccountCreatingTask
+      body: ProcessBillingAccountCreatingTaskRequestBody
+      response: ProcessBillingAccountCreatingTaskResponse
+    - name: ListBillingAccountCreatingTasks
+      path: /ListBillingAccountCreatingTasks
+      body: ListBillingAccountCreatingTasksRequestBody
+      response: ListBillingAccountCreatingTasksResponse
   outputClient: ./node/client
   outputHandler: ./node/handler

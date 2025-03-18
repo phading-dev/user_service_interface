@@ -113,6 +113,49 @@ export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_RESPONSE: MessageDescriptor<
   }],
 };
 
+export interface ProcessBillingAccountCreatingTaskRequestBody {
+  accountId?: string,
+}
+
+export let PROCESS_BILLING_ACCOUNT_CREATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessBillingAccountCreatingTaskRequestBody> = {
+  name: 'ProcessBillingAccountCreatingTaskRequestBody',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface ProcessBillingAccountCreatingTaskResponse {
+}
+
+export let PROCESS_BILLING_ACCOUNT_CREATING_TASK_RESPONSE: MessageDescriptor<ProcessBillingAccountCreatingTaskResponse> = {
+  name: 'ProcessBillingAccountCreatingTaskResponse',
+  fields: [],
+};
+
+export interface ListBillingAccountCreatingTasksRequestBody {
+}
+
+export let LIST_BILLING_ACCOUNT_CREATING_TASKS_REQUEST_BODY: MessageDescriptor<ListBillingAccountCreatingTasksRequestBody> = {
+  name: 'ListBillingAccountCreatingTasksRequestBody',
+  fields: [],
+};
+
+export interface ListBillingAccountCreatingTasksResponse {
+  tasks?: Array<ProcessBillingAccountCreatingTaskRequestBody>,
+}
+
+export let LIST_BILLING_ACCOUNT_CREATING_TASKS_RESPONSE: MessageDescriptor<ListBillingAccountCreatingTasksResponse> = {
+  name: 'ListBillingAccountCreatingTasksResponse',
+  fields: [{
+    name: 'tasks',
+    index: 1,
+    messageType: PROCESS_BILLING_ACCOUNT_CREATING_TASK_REQUEST_BODY,
+    isArray: true,
+  }],
+};
+
 export let GET_ACCOUNT_CONTACT: RemoteCallDescriptor = {
   name: "GetAccountContact",
   service: USER_NODE_SERVICE,
@@ -158,5 +201,29 @@ export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS: RemoteCallDescriptor = {
   },
   response: {
     messageType: LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_RESPONSE,
+  },
+}
+
+export let PROCESS_BILLING_ACCOUNT_CREATING_TASK: RemoteCallDescriptor = {
+  name: "ProcessBillingAccountCreatingTask",
+  service: USER_NODE_SERVICE,
+  path: "/ProcessBillingAccountCreatingTask",
+  body: {
+    messageType: PROCESS_BILLING_ACCOUNT_CREATING_TASK_REQUEST_BODY,
+  },
+  response: {
+    messageType: PROCESS_BILLING_ACCOUNT_CREATING_TASK_RESPONSE,
+  },
+}
+
+export let LIST_BILLING_ACCOUNT_CREATING_TASKS: RemoteCallDescriptor = {
+  name: "ListBillingAccountCreatingTasks",
+  service: USER_NODE_SERVICE,
+  path: "/ListBillingAccountCreatingTasks",
+  body: {
+    messageType: LIST_BILLING_ACCOUNT_CREATING_TASKS_REQUEST_BODY,
+  },
+  response: {
+    messageType: LIST_BILLING_ACCOUNT_CREATING_TASKS_RESPONSE,
   },
 }
