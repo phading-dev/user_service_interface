@@ -1,4 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 import { AccountSummary, ACCOUNT_SUMMARY, AccountAndUser, ACCOUNT_AND_USER } from './account';
 import { VideoPlayerSettings, VIDEO_PLAYER_SETTINGS } from './video_player_settings';
 import { USER_WEB_SERVICE } from '../../service';
@@ -10,6 +11,7 @@ export interface SignUpRequestBody {
   password?: string,
   naturalName?: string,
   contactEmail?: string,
+  accountType?: AccountType,
 }
 
 export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
@@ -34,6 +36,10 @@ export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
     name: 'contactEmail',
     index: 5,
     primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'accountType',
+    index: 6,
+    enumType: ACCOUNT_TYPE,
   }],
 };
 
@@ -141,6 +147,7 @@ export let UPDATE_RECOVERY_EMAIL_RESPONSE: MessageDescriptor<UpdateRecoveryEmail
 export interface CreateAccountRequestBody {
   naturalName?: string,
   contactEmail?: string,
+  accountType?: AccountType,
 }
 
 export let CREATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<CreateAccountRequestBody> = {
@@ -153,6 +160,10 @@ export let CREATE_ACCOUNT_REQUEST_BODY: MessageDescriptor<CreateAccountRequestBo
     name: 'contactEmail',
     index: 2,
     primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'accountType',
+    index: 3,
+    enumType: ACCOUNT_TYPE,
   }],
 };
 

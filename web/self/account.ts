@@ -1,4 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 
 export interface AccountAndUser {
   naturalName?: string,
@@ -40,6 +41,7 @@ export let ACCOUNT_AND_USER: MessageDescriptor<AccountAndUser> = {
 
 export interface AccountSummary {
   accountId?: string,
+  accountType?: AccountType,
   naturalName?: string,
   avatarSmallUrl?: string,
 }
@@ -51,12 +53,16 @@ export let ACCOUNT_SUMMARY: MessageDescriptor<AccountSummary> = {
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'naturalName',
+    name: 'accountType',
     index: 2,
+    enumType: ACCOUNT_TYPE,
+  }, {
+    name: 'naturalName',
+    index: 3,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'avatarSmallUrl',
-    index: 3,
+    index: 4,
     primitiveType: PrimitiveType.STRING,
   }],
 };

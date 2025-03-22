@@ -14,20 +14,20 @@
       type: string
       index: 2
 - kind: Message
-  name: SyncBillingAccountStateRequestBody
+  name: SyncBillingProfileStateRequestBody
   fields:
     - name: accountId
       type: string
       index: 1
-    - name: billingAccountStateVersion
+    - name: billingProfileStateVersion
       type: number
       index: 2
-    - name: billingAccountState
-      type: BillingAccountState
-      import: ./node/billing_account_state
+    - name: billingProfileState
+      type: BillingProfileState
+      import: ./node/billing_profile_state
       index: 3
 - kind: Message
-  name: SyncBillingAccountStateResponse
+  name: SyncBillingProfileStateResponse
 - kind: Message
   name: ProcessAccountCapabilitiesUpdatingTaskRequestBody
   fields:
@@ -49,20 +49,37 @@
       isArray: true
       index: 1
 - kind: Message
-  name: ProcessBillingAccountCreatingTaskRequestBody
+  name: ProcessBillingProfileCreatingTaskRequestBody
   fields:
     - name: accountId
       type: string
       index: 1
 - kind: Message
-  name: ProcessBillingAccountCreatingTaskResponse
+  name: ProcessBillingProfileCreatingTaskResponse
 - kind: Message
-  name: ListBillingAccountCreatingTasksRequestBody
+  name: ListBillingProfileCreatingTasksRequestBody
 - kind: Message
-  name: ListBillingAccountCreatingTasksResponse
+  name: ListBillingProfileCreatingTasksResponse
   fields:
     - name: tasks
-      type: ProcessBillingAccountCreatingTaskRequestBody
+      type: ProcessBillingProfileCreatingTaskRequestBody
+      isArray: true
+      index: 1
+- kind: Message
+  name: ProcessEarningsProfileCreatingTaskRequestBody
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+- kind: Message
+  name: ProcessEarningsProfileCreatingTaskResponse
+- kind: Message
+  name: ListEarningsProfileCreatingTasksRequestBody
+- kind: Message
+  name: ListEarningsProfileCreatingTasksResponse
+  fields:
+    - name: tasks
+      type: ProcessEarningsProfileCreatingTaskRequestBody
       isArray: true
       index: 1
 - kind: RemoteCallsGroup
@@ -74,10 +91,10 @@
       path: /GetAccountContact
       body: GetAccountContactRequestBody
       response: GetAccountContactResponse
-    - name: SyncBillingAccountState
-      path: /SyncBillingAccountState
-      body: SyncBillingAccountStateRequestBody
-      response: SyncBillingAccountStateResponse
+    - name: SyncBillingProfileState
+      path: /SyncBillingProfileState
+      body: SyncBillingProfileStateRequestBody
+      response: SyncBillingProfileStateResponse
     - name: ProcessAccountCapabilitiesUpdatingTask
       path: /ProcessAccountCapabilitiesUpdatingTask
       body: ProcessAccountCapabilitiesUpdatingTaskRequestBody
@@ -86,13 +103,21 @@
       path: /ListAccountCapabilitiesUpdatingTasks
       body: ListAccountCapabilitiesUpdatingTasksRequestBody
       response: ListAccountCapabilitiesUpdatingTasksResponse
-    - name: ProcessBillingAccountCreatingTask
-      path: /ProcessBillingAccountCreatingTask
-      body: ProcessBillingAccountCreatingTaskRequestBody
-      response: ProcessBillingAccountCreatingTaskResponse
-    - name: ListBillingAccountCreatingTasks
-      path: /ListBillingAccountCreatingTasks
-      body: ListBillingAccountCreatingTasksRequestBody
-      response: ListBillingAccountCreatingTasksResponse
+    - name: ProcessBillingProfileCreatingTask
+      path: /ProcessBillingProfileCreatingTask
+      body: ProcessBillingProfileCreatingTaskRequestBody
+      response: ProcessBillingProfileCreatingTaskResponse
+    - name: ListBillingProfileCreatingTasks
+      path: /ListBillingProfileCreatingTasks
+      body: ListBillingProfileCreatingTasksRequestBody
+      response: ListBillingProfileCreatingTasksResponse
+    - name: ProcessEarningsProfileCreatingTask
+      path: /ProcessEarningsProfileCreatingTask
+      body: ProcessEarningsProfileCreatingTaskRequestBody
+      response: ProcessEarningsProfileCreatingTaskResponse
+    - name: ListEarningsProfileCreatingTasks
+      path: /ListEarningsProfileCreatingTasks
+      body: ListEarningsProfileCreatingTasksRequestBody
+      response: ListEarningsProfileCreatingTasksResponse
   outputClient: ./node/client
   outputHandler: ./node/handler

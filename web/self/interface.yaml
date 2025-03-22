@@ -16,6 +16,10 @@
     - name: contactEmail
       type: string
       index: 5
+    - name: accountType
+      type: AccountType
+      import: ./account_type
+      index: 6
 - kind: Message
   name: SignUpResponse
   fields:
@@ -71,6 +75,10 @@
     - name: contactEmail
       type: string
       index: 2
+    - name: accountType
+      type: AccountType
+      import: ./account_type
+      index: 3
 - kind: Message
   name: CreateAccountResponse
   fields:

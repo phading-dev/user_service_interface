@@ -1,12 +1,12 @@
 import { EnumDescriptor } from '@selfage/message/descriptor';
 
-export enum BillingAccountState {
+export enum BillingProfileState {
   HEALTHY = 1,
   SUSPENDED = 2,
 }
 
-export let BILLING_ACCOUNT_STATE: EnumDescriptor<BillingAccountState> = {
-  name: 'BillingAccountState',
+export let BILLING_PROFILE_STATE: EnumDescriptor<BillingProfileState> = {
+  name: 'BillingProfileState',
   values: [{
     name: 'HEALTHY',
     value: 1,

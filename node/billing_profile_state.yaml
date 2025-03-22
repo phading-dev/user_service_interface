@@ -1,5 +1,5 @@
 - kind: Enum
-  name: BillingAccountState
+  name: BillingProfileState
   values:
     - name: HEALTHY
       value: 1
