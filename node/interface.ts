@@ -1,5 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { BillingProfileState, BILLING_PROFILE_STATE } from './billing_profile_state';
+import { PaymentProfileState, PAYMENT_PROFILE_STATE } from './payment_profile_state';
 import { USER_NODE_SERVICE } from '../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
@@ -34,34 +34,34 @@ export let GET_ACCOUNT_CONTACT_RESPONSE: MessageDescriptor<GetAccountContactResp
   }],
 };
 
-export interface SyncBillingProfileStateRequestBody {
+export interface SyncPaymentProfileStateRequestBody {
   accountId?: string,
-  billingProfileStateVersion?: number,
-  billingProfileState?: BillingProfileState,
+  paymentProfileStateVersion?: number,
+  paymentProfileState?: PaymentProfileState,
 }
 
-export let SYNC_BILLING_PROFILE_STATE_REQUEST_BODY: MessageDescriptor<SyncBillingProfileStateRequestBody> = {
-  name: 'SyncBillingProfileStateRequestBody',
+export let SYNC_PAYMENT_PROFILE_STATE_REQUEST_BODY: MessageDescriptor<SyncPaymentProfileStateRequestBody> = {
+  name: 'SyncPaymentProfileStateRequestBody',
   fields: [{
     name: 'accountId',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'billingProfileStateVersion',
+    name: 'paymentProfileStateVersion',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'billingProfileState',
+    name: 'paymentProfileState',
     index: 3,
-    enumType: BILLING_PROFILE_STATE,
+    enumType: PAYMENT_PROFILE_STATE,
   }],
 };
 
-export interface SyncBillingProfileStateResponse {
+export interface SyncPaymentProfileStateResponse {
 }
 
-export let SYNC_BILLING_PROFILE_STATE_RESPONSE: MessageDescriptor<SyncBillingProfileStateResponse> = {
-  name: 'SyncBillingProfileStateResponse',
+export let SYNC_PAYMENT_PROFILE_STATE_RESPONSE: MessageDescriptor<SyncPaymentProfileStateResponse> = {
+  name: 'SyncPaymentProfileStateResponse',
   fields: [],
 };
 
@@ -113,12 +113,12 @@ export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS_RESPONSE: MessageDescriptor<
   }],
 };
 
-export interface ProcessBillingProfileCreatingTaskRequestBody {
+export interface ProcessPaymentProfileCreatingTaskRequestBody {
   accountId?: string,
 }
 
-export let PROCESS_BILLING_PROFILE_CREATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessBillingProfileCreatingTaskRequestBody> = {
-  name: 'ProcessBillingProfileCreatingTaskRequestBody',
+export let PROCESS_PAYMENT_PROFILE_CREATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessPaymentProfileCreatingTaskRequestBody> = {
+  name: 'ProcessPaymentProfileCreatingTaskRequestBody',
   fields: [{
     name: 'accountId',
     index: 1,
@@ -126,42 +126,42 @@ export let PROCESS_BILLING_PROFILE_CREATING_TASK_REQUEST_BODY: MessageDescriptor
   }],
 };
 
-export interface ProcessBillingProfileCreatingTaskResponse {
+export interface ProcessPaymentProfileCreatingTaskResponse {
 }
 
-export let PROCESS_BILLING_PROFILE_CREATING_TASK_RESPONSE: MessageDescriptor<ProcessBillingProfileCreatingTaskResponse> = {
-  name: 'ProcessBillingProfileCreatingTaskResponse',
+export let PROCESS_PAYMENT_PROFILE_CREATING_TASK_RESPONSE: MessageDescriptor<ProcessPaymentProfileCreatingTaskResponse> = {
+  name: 'ProcessPaymentProfileCreatingTaskResponse',
   fields: [],
 };
 
-export interface ListBillingProfileCreatingTasksRequestBody {
+export interface ListPaymentProfileCreatingTasksRequestBody {
 }
 
-export let LIST_BILLING_PROFILE_CREATING_TASKS_REQUEST_BODY: MessageDescriptor<ListBillingProfileCreatingTasksRequestBody> = {
-  name: 'ListBillingProfileCreatingTasksRequestBody',
+export let LIST_PAYMENT_PROFILE_CREATING_TASKS_REQUEST_BODY: MessageDescriptor<ListPaymentProfileCreatingTasksRequestBody> = {
+  name: 'ListPaymentProfileCreatingTasksRequestBody',
   fields: [],
 };
 
-export interface ListBillingProfileCreatingTasksResponse {
-  tasks?: Array<ProcessBillingProfileCreatingTaskRequestBody>,
+export interface ListPaymentProfileCreatingTasksResponse {
+  tasks?: Array<ProcessPaymentProfileCreatingTaskRequestBody>,
 }
 
-export let LIST_BILLING_PROFILE_CREATING_TASKS_RESPONSE: MessageDescriptor<ListBillingProfileCreatingTasksResponse> = {
-  name: 'ListBillingProfileCreatingTasksResponse',
+export let LIST_PAYMENT_PROFILE_CREATING_TASKS_RESPONSE: MessageDescriptor<ListPaymentProfileCreatingTasksResponse> = {
+  name: 'ListPaymentProfileCreatingTasksResponse',
   fields: [{
     name: 'tasks',
     index: 1,
-    messageType: PROCESS_BILLING_PROFILE_CREATING_TASK_REQUEST_BODY,
+    messageType: PROCESS_PAYMENT_PROFILE_CREATING_TASK_REQUEST_BODY,
     isArray: true,
   }],
 };
 
-export interface ProcessEarningsProfileCreatingTaskRequestBody {
+export interface ProcessPayoutProfileCreatingTaskRequestBody {
   accountId?: string,
 }
 
-export let PROCESS_EARNINGS_PROFILE_CREATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessEarningsProfileCreatingTaskRequestBody> = {
-  name: 'ProcessEarningsProfileCreatingTaskRequestBody',
+export let PROCESS_PAYOUT_PROFILE_CREATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessPayoutProfileCreatingTaskRequestBody> = {
+  name: 'ProcessPayoutProfileCreatingTaskRequestBody',
   fields: [{
     name: 'accountId',
     index: 1,
@@ -169,32 +169,32 @@ export let PROCESS_EARNINGS_PROFILE_CREATING_TASK_REQUEST_BODY: MessageDescripto
   }],
 };
 
-export interface ProcessEarningsProfileCreatingTaskResponse {
+export interface ProcessPayoutProfileCreatingTaskResponse {
 }
 
-export let PROCESS_EARNINGS_PROFILE_CREATING_TASK_RESPONSE: MessageDescriptor<ProcessEarningsProfileCreatingTaskResponse> = {
-  name: 'ProcessEarningsProfileCreatingTaskResponse',
+export let PROCESS_PAYOUT_PROFILE_CREATING_TASK_RESPONSE: MessageDescriptor<ProcessPayoutProfileCreatingTaskResponse> = {
+  name: 'ProcessPayoutProfileCreatingTaskResponse',
   fields: [],
 };
 
-export interface ListEarningsProfileCreatingTasksRequestBody {
+export interface ListPayoutProfileCreatingTasksRequestBody {
 }
 
-export let LIST_EARNINGS_PROFILE_CREATING_TASKS_REQUEST_BODY: MessageDescriptor<ListEarningsProfileCreatingTasksRequestBody> = {
-  name: 'ListEarningsProfileCreatingTasksRequestBody',
+export let LIST_PAYOUT_PROFILE_CREATING_TASKS_REQUEST_BODY: MessageDescriptor<ListPayoutProfileCreatingTasksRequestBody> = {
+  name: 'ListPayoutProfileCreatingTasksRequestBody',
   fields: [],
 };
 
-export interface ListEarningsProfileCreatingTasksResponse {
-  tasks?: Array<ProcessEarningsProfileCreatingTaskRequestBody>,
+export interface ListPayoutProfileCreatingTasksResponse {
+  tasks?: Array<ProcessPayoutProfileCreatingTaskRequestBody>,
 }
 
-export let LIST_EARNINGS_PROFILE_CREATING_TASKS_RESPONSE: MessageDescriptor<ListEarningsProfileCreatingTasksResponse> = {
-  name: 'ListEarningsProfileCreatingTasksResponse',
+export let LIST_PAYOUT_PROFILE_CREATING_TASKS_RESPONSE: MessageDescriptor<ListPayoutProfileCreatingTasksResponse> = {
+  name: 'ListPayoutProfileCreatingTasksResponse',
   fields: [{
     name: 'tasks',
     index: 1,
-    messageType: PROCESS_EARNINGS_PROFILE_CREATING_TASK_REQUEST_BODY,
+    messageType: PROCESS_PAYOUT_PROFILE_CREATING_TASK_REQUEST_BODY,
     isArray: true,
   }],
 };
@@ -211,15 +211,15 @@ export let GET_ACCOUNT_CONTACT: RemoteCallDescriptor = {
   },
 }
 
-export let SYNC_BILLING_PROFILE_STATE: RemoteCallDescriptor = {
-  name: "SyncBillingProfileState",
+export let SYNC_PAYMENT_PROFILE_STATE: RemoteCallDescriptor = {
+  name: "SyncPaymentProfileState",
   service: USER_NODE_SERVICE,
-  path: "/SyncBillingProfileState",
+  path: "/SyncPaymentProfileState",
   body: {
-    messageType: SYNC_BILLING_PROFILE_STATE_REQUEST_BODY,
+    messageType: SYNC_PAYMENT_PROFILE_STATE_REQUEST_BODY,
   },
   response: {
-    messageType: SYNC_BILLING_PROFILE_STATE_RESPONSE,
+    messageType: SYNC_PAYMENT_PROFILE_STATE_RESPONSE,
   },
 }
 
@@ -247,50 +247,50 @@ export let LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS: RemoteCallDescriptor = {
   },
 }
 
-export let PROCESS_BILLING_PROFILE_CREATING_TASK: RemoteCallDescriptor = {
-  name: "ProcessBillingProfileCreatingTask",
+export let PROCESS_PAYMENT_PROFILE_CREATING_TASK: RemoteCallDescriptor = {
+  name: "ProcessPaymentProfileCreatingTask",
   service: USER_NODE_SERVICE,
-  path: "/ProcessBillingProfileCreatingTask",
+  path: "/ProcessPaymentProfileCreatingTask",
   body: {
-    messageType: PROCESS_BILLING_PROFILE_CREATING_TASK_REQUEST_BODY,
+    messageType: PROCESS_PAYMENT_PROFILE_CREATING_TASK_REQUEST_BODY,
   },
   response: {
-    messageType: PROCESS_BILLING_PROFILE_CREATING_TASK_RESPONSE,
+    messageType: PROCESS_PAYMENT_PROFILE_CREATING_TASK_RESPONSE,
   },
 }
 
-export let LIST_BILLING_PROFILE_CREATING_TASKS: RemoteCallDescriptor = {
-  name: "ListBillingProfileCreatingTasks",
+export let LIST_PAYMENT_PROFILE_CREATING_TASKS: RemoteCallDescriptor = {
+  name: "ListPaymentProfileCreatingTasks",
   service: USER_NODE_SERVICE,
-  path: "/ListBillingProfileCreatingTasks",
+  path: "/ListPaymentProfileCreatingTasks",
   body: {
-    messageType: LIST_BILLING_PROFILE_CREATING_TASKS_REQUEST_BODY,
+    messageType: LIST_PAYMENT_PROFILE_CREATING_TASKS_REQUEST_BODY,
   },
   response: {
-    messageType: LIST_BILLING_PROFILE_CREATING_TASKS_RESPONSE,
+    messageType: LIST_PAYMENT_PROFILE_CREATING_TASKS_RESPONSE,
   },
 }
 
-export let PROCESS_EARNINGS_PROFILE_CREATING_TASK: RemoteCallDescriptor = {
-  name: "ProcessEarningsProfileCreatingTask",
+export let PROCESS_PAYOUT_PROFILE_CREATING_TASK: RemoteCallDescriptor = {
+  name: "ProcessPayoutProfileCreatingTask",
   service: USER_NODE_SERVICE,
-  path: "/ProcessEarningsProfileCreatingTask",
+  path: "/ProcessPayoutProfileCreatingTask",
   body: {
-    messageType: PROCESS_EARNINGS_PROFILE_CREATING_TASK_REQUEST_BODY,
+    messageType: PROCESS_PAYOUT_PROFILE_CREATING_TASK_REQUEST_BODY,
   },
   response: {
-    messageType: PROCESS_EARNINGS_PROFILE_CREATING_TASK_RESPONSE,
+    messageType: PROCESS_PAYOUT_PROFILE_CREATING_TASK_RESPONSE,
   },
 }
 
-export let LIST_EARNINGS_PROFILE_CREATING_TASKS: RemoteCallDescriptor = {
-  name: "ListEarningsProfileCreatingTasks",
+export let LIST_PAYOUT_PROFILE_CREATING_TASKS: RemoteCallDescriptor = {
+  name: "ListPayoutProfileCreatingTasks",
   service: USER_NODE_SERVICE,
-  path: "/ListEarningsProfileCreatingTasks",
+  path: "/ListPayoutProfileCreatingTasks",
   body: {
-    messageType: LIST_EARNINGS_PROFILE_CREATING_TASKS_REQUEST_BODY,
+    messageType: LIST_PAYOUT_PROFILE_CREATING_TASKS_REQUEST_BODY,
   },
   response: {
-    messageType: LIST_EARNINGS_PROFILE_CREATING_TASKS_RESPONSE,
+    messageType: LIST_PAYOUT_PROFILE_CREATING_TASKS_RESPONSE,
   },
 }

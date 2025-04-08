@@ -1,4 +1,4 @@
-import { GetAccountContactRequestBody, GET_ACCOUNT_CONTACT, GetAccountContactResponse, SyncBillingProfileStateRequestBody, SYNC_BILLING_PROFILE_STATE, SyncBillingProfileStateResponse, ProcessAccountCapabilitiesUpdatingTaskRequestBody, PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK, ProcessAccountCapabilitiesUpdatingTaskResponse, ListAccountCapabilitiesUpdatingTasksRequestBody, LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS, ListAccountCapabilitiesUpdatingTasksResponse, ProcessBillingProfileCreatingTaskRequestBody, PROCESS_BILLING_PROFILE_CREATING_TASK, ProcessBillingProfileCreatingTaskResponse, ListBillingProfileCreatingTasksRequestBody, LIST_BILLING_PROFILE_CREATING_TASKS, ListBillingProfileCreatingTasksResponse, ProcessEarningsProfileCreatingTaskRequestBody, PROCESS_EARNINGS_PROFILE_CREATING_TASK, ProcessEarningsProfileCreatingTaskResponse, ListEarningsProfileCreatingTasksRequestBody, LIST_EARNINGS_PROFILE_CREATING_TASKS, ListEarningsProfileCreatingTasksResponse } from './interface';
+import { GetAccountContactRequestBody, GET_ACCOUNT_CONTACT, GetAccountContactResponse, SyncPaymentProfileStateRequestBody, SYNC_PAYMENT_PROFILE_STATE, SyncPaymentProfileStateResponse, ProcessAccountCapabilitiesUpdatingTaskRequestBody, PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK, ProcessAccountCapabilitiesUpdatingTaskResponse, ListAccountCapabilitiesUpdatingTasksRequestBody, LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS, ListAccountCapabilitiesUpdatingTasksResponse, ProcessPaymentProfileCreatingTaskRequestBody, PROCESS_PAYMENT_PROFILE_CREATING_TASK, ProcessPaymentProfileCreatingTaskResponse, ListPaymentProfileCreatingTasksRequestBody, LIST_PAYMENT_PROFILE_CREATING_TASKS, ListPaymentProfileCreatingTasksResponse, ProcessPayoutProfileCreatingTaskRequestBody, PROCESS_PAYOUT_PROFILE_CREATING_TASK, ProcessPayoutProfileCreatingTaskResponse, ListPayoutProfileCreatingTasksRequestBody, LIST_PAYOUT_PROFILE_CREATING_TASKS, ListPayoutProfileCreatingTasksResponse } from './interface';
 import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 
 export abstract class GetAccountContactHandlerInterface implements RemoteCallHandlerInterface {
@@ -9,12 +9,12 @@ export abstract class GetAccountContactHandlerInterface implements RemoteCallHan
   ): Promise<GetAccountContactResponse>;
 }
 
-export abstract class SyncBillingProfileStateHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = SYNC_BILLING_PROFILE_STATE;
+export abstract class SyncPaymentProfileStateHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = SYNC_PAYMENT_PROFILE_STATE;
   public abstract handle(
     loggingPrefix: string,
-    body: SyncBillingProfileStateRequestBody,
-  ): Promise<SyncBillingProfileStateResponse>;
+    body: SyncPaymentProfileStateRequestBody,
+  ): Promise<SyncPaymentProfileStateResponse>;
 }
 
 export abstract class ProcessAccountCapabilitiesUpdatingTaskHandlerInterface implements RemoteCallHandlerInterface {
@@ -33,34 +33,34 @@ export abstract class ListAccountCapabilitiesUpdatingTasksHandlerInterface imple
   ): Promise<ListAccountCapabilitiesUpdatingTasksResponse>;
 }
 
-export abstract class ProcessBillingProfileCreatingTaskHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = PROCESS_BILLING_PROFILE_CREATING_TASK;
+export abstract class ProcessPaymentProfileCreatingTaskHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = PROCESS_PAYMENT_PROFILE_CREATING_TASK;
   public abstract handle(
     loggingPrefix: string,
-    body: ProcessBillingProfileCreatingTaskRequestBody,
-  ): Promise<ProcessBillingProfileCreatingTaskResponse>;
+    body: ProcessPaymentProfileCreatingTaskRequestBody,
+  ): Promise<ProcessPaymentProfileCreatingTaskResponse>;
 }
 
-export abstract class ListBillingProfileCreatingTasksHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = LIST_BILLING_PROFILE_CREATING_TASKS;
+export abstract class ListPaymentProfileCreatingTasksHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = LIST_PAYMENT_PROFILE_CREATING_TASKS;
   public abstract handle(
     loggingPrefix: string,
-    body: ListBillingProfileCreatingTasksRequestBody,
-  ): Promise<ListBillingProfileCreatingTasksResponse>;
+    body: ListPaymentProfileCreatingTasksRequestBody,
+  ): Promise<ListPaymentProfileCreatingTasksResponse>;
 }
 
-export abstract class ProcessEarningsProfileCreatingTaskHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = PROCESS_EARNINGS_PROFILE_CREATING_TASK;
+export abstract class ProcessPayoutProfileCreatingTaskHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = PROCESS_PAYOUT_PROFILE_CREATING_TASK;
   public abstract handle(
     loggingPrefix: string,
-    body: ProcessEarningsProfileCreatingTaskRequestBody,
-  ): Promise<ProcessEarningsProfileCreatingTaskResponse>;
+    body: ProcessPayoutProfileCreatingTaskRequestBody,
+  ): Promise<ProcessPayoutProfileCreatingTaskResponse>;
 }
 
-export abstract class ListEarningsProfileCreatingTasksHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = LIST_EARNINGS_PROFILE_CREATING_TASKS;
+export abstract class ListPayoutProfileCreatingTasksHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = LIST_PAYOUT_PROFILE_CREATING_TASKS;
   public abstract handle(
     loggingPrefix: string,
-    body: ListEarningsProfileCreatingTasksRequestBody,
-  ): Promise<ListEarningsProfileCreatingTasksResponse>;
+    body: ListPayoutProfileCreatingTasksRequestBody,
+  ): Promise<ListPayoutProfileCreatingTasksResponse>;
 }

@@ -14,20 +14,20 @@
       type: string
       index: 2
 - kind: Message
-  name: SyncBillingProfileStateRequestBody
+  name: SyncPaymentProfileStateRequestBody
   fields:
     - name: accountId
       type: string
       index: 1
-    - name: billingProfileStateVersion
+    - name: paymentProfileStateVersion
       type: number
       index: 2
-    - name: billingProfileState
-      type: BillingProfileState
-      import: ./node/billing_profile_state
+    - name: paymentProfileState
+      type: PaymentProfileState
+      import: ./node/payment_profile_state
       index: 3
 - kind: Message
-  name: SyncBillingProfileStateResponse
+  name: SyncPaymentProfileStateResponse
 - kind: Message
   name: ProcessAccountCapabilitiesUpdatingTaskRequestBody
   fields:
@@ -49,37 +49,37 @@
       isArray: true
       index: 1
 - kind: Message
-  name: ProcessBillingProfileCreatingTaskRequestBody
+  name: ProcessPaymentProfileCreatingTaskRequestBody
   fields:
     - name: accountId
       type: string
       index: 1
 - kind: Message
-  name: ProcessBillingProfileCreatingTaskResponse
+  name: ProcessPaymentProfileCreatingTaskResponse
 - kind: Message
-  name: ListBillingProfileCreatingTasksRequestBody
+  name: ListPaymentProfileCreatingTasksRequestBody
 - kind: Message
-  name: ListBillingProfileCreatingTasksResponse
+  name: ListPaymentProfileCreatingTasksResponse
   fields:
     - name: tasks
-      type: ProcessBillingProfileCreatingTaskRequestBody
+      type: ProcessPaymentProfileCreatingTaskRequestBody
       isArray: true
       index: 1
 - kind: Message
-  name: ProcessEarningsProfileCreatingTaskRequestBody
+  name: ProcessPayoutProfileCreatingTaskRequestBody
   fields:
     - name: accountId
       type: string
       index: 1
 - kind: Message
-  name: ProcessEarningsProfileCreatingTaskResponse
+  name: ProcessPayoutProfileCreatingTaskResponse
 - kind: Message
-  name: ListEarningsProfileCreatingTasksRequestBody
+  name: ListPayoutProfileCreatingTasksRequestBody
 - kind: Message
-  name: ListEarningsProfileCreatingTasksResponse
+  name: ListPayoutProfileCreatingTasksResponse
   fields:
     - name: tasks
-      type: ProcessEarningsProfileCreatingTaskRequestBody
+      type: ProcessPayoutProfileCreatingTaskRequestBody
       isArray: true
       index: 1
 - kind: RemoteCallsGroup
@@ -91,10 +91,10 @@
       path: /GetAccountContact
       body: GetAccountContactRequestBody
       response: GetAccountContactResponse
-    - name: SyncBillingProfileState
-      path: /SyncBillingProfileState
-      body: SyncBillingProfileStateRequestBody
-      response: SyncBillingProfileStateResponse
+    - name: SyncPaymentProfileState
+      path: /SyncPaymentProfileState
+      body: SyncPaymentProfileStateRequestBody
+      response: SyncPaymentProfileStateResponse
     - name: ProcessAccountCapabilitiesUpdatingTask
       path: /ProcessAccountCapabilitiesUpdatingTask
       body: ProcessAccountCapabilitiesUpdatingTaskRequestBody
@@ -103,21 +103,21 @@
       path: /ListAccountCapabilitiesUpdatingTasks
       body: ListAccountCapabilitiesUpdatingTasksRequestBody
       response: ListAccountCapabilitiesUpdatingTasksResponse
-    - name: ProcessBillingProfileCreatingTask
-      path: /ProcessBillingProfileCreatingTask
-      body: ProcessBillingProfileCreatingTaskRequestBody
-      response: ProcessBillingProfileCreatingTaskResponse
-    - name: ListBillingProfileCreatingTasks
-      path: /ListBillingProfileCreatingTasks
-      body: ListBillingProfileCreatingTasksRequestBody
-      response: ListBillingProfileCreatingTasksResponse
-    - name: ProcessEarningsProfileCreatingTask
-      path: /ProcessEarningsProfileCreatingTask
-      body: ProcessEarningsProfileCreatingTaskRequestBody
-      response: ProcessEarningsProfileCreatingTaskResponse
-    - name: ListEarningsProfileCreatingTasks
-      path: /ListEarningsProfileCreatingTasks
-      body: ListEarningsProfileCreatingTasksRequestBody
-      response: ListEarningsProfileCreatingTasksResponse
+    - name: ProcessPaymentProfileCreatingTask
+      path: /ProcessPaymentProfileCreatingTask
+      body: ProcessPaymentProfileCreatingTaskRequestBody
+      response: ProcessPaymentProfileCreatingTaskResponse
+    - name: ListPaymentProfileCreatingTasks
+      path: /ListPaymentProfileCreatingTasks
+      body: ListPaymentProfileCreatingTasksRequestBody
+      response: ListPaymentProfileCreatingTasksResponse
+    - name: ProcessPayoutProfileCreatingTask
+      path: /ProcessPayoutProfileCreatingTask
+      body: ProcessPayoutProfileCreatingTaskRequestBody
+      response: ProcessPayoutProfileCreatingTaskResponse
+    - name: ListPayoutProfileCreatingTasks
+      path: /ListPayoutProfileCreatingTasks
+      body: ListPayoutProfileCreatingTasksRequestBody
+      response: ListPayoutProfileCreatingTasksResponse
   outputClient: ./node/client
   outputHandler: ./node/handler
