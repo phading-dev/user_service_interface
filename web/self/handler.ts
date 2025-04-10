@@ -1,4 +1,4 @@
-import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse, GetVideoPlayerSettingsRequestBody, GET_VIDEO_PLAYER_SETTINGS, GetVideoPlayerSettingsResponse, SaveVideoPlayerSettingsRequestBody, SAVE_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsResponse } from './interface';
+import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse, GetVideoPlayerSettingsRequestBody, GET_VIDEO_PLAYER_SETTINGS, GetVideoPlayerSettingsResponse, SaveVideoPlayerSettingsRequestBody, SAVE_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsResponse, GetUISettingsRequestBody, GET_U_I_SETTINGS, GetUISettingsResponse, SaveUISettingsRequestBody, SAVE_U_I_SETTINGS, SaveUISettingsResponse } from './interface';
 import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 import { Readable } from 'stream';
 
@@ -106,4 +106,22 @@ export abstract class SaveVideoPlayerSettingsHandlerInterface implements RemoteC
     body: SaveVideoPlayerSettingsRequestBody,
     authStr: string,
   ): Promise<SaveVideoPlayerSettingsResponse>;
+}
+
+export abstract class GetUISettingsHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = GET_U_I_SETTINGS;
+  public abstract handle(
+    loggingPrefix: string,
+    body: GetUISettingsRequestBody,
+    authStr: string,
+  ): Promise<GetUISettingsResponse>;
+}
+
+export abstract class SaveUISettingsHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = SAVE_U_I_SETTINGS;
+  public abstract handle(
+    loggingPrefix: string,
+    body: SaveUISettingsRequestBody,
+    authStr: string,
+  ): Promise<SaveUISettingsResponse>;
 }

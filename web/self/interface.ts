@@ -2,6 +2,7 @@ import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { AccountType, ACCOUNT_TYPE } from '../../account_type';
 import { AccountSummary, ACCOUNT_SUMMARY, AccountAndUser, ACCOUNT_AND_USER } from './account';
 import { VideoPlayerSettings, VIDEO_PLAYER_SETTINGS } from './video_player_settings';
+import { UISettings, U_I_SETTINGS } from './ui_settings';
 import { USER_WEB_SERVICE } from '../../service';
 import { RemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 
@@ -330,6 +331,48 @@ export let SAVE_VIDEO_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<SaveVideoPlaye
   fields: [],
 };
 
+export interface GetUISettingsRequestBody {
+}
+
+export let GET_U_I_SETTINGS_REQUEST_BODY: MessageDescriptor<GetUISettingsRequestBody> = {
+  name: 'GetUISettingsRequestBody',
+  fields: [],
+};
+
+export interface GetUISettingsResponse {
+  settings?: UISettings,
+}
+
+export let GET_U_I_SETTINGS_RESPONSE: MessageDescriptor<GetUISettingsResponse> = {
+  name: 'GetUISettingsResponse',
+  fields: [{
+    name: 'settings',
+    index: 1,
+    messageType: U_I_SETTINGS,
+  }],
+};
+
+export interface SaveUISettingsRequestBody {
+  settings?: UISettings,
+}
+
+export let SAVE_U_I_SETTINGS_REQUEST_BODY: MessageDescriptor<SaveUISettingsRequestBody> = {
+  name: 'SaveUISettingsRequestBody',
+  fields: [{
+    name: 'settings',
+    index: 1,
+    messageType: U_I_SETTINGS,
+  }],
+};
+
+export interface SaveUISettingsResponse {
+}
+
+export let SAVE_U_I_SETTINGS_RESPONSE: MessageDescriptor<SaveUISettingsResponse> = {
+  name: 'SaveUISettingsResponse',
+  fields: [],
+};
+
 export let SIGN_UP: RemoteCallDescriptor = {
   name: "SignUp",
   service: USER_WEB_SERVICE,
@@ -481,5 +524,31 @@ export let SAVE_VIDEO_PLAYER_SETTINGS: RemoteCallDescriptor = {
   authKey: "a",
   response: {
     messageType: SAVE_VIDEO_PLAYER_SETTINGS_RESPONSE,
+  },
+}
+
+export let GET_U_I_SETTINGS: RemoteCallDescriptor = {
+  name: "GetUISettings",
+  service: USER_WEB_SERVICE,
+  path: "/GetUISettings",
+  body: {
+    messageType: GET_U_I_SETTINGS_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: GET_U_I_SETTINGS_RESPONSE,
+  },
+}
+
+export let SAVE_U_I_SETTINGS: RemoteCallDescriptor = {
+  name: "SaveUISettings",
+  service: USER_WEB_SERVICE,
+  path: "/SaveUISettings",
+  body: {
+    messageType: SAVE_U_I_SETTINGS_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: SAVE_U_I_SETTINGS_RESPONSE,
   },
 }

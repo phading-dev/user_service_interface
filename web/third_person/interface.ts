@@ -1,5 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { AccountSummary, ACCOUNT_SUMMARY } from './account_summary';
+import { AccountSummary, ACCOUNT_SUMMARY, AccountDetails, ACCOUNT_DETAILS } from './account';
 import { USER_WEB_SERVICE } from '../../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
@@ -29,14 +29,40 @@ export let GET_ACCOUNT_SUMMARY_RESPONSE: MessageDescriptor<GetAccountSummaryResp
   }],
 };
 
-export interface SearchAccountsRequestBody {
+export interface GetAccountDetailsRequestBody {
+  accountId?: string,
+}
+
+export let GET_ACCOUNT_DETAILS_REQUEST_BODY: MessageDescriptor<GetAccountDetailsRequestBody> = {
+  name: 'GetAccountDetailsRequestBody',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetAccountDetailsResponse {
+  account?: AccountDetails,
+}
+
+export let GET_ACCOUNT_DETAILS_RESPONSE: MessageDescriptor<GetAccountDetailsResponse> = {
+  name: 'GetAccountDetailsResponse',
+  fields: [{
+    name: 'account',
+    index: 1,
+    messageType: ACCOUNT_DETAILS,
+  }],
+};
+
+export interface SearchPublishersRequestBody {
   query?: string,
   limit?: number,
   scoreCusor?: number,
 }
 
-export let SEARCH_ACCOUNTS_REQUEST_BODY: MessageDescriptor<SearchAccountsRequestBody> = {
-  name: 'SearchAccountsRequestBody',
+export let SEARCH_PUBLISHERS_REQUEST_BODY: MessageDescriptor<SearchPublishersRequestBody> = {
+  name: 'SearchPublishersRequestBody',
   fields: [{
     name: 'query',
     index: 1,
@@ -52,13 +78,13 @@ export let SEARCH_ACCOUNTS_REQUEST_BODY: MessageDescriptor<SearchAccountsRequest
   }],
 };
 
-export interface SearchAccountsResponse {
+export interface SearchPublishersResponse {
   accounts?: Array<AccountSummary>,
   scoreCusor?: number,
 }
 
-export let SEARCH_ACCOUNTS_RESPONSE: MessageDescriptor<SearchAccountsResponse> = {
-  name: 'SearchAccountsResponse',
+export let SEARCH_PUBLISHERS_RESPONSE: MessageDescriptor<SearchPublishersResponse> = {
+  name: 'SearchPublishersResponse',
   fields: [{
     name: 'accounts',
     index: 1,
@@ -84,15 +110,28 @@ export let GET_ACCOUNT_SUMMARY: RemoteCallDescriptor = {
   },
 }
 
-export let SEARCH_ACCOUNTS: RemoteCallDescriptor = {
-  name: "SearchAccounts",
+export let GET_ACCOUNT_DETAILS: RemoteCallDescriptor = {
+  name: "GetAccountDetails",
   service: USER_WEB_SERVICE,
-  path: "/SearchAccounts",
+  path: "/GetAccountDetails",
   body: {
-    messageType: SEARCH_ACCOUNTS_REQUEST_BODY,
+    messageType: GET_ACCOUNT_DETAILS_REQUEST_BODY,
   },
   authKey: "a",
   response: {
-    messageType: SEARCH_ACCOUNTS_RESPONSE,
+    messageType: GET_ACCOUNT_DETAILS_RESPONSE,
+  },
+}
+
+export let SEARCH_PUBLISHERS: RemoteCallDescriptor = {
+  name: "SearchPublishers",
+  service: USER_WEB_SERVICE,
+  path: "/SearchPublishers",
+  body: {
+    messageType: SEARCH_PUBLISHERS_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: SEARCH_PUBLISHERS_RESPONSE,
   },
 }

@@ -9,10 +9,23 @@
   fields:
     - name: account
       type: AccountSummary
-      import: ./web/third_person/account_summary
+      import: ./web/third_person/account
       index: 1
 - kind: Message
-  name: SearchAccountsRequestBody
+  name: GetAccountDetailsRequestBody
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+- kind: Message
+  name: GetAccountDetailsResponse
+  fields:
+    - name: account
+      type: AccountDetails
+      import: ./web/third_person/account
+      index: 1
+- kind: Message
+  name: SearchPublishersRequestBody
   fields:
     - name: query
       type: string
@@ -24,11 +37,11 @@
       type: number
       index: 3
 - kind: Message
-  name: SearchAccountsResponse
+  name: SearchPublishersResponse
   fields:
     - name: accounts
       type: AccountSummary
-      import: ./web/third_person/account_summary
+      import: ./web/third_person/account
       isArray: true
       index: 1
     - name: scoreCusor
@@ -44,10 +57,15 @@
       body: GetAccountSummaryRequestBody
       authKey: a
       response: GetAccountSummaryResponse
-    - name: SearchAccounts
-      path: /SearchAccounts
-      body: SearchAccountsRequestBody
+    - name: GetAccountDetails
+      path: /GetAccountDetails
+      body: GetAccountDetailsRequestBody
       authKey: a
-      response: SearchAccountsResponse
+      response: GetAccountDetailsResponse
+    - name: SearchPublishers
+      path: /SearchPublishers
+      body: SearchPublishersRequestBody
+      authKey: a
+      response: SearchPublishersResponse
   outputClient: ./web/third_person/client
   outputHandler: ./web/third_person/handler

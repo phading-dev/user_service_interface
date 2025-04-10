@@ -150,6 +150,24 @@
       index: 1
 - kind: Message
   name: SaveVideoPlayerSettingsResponse
+- kind: Message
+  name: GetUISettingsRequestBody
+- kind: Message
+  name: GetUISettingsResponse
+  fields:
+    - name: settings
+      type: UISettings
+      import: ./web/self/ui_settings
+      index: 1
+- kind: Message
+  name: SaveUISettingsRequestBody
+  fields:
+    - name: settings
+      type: UISettings
+      import: ./web/self/ui_settings
+      index: 1
+- kind: Message
+  name: SaveUISettingsResponse
 - kind: RemoteCallsGroup
   name: UserWebSelfRemoteCalls
   service: UserWebService
@@ -213,5 +231,15 @@
       body: SaveVideoPlayerSettingsRequestBody
       authKey: a
       response: SaveVideoPlayerSettingsResponse
+    - name: GetUISettings
+      path: /GetUISettings
+      body: GetUISettingsRequestBody
+      authKey: a
+      response: GetUISettingsResponse
+    - name: SaveUISettings
+      path: /SaveUISettings
+      body: SaveUISettingsRequestBody
+      authKey: a
+      response: SaveUISettingsResponse
   outputClient: ./web/self/client
   outputHandler: ./web/self/handler

@@ -1,0 +1,20 @@
+- kind: Enum
+  name: ColorScheme
+  values:
+    - name: LIGHT
+      value: 1
+    - name: DARK
+      value: 2
+- kind: Message
+  name: UISettings
+  fields:
+    - name: scheme
+      type: ColorScheme
+      index: 1
+    - name: language
+      type: string
+      index: 2
+    - name: leftHandMode
+      type: boolean
+      index: 3
+
