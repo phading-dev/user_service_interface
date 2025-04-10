@@ -58,7 +58,8 @@ export let GET_ACCOUNT_DETAILS_RESPONSE: MessageDescriptor<GetAccountDetailsResp
 export interface SearchPublishersRequestBody {
   query?: string,
   limit?: number,
-  scoreCusor?: number,
+  scoreCursor?: number,
+  createdTimeCursor?: number,
 }
 
 export let SEARCH_PUBLISHERS_REQUEST_BODY: MessageDescriptor<SearchPublishersRequestBody> = {
@@ -72,8 +73,12 @@ export let SEARCH_PUBLISHERS_REQUEST_BODY: MessageDescriptor<SearchPublishersReq
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'scoreCusor',
+    name: 'scoreCursor',
     index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
@@ -81,6 +86,7 @@ export let SEARCH_PUBLISHERS_REQUEST_BODY: MessageDescriptor<SearchPublishersReq
 export interface SearchPublishersResponse {
   accounts?: Array<AccountSummary>,
   scoreCusor?: number,
+  createdTimeCursor?: number,
 }
 
 export let SEARCH_PUBLISHERS_RESPONSE: MessageDescriptor<SearchPublishersResponse> = {
@@ -93,6 +99,10 @@ export let SEARCH_PUBLISHERS_RESPONSE: MessageDescriptor<SearchPublishersRespons
   }, {
     name: 'scoreCusor',
     index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

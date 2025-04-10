@@ -33,9 +33,12 @@
     - name: limit
       type: number
       index: 2
-    - name: scoreCusor
+    - name: scoreCursor
       type: number
       index: 3
+    - name: createdTimeCursor
+      type: number
+      index: 4
 - kind: Message
   name: SearchPublishersResponse
   fields:
@@ -47,6 +50,9 @@
     - name: scoreCusor
       type: number
       index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
 - kind: RemoteCallsGroup
   name: UserWebThirdPersonRemoteCalls
   service: UserWebService
