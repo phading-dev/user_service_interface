@@ -43,11 +43,11 @@
   name: SearchPublishersResponse
   fields:
     - name: accounts
-      type: AccountSummary
+      type: AccountDetails
       import: ./web/third_person/account
       isArray: true
       index: 1
-    - name: scoreCusor
+    - name: scoreCursor
       type: number
       index: 2
     - name: createdTimeCursor

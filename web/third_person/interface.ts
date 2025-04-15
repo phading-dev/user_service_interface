@@ -84,8 +84,8 @@ export let SEARCH_PUBLISHERS_REQUEST_BODY: MessageDescriptor<SearchPublishersReq
 };
 
 export interface SearchPublishersResponse {
-  accounts?: Array<AccountSummary>,
-  scoreCusor?: number,
+  accounts?: Array<AccountDetails>,
+  scoreCursor?: number,
   createdTimeCursor?: number,
 }
 
@@ -94,10 +94,10 @@ export let SEARCH_PUBLISHERS_RESPONSE: MessageDescriptor<SearchPublishersRespons
   fields: [{
     name: 'accounts',
     index: 1,
-    messageType: ACCOUNT_SUMMARY,
+    messageType: ACCOUNT_DETAILS,
     isArray: true,
   }, {
-    name: 'scoreCusor',
+    name: 'scoreCursor',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
