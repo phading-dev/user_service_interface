@@ -114,7 +114,6 @@ export let GET_ACCOUNT_SUMMARY: RemoteCallDescriptor = {
   body: {
     messageType: GET_ACCOUNT_SUMMARY_REQUEST_BODY,
   },
-  authKey: "a",
   response: {
     messageType: GET_ACCOUNT_SUMMARY_RESPONSE,
   },
@@ -127,7 +126,6 @@ export let GET_ACCOUNT_DETAILS: RemoteCallDescriptor = {
   body: {
     messageType: GET_ACCOUNT_DETAILS_REQUEST_BODY,
   },
-  authKey: "a",
   response: {
     messageType: GET_ACCOUNT_DETAILS_RESPONSE,
   },

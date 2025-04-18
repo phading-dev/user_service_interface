@@ -61,12 +61,10 @@
     - name: GetAccountSummary
       path: /GetAccountSummary
       body: GetAccountSummaryRequestBody
-      authKey: a
       response: GetAccountSummaryResponse
     - name: GetAccountDetails
       path: /GetAccountDetails
       body: GetAccountDetailsRequestBody
-      authKey: a
       response: GetAccountDetailsResponse
     - name: SearchPublishers
       path: /SearchPublishers

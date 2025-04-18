@@ -6,7 +6,6 @@ export abstract class GetAccountSummaryHandlerInterface implements RemoteCallHan
   public abstract handle(
     loggingPrefix: string,
     body: GetAccountSummaryRequestBody,
-    authStr: string,
   ): Promise<GetAccountSummaryResponse>;
 }
 
@@ -15,7 +14,6 @@ export abstract class GetAccountDetailsHandlerInterface implements RemoteCallHan
   public abstract handle(
     loggingPrefix: string,
     body: GetAccountDetailsRequestBody,
-    authStr: string,
   ): Promise<GetAccountDetailsResponse>;
 }
 
