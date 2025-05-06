@@ -1,21 +1,18 @@
 - kind: Message
   name: VideoSettings
   fields:
-  - name: volume # 0 to 1
+  - name: volume # 0 to 10
     type: number
     index: 1
-  - name: muted
-    type: boolean
+  - name: preferredAudioName
+    type: string
     index: 2
   - name: playbackSpeed # .25x to 4x
     type: number
     index: 3
-  - name: preferredAudioLanguage
+  - name: preferredSubtitleName
     type: string
     index: 4
-  - name: preferredSubtitleLanguage
-    type: string
-    index: 5
 - kind: Enum
   name: StackingMethod
   values:
@@ -24,41 +21,47 @@
   - name: TOP_DOWN
     value: 2
 - kind: Message
-  name: DanmakuSettings
+  name: DanmakuOverlaySettings
   fields:
-  - name: enable
-    type: boolean
-    index: 1
   - name: speed
     type: number
-    index: 2
-  - name: opacity # 0 to 100 percentage
-    type: number
-    index: 3
-  - name: frontSize
-    type: number
-    index: 4
+    index: 1
   - name: density # 0 to 100 percentage, meaning for every 100 pixels, the number of pixels should be occupied.
     type: number
-    index: 5
-  - name: topMargin # 0 to 100 percentage
-    type: number
-    index: 6
-  - name: bottomMargin
-    type: number
-    index: 7
-  - name: fontFamily
-    type: string
-    index: 8
+    index: 2
   - name: stackingMethod
     type: StackingMethod
-    index: 9
+    index: 3
+- kind: Enum
+  name: ChatOverlayStyle
+  values:
+  - name: NONE
+    value: 1
+  - name: SIDE
+    value: 2
+  - name: DANMAKU
+    value: 3
+- kind: Message
+  name: ChatOverlaySettings
+  fields:
+  - name: style
+    type: ChatOverlayStyle
+    index: 1
+  - name: opacity # 0 to 100 percentage
+    type: number
+    index: 2
+  - name: fontSize
+    type: number
+    index: 3
+  - name: danmakuSettings
+    type: DanmakuOverlaySettings
+    index: 4
 - kind: Message
   name: VideoPlayerSettings
   fields:
   - name: videoSettings
     type: VideoSettings
     index: 1
-  - name: danmakuSettings
-    type: DanmakuSettings
+  - name: chatOverlaySettings
+    type: ChatOverlaySettings
     index: 2

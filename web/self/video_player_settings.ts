@@ -2,10 +2,9 @@ import { PrimitiveType, MessageDescriptor, EnumDescriptor } from '@selfage/messa
 
 export interface VideoSettings {
   volume?: number,
-  muted?: boolean,
+  preferredAudioName?: string,
   playbackSpeed?: number,
-  preferredAudioLanguage?: string,
-  preferredSubtitleLanguage?: string,
+  preferredSubtitleName?: string,
 }
 
 export let VIDEO_SETTINGS: MessageDescriptor<VideoSettings> = {
@@ -15,20 +14,16 @@ export let VIDEO_SETTINGS: MessageDescriptor<VideoSettings> = {
     index: 1,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'muted',
+    name: 'preferredAudioName',
     index: 2,
-    primitiveType: PrimitiveType.BOOLEAN,
+    primitiveType: PrimitiveType.STRING,
   }, {
     name: 'playbackSpeed',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'preferredAudioLanguage',
+    name: 'preferredSubtitleName',
     index: 4,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'preferredSubtitleLanguage',
-    index: 5,
     primitiveType: PrimitiveType.STRING,
   }],
 };
@@ -49,62 +44,80 @@ export let STACKING_METHOD: EnumDescriptor<StackingMethod> = {
   }]
 }
 
-export interface DanmakuSettings {
-  enable?: boolean,
+export interface DanmakuOverlaySettings {
   speed?: number,
-  opacity?: number,
-  frontSize?: number,
   density?: number,
-  topMargin?: number,
-  bottomMargin?: number,
-  fontFamily?: string,
   stackingMethod?: StackingMethod,
 }
 
-export let DANMAKU_SETTINGS: MessageDescriptor<DanmakuSettings> = {
-  name: 'DanmakuSettings',
+export let DANMAKU_OVERLAY_SETTINGS: MessageDescriptor<DanmakuOverlaySettings> = {
+  name: 'DanmakuOverlaySettings',
   fields: [{
-    name: 'enable',
-    index: 1,
-    primitiveType: PrimitiveType.BOOLEAN,
-  }, {
     name: 'speed',
-    index: 2,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'opacity',
-    index: 3,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'frontSize',
-    index: 4,
+    index: 1,
     primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'density',
-    index: 5,
+    index: 2,
     primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'topMargin',
-    index: 6,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'bottomMargin',
-    index: 7,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'fontFamily',
-    index: 8,
-    primitiveType: PrimitiveType.STRING,
   }, {
     name: 'stackingMethod',
-    index: 9,
+    index: 3,
     enumType: STACKING_METHOD,
+  }],
+};
+
+export enum ChatOverlayStyle {
+  NONE = 1,
+  SIDE = 2,
+  DANMAKU = 3,
+}
+
+export let CHAT_OVERLAY_STYLE: EnumDescriptor<ChatOverlayStyle> = {
+  name: 'ChatOverlayStyle',
+  values: [{
+    name: 'NONE',
+    value: 1,
+  }, {
+    name: 'SIDE',
+    value: 2,
+  }, {
+    name: 'DANMAKU',
+    value: 3,
+  }]
+}
+
+export interface ChatOverlaySettings {
+  style?: ChatOverlayStyle,
+  opacity?: number,
+  fontSize?: number,
+  danmakuSettings?: DanmakuOverlaySettings,
+}
+
+export let CHAT_OVERLAY_SETTINGS: MessageDescriptor<ChatOverlaySettings> = {
+  name: 'ChatOverlaySettings',
+  fields: [{
+    name: 'style',
+    index: 1,
+    enumType: CHAT_OVERLAY_STYLE,
+  }, {
+    name: 'opacity',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'fontSize',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'danmakuSettings',
+    index: 4,
+    messageType: DANMAKU_OVERLAY_SETTINGS,
   }],
 };
 
 export interface VideoPlayerSettings {
   videoSettings?: VideoSettings,
-  danmakuSettings?: DanmakuSettings,
+  chatOverlaySettings?: ChatOverlaySettings,
 }
 
 export let VIDEO_PLAYER_SETTINGS: MessageDescriptor<VideoPlayerSettings> = {
@@ -114,8 +127,8 @@ export let VIDEO_PLAYER_SETTINGS: MessageDescriptor<VideoPlayerSettings> = {
     index: 1,
     messageType: VIDEO_SETTINGS,
   }, {
-    name: 'danmakuSettings',
+    name: 'chatOverlaySettings',
     index: 2,
-    messageType: DANMAKU_SETTINGS,
+    messageType: CHAT_OVERLAY_SETTINGS,
   }],
 };
