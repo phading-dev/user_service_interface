@@ -33,7 +33,7 @@
     type: StackingMethod
     index: 3
 - kind: Enum
-  name: ChatOverlayStyle
+  name: CommentOverlayStyle
   values:
   - name: NONE
     value: 1
@@ -42,10 +42,10 @@
   - name: DANMAKU
     value: 3
 - kind: Message
-  name: ChatOverlaySettings
+  name: CommentOverlaySettings
   fields:
   - name: style
-    type: ChatOverlayStyle
+    type: CommentOverlayStyle
     index: 1
   - name: opacity # 0 to 100 percentage
     type: number
@@ -62,6 +62,6 @@
   - name: videoSettings
     type: VideoSettings
     index: 1
-  - name: chatOverlaySettings
-    type: ChatOverlaySettings
+  - name: commentOverlaySettings
+    type: CommentOverlaySettings
     index: 2

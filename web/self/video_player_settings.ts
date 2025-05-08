@@ -67,14 +67,14 @@ export let DANMAKU_OVERLAY_SETTINGS: MessageDescriptor<DanmakuOverlaySettings> =
   }],
 };
 
-export enum ChatOverlayStyle {
+export enum CommentOverlayStyle {
   NONE = 1,
   SIDE = 2,
   DANMAKU = 3,
 }
 
-export let CHAT_OVERLAY_STYLE: EnumDescriptor<ChatOverlayStyle> = {
-  name: 'ChatOverlayStyle',
+export let COMMENT_OVERLAY_STYLE: EnumDescriptor<CommentOverlayStyle> = {
+  name: 'CommentOverlayStyle',
   values: [{
     name: 'NONE',
     value: 1,
@@ -87,19 +87,19 @@ export let CHAT_OVERLAY_STYLE: EnumDescriptor<ChatOverlayStyle> = {
   }]
 }
 
-export interface ChatOverlaySettings {
-  style?: ChatOverlayStyle,
+export interface CommentOverlaySettings {
+  style?: CommentOverlayStyle,
   opacity?: number,
   fontSize?: number,
   danmakuSettings?: DanmakuOverlaySettings,
 }
 
-export let CHAT_OVERLAY_SETTINGS: MessageDescriptor<ChatOverlaySettings> = {
-  name: 'ChatOverlaySettings',
+export let COMMENT_OVERLAY_SETTINGS: MessageDescriptor<CommentOverlaySettings> = {
+  name: 'CommentOverlaySettings',
   fields: [{
     name: 'style',
     index: 1,
-    enumType: CHAT_OVERLAY_STYLE,
+    enumType: COMMENT_OVERLAY_STYLE,
   }, {
     name: 'opacity',
     index: 2,
@@ -117,7 +117,7 @@ export let CHAT_OVERLAY_SETTINGS: MessageDescriptor<ChatOverlaySettings> = {
 
 export interface VideoPlayerSettings {
   videoSettings?: VideoSettings,
-  chatOverlaySettings?: ChatOverlaySettings,
+  commentOverlaySettings?: CommentOverlaySettings,
 }
 
 export let VIDEO_PLAYER_SETTINGS: MessageDescriptor<VideoPlayerSettings> = {
@@ -127,8 +127,8 @@ export let VIDEO_PLAYER_SETTINGS: MessageDescriptor<VideoPlayerSettings> = {
     index: 1,
     messageType: VIDEO_SETTINGS,
   }, {
-    name: 'chatOverlaySettings',
+    name: 'commentOverlaySettings',
     index: 2,
-    messageType: CHAT_OVERLAY_SETTINGS,
+    messageType: COMMENT_OVERLAY_SETTINGS,
   }],
 };
