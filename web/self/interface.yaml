@@ -97,6 +97,9 @@
     - name: signedSession
       type: string
       index: 1
+    - name: notFound
+      type: boolean
+      index: 2
 - kind: Message
   name: ListAccountsRequestBody
 - kind: Message

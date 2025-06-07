@@ -196,6 +196,7 @@ export let SWITCH_ACCOUNT_REQUEST_BODY: MessageDescriptor<SwitchAccountRequestBo
 
 export interface SwitchAccountResponse {
   signedSession?: string,
+  notFound?: boolean,
 }
 
 export let SWITCH_ACCOUNT_RESPONSE: MessageDescriptor<SwitchAccountResponse> = {
@@ -204,6 +205,10 @@ export let SWITCH_ACCOUNT_RESPONSE: MessageDescriptor<SwitchAccountResponse> = {
     name: 'signedSession',
     index: 1,
     primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'notFound',
+    index: 2,
+    primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
 
