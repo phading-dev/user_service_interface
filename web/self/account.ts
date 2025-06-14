@@ -43,7 +43,7 @@ export interface AccountSummary {
   accountId?: string,
   accountType?: AccountType,
   naturalName?: string,
-  avatarSmallUrl?: string,
+  avatarLargeUrl?: string,
 }
 
 export let ACCOUNT_SUMMARY: MessageDescriptor<AccountSummary> = {
@@ -61,7 +61,7 @@ export let ACCOUNT_SUMMARY: MessageDescriptor<AccountSummary> = {
     index: 3,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'avatarSmallUrl',
+    name: 'avatarLargeUrl',
     index: 4,
     primitiveType: PrimitiveType.STRING,
   }],
