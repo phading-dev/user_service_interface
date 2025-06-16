@@ -381,7 +381,7 @@ export let SAVE_U_I_SETTINGS_RESPONSE: MessageDescriptor<SaveUISettingsResponse>
 export let SIGN_UP: RemoteCallDescriptor = {
   name: "SignUp",
   service: USER_WEB_SERVICE,
-  path: "/SignUp",
+  path: "/s/SignUp",
   body: {
     messageType: SIGN_UP_REQUEST_BODY,
   },
@@ -393,7 +393,7 @@ export let SIGN_UP: RemoteCallDescriptor = {
 export let SIGN_IN: RemoteCallDescriptor = {
   name: "SignIn",
   service: USER_WEB_SERVICE,
-  path: "/SignIn",
+  path: "/s/SignIn",
   body: {
     messageType: SIGN_IN_REQUEST_BODY,
   },
@@ -405,7 +405,7 @@ export let SIGN_IN: RemoteCallDescriptor = {
 export let UPDATE_PASSWORD: RemoteCallDescriptor = {
   name: "UpdatePassword",
   service: USER_WEB_SERVICE,
-  path: "/UpdatePassword",
+  path: "/s/UpdatePassword",
   body: {
     messageType: UPDATE_PASSWORD_REQUEST_BODY,
   },
@@ -418,7 +418,7 @@ export let UPDATE_PASSWORD: RemoteCallDescriptor = {
 export let UPDATE_RECOVERY_EMAIL: RemoteCallDescriptor = {
   name: "UpdateRecoveryEmail",
   service: USER_WEB_SERVICE,
-  path: "/UpdateRecoveryEmail",
+  path: "/s/UpdateRecoveryEmail",
   body: {
     messageType: UPDATE_RECOVERY_EMAIL_REQUEST_BODY,
   },
@@ -431,7 +431,7 @@ export let UPDATE_RECOVERY_EMAIL: RemoteCallDescriptor = {
 export let CREATE_ACCOUNT: RemoteCallDescriptor = {
   name: "CreateAccount",
   service: USER_WEB_SERVICE,
-  path: "/CreateAccount",
+  path: "/s/CreateAccount",
   body: {
     messageType: CREATE_ACCOUNT_REQUEST_BODY,
   },
@@ -444,7 +444,7 @@ export let CREATE_ACCOUNT: RemoteCallDescriptor = {
 export let SWITCH_ACCOUNT: RemoteCallDescriptor = {
   name: "SwitchAccount",
   service: USER_WEB_SERVICE,
-  path: "/SwitchAccount",
+  path: "/s/SwitchAccount",
   body: {
     messageType: SWITCH_ACCOUNT_REQUEST_BODY,
   },
@@ -457,7 +457,7 @@ export let SWITCH_ACCOUNT: RemoteCallDescriptor = {
 export let LIST_ACCOUNTS: RemoteCallDescriptor = {
   name: "ListAccounts",
   service: USER_WEB_SERVICE,
-  path: "/ListAccounts",
+  path: "/s/ListAccounts",
   body: {
     messageType: LIST_ACCOUNTS_REQUEST_BODY,
   },
@@ -470,7 +470,7 @@ export let LIST_ACCOUNTS: RemoteCallDescriptor = {
 export let UPDATE_ACCOUNT: RemoteCallDescriptor = {
   name: "UpdateAccount",
   service: USER_WEB_SERVICE,
-  path: "/UpdateAccount",
+  path: "/s/UpdateAccount",
   body: {
     messageType: UPDATE_ACCOUNT_REQUEST_BODY,
   },
@@ -483,7 +483,7 @@ export let UPDATE_ACCOUNT: RemoteCallDescriptor = {
 export let UPLOAD_ACCOUNT_AVATAR: RemoteCallDescriptor = {
   name: "UploadAccountAvatar",
   service: USER_WEB_SERVICE,
-  path: "/UploadAccountAvatar",
+  path: "/s/UploadAccountAvatar",
   body: {
     primitiveType: PrimitveTypeForBody.BYTES,
   },
@@ -496,7 +496,7 @@ export let UPLOAD_ACCOUNT_AVATAR: RemoteCallDescriptor = {
 export let GET_ACCOUNT_AND_USER: RemoteCallDescriptor = {
   name: "GetAccountAndUser",
   service: USER_WEB_SERVICE,
-  path: "/GetAccountAndUser",
+  path: "/s/GetAccountAndUser",
   body: {
     messageType: GET_ACCOUNT_AND_USER_REQUEST_BODY,
   },
@@ -509,7 +509,7 @@ export let GET_ACCOUNT_AND_USER: RemoteCallDescriptor = {
 export let GET_VIDEO_PLAYER_SETTINGS: RemoteCallDescriptor = {
   name: "GetVideoPlayerSettings",
   service: USER_WEB_SERVICE,
-  path: "/GetVideoPlayerSettings",
+  path: "/s/GetVideoPlayerSettings",
   body: {
     messageType: GET_VIDEO_PLAYER_SETTINGS_REQUEST_BODY,
   },
@@ -522,7 +522,7 @@ export let GET_VIDEO_PLAYER_SETTINGS: RemoteCallDescriptor = {
 export let SAVE_VIDEO_PLAYER_SETTINGS: RemoteCallDescriptor = {
   name: "SaveVideoPlayerSettings",
   service: USER_WEB_SERVICE,
-  path: "/SaveVideoPlayerSettings",
+  path: "/s/SaveVideoPlayerSettings",
   body: {
     messageType: SAVE_VIDEO_PLAYER_SETTINGS_REQUEST_BODY,
   },
@@ -535,7 +535,7 @@ export let SAVE_VIDEO_PLAYER_SETTINGS: RemoteCallDescriptor = {
 export let GET_U_I_SETTINGS: RemoteCallDescriptor = {
   name: "GetUISettings",
   service: USER_WEB_SERVICE,
-  path: "/GetUISettings",
+  path: "/s/GetUISettings",
   body: {
     messageType: GET_U_I_SETTINGS_REQUEST_BODY,
   },
@@ -548,7 +548,7 @@ export let GET_U_I_SETTINGS: RemoteCallDescriptor = {
 export let SAVE_U_I_SETTINGS: RemoteCallDescriptor = {
   name: "SaveUISettings",
   service: USER_WEB_SERVICE,
-  path: "/SaveUISettings",
+  path: "/s/SaveUISettings",
   body: {
     messageType: SAVE_U_I_SETTINGS_REQUEST_BODY,
   },

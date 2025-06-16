@@ -175,6 +175,7 @@
   name: UserWebSelfRemoteCalls
   service: UserWebService
   importService: ./service
+  path: /s
   calls:
     - name: SignUp
       path: /SignUp

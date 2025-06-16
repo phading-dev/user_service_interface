@@ -110,7 +110,7 @@ export let SEARCH_PUBLISHERS_RESPONSE: MessageDescriptor<SearchPublishersRespons
 export let GET_ACCOUNT_SUMMARY: RemoteCallDescriptor = {
   name: "GetAccountSummary",
   service: USER_WEB_SERVICE,
-  path: "/GetAccountSummary",
+  path: "/t/GetAccountSummary",
   body: {
     messageType: GET_ACCOUNT_SUMMARY_REQUEST_BODY,
   },
@@ -122,7 +122,7 @@ export let GET_ACCOUNT_SUMMARY: RemoteCallDescriptor = {
 export let GET_ACCOUNT_DETAILS: RemoteCallDescriptor = {
   name: "GetAccountDetails",
   service: USER_WEB_SERVICE,
-  path: "/GetAccountDetails",
+  path: "/t/GetAccountDetails",
   body: {
     messageType: GET_ACCOUNT_DETAILS_REQUEST_BODY,
   },
@@ -134,7 +134,7 @@ export let GET_ACCOUNT_DETAILS: RemoteCallDescriptor = {
 export let SEARCH_PUBLISHERS: RemoteCallDescriptor = {
   name: "SearchPublishers",
   service: USER_WEB_SERVICE,
-  path: "/SearchPublishers",
+  path: "/t/SearchPublishers",
   body: {
     messageType: SEARCH_PUBLISHERS_REQUEST_BODY,
   },

@@ -57,6 +57,7 @@
   name: UserWebThirdPersonRemoteCalls
   service: UserWebService
   importService: ./service
+  path: /t
   calls:
     - name: GetAccountSummary
       path: /GetAccountSummary
