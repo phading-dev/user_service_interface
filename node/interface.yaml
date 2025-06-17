@@ -82,6 +82,23 @@
       type: ProcessPayoutProfileCreatingTaskRequestBody
       isArray: true
       index: 1
+- kind: Message
+  name: ProcessAvatarImageDeletingTaskRequestBody
+  fields:
+    - name: r2Filename
+      type: string
+      index: 1
+- kind: Message
+  name: ProcessAvatarImageDeletingTaskResponse
+- kind: Message
+  name: ListAvatarImageDeletingTasksRequestBody
+- kind: Message
+  name: ListAvatarImageDeletingTasksResponse
+  fields:
+    - name: tasks
+      type: ProcessAvatarImageDeletingTaskRequestBody
+      isArray: true
+      index: 1
 - kind: RemoteCallsGroup
   name: UserNodeRemoteCalls
   service: UserNodeService
@@ -119,5 +136,13 @@
       path: /ListPayoutProfileCreatingTasks
       body: ListPayoutProfileCreatingTasksRequestBody
       response: ListPayoutProfileCreatingTasksResponse
+    - name: ProcessAvatarImageDeletingTask
+      path: /ProcessAvatarImageDeletingTask
+      body: ProcessAvatarImageDeletingTaskRequestBody
+      response: ProcessAvatarImageDeletingTaskResponse
+    - name: ListAvatarImageDeletingTasks
+      path: /ListAvatarImageDeletingTasks
+      body: ListAvatarImageDeletingTasksRequestBody
+      response: ListAvatarImageDeletingTasksResponse
   outputClient: ./node/client
   outputHandler: ./node/handler

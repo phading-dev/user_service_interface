@@ -199,6 +199,49 @@ export let LIST_PAYOUT_PROFILE_CREATING_TASKS_RESPONSE: MessageDescriptor<ListPa
   }],
 };
 
+export interface ProcessAvatarImageDeletingTaskRequestBody {
+  r2Filename?: string,
+}
+
+export let PROCESS_AVATAR_IMAGE_DELETING_TASK_REQUEST_BODY: MessageDescriptor<ProcessAvatarImageDeletingTaskRequestBody> = {
+  name: 'ProcessAvatarImageDeletingTaskRequestBody',
+  fields: [{
+    name: 'r2Filename',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface ProcessAvatarImageDeletingTaskResponse {
+}
+
+export let PROCESS_AVATAR_IMAGE_DELETING_TASK_RESPONSE: MessageDescriptor<ProcessAvatarImageDeletingTaskResponse> = {
+  name: 'ProcessAvatarImageDeletingTaskResponse',
+  fields: [],
+};
+
+export interface ListAvatarImageDeletingTasksRequestBody {
+}
+
+export let LIST_AVATAR_IMAGE_DELETING_TASKS_REQUEST_BODY: MessageDescriptor<ListAvatarImageDeletingTasksRequestBody> = {
+  name: 'ListAvatarImageDeletingTasksRequestBody',
+  fields: [],
+};
+
+export interface ListAvatarImageDeletingTasksResponse {
+  tasks?: Array<ProcessAvatarImageDeletingTaskRequestBody>,
+}
+
+export let LIST_AVATAR_IMAGE_DELETING_TASKS_RESPONSE: MessageDescriptor<ListAvatarImageDeletingTasksResponse> = {
+  name: 'ListAvatarImageDeletingTasksResponse',
+  fields: [{
+    name: 'tasks',
+    index: 1,
+    messageType: PROCESS_AVATAR_IMAGE_DELETING_TASK_REQUEST_BODY,
+    isArray: true,
+  }],
+};
+
 export let GET_ACCOUNT_CONTACT: RemoteCallDescriptor = {
   name: "GetAccountContact",
   service: USER_NODE_SERVICE,
@@ -292,5 +335,29 @@ export let LIST_PAYOUT_PROFILE_CREATING_TASKS: RemoteCallDescriptor = {
   },
   response: {
     messageType: LIST_PAYOUT_PROFILE_CREATING_TASKS_RESPONSE,
+  },
+}
+
+export let PROCESS_AVATAR_IMAGE_DELETING_TASK: RemoteCallDescriptor = {
+  name: "ProcessAvatarImageDeletingTask",
+  service: USER_NODE_SERVICE,
+  path: "/ProcessAvatarImageDeletingTask",
+  body: {
+    messageType: PROCESS_AVATAR_IMAGE_DELETING_TASK_REQUEST_BODY,
+  },
+  response: {
+    messageType: PROCESS_AVATAR_IMAGE_DELETING_TASK_RESPONSE,
+  },
+}
+
+export let LIST_AVATAR_IMAGE_DELETING_TASKS: RemoteCallDescriptor = {
+  name: "ListAvatarImageDeletingTasks",
+  service: USER_NODE_SERVICE,
+  path: "/ListAvatarImageDeletingTasks",
+  body: {
+    messageType: LIST_AVATAR_IMAGE_DELETING_TASKS_REQUEST_BODY,
+  },
+  response: {
+    messageType: LIST_AVATAR_IMAGE_DELETING_TASKS_RESPONSE,
   },
 }

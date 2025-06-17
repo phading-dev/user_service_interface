@@ -1,4 +1,4 @@
-import { GetAccountContactRequestBody, GetAccountContactResponse, GET_ACCOUNT_CONTACT, SyncPaymentProfileStateRequestBody, SyncPaymentProfileStateResponse, SYNC_PAYMENT_PROFILE_STATE, ProcessAccountCapabilitiesUpdatingTaskRequestBody, ProcessAccountCapabilitiesUpdatingTaskResponse, PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK, ListAccountCapabilitiesUpdatingTasksRequestBody, ListAccountCapabilitiesUpdatingTasksResponse, LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS, ProcessPaymentProfileCreatingTaskRequestBody, ProcessPaymentProfileCreatingTaskResponse, PROCESS_PAYMENT_PROFILE_CREATING_TASK, ListPaymentProfileCreatingTasksRequestBody, ListPaymentProfileCreatingTasksResponse, LIST_PAYMENT_PROFILE_CREATING_TASKS, ProcessPayoutProfileCreatingTaskRequestBody, ProcessPayoutProfileCreatingTaskResponse, PROCESS_PAYOUT_PROFILE_CREATING_TASK, ListPayoutProfileCreatingTasksRequestBody, ListPayoutProfileCreatingTasksResponse, LIST_PAYOUT_PROFILE_CREATING_TASKS } from './interface';
+import { GetAccountContactRequestBody, GetAccountContactResponse, GET_ACCOUNT_CONTACT, SyncPaymentProfileStateRequestBody, SyncPaymentProfileStateResponse, SYNC_PAYMENT_PROFILE_STATE, ProcessAccountCapabilitiesUpdatingTaskRequestBody, ProcessAccountCapabilitiesUpdatingTaskResponse, PROCESS_ACCOUNT_CAPABILITIES_UPDATING_TASK, ListAccountCapabilitiesUpdatingTasksRequestBody, ListAccountCapabilitiesUpdatingTasksResponse, LIST_ACCOUNT_CAPABILITIES_UPDATING_TASKS, ProcessPaymentProfileCreatingTaskRequestBody, ProcessPaymentProfileCreatingTaskResponse, PROCESS_PAYMENT_PROFILE_CREATING_TASK, ListPaymentProfileCreatingTasksRequestBody, ListPaymentProfileCreatingTasksResponse, LIST_PAYMENT_PROFILE_CREATING_TASKS, ProcessPayoutProfileCreatingTaskRequestBody, ProcessPayoutProfileCreatingTaskResponse, PROCESS_PAYOUT_PROFILE_CREATING_TASK, ListPayoutProfileCreatingTasksRequestBody, ListPayoutProfileCreatingTasksResponse, LIST_PAYOUT_PROFILE_CREATING_TASKS, ProcessAvatarImageDeletingTaskRequestBody, ProcessAvatarImageDeletingTaskResponse, PROCESS_AVATAR_IMAGE_DELETING_TASK, ListAvatarImageDeletingTasksRequestBody, ListAvatarImageDeletingTasksResponse, LIST_AVATAR_IMAGE_DELETING_TASKS } from './interface';
 import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
 export function newGetAccountContactRequest(
@@ -69,6 +69,24 @@ export function newListPayoutProfileCreatingTasksRequest(
 ): ClientRequestInterface<ListPayoutProfileCreatingTasksResponse> {
   return {
     descriptor: LIST_PAYOUT_PROFILE_CREATING_TASKS,
+    body,
+  };
+}
+
+export function newProcessAvatarImageDeletingTaskRequest(
+  body: ProcessAvatarImageDeletingTaskRequestBody,
+): ClientRequestInterface<ProcessAvatarImageDeletingTaskResponse> {
+  return {
+    descriptor: PROCESS_AVATAR_IMAGE_DELETING_TASK,
+    body,
+  };
+}
+
+export function newListAvatarImageDeletingTasksRequest(
+  body: ListAvatarImageDeletingTasksRequestBody,
+): ClientRequestInterface<ListAvatarImageDeletingTasksResponse> {
+  return {
+    descriptor: LIST_AVATAR_IMAGE_DELETING_TASKS,
     body,
   };
 }
