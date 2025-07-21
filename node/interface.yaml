@@ -7,7 +7,7 @@
 - kind: Message
   name: GetAccountContactResponse
   fields:
-    - name: naturalName
+    - name: name
       type: string
       index: 1
     - name: contactEmail
@@ -99,6 +99,14 @@
       type: ProcessAvatarImageDeletingTaskRequestBody
       isArray: true
       index: 1
+- kind: Message
+  name: DeleteExpiredEmailVerificationTokensRequestBody
+- kind: Message
+  name: DeleteExpiredEmailVerificationTokensResponse
+- kind: Message
+  name: DeleteExpiredPasswordResetTokensRequestBody
+- kind: Message
+  name: DeleteExpiredPasswordResetTokensResponse
 - kind: RemoteCallsGroup
   name: UserNodeRemoteCalls
   service: UserNodeService
@@ -144,5 +152,13 @@
       path: /ListAvatarImageDeletingTasks
       body: ListAvatarImageDeletingTasksRequestBody
       response: ListAvatarImageDeletingTasksResponse
+    - name: DeleteExpiredEmailVerificationTokens
+      path: /DeleteExpiredEmailVerificationTokens
+      body: DeleteExpiredEmailVerificationTokensRequestBody
+      response: DeleteExpiredEmailVerificationTokensResponse
+    - name: DeleteExpiredPasswordResetTokens
+      path: /DeleteExpiredPasswordResetTokens
+      body: DeleteExpiredPasswordResetTokensRequestBody
+      response: DeleteExpiredPasswordResetTokensResponse
   outputClient: ./node/client
   outputHandler: ./node/handler

@@ -17,14 +17,14 @@ export let GET_ACCOUNT_CONTACT_REQUEST_BODY: MessageDescriptor<GetAccountContact
 };
 
 export interface GetAccountContactResponse {
-  naturalName?: string,
+  name?: string,
   contactEmail?: string,
 }
 
 export let GET_ACCOUNT_CONTACT_RESPONSE: MessageDescriptor<GetAccountContactResponse> = {
   name: 'GetAccountContactResponse',
   fields: [{
-    name: 'naturalName',
+    name: 'name',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
@@ -242,6 +242,38 @@ export let LIST_AVATAR_IMAGE_DELETING_TASKS_RESPONSE: MessageDescriptor<ListAvat
   }],
 };
 
+export interface DeleteExpiredEmailVerificationTokensRequestBody {
+}
+
+export let DELETE_EXPIRED_EMAIL_VERIFICATION_TOKENS_REQUEST_BODY: MessageDescriptor<DeleteExpiredEmailVerificationTokensRequestBody> = {
+  name: 'DeleteExpiredEmailVerificationTokensRequestBody',
+  fields: [],
+};
+
+export interface DeleteExpiredEmailVerificationTokensResponse {
+}
+
+export let DELETE_EXPIRED_EMAIL_VERIFICATION_TOKENS_RESPONSE: MessageDescriptor<DeleteExpiredEmailVerificationTokensResponse> = {
+  name: 'DeleteExpiredEmailVerificationTokensResponse',
+  fields: [],
+};
+
+export interface DeleteExpiredPasswordResetTokensRequestBody {
+}
+
+export let DELETE_EXPIRED_PASSWORD_RESET_TOKENS_REQUEST_BODY: MessageDescriptor<DeleteExpiredPasswordResetTokensRequestBody> = {
+  name: 'DeleteExpiredPasswordResetTokensRequestBody',
+  fields: [],
+};
+
+export interface DeleteExpiredPasswordResetTokensResponse {
+}
+
+export let DELETE_EXPIRED_PASSWORD_RESET_TOKENS_RESPONSE: MessageDescriptor<DeleteExpiredPasswordResetTokensResponse> = {
+  name: 'DeleteExpiredPasswordResetTokensResponse',
+  fields: [],
+};
+
 export let GET_ACCOUNT_CONTACT: RemoteCallDescriptor = {
   name: "GetAccountContact",
   service: USER_NODE_SERVICE,
@@ -359,5 +391,29 @@ export let LIST_AVATAR_IMAGE_DELETING_TASKS: RemoteCallDescriptor = {
   },
   response: {
     messageType: LIST_AVATAR_IMAGE_DELETING_TASKS_RESPONSE,
+  },
+}
+
+export let DELETE_EXPIRED_EMAIL_VERIFICATION_TOKENS: RemoteCallDescriptor = {
+  name: "DeleteExpiredEmailVerificationTokens",
+  service: USER_NODE_SERVICE,
+  path: "/DeleteExpiredEmailVerificationTokens",
+  body: {
+    messageType: DELETE_EXPIRED_EMAIL_VERIFICATION_TOKENS_REQUEST_BODY,
+  },
+  response: {
+    messageType: DELETE_EXPIRED_EMAIL_VERIFICATION_TOKENS_RESPONSE,
+  },
+}
+
+export let DELETE_EXPIRED_PASSWORD_RESET_TOKENS: RemoteCallDescriptor = {
+  name: "DeleteExpiredPasswordResetTokens",
+  service: USER_NODE_SERVICE,
+  path: "/DeleteExpiredPasswordResetTokens",
+  body: {
+    messageType: DELETE_EXPIRED_PASSWORD_RESET_TOKENS_REQUEST_BODY,
+  },
+  response: {
+    messageType: DELETE_EXPIRED_PASSWORD_RESET_TOKENS_RESPONSE,
   },
 }

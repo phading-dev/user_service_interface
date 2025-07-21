@@ -1,38 +1,32 @@
 - kind: Message
   name: SignUpRequestBody
   fields:
-    - name: username
+    - name: userEmail
       type: string
       index: 1
-    - name: recoveryEmail
-      type: string
-      index: 2
     - name: password
       type: string
+      index: 2
+    - name: name
+      type: string
       index: 3
-    - name: naturalName
-      type: string
-      index: 4
-    - name: contactEmail
-      type: string
-      index: 5
     - name: accountType
       type: AccountType
       import: ./account_type
-      index: 6
+      index: 4
 - kind: Message
   name: SignUpResponse
   fields:
     - name: signedSession
       type: string
       index: 1
-    - name: usernameIsAvailable
+    - name: userEmailUnavailable
       type: boolean
       index: 2
 - kind: Message
   name: SignInRequestBody
   fields:
-    - name: username
+    - name: userEmail
       type: string
       index: 1
     - name: password
@@ -44,6 +38,66 @@
     - name: signedSession
       type: string
       index: 1
+    - name: needsEmailVerification
+      type: boolean
+      index: 2
+- kind: Message
+  name: SendVerificationEmailRequestBody
+  fields:
+    - name: userEmail
+      type: string
+      index: 1
+- kind: Message
+  name: SendVerificationEmailResponse
+  fields:
+    - name: rateLimited
+      type: boolean
+      index: 1
+- kind: Message
+  name: VerifyEmailAndSignInRequestBody
+  fields:
+    - name: verificationToken
+      type: string
+      index: 1
+- kind: Message
+  name: VerifyEmailAndSignInResponse
+  fields:
+    - name: signedSession
+      type: string
+      index: 1
+    - name: tokenExpired
+      type: boolean
+      index: 2
+- kind: Message
+  name: SendPasswordResetEmailRequestBody
+  fields:
+    - name: userEmail
+      type: string
+      index: 1
+- kind: Message
+  name: SendPasswordResetEmailResponse
+  fields:
+    - name: rateLimited
+      type: boolean
+      index: 1
+- kind: Message
+  name: ResetPasswordAndSignInRequestBody
+  fields:
+    - name: resetToken
+      type: string
+      index: 1
+    - name: newPassword
+      type: string
+      index: 2
+- kind: Message
+  name: ResetPasswordAndSignInResponse
+  fields:
+    - name: signedSession
+      type: string
+      index: 1
+    - name: tokenExpired
+      type: boolean
+      index: 2
 - kind: Message
   name: UpdatePasswordRequestBody
   fields:
@@ -56,7 +110,7 @@
 - kind: Message
   name: UpdatePasswordResponse
 - kind: Message
-  name: UpdateRecoveryEmailRequestBody
+  name: UpdateUserEmailRequestBody
   fields:
     - name: currentPassword
       type: string
@@ -65,20 +119,17 @@
       type: string
       index: 2
 - kind: Message
-  name: UpdateRecoveryEmailResponse
+  name: UpdateUserEmailResponse
 - kind: Message
   name: CreateAccountRequestBody
   fields:
-    - name: naturalName
+    - name: name
       type: string
       index: 1
-    - name: contactEmail
-      type: string
-      index: 2
     - name: accountType
       type: AccountType
       import: ./account_type
-      index: 3
+      index: 2
 - kind: Message
   name: CreateAccountResponse
   fields:
@@ -113,15 +164,12 @@
 - kind: Message
   name: UpdateAccountRequestBody
   fields:
-    - name: naturalName
+    - name: name
       type: string
       index: 1
-    - name: contactEmail
-      type: string
-      index: 2
     - name: description
       type: string
-      index: 3
+      index: 2
 - kind: Message
   name: UpdateAccountResponse
 - kind: Message
@@ -185,16 +233,32 @@
       path: /SignIn
       body: SignInRequestBody
       response: SignInResponse
+    - name: SendVerificationEmail
+      path: /SendVerificationEmail
+      body: SendVerificationEmailRequestBody
+      response: SendVerificationEmailResponse
+    - name: VerifyEmailAndSignIn
+      path: /VerifyEmailAndSignIn
+      body: VerifyEmailAndSignInRequestBody
+      response: VerifyEmailAndSignInResponse
+    - name: SendPasswordResetEmail
+      path: /SendPasswordResetEmail
+      body: SendPasswordResetEmailRequestBody
+      response: SendPasswordResetEmailResponse
+    - name: ResetPasswordAndSignIn
+      path: /ResetPasswordAndSignIn
+      body: ResetPasswordAndSignInRequestBody
+      response: ResetPasswordAndSignInResponse
     - name: UpdatePassword
       path: /UpdatePassword
       body: UpdatePasswordRequestBody
       authKey: a
       response: UpdatePasswordResponse
-    - name: UpdateRecoveryEmail
-      path: /UpdateRecoveryEmail
-      body: UpdateRecoveryEmailRequestBody
+    - name: UpdateUserEmail
+      path: /UpdateUserEmail
+      body: UpdateUserEmailRequestBody
       authKey: a
-      response: UpdateRecoveryEmailResponse
+      response: UpdateUserEmailResponse
     - name: CreateAccount
       path: /CreateAccount
       body: CreateAccountRequestBody

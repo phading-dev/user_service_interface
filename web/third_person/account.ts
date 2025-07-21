@@ -2,7 +2,7 @@ import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
 export interface AccountSummary {
   accountId?: string,
-  naturalName?: string,
+  name?: string,
   avatarSmallUrl?: string,
 }
 
@@ -13,7 +13,7 @@ export let ACCOUNT_SUMMARY: MessageDescriptor<AccountSummary> = {
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'naturalName',
+    name: 'name',
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
@@ -25,7 +25,7 @@ export let ACCOUNT_SUMMARY: MessageDescriptor<AccountSummary> = {
 
 export interface AccountDetails {
   accountId?: string,
-  naturalName?: string,
+  name?: string,
   avatarLargeUrl?: string,
   description?: string,
 }
@@ -37,7 +37,7 @@ export let ACCOUNT_DETAILS: MessageDescriptor<AccountDetails> = {
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'naturalName',
+    name: 'name',
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {

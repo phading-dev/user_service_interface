@@ -4,7 +4,7 @@
     - name: accountId
       type: string
       index: 1
-    - name: naturalName
+    - name: name
       type: string
       index: 2
     - name: avatarSmallUrl
@@ -16,7 +16,7 @@
     - name: accountId
       type: string
       index: 1
-    - name: naturalName
+    - name: name
       type: string
       index: 2
     - name: avatarLargeUrl

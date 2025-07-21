@@ -1,4 +1,4 @@
-import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateRecoveryEmailRequestBody, UPDATE_RECOVERY_EMAIL, UpdateRecoveryEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse, GetVideoPlayerSettingsRequestBody, GET_VIDEO_PLAYER_SETTINGS, GetVideoPlayerSettingsResponse, SaveVideoPlayerSettingsRequestBody, SAVE_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsResponse, GetUISettingsRequestBody, GET_U_I_SETTINGS, GetUISettingsResponse, SaveUISettingsRequestBody, SAVE_U_I_SETTINGS, SaveUISettingsResponse } from './interface';
+import { SignUpRequestBody, SIGN_UP, SignUpResponse, SignInRequestBody, SIGN_IN, SignInResponse, SendVerificationEmailRequestBody, SEND_VERIFICATION_EMAIL, SendVerificationEmailResponse, VerifyEmailAndSignInRequestBody, VERIFY_EMAIL_AND_SIGN_IN, VerifyEmailAndSignInResponse, SendPasswordResetEmailRequestBody, SEND_PASSWORD_RESET_EMAIL, SendPasswordResetEmailResponse, ResetPasswordAndSignInRequestBody, RESET_PASSWORD_AND_SIGN_IN, ResetPasswordAndSignInResponse, UpdatePasswordRequestBody, UPDATE_PASSWORD, UpdatePasswordResponse, UpdateUserEmailRequestBody, UPDATE_USER_EMAIL, UpdateUserEmailResponse, CreateAccountRequestBody, CREATE_ACCOUNT, CreateAccountResponse, SwitchAccountRequestBody, SWITCH_ACCOUNT, SwitchAccountResponse, ListAccountsRequestBody, LIST_ACCOUNTS, ListAccountsResponse, UpdateAccountRequestBody, UPDATE_ACCOUNT, UpdateAccountResponse, UPLOAD_ACCOUNT_AVATAR, UploadAccountAvatarResponse, GetAccountAndUserRequestBody, GET_ACCOUNT_AND_USER, GetAccountAndUserResponse, GetVideoPlayerSettingsRequestBody, GET_VIDEO_PLAYER_SETTINGS, GetVideoPlayerSettingsResponse, SaveVideoPlayerSettingsRequestBody, SAVE_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsResponse, GetUISettingsRequestBody, GET_U_I_SETTINGS, GetUISettingsResponse, SaveUISettingsRequestBody, SAVE_U_I_SETTINGS, SaveUISettingsResponse } from './interface';
 import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 import { Readable } from 'stream';
 
@@ -18,6 +18,38 @@ export abstract class SignInHandlerInterface implements RemoteCallHandlerInterfa
   ): Promise<SignInResponse>;
 }
 
+export abstract class SendVerificationEmailHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = SEND_VERIFICATION_EMAIL;
+  public abstract handle(
+    loggingPrefix: string,
+    body: SendVerificationEmailRequestBody,
+  ): Promise<SendVerificationEmailResponse>;
+}
+
+export abstract class VerifyEmailAndSignInHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = VERIFY_EMAIL_AND_SIGN_IN;
+  public abstract handle(
+    loggingPrefix: string,
+    body: VerifyEmailAndSignInRequestBody,
+  ): Promise<VerifyEmailAndSignInResponse>;
+}
+
+export abstract class SendPasswordResetEmailHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = SEND_PASSWORD_RESET_EMAIL;
+  public abstract handle(
+    loggingPrefix: string,
+    body: SendPasswordResetEmailRequestBody,
+  ): Promise<SendPasswordResetEmailResponse>;
+}
+
+export abstract class ResetPasswordAndSignInHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = RESET_PASSWORD_AND_SIGN_IN;
+  public abstract handle(
+    loggingPrefix: string,
+    body: ResetPasswordAndSignInRequestBody,
+  ): Promise<ResetPasswordAndSignInResponse>;
+}
+
 export abstract class UpdatePasswordHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = UPDATE_PASSWORD;
   public abstract handle(
@@ -27,13 +59,13 @@ export abstract class UpdatePasswordHandlerInterface implements RemoteCallHandle
   ): Promise<UpdatePasswordResponse>;
 }
 
-export abstract class UpdateRecoveryEmailHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = UPDATE_RECOVERY_EMAIL;
+export abstract class UpdateUserEmailHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = UPDATE_USER_EMAIL;
   public abstract handle(
     loggingPrefix: string,
-    body: UpdateRecoveryEmailRequestBody,
+    body: UpdateUserEmailRequestBody,
     authStr: string,
-  ): Promise<UpdateRecoveryEmailResponse>;
+  ): Promise<UpdateUserEmailResponse>;
 }
 
 export abstract class CreateAccountHandlerInterface implements RemoteCallHandlerInterface {
