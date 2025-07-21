@@ -1,4 +1,4 @@
-import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, SendVerificationEmailRequestBody, SendVerificationEmailResponse, SEND_VERIFICATION_EMAIL, VerifyEmailAndSignInRequestBody, VerifyEmailAndSignInResponse, VERIFY_EMAIL_AND_SIGN_IN, SendPasswordResetEmailRequestBody, SendPasswordResetEmailResponse, SEND_PASSWORD_RESET_EMAIL, ResetPasswordAndSignInRequestBody, ResetPasswordAndSignInResponse, RESET_PASSWORD_AND_SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, UpdateUserEmailRequestBody, UpdateUserEmailResponse, UPDATE_USER_EMAIL, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS, UpdateAccountRequestBody, UpdateAccountResponse, UPDATE_ACCOUNT, UploadAccountAvatarResponse, UPLOAD_ACCOUNT_AVATAR, GetAccountAndUserRequestBody, GetAccountAndUserResponse, GET_ACCOUNT_AND_USER, GetVideoPlayerSettingsRequestBody, GetVideoPlayerSettingsResponse, GET_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsRequestBody, SaveVideoPlayerSettingsResponse, SAVE_VIDEO_PLAYER_SETTINGS, GetUISettingsRequestBody, GetUISettingsResponse, GET_U_I_SETTINGS, SaveUISettingsRequestBody, SaveUISettingsResponse, SAVE_U_I_SETTINGS } from './interface';
+import { SignUpRequestBody, SignUpResponse, SIGN_UP, SignInRequestBody, SignInResponse, SIGN_IN, SendEmailVerificationEmailRequestBody, SendEmailVerificationEmailResponse, SEND_EMAIL_VERIFICATION_EMAIL, VerifyEmailAndSignInRequestBody, VerifyEmailAndSignInResponse, VERIFY_EMAIL_AND_SIGN_IN, SendPasswordResetEmailRequestBody, SendPasswordResetEmailResponse, SEND_PASSWORD_RESET_EMAIL, ResetPasswordAndSignInRequestBody, ResetPasswordAndSignInResponse, RESET_PASSWORD_AND_SIGN_IN, UpdatePasswordRequestBody, UpdatePasswordResponse, UPDATE_PASSWORD, UpdateUserEmailRequestBody, UpdateUserEmailResponse, UPDATE_USER_EMAIL, CreateAccountRequestBody, CreateAccountResponse, CREATE_ACCOUNT, SwitchAccountRequestBody, SwitchAccountResponse, SWITCH_ACCOUNT, ListAccountsRequestBody, ListAccountsResponse, LIST_ACCOUNTS, UpdateAccountRequestBody, UpdateAccountResponse, UPDATE_ACCOUNT, UploadAccountAvatarResponse, UPLOAD_ACCOUNT_AVATAR, GetAccountAndUserRequestBody, GetAccountAndUserResponse, GET_ACCOUNT_AND_USER, GetVideoPlayerSettingsRequestBody, GetVideoPlayerSettingsResponse, GET_VIDEO_PLAYER_SETTINGS, SaveVideoPlayerSettingsRequestBody, SaveVideoPlayerSettingsResponse, SAVE_VIDEO_PLAYER_SETTINGS, GetUISettingsRequestBody, GetUISettingsResponse, GET_U_I_SETTINGS, SaveUISettingsRequestBody, SaveUISettingsResponse, SAVE_U_I_SETTINGS } from './interface';
 import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
 export function newSignUpRequest(
@@ -19,11 +19,11 @@ export function newSignInRequest(
   };
 }
 
-export function newSendVerificationEmailRequest(
-  body: SendVerificationEmailRequestBody,
-): ClientRequestInterface<SendVerificationEmailResponse> {
+export function newSendEmailVerificationEmailRequest(
+  body: SendEmailVerificationEmailRequestBody,
+): ClientRequestInterface<SendEmailVerificationEmailResponse> {
   return {
-    descriptor: SEND_VERIFICATION_EMAIL,
+    descriptor: SEND_EMAIL_VERIFICATION_EMAIL,
     body,
   };
 }

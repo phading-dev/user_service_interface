@@ -42,13 +42,13 @@
       type: boolean
       index: 2
 - kind: Message
-  name: SendVerificationEmailRequestBody
+  name: SendEmailVerificationEmailRequestBody
   fields:
     - name: userEmail
       type: string
       index: 1
 - kind: Message
-  name: SendVerificationEmailResponse
+  name: SendEmailVerificationEmailResponse
   fields:
     - name: rateLimited
       type: boolean
@@ -233,10 +233,10 @@
       path: /SignIn
       body: SignInRequestBody
       response: SignInResponse
-    - name: SendVerificationEmail
-      path: /SendVerificationEmail
-      body: SendVerificationEmailRequestBody
-      response: SendVerificationEmailResponse
+    - name: SendEmailVerificationEmail
+      path: /SendEmailVerificationEmail
+      body: SendEmailVerificationEmailRequestBody
+      response: SendEmailVerificationEmailResponse
     - name: VerifyEmailAndSignIn
       path: /VerifyEmailAndSignIn
       body: VerifyEmailAndSignInRequestBody

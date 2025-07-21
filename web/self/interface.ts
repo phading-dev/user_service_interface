@@ -88,12 +88,12 @@ export let SIGN_IN_RESPONSE: MessageDescriptor<SignInResponse> = {
   }],
 };
 
-export interface SendVerificationEmailRequestBody {
+export interface SendEmailVerificationEmailRequestBody {
   userEmail?: string,
 }
 
-export let SEND_VERIFICATION_EMAIL_REQUEST_BODY: MessageDescriptor<SendVerificationEmailRequestBody> = {
-  name: 'SendVerificationEmailRequestBody',
+export let SEND_EMAIL_VERIFICATION_EMAIL_REQUEST_BODY: MessageDescriptor<SendEmailVerificationEmailRequestBody> = {
+  name: 'SendEmailVerificationEmailRequestBody',
   fields: [{
     name: 'userEmail',
     index: 1,
@@ -101,12 +101,12 @@ export let SEND_VERIFICATION_EMAIL_REQUEST_BODY: MessageDescriptor<SendVerificat
   }],
 };
 
-export interface SendVerificationEmailResponse {
+export interface SendEmailVerificationEmailResponse {
   rateLimited?: boolean,
 }
 
-export let SEND_VERIFICATION_EMAIL_RESPONSE: MessageDescriptor<SendVerificationEmailResponse> = {
-  name: 'SendVerificationEmailResponse',
+export let SEND_EMAIL_VERIFICATION_EMAIL_RESPONSE: MessageDescriptor<SendEmailVerificationEmailResponse> = {
+  name: 'SendEmailVerificationEmailResponse',
   fields: [{
     name: 'rateLimited',
     index: 1,
@@ -506,15 +506,15 @@ export let SIGN_IN: RemoteCallDescriptor = {
   },
 }
 
-export let SEND_VERIFICATION_EMAIL: RemoteCallDescriptor = {
-  name: "SendVerificationEmail",
+export let SEND_EMAIL_VERIFICATION_EMAIL: RemoteCallDescriptor = {
+  name: "SendEmailVerificationEmail",
   service: USER_WEB_SERVICE,
-  path: "/s/SendVerificationEmail",
+  path: "/s/SendEmailVerificationEmail",
   body: {
-    messageType: SEND_VERIFICATION_EMAIL_REQUEST_BODY,
+    messageType: SEND_EMAIL_VERIFICATION_EMAIL_REQUEST_BODY,
   },
   response: {
-    messageType: SEND_VERIFICATION_EMAIL_RESPONSE,
+    messageType: SEND_EMAIL_VERIFICATION_EMAIL_RESPONSE,
   },
 }
 
