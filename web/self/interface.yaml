@@ -17,12 +17,9 @@
 - kind: Message
   name: SignUpResponse
   fields:
-    - name: signedSession
-      type: string
-      index: 1
     - name: userEmailUnavailable
       type: boolean
-      index: 2
+      index: 1
 - kind: Message
   name: SignInRequestBody
   fields:
@@ -41,6 +38,9 @@
     - name: needsEmailVerification
       type: boolean
       index: 2
+    - name: notAuthenticated
+      type: boolean
+      index: 3
 - kind: Message
   name: SendEmailVerificationEmailRequestBody
   fields:
@@ -66,6 +66,27 @@
       type: string
       index: 1
     - name: tokenExpired
+      type: boolean
+      index: 2
+- kind: Message
+  name: UpdateUserEmailWithPasswordRequestBody
+  fields:
+    - name: currentEmail
+      type: string
+      index: 1
+    - name: newEmail
+      type: string
+      index: 2
+    - name: password
+      type: string
+      index: 3
+- kind: Message
+  name: UpdateUserEmailWithPasswordResponse
+  fields:
+    - name: userEmailUnavailable
+      type: boolean
+      index: 1
+    - name: notAuthenticated
       type: boolean
       index: 2
 - kind: Message
@@ -109,10 +130,14 @@
       index: 2
 - kind: Message
   name: UpdatePasswordResponse
+  fields:
+    - name: notAuthenticated
+      type: boolean
+      index: 1
 - kind: Message
   name: UpdateUserEmailRequestBody
   fields:
-    - name: currentPassword
+    - name: password
       type: string
       index: 1
     - name: newEmail
@@ -120,6 +145,13 @@
       index: 2
 - kind: Message
   name: UpdateUserEmailResponse
+  fields:
+    - name: userEmailUnavailable
+      type: boolean
+      index: 1
+    - name: notAuthenticated
+      type: boolean
+      index: 2
 - kind: Message
   name: CreateAccountRequestBody
   fields:
@@ -241,6 +273,10 @@
       path: /VerifyEmailAndSignIn
       body: VerifyEmailAndSignInRequestBody
       response: VerifyEmailAndSignInResponse
+    - name: UpdateUserEmailWithPassword
+      path: /UpdateUserEmailWithPassword
+      body: UpdateUserEmailWithPasswordRequestBody
+      response: UpdateUserEmailWithPasswordResponse
     - name: SendPasswordResetEmail
       path: /SendPasswordResetEmail
       body: SendPasswordResetEmailRequestBody

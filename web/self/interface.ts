@@ -35,19 +35,14 @@ export let SIGN_UP_REQUEST_BODY: MessageDescriptor<SignUpRequestBody> = {
 };
 
 export interface SignUpResponse {
-  signedSession?: string,
   userEmailUnavailable?: boolean,
 }
 
 export let SIGN_UP_RESPONSE: MessageDescriptor<SignUpResponse> = {
   name: 'SignUpResponse',
   fields: [{
-    name: 'signedSession',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
     name: 'userEmailUnavailable',
-    index: 2,
+    index: 1,
     primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
@@ -73,6 +68,7 @@ export let SIGN_IN_REQUEST_BODY: MessageDescriptor<SignInRequestBody> = {
 export interface SignInResponse {
   signedSession?: string,
   needsEmailVerification?: boolean,
+  notAuthenticated?: boolean,
 }
 
 export let SIGN_IN_RESPONSE: MessageDescriptor<SignInResponse> = {
@@ -84,6 +80,10 @@ export let SIGN_IN_RESPONSE: MessageDescriptor<SignInResponse> = {
   }, {
     name: 'needsEmailVerification',
     index: 2,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }, {
+    name: 'notAuthenticated',
+    index: 3,
     primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
@@ -140,6 +140,47 @@ export let VERIFY_EMAIL_AND_SIGN_IN_RESPONSE: MessageDescriptor<VerifyEmailAndSi
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'tokenExpired',
+    index: 2,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
+};
+
+export interface UpdateUserEmailWithPasswordRequestBody {
+  currentEmail?: string,
+  newEmail?: string,
+  password?: string,
+}
+
+export let UPDATE_USER_EMAIL_WITH_PASSWORD_REQUEST_BODY: MessageDescriptor<UpdateUserEmailWithPasswordRequestBody> = {
+  name: 'UpdateUserEmailWithPasswordRequestBody',
+  fields: [{
+    name: 'currentEmail',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'newEmail',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'password',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface UpdateUserEmailWithPasswordResponse {
+  userEmailUnavailable?: boolean,
+  notAuthenticated?: boolean,
+}
+
+export let UPDATE_USER_EMAIL_WITH_PASSWORD_RESPONSE: MessageDescriptor<UpdateUserEmailWithPasswordResponse> = {
+  name: 'UpdateUserEmailWithPasswordResponse',
+  fields: [{
+    name: 'userEmailUnavailable',
+    index: 1,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }, {
+    name: 'notAuthenticated',
     index: 2,
     primitiveType: PrimitiveType.BOOLEAN,
   }],
@@ -226,22 +267,27 @@ export let UPDATE_PASSWORD_REQUEST_BODY: MessageDescriptor<UpdatePasswordRequest
 };
 
 export interface UpdatePasswordResponse {
+  notAuthenticated?: boolean,
 }
 
 export let UPDATE_PASSWORD_RESPONSE: MessageDescriptor<UpdatePasswordResponse> = {
   name: 'UpdatePasswordResponse',
-  fields: [],
+  fields: [{
+    name: 'notAuthenticated',
+    index: 1,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
 };
 
 export interface UpdateUserEmailRequestBody {
-  currentPassword?: string,
+  password?: string,
   newEmail?: string,
 }
 
 export let UPDATE_USER_EMAIL_REQUEST_BODY: MessageDescriptor<UpdateUserEmailRequestBody> = {
   name: 'UpdateUserEmailRequestBody',
   fields: [{
-    name: 'currentPassword',
+    name: 'password',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
@@ -252,11 +298,21 @@ export let UPDATE_USER_EMAIL_REQUEST_BODY: MessageDescriptor<UpdateUserEmailRequ
 };
 
 export interface UpdateUserEmailResponse {
+  userEmailUnavailable?: boolean,
+  notAuthenticated?: boolean,
 }
 
 export let UPDATE_USER_EMAIL_RESPONSE: MessageDescriptor<UpdateUserEmailResponse> = {
   name: 'UpdateUserEmailResponse',
-  fields: [],
+  fields: [{
+    name: 'userEmailUnavailable',
+    index: 1,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }, {
+    name: 'notAuthenticated',
+    index: 2,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
 };
 
 export interface CreateAccountRequestBody {
@@ -527,6 +583,18 @@ export let VERIFY_EMAIL_AND_SIGN_IN: RemoteCallDescriptor = {
   },
   response: {
     messageType: VERIFY_EMAIL_AND_SIGN_IN_RESPONSE,
+  },
+}
+
+export let UPDATE_USER_EMAIL_WITH_PASSWORD: RemoteCallDescriptor = {
+  name: "UpdateUserEmailWithPassword",
+  service: USER_WEB_SERVICE,
+  path: "/s/UpdateUserEmailWithPassword",
+  body: {
+    messageType: UPDATE_USER_EMAIL_WITH_PASSWORD_REQUEST_BODY,
+  },
+  response: {
+    messageType: UPDATE_USER_EMAIL_WITH_PASSWORD_RESPONSE,
   },
 }
 
